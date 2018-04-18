@@ -1,0 +1,1 @@
+hugo -b "https://numbersandshapes.net/blog/" -t "blackburn" && rsync -avz -e "ssh -p 32768" --delete public/ amca@numbersandshapes.net:~/Hugo/whats_this/public

@@ -1,0 +1,22 @@
+#+STARTUP: content
+#+AUTHOR: Alasdair McAndrew
+#+HUGO_BASE_DIR: /home/amca/Nextcloud/Blogs/Hugo/bb_test
+#+HUGO_AUTO_SET_LASTMOD: t
+
+* Pages
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_MENU: :menu main
+  :EXPORT_HUGO_SECTION: pages
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** About
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: about
+   :END:
+A page about me.
+
+* Posts
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: post
+  :END:

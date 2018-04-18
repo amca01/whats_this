@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37" />
+
+  <title>Python GIS, and election results &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans+Condensed:bold" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/kimbie.light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://numbersandshapes.net/blog/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://numbersandshapes.net/blog/">All the good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.github.com/amca01"><i class='fa fa-github fa-fw'></i>Github</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Python GIS, and election results</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>31 Mar 2018, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://numbersandshapes.net/blog/tags/python">python</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://numbersandshapes.net/blog/tags/voting">voting</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<h2 id="election-mapping">Election mapping</h2>
+
+<p>A few weeks ago there was a by-election in my local electorate (known as an
+electoral <em>division</em>) of Batman here in Australia.  I was interested in
+comparing the results of this election with the previous election two years ago.
+In this division it&rsquo;s become a two-horse race: the Greens against the Australian
+Labor Party.  Although Batman had been a solid Labor seat for almost its entire
+existence - it used to be considered one of the safest Labor seats in the
+country - over the past decade or so the Greens have been making inroads into
+this Labor heartland, to the extent that is no longer considered a safe seat.
+And in fact for this particular election the Greens were the popular choice to
+win.  In the end Labor won, but my interest is not so much tracing the votes,
+but trying to map them.</p>
+
+<p>Python has a vast suite of mapping tools, so much so that it may be that Python
+has become the GIS tool of choice.  And there are lots of web pages devoted to
+discussing these tools and their uses, such as <a href="http://matthewrocklin.com/blog/work/2017/09/21/accelerating-geopandas-1">this
+one</a>.</p>
+
+<p>My interest was producing maps such as are produced by
+<a href="https://www.pollbludger.net/by-elections/fed-2018-03-batman.htm">pollbludger</a>
+This is the image from that page:</p>
+
+<p><img src="https://numbersandshapes.net/blog/pollbludger_batman.png" alt="pollbludger" /></p>
+
+<p>As you can see there are basically three elements:</p>
+
+<ul>
+<li>the underlying streetmap</li>
+<li>the border of the division</li>
+<li>the numbers showing the percentage wins of each party at the various polling
+booths.</li>
+</ul>
+
+<p>I wanted to do something similar, but replace the numbers with circles whose
+sizes showed the strength of the percentage win at each place.</p>
+
+<h2 id="getting-the-information">Getting the information</h2>
+
+<p>Because this election was in a federal division, the management of the polls and
+of the results (including counting the votes) was managed by the Australian
+Electoral Commission, whose <a href="http://www.aec.gov.au/Elections/supplementary_by_elections/2018-batman/">pages about this by-election</a> contain
+pretty much all publicly available information.  You can copy and paste the
+results from their pages, or download them as CSV files.</p>
+
+<p>Then I needed to find the coordinates (Longitude and Latitude) of all the
+polling places, of which there were 42 at fixed locations.  There didn&rsquo;t seem to
+be a downloadable file for this, so for each booth address (given on the AEC
+site), I entered it into Google Maps and copied down the coordinates as given.</p>
+
+<p>The boundaries of all the divisions can again be downloaded from the <a href="http://www.aec.gov.au/Electorates/gis/index.htm">AEC GIS
+page</a>.  These are given in
+various standard GIS files.</p>
+
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+<p>The tools I felt brave enough to use were:</p>
+
+<ul>
+<li><a href="https://pandas.pydata.org">Pandas:</a> Python&rsquo;s data analysis library.  I
+really only needed to read information from CSV files that I could then use
+later.</li>
+<li><a href="http://geopandas.org">Geopandas:</a> This is a GIS library with Pandas-like
+syntax, and is designed in part to be a GIS extension to Pandas.  I would
+use it to extract and manage the boundary data of the electoral division.</li>
+<li><a href="http://scitools.org.uk/cartopy/">Cartopy:</a> which is a library of
+&ldquo;cartographic tools&rdquo;.</li>
+</ul>
+
+<p>And of course the standard <a href="http://matplotlib.org">matplotlib</a> for plotting,
+<a href="http://www.numpy.org">numpy</a> for array handling.</p>
+
+<p>My guides were the <a href="http://scitools.org.uk/cartopy/docs/latest/gallery/tube_stations.html">London tube stations
+example</a>
+from Cartopy and a local (Australian) data analysis blog which discussed the
+<a href="http://www.net-analysis.com/blog/cartopytiles.html">use of Cartopy</a> including
+adding graphics to an map image.</p>
+
+<p>There are lots of other GIS tools for Python, some of which seem to be very good
+indeed, and all of which I downloaded:</p>
+
+<ul>
+<li><a href="https://github.com/Toblerity/Fiona">Fiona</a>: which is a &ldquo;nimble&rdquo; API for
+handling maps</li>
+<li><a href="https://bitbucket.org/sgillies/descartes/">Descartes</a>: which provides a
+means by which matplotlib can be used to manage geographic objects</li>
+<li><a href="https://github.com/andrea-cuttone/geoplotlib">geoplotlib</a>: for &ldquo;visualizing
+geographical data and making maps&rdquo;</li>
+<li><a href="http://python-visualization.github.io/folium/">Folium</a>: for visualizing maps
+using the <a href="http://leafletjs.com">leaflet.js</a> library.  It may be that the
+mapping I wanted to do with Python could have been done just as well in
+Javascript alone.  And probably other languages.  I stuck with Python simply
+because I knew it best.</li>
+<li><a href="https://qgis.org/en/site/">QGIS</a>: which is designed to be a complete free
+and open source GIS, and with APIs both for Python and C++</li>
+<li><a href="http://www.gdal.org">GDAL</a>: the &ldquo;Geospatial Data Abstraction Library&rdquo; which
+has a <a href="https://pypi.python.org/pypi/GDAL">Python package</a> also called GDAL,
+for manipulating geospatial raster and vector data.</li>
+</ul>
+
+<p>I suspect that if I was professionally working in the GIS area some or all of
+these packages would be at least as - and maybe even more - suitable than the
+ones I ended up using.  But then, I was starting from a position of absolute
+zero with regards to GIS, and also I wanted to be able to make use of the tools
+I already knew, such as Pandas, matplotlib, and numpy.</p>
+
+<p>Here&rsquo;s the start, importing the libraries, or the bits of them I needed:</p>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+import cartopy.crs as ccrs
+from cartopy.io.img_tiles import GoogleTiles
+import geopandas as gpd
+import pandas as pd
+</code></pre>
+
+<p>I then had to read in the election data, which was a CSV files from the AEC
+containing the Booth, and the final distributed percentage weighting to the ALP
+and Greens candidates, and heir percentage scores.  As well, I read in the
+boundary data:</p>
+
+<pre><code class="language-python">bb = pd.read_csv('Elections/batman_booths_coords.csv')  # contains all election info plus lat, long of booths
+longs = np.array(bb['Long'])
+lats = np.array(bb['Lat'])
+v = gpd.read_file('VicMaps/VIC_ELB.MIF')  # all electoral divisions in MapInfo form
+bg = v.loc[2].geometry                    # This is the Polygon representing Batman
+b_longs = bg.exterior.xy[0]               # These next two lines are the longitudes and latitudes
+b_lats = bg.exterior.xy[1]                #
+</code></pre>
+
+<p>Notice that <code>bb</code> uses Pandas to read in the CSV files which contains all the AEC
+information, as well as the latitude and longitude of each Booth, which I&rsquo;d
+added myself.  Here <code>longs</code> and <code>lats</code> are the coordinates of the polling
+booths, and <code>b_longs</code> and <code>b-lats</code> are all the vertices which form the boundary
+of the division.</p>
+
+<p>Now it&rsquo;s all pretty straigtforward, especially with the examples mentioned above:</p>
+
+<pre><code class="language-python">fig = plt.figure(figsize=(16,16))
+
+tiler = GoogleTiles()
+ax = plt.axes(projection=tiler.crs)
+
+margin=0.01
+ax.set_extent((bg.bounds[0]-margin, bg.bounds[2]+margin,bg.bounds[1]-margin, bg.bounds[3]+margin))
+
+ax.add_image(tiler,12)
+for i in range(44):
+    plt.plot(longs[i],lats[i],ga2[i],markersize=abs(ga[i]),alpha=0.7,transform=ccrs.Geodetic())
+
+plt.plot(b_longs,b_lats,'k-',linewidth=5,transform=ccrs.Geodetic())
+plt.title('Booth results in the 2018 Batman by-election')
+plt.show()
+</code></pre>
+
+<p>Here <code>GoogleTiles</code> provide the street map to be used as the &ldquo;base&rdquo; of our map.
+Open Streep Map (as OSM) is available too, but I thin in this instance, Google
+Maps is better.  Because the map is rendered as an image (with some unavoidable
+blurring), I find that Google gave a better result than OSM.</p>
+
+<p>Also, <code>ga2</code> is a little array which simply produces plotting of the style <code>ro</code>
+(red circle) or <code>go</code> (green circle).  Again, I make the program do most of the
+work.</p>
+
+<p>And here is the result, saved as an image:</p>
+
+<p><img src="https://numbersandshapes.net/blog/batman2018trim.png" alt="Batman 2018" /></p>
+
+<p>I&rsquo;m quite pleased with this output.</p>
+
+<p>And a quick check of some maths, first inline
+$ (x+2y)^3=x^3+6x^2y+12xy^2+8y^3 $ and also displayed:
+<div>
+\[
+\int^\infty_{-\infty}e^{-x^2}\,dx=\sqrt{\pi}.
+\]
+</div></p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://numbersandshapes.net/blog/post/playing_with_hugo/">Playing with Hugo</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://numbersandshapes.net/blog/post/playing_with_hugo/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://numbersandshapes.net/blog/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

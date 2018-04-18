@@ -1,0 +1,71 @@
++++
+title = "Playing with Hugo"
+author = ["Alasdair McAndrew"]
+date = 2018-04-03
+tags = ["hugo", "org"]
+draft = false
+mathjax = true
++++
+
+I've been using wordpress as my blogging platform since I first started, about
+10 years ago.  (In fact the first post I can find is dated March 30, 2008.)  I
+chose [wordpress.com](<http://wordpress.com>) back then because it was (a) free,
+and (b) supported mathematics through a version (or subset) of
+[LaTeX](<https://www.latex-project.org>).  As I have used LaTeX extensively for
+all my writing since the early 1990's, it's a standard requirement for me.
+
+Some time later I decided to start hosting my own server (well, a VPS), on which
+I could use [wordpress.org](<https://wordpress.org>), which is the self-hosted
+version of wordpress.  The advantages of a self hosted blog are many, but I
+particularly like the greater freedom, the ability to include a far greater
+variety of plugins, and the larger choice of themes.  And one of the plugins I
+liked particularly was [WP
+QuickLaTeX](<https://wordpress.org/plugins/wp-quicklatex/>) which provided a LaTeX
+engine far superior to the in-built one of wordpress.com.  Math bloggin heaven!
+
+However, hosting my own wordpress site was not without difficulty.  First I had
+to install it and get it up and running (even this was non-trivial), and then I
+had to manage all the users and passwords: myself as a standard user, wp-admin
+for accessing the Wordpress site itself, a few others.  I have quite a long list
+containing all the commands I used, and all the users and passwords I created.
+
+This served me well, but it was also slow to use.  My VPS is perfectly
+satisfactory, but it is not fast (I'm too cheap to pay for much more than a
+low-powered one), and the edit-save-preview cycle of online blogging with my
+wordpress installation was getting tiresome.
+
+Plus the issue of security.  I've been hacked once, and I've since managed to
+secure my site with a free certificate from [Let's
+Encrypt](<https://letsencrypt.org>).  In fact, in many ways Let's Encrypt is one
+of the best things to have happened for security.  An open Certificate Authority
+is manna from heaven, as far as I'm concerned.
+
+Wordpress is of course more than just blogging software.  It now grandly styles
+itself as Site Building software and Content Management System, and the site
+claims that "30% of the web uses Wordpress".  It is in fact hugely powerful and
+deservedly popular, and can be used for pretty much whatever sort of site you
+want to build.   Add to that a seemingly infinite set of plugins, and you have
+an entire ecosystem of web-building.
+
+However, all of that popularity and power comes at a cost: it is big, confusing,
+takes work to maintain, keep secure, and keep up-to-date, and is a target for
+hackers.  Also for me, it has become colossal overkill.  I don't need all those
+bells and whistles; all I want to do is host my blog and share my posts with the
+world (the \\(1.5\times 10^{-7}\%\\) of the world who reads it).
+
+The kicker for me was checking out a [mathematics education
+blog](<http://rtalbert.org>) by an author I admire greatly, to discover it was
+built with the static blog engine [jekyll](<https://jekyllrb.com>).  So being the
+inventive bloke I am, I thought I'd do the same.
+
+But a bit of hunting led me to [Hugo](<https://gohugo.io>), which apparently is
+very similar to jekyll, but much faster, and written in [Go](<https://golang.org>)
+instead of [Ruby](<https://www.ruby-lang.org/en/>).  Since I know nothing about
+either Go or Ruby I don't know if it's the language which makes the difference,
+or something else.  But it sure looks nice, and supports
+[mathjax](<https://www.mathjax.org>) for LaTeX.
+
+So my current plan is to migrate from wordpress to Hugo, and see how it goes!
+
+[//]: # "Exported with love from a post written in Org mode"
+[//]: # "- https://github.com/kaushalmodi/ox-hugo"

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37" />
+
+  <title>Exploring JSXGraph &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans+Condensed:bold" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/kimbie.light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://numbersandshapes.net/blog/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://numbersandshapes.net/blog/">All the good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.github.com/amca01"><i class='fa fa-github fa-fw'></i>Github</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Exploring JSXGraph</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>14 Apr 2018, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>So I downloaded the javascript and css files as described
+<a href="https://jsxgraph.uni-bayreuth.de/wp/download/index.html">here</a>
+and also, for good measure, added the script line (from that page) to the
+<code>layouts/partials/head.html</code> file of the theme.  Then copied the following
+snippet from the JSXGraph site:</p>
+
+<pre><code class="language-html">&lt;div id=&quot;box&quot; class=&quot;jxgbox&quot; style=&quot;width:500px; height:500px;&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10], axis:true});
+&lt;/script&gt;
+</code></pre>
+
+<p>However, to make this work the entire script needs to be inside a <code>&lt;div&gt;</code>,
+<code>&lt;/div&gt;</code> pair, like this:</p>
+
+<pre><code class="language-html">&lt;div id=&quot;box&quot; class=&quot;jxgbox&quot; style=&quot;width:500px; height:500px;&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10], axis:true});
+&lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Just to see how well this works, here&rsquo;s Archimedes&rsquo; <em>neusis</em> construction of an
+angle trisection: given an angle \(\theta\) in a unit semicircle, its trisection is
+obtained by laying against the circle a straight line with points spaced 1
+apart (drag point A about the circle to see this in action):</p>
+
+<div id="box" class="jxgbox" style="width:500px; height:333.33px;">
+<script type="text/javascript">
+ JXG.Options.axis.ticks.insertTicks = false;
+ JXG.Options.axis.ticks.drawLabels = false;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 3, -1.5],axis:true});
+ var p = board.create('point',[0,0],{visible:false,fixed:true});
+ var neg = board.create('point',[-0.67,0],{visible:false,fixed:true});
+ var c = board.create('circle',[[0,0],1.0]);
+ var a = board.create('glider',[-Math.sqrt(0.5),Math.sqrt(0.5),c],{name:'A'});
+ var l1 = board.create('segment',[a,p]);
+ //var sc = board.create('transform', [0.67, 0.67], {type: 'scale'});
+ //var a2 = board.create('point', [a, sc],{visible:false});
+ var ang = board.create('angle',[a,p,neg],{radius:0.67,name:'θ'});
+ // var theta = ang.Value();
+ var theta = JXG.Math.Geometry.rad(a,p,neg);
+ // var b = board.create('point',trisect(a),{name:'B'});
+ var bb = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3);},function(){return Math.sin(Math.atan2(a.Y(),-a.X())/3);}],{name:'B'});
+ var w = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3)/0.5;},0]);
+ var l2 = board.create('line',[a,w]);
+ var l3 = board.create('segment',[p,bb]);
+ var l4 = board.create('segment',[bb,w],{strokeWidth:6,strokeColor:'#FF0000'});
+ var ang2 = board.create('angle',[bb,w,neg],{radius:0.67,name:'θ/3'});
+</script>
+</div>
+
+<p>For what it&rsquo;s worth, here is the splendid javascript code to produce the above
+figure:</p>
+
+<pre><code class="language-html">&lt;div id=&quot;box&quot; class=&quot;jxgbox&quot; style=&quot;width:500px; height:333.33px;&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ JXG.Options.axis.ticks.insertTicks = false;
+ JXG.Options.axis.ticks.drawLabels = false;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 3, -1.5],axis:true});
+ var p = board.create('point',[0,0],{visible:false,fixed:true});
+ var neg = board.create('point',[-0.67,0],{visible:false,fixed:true});
+ var c = board.create('circle',[[0,0],1.0]);
+ var a = board.create('glider',[-Math.sqrt(0.5),Math.sqrt(0.5),c],{name:'A'});
+ var l1 = board.create('segment',[a,p]);
+ var ang = board.create('angle',[a,p,neg],{radius:0.67,name:'θ'});
+ var theta = JXG.Math.Geometry.rad(a,p,neg);
+ var bb = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3);},function(){return Math.sin(Math.atan2(a.Y(),-a.X())/3);}],{name:'B'});
+ var w = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3)/0.5;},0]);
+ var l2 = board.create('line',[a,w]);
+ var l3 = board.create('segment',[p,bb]);
+ var l4 = board.create('segment',[bb,w],{strokeWidth:6,strokeColor:'#FF0000'});
+ var ang2 = board.create('angle',[bb,w,neg],{radius:0.67,name:'θ/3'});
+&lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Quite wonderful, it is.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://numbersandshapes.net/blog/post/trinomial_theorem/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://numbersandshapes.net/blog/post/trinomial_theorem/">The trinomial theorem</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://numbersandshapes.net/blog/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

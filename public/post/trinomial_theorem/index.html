@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.37" />
+
+  <title>The trinomial theorem &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://numbersandshapes.net/blog/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans+Condensed:bold" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/kimbie.light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://numbersandshapes.net/blog/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://numbersandshapes.net/blog/">All the good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.github.com/amca01"><i class='fa fa-github fa-fw'></i>Github</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://numbersandshapes.net/blog/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>The trinomial theorem</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>05 Apr 2018, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://numbersandshapes.net/blog/tags/mathematics">mathematics</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://numbersandshapes.net/blog/tags/algebra">algebra</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <p>When I was teaching the binomial theorem (or, to be more accurate, the binomial
+<em>expansion</em>) to my long-suffering students, one of them asked me if there was a
+<em>trinomial</em> theorem.  Well, of course there is, although in fact expanding sums
+of greater than two terms is generally not classed as a theorem described by the
+number of terms. The general result is</p>
+
+<p>\[
+(x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n}
+{n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k}
+\]</p>
+
+<p>so in particular a &ldquo;trinomial theorem&rdquo; would be</p>
+
+<p>\[
+(x+y+z)^n=\sum_{a+b+c=n}{n\choose a,b,c}x^ay^bz^c.
+\]</p>
+
+<p>Here we define</p>
+
+<p>\[
+{n\choose a,b,c}=\frac{n!}{a!b!c!}
+\]</p>
+
+<p>and this is known as a <em>trinomial coefficient</em>; more generally, for an arbitrary
+number of variables, it is a <em>multinomial coefficient</em>.  It is guaranteed to be
+an integer if the lower values sum to the upper value.</p>
+
+<p>So to compute \((x+y+z)^5\) we could list all integers \(a,b,c\) with \(0\le a,b,c\le 5\)
+for which \(a+b+c=5\), and put them all into the above sum.</p>
+
+<p>But of course there&rsquo;s a better way, and it comes from expanding \((x+y+z)^5\) as a
+binomial \((x+(y+z))^5\) so that</p>
+
+<p>\begin{array}{rcl}
+(x+(y+x))^5&amp;=&amp;x^5\\<br />
+&amp;&amp;+5x^4(y+z)\\<br />
+&amp;&amp;+10x^3(y+z)^2\\<br />
+&amp;&amp;+10x^2(y+z)^3\\<br />
+&amp;&amp;+5x(y+z)^4\\<br />
+&amp;&amp;+(y+z)^5
+\end{array}</p>
+
+<p>Now we can expand each of those binomial powers:</p>
+
+<p>\begin{array}{rcl}
+(x+(y+x))^5&amp;=&amp;x^5\\<br />
+&amp;&amp;+5x^4(y+z)\\<br />
+&amp;&amp;+10x^3(y^2+2yz+z^2)\\<br />
+&amp;&amp;+10x^2(y^3+3y^2z+3yz^2+z^3)\\<br />
+&amp;&amp;+5x(y^4+4y^3z+6y^2z^2+4yz^3+z^4)\\<br />
+&amp;&amp;+(y^5+5y^4z+10y^3z^2+10y^2z^3+5yz^4+z^5)
+\end{array}</p>
+
+<p>Expanding this produces</p>
+
+<p>\begin{split}
+x^5&amp;+5x^4y+5x^4z+10x^3y^2+20x^3yz+10x^3z^2+10x^2y^3+30x^2y^2z+30x^2yz^3\\<br />
+&amp;+10x^2z^3+5zy^4+20xy^3z+30xy^2z^2+20xyz^3+5xz^4+y^5+5y^4z+10y^3z^2\\<br />
+&amp;+10y^2z^3+5yz^4+z^5
+\end{split}</p>
+
+<p>which is an equation of rare beauty.</p>
+
+<p>But there&rsquo;s a nice way of setting this up, which involves writing down Pascal&rsquo;s
+triangle to the fifth row, and putting a fifth row, as a column, on the side.
+Then multiply across:</p>
+
+<p>\begin{array}{lcccccccccc}
+1&amp;&amp;&amp;&amp;&amp;&amp;1&amp;&amp;&amp;&amp;&amp;\\<br />
+5&amp;&amp;&amp;&amp;&amp;1&amp;&amp;1&amp;&amp;&amp;&amp;\\<br />
+10\quad\times&amp;&amp;&amp;&amp;1&amp;&amp;2&amp;&amp;1&amp;&amp;&amp;\\<br />
+10&amp;&amp;&amp;1&amp;&amp;3&amp;&amp;3&amp;&amp;1&amp;&amp;\\<br />
+5&amp;&amp;1&amp;&amp;4&amp;&amp;6&amp;&amp;4&amp;&amp;1&amp;\\<br />
+1&amp;1&amp;&amp;5&amp;&amp;10&amp;&amp;10&amp;&amp;5&amp;&amp;1
+\end{array}</p>
+
+<p>to produce the final array of coefficients (with index numbers at the left):</p>
+
+<p>\begin{array}{l*{10}{c}}
+0\qquad{}&amp;&amp;&amp;&amp;&amp;&amp;1&amp;&amp;&amp;&amp;&amp;\\<br />
+1&amp;&amp;&amp;&amp;&amp;5&amp;&amp;5&amp;&amp;&amp;&amp;\\<br />
+2&amp;&amp;&amp;&amp;10&amp;&amp;20&amp;&amp;10&amp;&amp;&amp;\\<br />
+3&amp;&amp;&amp;10&amp;&amp;30&amp;&amp;30&amp;&amp;10&amp;&amp;\\<br />
+4&amp;&amp;5&amp;&amp;20&amp;&amp;30&amp;&amp;20&amp;&amp;5&amp;\\<br />
+5&amp;1&amp;&amp;5&amp;&amp;10&amp;&amp;10&amp;&amp;5&amp;&amp;1
+\end{array}</p>
+
+<p>Row \(i\) of this array corresponds to \(x^{5-i}\) and all combinations of powers
+\(y^bz^c\) for \(0\le b,c\le i\).  Thus for example the fourth row down,
+corresponding to \( i=3 \), may be considered as the coefficients of the terms</p>
+
+<p>\[
+x^2y^3,\quad x^2y^2z,\quad x^2yz^2,\quad xz^3.
+\]</p>
+
+<p>Note that the triangle of coefficients is symmetrical along all three centre
+lines, as well as rotationally symmetric by 120°.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://numbersandshapes.net/blog/post/playing_with_hugo/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://numbersandshapes.net/blog/post/playing_with_hugo/">Playing with Hugo</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://numbersandshapes.net/blog/post/exploring_jsxgraph/">Exploring JSXGraph</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://numbersandshapes.net/blog/post/exploring_jsxgraph/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="https://numbersandshapes.net/blog/js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

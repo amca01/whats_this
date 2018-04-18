@@ -1,0 +1,1606 @@
+#+STARTUP: content
+#+AUTHOR: Alasdair McAndrew
+#+HUGO_BASE_DIR: /home/amca/Nextcloud/Blogs/Hugo/bb_test
+#+HUGO_AUTO_SET_LASTMOD: t
+
+* Pages
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_MENU: :menu main
+  :EXPORT_HUGO_SECTION: pages
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** About
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: about
+   :END:
+A page about me.
+
+* Posts
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: post
+  :END:
+** Games                                                              :games:
+*** NEXT Tau Station                                            :tau:station:
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: tau-station-intro
+    :EXPORT_DATE: 2018-04-02
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-04-02 Mon 09:28]--[2018-04-02 Mon 09:33] =>  0:05
+    :END:
+I've been playing a game called Tau Station lately.  It's an online, multiplayer, text-based, sci-fi role-playing game which is in alpha development.  I got involved in it because I played Lacuna Expanse, a previous game by some of the same people, and wrote some scripts for that game.  I was interested to see what they would do with this one, which is also being written in Perl, so I got in on the alpha phase.
+*** DONE Commodore 8-bit Memories: Episode #2: M.U.L.E.   :tutorial:c64:DONE:
+    CLOSED: [2018-03-25 Sun 12:43]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: commodore-8-bit-memories-0002-mule
+    :EXPORT_DATE: 2018-03-25
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-25 Sun 11:43]--[2018-03-25 Sun 12:44] =>  1:01
+    :END:
+I've been playing some MULE lately as I work on the design of a new game inspired by it, so I thought I'd do a play-through video.
+
+<div style="width:90%"><div class="videoWrapper">
+<iframe src='https://www.bitchute.com/embed/N7YI53cEobXn/' frameborder="0" allowfullscreen></iframe>
+</div></div>
+** Org-Mode                                                       :org:emacs:
+*** DONE Change to org-agenda-time-grid in Org 9.1                     :DONE:
+    CLOSED: [2018-03-19 Mon 03:11]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: change-org-agenda-time-grid-org-9-1
+    :EXPORT_DATE: 2018-03-19
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-19 Mon 02:50]--[2018-03-19 Mon 03:11] =>  0:21
+    :END:
+Another small one that others might be searching for.  The upgrade to Org 9.1 included a change to the arguments in org-agenda-time-grid, adding a new one and rearranging them a bit.  This was my previous setting (from Bernt Hansen's config):
+
+#+begin_src lisp
+(setq org-agenda-time-grid (quote ((daily today remove-match)
+                                   #("----------------" 0 16 (org-heading t))
+                                   (0900 1100 1300 1500 1700))))
+#+end_src
+
+And now it's this:
+
+#+begin_src lisp
+(setq org-agenda-time-grid (quote ((daily today remove-match)
+                                   (0900 1100 1300 1500 1700)
+                                   "      " "................")))
+#+end_src
+
+It doesn't seem necessary to insert org-heading into the last string anymore; it's doing that on its own, even though the docstring for the variable doesn't mention that.  I changed those two strings just for style purposes.  The first, shorter string comes after the time in the scheduler, and spaces look better there.
+*** DONE Switched from ido-mode to ivy-mode for org-mode completion    :DONE:
+    CLOSED: [2018-03-18 Sun 14:48]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-03-18
+    :EXPORT_FILE_NAME: switched-ido-to-ivy-org-mode-completion
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-18 Sun 14:42]--[2018-03-18 Sun 14:47] =>  0:05
+    :END:
+I used ido-mode for completion in org-mode for a long time, based on settings I got from [[http://doc.norang.ca/org-mode.html][Bernt Hansen's Org Mode config]].  Recent changes to Org for version 9 have broken a few things.  One is that org used to have its own hook into ido-mode for completion on things like refile tasks, using the variable org-completion-use-ido.  That no longer exists.  The docs say it can use a completion engine via completing-read, but while researching how to do that, I ran across ivy-mode.  It's similar to ido, but nicer in some ways.  To enable it, just remove the ido stuff in your emacs/org-mode config, and add this somewhere in your .emacs:
+
+#+begin_src lisp
+(ivy-mode 1)
+#+end_src
+
+That seems to enable it everywhere useful, so far.  I like the way it displays choices better than ido, so I'm already getting comfortable with it after a couple days.
+*** DONE Fixing Org-protocol issue with conkeror      :capture:conkeror:DONE:
+    CLOSED: [2018-03-17 Sat 22:06]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-03-17
+    :EXPORT_FILE_NAME: fixing-org-protocol-issue-with-conkeror
+    :END:
+I have a function in conkeror that saves a web page's URL and title, along with any selected text at the time, in Emacs/Org-mode as a captured task, when I hit *C-c r*.  It does this by feeding an org-protocol command through emacsclient.  A recent upgrade of org-mode broke it, so I had to change it up a bit.  The function in my ~.conkerorrc~ used to look like this:
+
+#+begin_src javascript
+function org_capture (url, title, selection, window) {
+    var cmd_str = 'emacsclient "org-protocol://capture:/w/'+
+	url + '/' + title + '/' + selection + '"';
+    if (window != null) {
+        window.minibuffer.message('Issuing ' + cmd_str);
+    }
+    shell_command_blind(cmd_str);
+}
+#+end_src
+
+And now it looks like this (plus the interactive function and key definition to call it, which hasn't changed):
+
+#+begin_src javascript
+function org_capture (url, title, selection, window) {
+    var cmd_str = 'emacsclient "org-protocol://capture?template=w&url=' 
+                  + url + '&title=' + title + '&body=' + selection + '"';
+    if (window != null) {
+        window.minibuffer.message('Issued: ' + cmd_str);
+    }
+    shell_command_blind(cmd_str);
+}
+interactive("org-capture", 
+            "Clip url, title, and selection to capture via org-protocol",
+    function (I) {
+        org_capture(encodeURIComponent(I.buffer.display_uri_string),
+		    encodeURIComponent(I.buffer.document.title),
+		    encodeURIComponent(I.buffer.top_frame.getSelection()),
+		    I.window);
+    });
+define_key(content_buffer_normal_keymap, "C-c r", "org-capture");
+#+end_src
+
+Basically, they went from a format that separated the items by slashes to one with key=value pairs, like URL format.  I also had to make a change in my emacs config to org-capture-templates (just showing the one template here), from this:
+
+#+begin_src lisp
+              ("w" "org-protocol" entry (file "~/work/org/refile.org")
+               "* TODO Review %c :CAP:\n%U\n\n%i" :immediate-finish t)
+#+end_src
+
+To this:
+
+#+begin_src lisp
+              ("w" "org-protocol" entry (file "~/work/org/refile.org")
+               "* TODO Review %:annotation :CAP:\n%U\n\n%i" :immediate-finish t)
+#+end_src
+
+Not much change there; just seems like they changed the %c template marker to %:annotation.  Works perfectly again now.
+*** DONE Org-Mode: Return to Task Buffer When Closing Email            :DONE:
+   CLOSED: [2017-01-18 Wed 11:27]
+   :PROPERTIES:
+   :EXPORT_DATE: 2017-01-18
+   :EXPORT_FILE_NAME: back-to-task-after-email
+   :END:
+This is a small thing, but it's been bugging me for a while, so I'm glad I finally took the time to find a solution.
+
+When I read my email, I don't respond to anything on the spot.  Every message that requires a reply or any other action gets refiled as an org-mode task with a header, timestamp, and link to the message.  When I'm finished going through mail and refiling everything that needs an action, I then go to my org-mode agenda, which shows those tasks, and clock each one in while I handle it.  That way, the time I spend on each email is recorded, and I don't get bogged down in the middle of checking email without knowing what else I have to do.  If one of them needs priority over the others, I can tackle it first without worrying that unknown emergencies are waiting further down in my email.
+
+Each of these tasks is saved with an underlined link directly to the message in Gnus, as in the following example.  That's very handy, since I can clock-in the task and then one keystroke gets me right back into the email, where I can reply or do whatever I need to do.
+
+#+BEGIN_SRC makefile
+    * NEXT Respond to Castalia House <books@castaliahouse.com> on NEW RELEASE: APPENDIX N: A Literary History of D&D
+    SCHEDULED: <2017-01-17 Tue>
+    [2017-01-17 Tue 10:01]
+    <u>Email from Castalia House: NEW RELEASE: APPENDIX N: A Lit</u>
+#+END_SRC
+
+The annoyance comes when exiting the email.  Hitting 'q' to leave the summary buffer takes me back to the Gnus Group buffer, not back to the buffer containing the org-mode task I'm working on.  In almost all cases, I want to return to that task to make notes and/or mark it done.  I don't need to go to the Group buffer, because I'm not in "email reading mode" now.
+
+At first I thought I could add something to one of the hooks that runs when exiting a Gnus group.  But both of the hooks, gnus-summary-exit-hook and gnus-group-exit-hook, run in gnus-summary-exit /before/ the buffer is switched back to the Group buffer.  No hooks run after that, and there's no option to have it not switch to that buffer.  So I would have to hack the function itself, which is a poor solution.
+
+Then I remembered the "advice" ability of Emacs, to define a function to run after any other function, whether the first function has hooks for it or not.  This worked nicely.  A single line did the trick:
+
+#+BEGIN_SRC lisp
+(defadvice gnus-summary-exit (after gnus-summary-exit-after activate) (bury-buffer))
+#+END_SRC
+
+What this does is to "bury" the Group buffer after gnus-summary-exit has returned to it.  Burying a buffer just moves it to the bottom of the buffer list, which leaves the next buffer on top -- in this case, the buffer I was in before I went into the email, which is the buffer containing the org-mode task.  My cursor is even right where I left it in the task, ready to finish the action.
+
+The only downside to this solution is that if I'm reading news in Gnus, each time I leave a group, it's going to bury the Group buffer, and I'll have to select it again.  I almost never do that, though, so that's not an issue for me.
+*** DONE Saving Blog Comments in Org-Mode with Clocking                :DONE:
+   CLOSED: [2015-06-17 Wed 11:27]
+   :PROPERTIES:
+   :EXPORT_DATE: 2015-06-17
+   :EXPORT_FILE_NAME: saving-blog-comments-in-org-part-2
+   :END:
+After using [[/emacs/org-mode/saving-blog-comments-in-org|my mix of
+edit-server and org-capture for blog comments]] for a while (see that page
+for instructions on setting up the org-mode template), I realized I'd like to have org-mode clock the time I spend commenting on blogs.  I already have a 'Reading Blogs' task that I clock in for that, but it'd be nice to clock commenting separately, since that's creating content.  Plus, org-mode's clocking is so nice that I like to use it as well as possible.
+
+At first I wasn't sure how to do it, though.  Org-capture has clocking built-in, but I couldn't use that, because I'm not editing in the org-capture buffer.  Editing the comment is done in an edit-server buffer, then passed to org-capture.  So clocking in the org-capture buffer would only count the split-second it takes to file the task.
+
+I dug through the source of both edit-server.el and org-capture.el, looking for a way to tie the two together.  I thought I might be able to get edit-server.el to do the clocking itself.  Then I thought maybe edit-server.el could pass the text on to be edited in the org-capture buffer, which could then send it back to edit-server to be sent back to the browser.  I think either of those would be doable, but they'd require hacking on the source of one or both modes, which I wanted to avoid if possible.
+
+Then I had a new thought: I don't actually need to clock the individual comments.  In fact, I'd rather not break it down that fine; I just want to keep track of time spent on blog commenting in general.  That gave me the answer: create a new task called 'Blog Commenting', and clock that task in while I'm working in the edit-server buffer, and clock out that task when I exit it.  That turned out to be fairly easy to do.
+
+First, I needed the 'Blog Commenting' task, and a way to clock it in from anywhere else in Emacs.  I created it as a task in comments.org, above the datetree section, and gave it a unique ID property with *org-id-get-create* (creates an ID for the current task if one doesn't already exist). That gave me this (your ID value will be different):
+
+#+BEGIN_SRC makefile
+    * NEXT Blog Commenting
+    :PROPERTIES:
+    :ID:       0312e0bf-6c55-4657-b2aa-5d92817d4d3f
+    :END:
+#+END_SRC
+
+Now I need to add a function to the hook that edit-server runs when starting an edit buffer on a new comment.  This code in my .emacs does that.  *org-id-find* returns a marker to the task containing the ID I just created in the Blog Commenting task (and copy-pasted to this code), and *org-with-point-at* runs *org-clock-in* on that task:
+
+#+BEGIN_SRC lisp
+(defun ajb/clock-in-blog-commenting-task ()
+  "Clock in the special commenting task while editing a blog comment
+via edit-server."
+  (org-with-point-at (org-id-find "0312e0bf-6c55-4657-b2aa-5d92817d4d3f" 'marker)
+    (org-clock-in)))
+(add-hook 'edit-server-start-hook 'ajb/clock-in-blog-commenting-task)
+#+END_SRC
+
+Now to clock-out the task when I close the buffer.  I just needed to add two lines to the function I'd already written, but here's the whole thing for simplicity's sake, again from my .emacs:
+
+#+BEGIN_SRC lisp
+(defun ajb/save-edit-server-buffer ()
+  "Save the edit-server buffer as an org-mode entry via org-capture
+   when it is saved with C-c C-c.
+   Should be called from edit-server-done-hook."
+  (when (not (string-match "edit-server" (buffer-name)))
+    (goto-char (point-min))
+    (insert (buffer-name) "\n")
+    (mark-whole-buffer)
+    (org-capture nil "e")
+    (goto-char (point-min))
+    (kill-line 1)
+    (if (equal org-clock-current-task "Blog Commenting")
+        (org-clock-out))))
+(add-hook 'edit-server-done-hook 'ajb/save-edit-server-buffer)
+#+END_SRC
+
+The new part is the *if* statement near the end.  I have it check to make sure the current task is the Blog Commenting task before clocking out of it.  That way, if I've already closed the task, or if I've switched to some other task in the middle of writing a comment, I won't be clocking-out of some other task without meaning to.
+
+It works just like it did before, except now I have a running total of how much time I spend writing blog comments, which can be included in my daily/weekly/monthly time reports and other stats.  I look forward to seeing how much time I spend writing comments, compared to reading blogs and other work-related activities.
+
+If you have questions or need help getting this working, please
+[[mailto:aaron.baugher@gmail.com][contact me]].
+
+*** DONE Org-Mode: Saving Blog Comments                                :DONE:
+   CLOSED: [2015-06-13 Wed 11:27]
+   :PROPERTIES:
+   :EXPORT_DATE: 2015-06-13
+   :EXPORT_FILE_NAME: org-mode-saving-blog-comments
+   :END:
+  *Update*: [[/post/saving-blog-comments-in-org-part-2][I added clocking as a feature later]].
+
+I like to save my blog comments and other things I post to the web, for a couple reasons.  First, once in a while a comment form fails, especially at sites like Blogspot.  You spend 20 minutes writing and proofreading a comment, press the submit button, and poof -- an error page and your comment is lost.  So saving them provides a backup.  But I also like to keep them in case I want to refer back to something I wrote later.  Back in the days of Usenet and mailing lists, it was just standard to save outgoing copies of everything.  But on the web, it's rare for a site to have that kind of functionality, and it can be difficult to track a comment down with a web search if you can't remember the exact wording -- and there's always the chance a site will go away.
+
+So for a few years now, I've been using an extension for Chromium called [[https://chrome.google.com/webstore/detail/comment-save/ndmcbhmmonjkclhmeidccodfhlifmmco|Comment Save]].  It's supposed to save everything you submit in a textarea (the standard multi-line text field).  There are some problems with it, though.  It's flaky -- sometimes when I go looking for a comment, it doesn't have it.  It also doesn't seem to work with some of the sites where I post frequently.  It's also only for Chromium/Chrome, and I'd like to shift to Qupzilla for most of my browsing.
+
+I didn't see any promising alternatives, so I started thinking about other ways to do it.  I use another extension called [[http://www.emacswiki.org/emacs/Edit_with_Emacs|Edit with Emacs]], which allows you to use Emacs to edit textarea fields.  It puts a button next to each textarea, and when you press it, the textarea's contents pop up in an emacs buffer (via a small daemon called edit-server).  You edit it there, save it with C-c C-c, and the edited text appears back in the textarea in Chromium.  It works pretty nicely, and editing in Emacs is much nicer than editing in a standard text box, but I haven't used it much up to now.
+
+So I started thinking: when I hit C-c C-c to tell edit-server to send the new text back to Chromium, surely I could hack into that code to have it save the buffer to a file.  Sure enough, edit-server even provides a hook, edit-server-done-hook, which runs at that point.  So I started thinking about how I would arrange the saved comments into a file tree, perhaps arranged by URL/year/month/day, or something like that.  Then it hit me -- why not save them into org-mode?  It already has journal-style capture functionality, with the ability to save entries by date.  Then instead of having them scattered through a bunch of files, I'll have them all arranged in org-mode where I can use familiar tools to search them, back them up, and do whatever else might come to mind.
+
+This sounded very promising, so I got to work.  First, I needed a capture template for capturing these entries into a date-arranged tree.  I added this to the list in org-capture-templates:
+
+#+BEGIN_SRC lisp
+("e" "Edit with Emacs" entry (file+datetree "~/work/org/comments.org")
+  "* %U\n%i\n\n" :immediate-finish t)
+#+END_SRC
+
+Here's what the elements in that template do:
+
+| | |
+| "e"                       | The key that org-capture will use to specify this template.                                                                                                                                      |
+| "Edit with Emacs"         | A description for this template.                                                                                                                                                                 |
+| entry                     | The type, in this case a normal org-mode entry with a headline.                                                                                                                                  |
+| file+datetree             | The entry will go in a file, specified by the next argument, arranged in a date-tree.                                                                                                            |
+| "~/work/org/comments.org" | The file into which the entries will be captured.                                                                                                                                                |
+| "* %U\n%i\n\n"            | The actual template.  This one says the entry has a headline (the *), the %U is replaced with a date-time stamp, and %i is replaced with the edited text buffer contents.  Each \n is a newline. |
+| :immediate-finish t       | Don't clock in a task or prompt me for anything, just capture it and save it.                                                                                                                    |
+
+In the comments.org file, org-capture will automatically create the necessary date-tree outline sections.  So if I save a comment today, it will be filed under an outline showing the year, month, and day, with its own date/time-stamp (%U), like this:
+
+#+BEGIN_SRC makefile
+    * 2015
+    ** 2015-06 June
+    *** 2015-06-08 Monday
+    **** [2015-06-08 Mon 21:12]
+         A test comment.
+#+END_SRC
+
+Now I just need the code to hook into edit-server and pass the edited buffer contents to this capture template.  Here's the code I added to my .emacs:
+
+#+BEGIN_SRC lisp
+(defun ajb/save-edit-server-buffer ()
+  "Save the edit-server buffer as an org-mode entry via org-capture
+   when it is saved with C-c C-c.
+   Should be called from edit-server-done-hook."
+  (when (not (string-match "edit-server" (buffer-name)))
+    (goto-char (point-min))
+    (insert (buffer-name) "\n")
+    (mark-whole-buffer)
+    (org-capture nil "e")
+    (goto-char (point-min))
+    (kill-line 1)))
+  
+(add-hook 'edit-server-done-hook 'ajb/save-edit-server-buffer)
+#+END_SRC
+
+It's fairly straightforward, but it took a while to work out the bugs.  First, for some reason, the hook gets called twice -- once on a buffer named for the web site where the text came from (like "blogspot.com"), then again for a buffer called " *edit-server*-343434", where the number at the end keeps changing.  I'm not sure why it does that, but the (when line handles that by ignoring the buffer with "edit-server" in the name.
+
+The rest is pretty simple.  It goes to the beginning of the buffer (goto-char (point-min)), and inserts the name of the buffer and a newline there.  I did that so I have the name of the site where the comment came from saved at the beginning of it.  It only gives the domain.  It might be nice to have the full URL to the page, so I may come back later and see if edit-server has access to that information.  But at least this way I know what the comment was about, and I can do a site: search if I need to track down the specific page.
+
+Next it marks the whole buffer for processing by org-capture, which it calls specifying the "e" template that I setup earlier.  This is where the actual capture happens, and the buffer is saved in comments.org, in the right spot in the date-tree outline.
+
+Next it goes to the beginning of the buffer again, and removes the first line (kill-line 1), which contains the buffer-name that I wrote there earlier.  That way the buffer name is saved to comments.org, but doesn't show up over in Chromium.  In other words, it restores the buffer to the contents it had when the hook was called.
+
+Then the function ends, so edit-server moves on and sends the contents of the buffer back over to Chromium, where I can post it or whatever.
+
+I've tested it a bit, and it works nicely.  As I mentioned, I'll probably try to get the full URL instead of just the buffer-name, if possible.  Other than that, I can't think of any improvements right now, but something may come to me as I use it for a while.  The main thing I'll have to get used to is using Edit with Emacs for all my posting, and not typing quick comments in directly if I want to save them.
+
+I'm still hoping to switch to Qupzilla for more of my browsing, and I don't think there's an Edit with Emacs extension for it, so as a future project I may need to port that over to it.
+
+  *Update*: [[/post/saving-blog-comments-in-org-part-2][I added clocking as a feature here]].
+
+*** DONE Org-Mode: Returning to Previous Task on Clock-out             :DONE:
+   CLOSED: [2015-06-12 Wed 11:22]
+   :PROPERTIES:
+   :EXPORT_DATE: 2015-06-12
+   :EXPORT_FILE_NAME: org-mode-back-to-last-task
+   :END:
+I've been getting into [[http://orgmode.org|org-mode]] over the last couple
+years, using it to organize my work and as many other things as possible.
+Org-mode is an organizer (and much more) that runs in Emacs, which I use for
+many other things, so it's a great fit.  I owe a great deal of thanks to
+[[http://doc.norang.ca/org-mode.html|Bernt Hansen, who put his complete
+org-mode configuration]] online with detailed explanation and instructions.
+He uses it in a very [[http://gettingthingsdone.com|GTD]]-style way, which is
+exactly what I wanted, so I cut-and-pasted much of his base configuration at
+first, but since then I've done some tinkering of my own.
+
+One of the great features of org-mode is clocking.  I can clock into any task
+with *C-c C-x C-i* (or hitting *I* on it in the agenda), and then org-mode
+logs the time I spend on that task until I clock out, either with *C-c C-x
+C-o* (or *O* in the agenda) or by marking the task *DONE*.  Each task has a
+LOGBOOK which collects all the time spent on it, so I can print invoices,
+productivity reports, or anything else I want out of that data.
+
+Thanks to some of Bernt's customizations, once I punch in to start the day,
+org-mode is always clocking /something/ until I punch out.  Anytime I
+clock-out of one task, it switches to clocking something else, so my time is
+always accounted for somewhere.
+
+But which task should it switch to?  In Bernt's configuration, when you
+close one task, it switches to that task's parent.  To explain what a parent
+task is, here's a very simplified example org-mode file:
+
+#+BEGIN_SRC makefile
+    * Garden
+    ** TODO Plant Vegetables
+    *** NEXT Peas
+    *** TODO Beans
+    *** TODO Corn
+
+    * Blogging
+    ** TODO Write a post on clocking in org-mode
+
+    * TODO Write Novel
+    ** NEXT Write outline
+    ** TODO Write preface
+    ** TODO Write chapter 1
+    ** TODO Write chapter 2
+#+END_SRC
+
+Org-mode is based on an outline type of format.  Every line starting with
+one or more asterisks is a heading, and the number of asterisks determines the
+level.  Here there are three top-level (1 asterisk) headings, and each one has
+some sub-headings.  So "Garden" is the parent of "Plant Vegetables," which is
+the parent of "Peas," "Beans," and "Corn."  Likewise, "Write Novel" is the
+parent of "Write outline," "Write preface," and so on.  (If you're curious
+about what *TODO* and *NEXT* mean, they both signify tasks that are
+waiting for me to act on them.  The difference is that *NEXT* tasks are the
+next one I intend to do for their project, and they shouldn't have to wait on
+any other tasks.)
+
+In Bernt's configuration, when you close one task, the clock switches to
+that task's parent.  If I'm working on my novel, that might make sense.  When
+I finish the outline, I mark that task done, and the clock switches to its
+parent, "Write Novel."  I still have some more time to write, so I move down
+and clock into "Write preface" and continue writing.  All the time gets
+clocked into either one of the sub-tasks or the parent.
+
+However, that doesn't work so well when I'm not likely to move right from
+one sub-task to another, which is usually the case for me.  For instance,
+let's say I'm working on this blog post, so I have that task clocked in.  I
+hear thunder outside, and realize I should run out and plant my peas before
+the rain starts.  I quickly clock into "Peas" (which clocks me out of the
+blogging task), and run out to plant them.  When I come back in and mark
+"Peas" *DONE*, I don't want it to switch to the parent task "Plant
+Vegetables."  I want it to switch back to the blogging task I was working on
+before.
+
+I find that that's usually the way my work-flow goes.  I can do that manually
+with a few keystrokes, but it'd be nicer to have it happen automatically, and
+not have that few moments clocked into a task I didn't intend.  So I tracked
+this functionality down to the bh/clock-out-maybe function.  Here's the original:
+
+#+BEGIN_SRC emacs-lisp
+(defun bh/clock-out-maybe ()
+  (when (and bh/keep-clock-running
+             (not org-clock-clocking-in)
+             (marker-buffer org-clock-default-task)
+             (not org-clock-resolving-clocks-due-to-idleness))
+    (bh/clock-in-parent-task)))
+#+END_SRC
+
+This checks a few things, and if they all are true, it clocks in the parent
+task.  So I want it to clock in the previously clocked task instead.  I
+changed it to this:
+
+#+BEGIN_SRC emacs-lisp
+(defun bh/clock-out-maybe ()
+  (when (and bh/keep-clock-running
+             (not org-clock-clocking-in)
+             (marker-buffer org-clock-default-task)
+             (not org-clock-resolving-clocks-due-to-idleness))
+    (if (marker-buffer org-clock-interrupted-task)
+        (org-with-point-at org-clock-interrupted-task
+          (org-clock-in))
+      (bh/clock-in-parent-task))))
+#+END_SRC
+
+As you can see, it's not a huge change.  When it runs, it first checks to
+see if there's a marker for a task that was interrupted by the current task,
+which org-mode handily keeps track of.  If there is, it switches to that mark
+and clocks in there.  If there's not -- if the current task is my first task
+of the day, for instance -- then it uses the previous behavior of switching to
+the parent.  Either way, the clock keeps running.  
+
+This works better for me, and I also like the fact that it better matches
+the way org-mode's capture mode works, which also switches back to the
+interrupted task after capturing something.  Although it's a very small change
+code-wise, it taught me a lot about the internals of org-mode as I tracked
+this down.
+** Daily Writing                                                    :writing:
+- writing prompt (matchbox)
+- topics
+  - check sketchbook for topics
+  - games
+  - programming
+  - farming/gardening
+  - teaching
+  - work projects
+  - riff off headlines, but write them down and use them later
+  - connect two random words from lists
+  - 
+*** DONE My 750 Words a Day                                   :750words:DONE:
+    CLOSED: [2018-03-10 Sat 09:35]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: my-750-words-a-day
+    :EXPORT_DATE: 2018-03-10
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-10 Sat 08:56]--[2018-03-10 Sat 09:35] =>  0:39
+    :END:
+I've been wanting to do more writing, but have had trouble getting in the habit.  I got some inspiration recently, though, from a [[http://372pages.com/][podcast series done by Mike Nelson of MST3K and Rifftrax fame, where he and a friend read and discussed /Ready Player One/]], the best-selling book that's being made into a movie.  I haven't read it, but based on the excerpts they shared, it sounds as if Tommy Wiseau (/The Room/) and James Nguyen (/Birdemic: Shock and Horror/) co-wrote a sci-fi novel.  If something that bad can sell millions of copies, I have no excuse for not getting words on paper.
+
+So I'm setting myself a requirement of 750 words per day, which I will be posting here. That seems to be a common limit people use.  No particular topic for now, just whatever I can think of.  If I can't think of anything, I'll write about how I can't think of anything.  
+
+A tip I recall from Piers Anthony's autobiography: when he was writing (with pencil and paper, back then) and got stuck, it was usually because his mind wandered to something else.  So he would just put an open bracket and write about the other thing until his mind came back to his original story, then close the bracket and go on.  When writing the final manuscript, he would skip the bracketed sections, but sometimes he would find ideas for other stories inside those brackets.  Since I'm writing in org-mode, I can go one better: distracting ideas can be captured into separate tasks which will come up to be refiled later.
+
+I'm always tempted to edit as I write. Most of my blog posts and other writing online are first and last drafts, except for spell-checking and very minor editing.  Although I went to what was considered a good school, we really didn't do much writing that I recall.  Most papers were 500 words or so, which I could plan out in my head and then slap down on paper in one go; and I'm still writing that way, editing at the end of each sentence, or even mid-sentence.  That's not really very efficient, which is probably why it's tiring and seems daunting to start.  So I'm going to make myself /just write/ and not try to edit on the fly.  This writing isn't /for/ anything, so it doesn't have to be perfect, and if I happen to write something with potential here, I can come back and edit and shine it up later.
+
+I'm writing in org-mode, an organizer mode for Emacs that does a whole lot of other things.  I should write more about org-mode itself, because it's great.  For this project, it'll allow me to set a reminder which pops me right into this project.  When I finish an article, I'll hit *C-c C-e H H* to publish it right to my blog.  It'll be easy to search for ideas later, and it's already set to back everything up with version control.  I also have it on my phone, and though that's not a practical place to write, I can capture topic ideas there and import them to my workstation later.
+
+I've been assembling a list of ways to think of topics.  One interesting idea comes from James Lileks.  He found a box of old matchbooks that someone had collected from motels across the country.  So he created a character called Joe Ohio, a traveling salesman.  Each day he would pull out a matchbook and write for 30 minutes about Joe visiting that location. He came up with some pretty good stories, and was talking about turning it into a novel, though I don't think that ever happened.
+
+So ideas can come from anywhere, but they have to come from somewhere.  I think I have enough ideas and ways to generate ideas that I shouldn't have the "I can't think of anything to write about" excuse.  With gardening season coming up, there's always that.  I also /need/ to write for some work projects, so I could do double-duty on some of those.
+
+I did the podcast thing for a while last year, and I might get back to that when the weather warms up.  It was nice to sit outside in the shade, away from my desk, for that.  It's probably not going to be my thing, though.  To keep from outright rambling, I needed to have some kind of outline in place, much like I'd do in my head before writing a post, so it wasn't the labor-saving exercise I thought it would be.  It turns out talking into a microphone extemporaneously is a skill that requires practice, not something just anyone can do off-hand.
+
+750 words is a lot of words, when you actually pay attention.
+
+** Programming                                                  :programming:
+*** TODO MULE
+**** DONE Design Notes on a MULE-type Game                        :game:DONE:
+     CLOSED: [2018-03-18 Sun 08:46]
+     :PROPERTIES:
+     :EXPORT_FILE_NAME: design-notes-mule-type-game
+     :EXPORT_DATE: 2018-03-18
+     :END:
+     :LOGBOOK:
+     CLOCK: [2018-03-18 Sun 08:11]--[2018-03-18 Sun 08:46] =>  0:35
+     :END:
+I've been playing some Stardew Valley lately.  I got it from gog.com for $15, which is the most I've spent on a game in a long time.  It's a very well-made game, and even more impressive when you find out it was done by one man.  Not many people can code well enough to make a complete game work, /and/ do good graphics, /and/ do good music, etc.  Most games are made by teams of people with different skills, and when one skill is missing, it shows.
+
+Anyway, as usually happens when I play newer games, I was soon drawn to the old games, which got me thinking about a couple that I want to do web-based (or nowadays maybe mobile-based) versions of.  Or more likely new games inspired by them.  
+
+The first one on the list is M.U.L.E., a 1983 game.  One great thing about MULE on the Commodore 64 was that it allowed four players to play at the same time.  I can't think of any other C64 game that did that, though there may have been a few.  Playing it alone against the computer gets dull after a while, because the computer players are kinda dumb and predictable.  So I've thought for a long time that it would make a good networked multiplayer game, but wasn't sure just how to do it.  It's a fairly slow-paced game that can take a couple hours with four human players, so that's a long time to expect four players to stay connected and playing.  Full networked multiplayer means you have to deal with disconnections, lag, and all that.  It would add a pretty big layer of complexity to a game that fit on a 170K floppy disc.  A team has been working on adding multiplayer to Stardew Valley for several months now.  I don't really want to get into that, so that's where I was stuck a couple years ago the last time I brainstormed on it.
+
+Now I think I've got it figured out.  I can go with a turn-based style, turning the interactive multiplayer parts into more of an auction, which fits with the game's other auction portions.  Kinda like a lot of social media games, where you're competing against other people, but you login and take your turns whenever you want (but without the annoying upselling).  That will change the game considerably, but that's not a bad thing, because it eliminates any copyright concerns.  It'll really be a new game with some ideas from MULE, not a remake.
+
+I'm programming it in Perl, at least on the server end of things.  If anything needs maximum speed, I'll refactor that part in C.  It'll use JSON for communications between client and server.  That's pretty universal, so a mobile app could easily handle that, and it's human readable, which is nice when you're debugging.
+
+So as I'm planning it right now, there's a game server running, and then a web-based client which could run on the same server or a different one, which talks to the game server.  That means a fully browser-based client in Javascript could work too, or a mobile app written in Java or whatever they're using these days.  I'll need a clear API for talking to the game server.  Security (user accounts, logins, sessions) will have to be handled by the game server.
+
+One thing I'll have to figure out is how to get paid for it.  For a long time, the easiest way to get paid online was to slap ads on things.  That's getting less profitable all the time, though, as ads pay less and less for a variety of reasons.  Many content producers are moving to a patron-type model, where people voluntarily pay for things they like, and that seems to be working, at least for some of them.  I was skeptical of that at first, because I was around in the shareware days, when maybe 1% of users paid for the software if you were lucky.  Voluntary payment seems to be working better now, for a couple reasons.  One is that it's simply easier to click a donate button that's right there when you're in the game than it was to put a check in the mail later sometime.  Another is that the prices tend to be lower.  If you were asking $10 for your shareware package in 1985, that's about $20 in today's dollars.  That's not nothing.  By comparison, I've bought several games on sale from GoG for less than $5.  That's easier to pay.
+
+Another possibility would be a "free first one" model, where they can sign up and play for a month or a certain number of games, and then have to pay to keep using it.  Users could get around that by creating new email addresses somewhere like Gmail, but most people won't go to that trouble to save a few dollars.  I could also combine a kickstarter-type program with any of these ideas.
+
+More to come.  I think I'll do a play-through video of MULE soon, since talking an audience through the game might help me focus some ideas.
+** Miscellaneous                                                       :misc:
+*** NEXT Pull the Other One
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-04-09
+    :EXPORT_FILE_NAME: pull-the-other-one
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-04-08 Sun 18:29]--[2018-04-08 Sun 18:38] =>  0:09
+    :END:
+There are lots of things I don't understand.  But I'm a fairly smart guy, so if I decide to learn about something, I'm usually able to get a grasp on it.  When I can't, sometimes it's clearly just beyond my abilities.  I've run into that before with advanced math stuff, or some kinds of game strategy.  Things reach a point of abstraction that gets away from me.
+
+But there are other times that I can't seem to understand something, and it doesn't feel too hard, it feels too slippery.  I look where the meaning should be, but it moved, and there are just more meaningless words there.  Eventually I figure out that there's no real meaning at all, or the meaning is something different, usually something much less impressive, than you're supposed to guess it is.
+
+That's what happens with things like "cloud computing" and "devops."  It took me a while to get past the marketing patter and figure out what "the cloud" really is.  I can't top the t-shirt explanation: "There is no cloud. It's just someone else's computer."  Basically, they took what we've been doing for years, did it on a bigger scale with automated tools, and started calling it the cloud.
+
+In fact, I just found this definition in a course on cloud computing:  "It's definition is ambiguous and some of the terminology related to it can be confusing.  Trying /to define the cloud in purely technological terms is difficult/.  It is best to think of it as being /an abstract concept/ that...." (my emphasis)
+
+Okay, that's bullshit.  We're not talking about philosophical or religious concepts here.  We're talking about computers, network cables, routers, physical hardware that's sitting somewhere.  It may be /difficult/ to define it, or I might not understand it, but it damn well better be /possible/ to define it.  Don't tell me to think of computers and networks as abstract things, because that just tells me you're trying to pull something over on me.
+
+When I'm not sure how to define or explain something (happened a lot when I was teaching), the first thing I'll do is find an example.  Examples are a good way of making an abstract idea concrete.  So if you can't define the cloud because it's too many different things to different people, at least give me an example.  How do /you/ use the cloud, Mr. Cloud Promoter?  What did you use it for last month, and how was that better than if you hadn't used the cloud?  
+
+But I never seemed to see examples like that, or the examples didn't fit the marketing at all, which made it confusing: were the examples actually the cloud, or something else yet?
+
+Now that I've worked with the cloud myself, I know what it is.  And yes, I can define it: the cloud is a service provided by companies wherein you can lease servers (networked computers) on a flexible basis, often paid by the hour, have them up and running quickly, and use them to do computer stuff.  That's it.  That doesn't seem so hard to define, does it?  No, it's not, but that definition doesn't sound revolutionary, does it?  No, because it's not.  
+
+The cloud *is* something new, in the sense that it offers a new level of flexibility in getting systems up and running and paying for only what you need.  I have a cloud server myself, just because I can.  But it's not making cancer cures possible, or the kind of stuff they say in ads.  If the cloud makes you ten times more productive, then you were doing it wrong before, because there's really nothing you can do in the cloud that you couldn't have done with a stack of computers and your own IT department.  The cloud might save you money, or might not, and there are other pros and cons.
+
+Enough about the cloud.  On to "DevOps."  I've heard this one a few times lately, and it has that same slippery feel, of people trying to communicate a sensation without defining it.  So I went looking for definition.  First thing I saw was that it grew out of Agile, which isn't a good sign.  Agile is a work methodology that encourages workers to spend a lot of time thinking about how to do their work instead of actually doing it.  What kind of meetings to have, how to have them, even to the point of whether to sit and stand, and so on.  So right away I know we're in the weeds talking about methodologies, which means we're not far from bee-watcher-watcher stuff.
+
+So I watched a five-minute video by a guy who wrote a book about DevOps.  Right off he calls it a "powerful movement."  Uh-oh #2.  Then guess what: "Most people want a definition of DevOps.  We're not really going to give you a definition of DevOps, because there is no one canonical definition of DevOps."  Pulling on my hip boots.  Again, if you can't give one simple definition, surely you can give an example.  You're holding conventions where people wear t-shirts that say DevOps on them; surely they think they know what it means /to them/, right?
+
+Well, not in that five minutes.  But I think if I keep drilling down I'll find something I can get a grip on.  Hopefully it won't end up boiling down to another nebulous "ways we can get work done better" methodology.  If it's not a scam, I expect to be able to come back with a definition, or at least some concrete examples of what it is.
+
+*** DONE Should Have Been a Hoarder                          :ebay:c128:DONE:
+    CLOSED: [2018-04-02 Mon 08:30]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-04-02
+    :EXPORT_FILE_NAME: should-have-been-hoarder
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-04-02 Mon 08:25]--[2018-04-02 Mon 08:30] =>  0:05
+    :END:
+I get an automated eBay notification for Commodore C128s, because sometimes I think it'd be nice to have a real one again, and I'm curious about what people are doing with them.  But the prices on them keep going up, and an emulator is a pretty good substitute, so I haven't bought any yet.  The picture below is an example of what they're going for these days: two completely untested systems, which may not work at all, and have missing keys, have a bid of $116 (including shipping).  Tested ones without anything missing can bring $300.
+
+And 15 years or so ago, I gave three of them, plus some peripherals, away to a metal scrap guy.  They weren't worth anything then, but now they're making a comeback as collector's items.  Oh well.  Would be nice to still have them, but you can't save everything just in case.
+
+[[file:~/work/sites/aaron/images/two-c128s-for-sale.jpg]]
+
+*** DONE I Left Him Cheese                              :funny:ad:video:DONE:
+    CLOSED: [2018-03-17 Sat 16:37]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: i-left-him-cheese
+    :EXPORT_DATE: 2018-03-17
+    :END:
+I was reading through some old notes, and was reminded of this Dairy Council ad.  It's been almost 20 years, but thinking of that little girl's grinning last line /still/ makes me chuckle.
+
+<iframe width="560" height="315" src='https://www.youtube.com/embed/oDGMtYZ8iYE' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+*** DONE New Year's Two Furnace Morning                                :DONE:
+    CLOSED: [2018-01-01 Wed 11:22]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-01-01
+    :EXPORT_FILE_NAME: new-years-two-furnace-morning
+    :END:
+Cold morning to start the year, -11 degrees when I went out to feed and water the beasts.  Fired up both furnaces for a while to get things comfy for the day.
+
+[[file:~/work/sites/aaron/images/two-furnace-morning.jpg]]
+*** DONE Quitting Facebook                                             :DONE:
+    CLOSED: [2018-02-21 Wed 16:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-02-21
+    :EXPORT_FILE_NAME: quitting-facebook
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-02-26 Mon 08:39]--[2018-02-26 Mon 09:02] =>  0:23
+    :END:
+
+I quit using Facebook a few months ago, when I wiped the app off my phone because it kept moving itself back to main memory and hogging it all.  Normally I don't announce when I'm going to stop using an online forum; I just stop.  But in this case, it occurred to me that people might comment or post stuff on my timeline, and think I'm rudely ignoring them.  I'm not, I'm just not seeing it.  It's not personal.  Social media just isn't my thing, and it's becoming less my thing all the time.  This isn't a manifesto, and I'm not trying to start a boycott.  I'm just out.
+
+For keeping in touch with friends, I'm going to stick with the tried-and-true methods -- you know, email and texting (maybe even phone and face-to-face, like in olden times).  I won't delete this account because it owns a couple of business pages that need to keep working.  So I may still share links on it to things I write other places, in case anyone here is interested, but I won't be following any comments on them.
+
+And this is just fun:
+
+<iframe width="560" height="315" src='https://www.youtube.com/embed/zqh2Low8gDo' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+*** DONE Starting Over                                                 :DONE:
+    CLOSED: [2018-02-27 Tue 17:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-02-26
+    :EXPORT_FILE_NAME: starting-over
+    :END:
+I've decided to revamp this site from scratch.  I had built a very simple CMS based on Dancer, and it was fine, but I've been looking at static site generators and the possibility of creating my content in org-mode.  I don't really need dynamic content generation on the back-end, and I do everything else in org-mode anyway, so that seems like a better way to go.  I'll write more about it as I get familiar with it.
+*** DONE Dactylic Hexameter                                            :DONE:
+    CLOSED: [2015-05-22 Fri 17:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2015-05-22
+    :EXPORT_FILE_NAME: dactylic-hexameter
+    :END:
+I made the mistake of telling the kids that their recent literature assignment
+might be more difficult than anything of the sort that I had to do in school.
+That gave them an opening to insist that it was impossible, and challenge me
+to prove that it wasn't by doing it myself.  Oops.
+
+The assignment was to write a 25-line poem in dactylic hexameter, the
+verse-form the Iliad was written in.  "Dactylic" means the rhythm uses sets of
+three syllables with the first one stressed, so it goes DA-da-da-DA-da-da,
+like a waltz.  "Hexameter" means there are six of those DA-da-da sets in each
+line, though Homer apparently cheated a little and ended some lines a syllable
+or three early.  Fortunately, it doesn't also have to rhyme.
+
+So I threw one together to show them it could be done.  Since it's only the
+second or third poem that I've ever written of my own free will, I thought I
+might as well put it up here for posterity.  I don't think it's too bad, for
+9th grade work.  I cheat a little in spots (is "girl" one syllable or two?
+Here it's both!) but not too much.  I'm especially proud of the fact that I
+worked a Homeric simile into it.
+
+So if you have a Kolbe Greek Literature student who thinks this assignment
+is too hard, feel free to show him this as proof that it can be done.  If you
+/are/ a Kolbe Greek Literature student and you decide to steal this, let me
+know what kind of grade you get.
+
+<pre style="font-size:85%">
+A 
+boy and a girl ran swiftly and lightly like deer through the heather; stars 
+twinkled above, ancient lights in the distance, each marking their footsteps; like 
+water o'er rocks in a swift-rushing stream when the spring rains come falling, 
+babbling and bubbling along in the sunlight with fishes below, so the 
+boy and the girl ran freely there chasing and chased without care. At a 
+hilltop at dawn a sight caught their attention: a cloud with a sinister 
+look was on-rushing toward them from peaks in the misty horizon. We
+must get to shelter, they said to each other, so there we'll be safe. But their 
+chasing and fleeing and laughing had taken them far from their homes. As the 
+cloud came 'ere nearer they saw cloaked beneath it dire creatures of lore marching
+swiftly and steadily forward toward them equipped as for war.
+
+Above the cloud fearsome and giant beasts glided in circles a-shrieking. A 
+coldness came over the boy and the girl as they stood and considered their 
+doom that approached them too massive and wide to be fled or avoided. The 
+boy held the girl, wanting only to save them but offering comfort. They 
+prayed as she trembled against him but stood on that hill with him bravely. Then 
+off in the distance a horn they heard sounding -- the horn of a hero. It 
+blared two more times, then through mists came descending great steeds breathing fire. On their 
+backs they bore warriors all armored in light like the stars only more. Their 
+swords as they drew them forth thundered like lightning with strikes from the heavens.
+
+Onward and downward they plunged t'ward the darkness, their battle cry shaking the earth. The 
+boy and the girl stood watching the fight as the warriors of light charged in, 
+prayers on their lips for the vict'ry of light as they witnessed the struggle. A 
+long time the forces of light and the cloud met and clashed in that place but the
+boy and the girl heard the horn sound again as the cloud's troops retreated; the 
+sun reemerged as the warriors of light swept back into the sky. As they 
+passed out of sight through a gleam in the sunlight the last turned a moment;
+before he departed the boy and the girl heard this call: "Thanks for helping."
+</pre>
+*** DONE Latin Mass Propers                                            :DONE:
+    CLOSED: [2017-07-07 Fri 17:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2017-07-07
+    :EXPORT_FILE_NAME: latin-mass-propers
+    :END:
+I've added a page containing many [[http://www.saintrosequincy.org/content/latin-mass-propers/][Latin Mass propers to the St. Rose web site]],
+so I thought I'd link to it here as well.
+
+I've been making the propers for St. Rose since it opened, so I've gradually
+accumulated a decent collection that covers all the Sundays, Holy Days, and
+some other feasts.  (A "proper" is the prayers and readings in the Mass that
+change from day to day.)  Haven't needed to do a new one in a while.  When I
+made them, I was often able to find samples online that I could cut-and-paste
+from, but sometimes they were scans that were full of typos, sometimes I'd
+have to get the Latin from one place and the English from another, and in a
+few cases I couldn't find one and had to type it from scratch.  So I thought
+it might be helpful to put them online for others who are in the same boat I
+was.
+
+The English translations should be the same as the ones in the Baronius 1962
+missal.  I think I've proofread them all pretty well in both languages, but
+I'm sure there are still a few typos, so please <a
+href='mailto:aaron@baugher.biz'>let me know</a> if you spot any.
+
+I'm putting them on the St. Rose site instead of this personal one, since that
+seems like where they belong.  There are instructions on the page with them,
+but in short: download the PDF if you just want to print it, but it will say
+"Saint Rose Latin Mass Proper" at the top.  If you want to edit it or use it
+in your own materials, download the DOC or ODT version, which you can edit in
+Open Office or Libre Office, or possibly Microsoft Office (I'm not sure
+whether MS Office does ODT).  Consider them public domain, and use the files
+or the text in them however it can help you.
+*** DONE Latin Rosary Card                                             :DONE:
+    CLOSED: [2017-07-03 Mon 17:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2017-07-03
+    :EXPORT_FILE_NAME: latin-rosary-card
+    :END:
+[[file:~/work/sites/aaron/images/rosary/rosary-card.png]]
+
+This is a prayer card I designed back when I was teaching a Latin class, so I
+could give one to each student.  I ran across the files recently and thought I
+might as well put them online where someone else might get some use from them.
+They have all the standard Rosary prayers in Latin: the Sign of the Cross,
+Apostles Creed, Our Father, Hail Mary, and Gloria.
+
+If you download the two PDF files and print them on opposite sides of an
+8.5x11 piece of paper or card stock, then cut on the cut lines, you'll get
+three prayer cards a bit under 3x5 inches, a bit bigger than a standard holy
+card, but a good size to fit in a pocket.  I had a printer do it and then
+laminate each card, which I think ended up costing about 70 cents per card.
+Pretty good deal.
+
+[[file:~/work/sites/aaron/images/rosary/rosary1.pdf][PDF Side 1]]
+
+[[file:~/work/sites/aaron/images/rosary/rosary2.pdf][PDF Side 2]]
+
+I'm also putting up the original files I designed, in case someone wants to
+make changes before printing them.  I created them in the open source desktop
+publishing program Scribus, so you'll need that or something that knows that
+format.
+
+[[file:~/work/sites/aaron/images/rosary/rosary1.sla][Scribus File Side 1]]
+
+[[file:~/work/sites/aaron/images/rosary/rosary2.sla][Scribus File Side 2]]
+
+*** DONE Pepper                                                        :DONE:
+    CLOSED: [2016-09-11 Mon 17:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2016-09-11
+    :EXPORT_FILE_NAME: pepper
+    :END:
+<em>"[S]he lies in front of me curled up before the fire, as so many dogs must have lain before so many fires. I sit on one side of that hearth, as so many men must have sat by so many hearths. Somehow this creature has completed my manhood; somehow, I cannot explain why, a man ought to have a dog. A man ought to have six legs; those other four legs are part of him... [M]y dog knows I am a man, and you will not find the meaning of that word written in any book as clearly as it is written in [her] soul."</em> -- G.K. Chesterton
+
+I got her as a puppy 16 years ago.  I wasn't looking for a dog; my new landlord was getting rid of extra puppies and offered one.  We had dogs on the farm growing up, but she was the first dog that was mine.  She was half coon hound and half Spitz, so she had the pointy ears and thick fur of a wolf from the Spitz side.  My sister used to call her a dingo, and there was a definite resemblance.
+
+She was so friendly and well-behaved that she gave me a reputation for being some kind of dog trainer, but the truth is I never really trained her at all.  She just seemed to know what she was supposed to do, and to do the right thing almost all the time.
+
+She wasn't a surrogate child, or a "companion animal."  To call her a "best friend" would miss the point and sell her short.  What she was was /My Dog/, the best dog I could have hoped for, with all the faithfulness and devotion you can possibly pack into that title.  In the last several years, she went nearly everywhere with me, and always knew when I was headed for the car.  Even when she got old enough that it was hard for her to jump in, she was there, ready to go wherever I was headed.
+
+One time when I had her at the store, a lady came in, dropped to her knees, and started petting her.  After a couple minutes, I noticed she was crying, and she sat there petting her for a long time.  Finally she said something about how Pepper drew feelings out of her about a childhood pet of her own that she hadn't felt in a long time.
+
+When so many people exclaimed over how pretty and nice and happy she was, at first I figured that's just what you say about anyone's dog to be nice.  But eventually I realized it was more than that; she really was something special.
+
+She's been mostly deaf for a few years, but I still talked to her all the time, only now I didn't bother to speak up.  It seemed like she understood my mumbled thoughts just as well as ever.
+
+Today I buried her, in the shade out by the grotto of the Virgin Mary, so she'll be near me when I sit out there and pray.  I was crying when I put her in the ground, same as I'm crying now as I write this.  We'll miss you, Pepper.  You were a good dog.
+
+/Written September 10, 2016. -- Aaron Baugher/
+
+[[file:~/work/sites/aaron/images/pepper-leash.jpg]]
+[[file:~/work/sites/aaron/images/pepper-with-tiny-stick.jpg]]
+[[file:~/work/sites/aaron/images/pepper-glove.jpg]]
+[[file:~/work/sites/aaron/images/pepper-eyes.jpg]]
+[[file:~/work/sites/aaron/images/pepper.jpg]]
+[[file:~/work/sites/aaron/images/pepper-profile-2015.jpg]]
+[[file:~/work/sites/aaron/images/pepper-bounce.jpg]]
+[[file:~/work/sites/aaron/images/pepper-grotto-shade.jpg]]
+[[file:~/work/sites/aaron/images/pepper-grotto-sun.jpg]]
+
+*** DONE Dragged Me in Kicking                                         :DONE:
+    CLOSED: [2018-04-05 Thu 11:50]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: dragged-me-in-kicking
+    :EXPORT_DATE: 2018-04-05
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-04-05 Thu 11:28]--[2018-04-05 Thu 11:50] =>  0:22
+    :END:
+They may be able to make me sign up for their data tracking nonsense to get coupons, but they can't make me use my real name.  (If you know where that's from, you are a cultured individual.)
+
+[[file:~/work/sites/aaron/images/flint-max-card.png]]
+** Garden                                                            :garden:
+*** DONE Early Asparagus                              :asparagus:spring:DONE:
+    CLOSED: [2018-04-03 Tue 16:40]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-04-03
+    :EXPORT_FILE_NAME: early-asparagus
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-04-03 Tue 16:37]--[2018-04-03 Tue 16:40] =>  0:03
+    :END:
+I spotted two asparagus spears just poking through the surface in the garden today (April 3rd).  I wasn't expecting it yet, as cold as it's been, but happened to see one as I was walking by.  Considering it's supposed to get down as low as 18 this week, I'm not sure that's a good thing.  I don't know how asparagus handles freezing, or whether it will freeze off and then come back when it warms up.  Guess I'll see.  
+
+Mushrooms usually come around the same time as asparagus, and it definitely isn't time for them yet.  I think they start sprouting when the soil temperature hits something like 55, and we're nowhere near that now.
+*** DONE Starting the Gardening Year                          :750words:DONE:
+    CLOSED: [2018-03-12 Mon 16:52]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: starting-gardening-year
+    :EXPORT_DATE: 2018-03-12
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-12 Mon 16:23]--[2018-03-12 Mon 16:52] =>  0:29
+    :END:
+It's time to start working on the garden.  Actually, a little past time.  I planted a double-row of peas about ten days ago, as well as lettuce, parsnips, radishes, and carrots in the little bed in the grotto.  The cold weather last week made that seem too early, but those things should still come up.
+
+I have a lot of leftover seed that germinated okay last year, but it might be iffy this year.  So I wanted to get some things out there early to see how they come up.  I may also need to germinate some seeds in paper towels, to see how they do before planting them out.
+
+Other plants already started: mint that I got from my mom over the winter and started in a pot, and sweet potatoes that I started from a couple potatoes that had sprouted in the basement.  It's still a couple months before the sweet potatoes can go out in the garden, but they should have plenty of roots by then.
+
+We should have marshmallow, hyssop, and toothache plant as perennials in the herb garden.  There may be catnip by the grotto, but I think the cats wiped it out rolling around on it last year, so I expect to have to start that again.
+
+The walking onions around the grotto are starting to green up, and the strawberries that survived last year look good and need to be weeded around.  So quite a few things are already underway.  Right now, I have two things to get figured out.  First, where I'm going to get enough mulch to cover all the garden spots.  If I'm going to use the mulch method this year, I'll need enough to bury the gardens in several inches of mulch.  Alternatively, I could use paper or cardboard, but I'll still need enough mulch to put on that and hold it down in the wind.  One thing I'm thinking of is to buy a half-dozen round bales of hay, and bust two of them up on each garden spot.  That would certainly do it.
+
+The second thing is to get seeds ordered.  So before that I need to go through the leftover seed and seed saved from last year and see what else I need to add to that.  I don't think there are too many things I'm missing, but I always like to add something new.  I had really good luck with the watermelon last year, better than I ever have before, and I grew Moon & Stars for the first time, so I want to make sure to get that again.
+
+Oh, a third thing: it's time to start cleaning out the chicken house and spreading it on the gardens.  That will help with the mulch situation too.
+
+The pole at one end of my trellis finally rotted through at the bottom, so I need to replace it.  When I put that in seven years ago, I used ordinary pine lumber, so I didn't think it would last more than a couple years.  It's worked out pretty well.  Have to weave new twine on it for the year, but that doesn't need to be done until something is ready to climb it, probably not until a couple months from now.
+
+I may have to put some fence around at least one of the garden spots.  The chickens really worked on the cabbages there last year, devouring a couple of them entirely, which was strange.  I won't be planting cabbage in the same spot, since I rotate things through the gardens every year, but that'll be something to watch out for.  I like letting them roam around the gardens eating bugs, but I don't need them eating my vegetables.
+
+I want to get some permanent fruit trees going this year.  I started a couple grapes and a couple raspberries last year, but none of them survived.  Need to get better stock from Stark's this year, instead of the cheap ones off the shelf.  The asparagus bed is mature now (could be bigger), and the strawberries are getting started, so I'd like to keep adding another long-term planting each year.  A small orchard of apple, pear, peach, and cherry trees would be great.
+
+As far as annual stuff goes, it'll be the usual.  I think I'll do videos every couple weeks again this year, since that was a good way to keep track last year.  I referred back to those a couple times to find out when I planted something or what variety where.  Probably not until there are some plants coming up to see, though.
+
+** Unix                                                                :unix:
+*** DONE Fixing BBDB in Emacs with bbdb-migrate             :bbdb:emacs:DONE:
+    CLOSED: [2018-03-19 Mon 19:26]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-03-19
+    :EXPORT_FILE_NAME: fixing-emacs-bbdb-migrate
+    :END:
+I recently upgraded Emacs and BBDB, and it stopped working to auto-complete addresses in Gnus.  The error turned out to be that it was trying to run bbdb-migrate to update the database, and I wasn't loading that.  So I just needed to add this to my .emacs:
+
+#+begin_src lisp
+(require 'bbdb-migrate)
+#+end_src
+
+And do a *C-x C-e* at the end of that line to execute it.  Then the next time I tried to use BBDB by auto-completing an address, it took a few moments to migrate the database, then worked fine.  
+
+I'm not sure if I have to leave it enabled, so I just commented out the line for now, and I'll see if it keeps working after my next restart of Emacs, whenever that might be.
+*** DONE Getting bwn driver working on a Dell Latitude D520    :freebsd:DONE:
+    CLOSED: [2018-03-16 Fri 08:34]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-03-16
+    :EXPORT_FILE_NAME: bwn-driver-freebsd-dell-latitude-d520
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-16 Fri 08:28]--[2018-03-16 Fri 08:34] =>  0:06
+    :END:
+I run FreeBSD on a Dell Latitude D520 laptop.  One issue in installing it is that the wireless doesn't work out of the box, so you have to install firmware for it.  In this machine's case, the needed firmware is in the =net/bwn-firmware-kmod= port.  So you have to connect with the Ethernet port long enough to get that installed, or pull it in some other way, like a flash drive.
+
+After installing the port, though, it still wasn't working.  It installs three files in /boot/modules:
+
+- bwn_v4_lp_ucode.ko
+- bwn_v4_n_ucode.ko
+- bwn_v4_ucode.ko
+
+But looking at the dmesg errors, it was searching for a file called =bwn_v4_ucode5.ko=.  So I had to do this to get it working:
+
+#+begin_src bash
+cp /boot/modules/bwn_v4_ucode.ko /boot/modules/bwn_v4_ucode5.ko
+#+end_src
+
+I don't know why the discrepancy, but this gets mine running, so I haven't dug into it further.  It seems like laptops vary greatly, even within the same model number sometimes, so you never know.  I figured I'd put it on public record, in case anyone else gets the same error message and goes hunting for a solution.
+*** DONE Hammer All the Cores                           :shell:750words:DONE:
+    CLOSED: [2018-03-11 Sun 17:38]
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-03-11
+    :EXPORT_FILE_NAME: hammer-all-the-cores
+    :END:
+    :LOGBOOK:
+    CLOCK: [2018-03-11 Sun 17:41]--[2018-03-11 Sun 17:53] =>  0:12
+    :END:
+My current workstation has 8 CPU cores (each core can handle a stream of instructions independently, so it's more-or-less like having 8 CPUs -- 8 different "brains" that can each be running its own thing at the same time).  My last computer had 2, so I'm guessing my next one will have 32.  They seem to be hitting a wall on how fast a single CPU can be, so the next best thing is to stack more and more of them together.
+
+The only problem is that most programs can only use a single core.  It's a lot more complicated to write a program to spread its work across multiple cores, and some programs couldn't take advantage of that anyway.  So there are many times when I'm running a program that's working one core as hard as it can, while the other seven are mostly idle.  The nice thing about that is that one heavy program doesn't bog down the system, since other programs can sail along on the other cores.  Most of the time, that's great.  But if you have a task that you want to complete quickly, it would be nice to spread it across more of them.
+
+For instance, I recently needed to increase the volume on a series of 15 podcast files.  You can do that with *ffmpeg*, using a command like this:
+
+#+begin_src bash
+ffmpeg -i file.mp3 -vn -sn -dn -af volume=10dB new/file.mp3
+#+end_src
+
+That reads file.mp3, ignoring the video and subtitle streams, and writes it into the same filename in a 'new' subdirectory, bumping up the volume.
+
+But it takes a minute or two per file, and I have 15 of these files, so I don't want to type that command for each file every couple minutes.  So the simple thing to do is to wrap a loop around it:
+
+#+begin_src bash
+time (for i in *.mp3; do  ffmpeg -i $i -vn -sn -dn -af volume=10dB new/$i  2>/dev/null; done)
+#+end_src
+
+A couple of new things here.  First, I wrapped the whole thing in a 'time' call so it would tell me how long it took.  I also sent the output of ffmpeg to /dev/null, so it's not filling up the screen.  The loop runs ffmpeg for each MP3 file, substituting the filename for $i in the command.
+
+But here's where I run into the problem I started this post about, because it runs one command at a time, and the whole thing took 29 minutes.  How could I run them in parallel?  Well, an easy way is to run them in the background, so the for loop won't wait for each one to finish before starting the next.  Like this:
+
+#+begin_src bash
+for i in *.mp3; do (</dev/null ffmpeg -i $i -vn -sn -dn -af volume=10dB new/$i 2>/dev/null)&; done
+#+end_src
+
+The new thing here is that the *&* puts the ffmpeg command in the background.  I give ffmpeg its input from /dev/null, because otherwise when you put it in the background, it stalls and complains because it's watching for input from standard input (the keyboard, usually).  I had to remove the =time= call because, since this puts the commands in the background, it finishes immediately.  So I timed this manually, and it took a little over five minutes.
+
+That's a big improvement, but now there's a new problem: I'm running 14 processes that can each use one CPU to its limit, but I only have 8 cores, so they're having to share.  That's not a problem at this scale, because FreeBSD multitasks very well, and I didn't have anything else important going.  But what if I had a hundred, or a thousand files?  Running that many ffmpeg processes in parallel could bring a machine to its knees.
+
+So I'd really like to limit how many run at once, putting them into a queue so that one starts after another finishes, but a certain number can run at once.  Now, there are programs that are designed to do just that, and I could install one of them and learn how to use it.  But one thing I like about Unix is that, if you know the basic tools, you can put them together to do complicated tasks for unexpected tasks that come along.  It's like when you're working on a car and the shop manual says, "You will need a door handle clasp removal tool to remove the door handle clasp."  Yeah, right.  I'm not buying a tool that I'll only use once.  I have pliers and screwdrivers; I'll get it off just fine, probably after some swearing and bloody knuckles.
+
+So my inclination is to look first to the standard tools, and there's one that fits the bill here: =xargs=.  Xargs is a great program that takes a stream of text input and passes it to a program as arguments.  I use it in combination with =find= every day in commands like this one that searches through a tree of files for a phrase:
+
+#+begin_src bash
+find . -type f -print0 | xargs -0 grep phrase
+#+end_src
+
+But =xargs= also has a queuing ability, because you can tell it how many times it can run its argument at once.  So I dropped the =for= loop (since =xargs= effectively does its own loop), and rewrote my command:
+
+#+begin_src bash
+time (echo *.mp3 | xargs -n1 -I %% -P6  ffmpeg -i %% -vn -sn -dn -af volume=10dB new/%%  2>/dev/null)
+#+end_src
+
+I was able to bring back =time=, since this doesn't background anything.  The arguments to =xargs= tell it to take one argument from the pipe at a time (-n1), replace %% in the =ffmpeg= command with that argument (-I %%), and run up to 6 processes at a time (-P6).  This took just over 7 minutes, and it never pushed the load average over about 6.5, which means I still had a CPU or two available for doing other work without getting slowed down.  If I let it run 8 at a time, it might shave another minute off.
+
+So in the final analysis, I got a 4-times speedup on the task, using very basic tools available on any *nix system, without any complicated programming effort.  And I learned a little something about =xargs= in the process.  Good deal.
+
+*** DONE My Public Key                                                 :DONE:
+    CLOSED: [2015-12-11 Fri 17:11]
+    :PROPERTIES:
+    :EXPORT_DATE: 2015-12-11
+    :EXPORT_FILE_NAME: my-public-key
+    :END:
+For those who know what it is, here's my public key.  I'm going to start
+signing my email with it, so you can use it to verify me, and feel free to
+encrypt email to me with it.  Contact me via any other channel you like to
+get my fingerprint to verify that it matches this, to make sure someone
+hasn't compromised my web site and changed it.
+
+It's a bit longer than usual because it has a JPEG of my smilin' mug
+encrypted in it, for another possible way to verify it.
+
+<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2
+
+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
+=9srg
+-----END PGP PUBLIC KEY BLOCK-----
+</pre>
+
+*** DONE FreeBSD Administration                                        :DONE:
+    CLOSED: [2015-10-13 Fri 12:00]
+    :PROPERTIES:
+    :EXPORT_DATE: 2015-10-13
+    :EXPORT_FILE_NAME: freebsd-administration
+    :END:
+I've been doing FreeBSD sysadmin work and using it on my own systems
+since about 1998.  I like its no-nonsene, professional attitude and the
+simplicity and openness of its licensing.  I can build the kernel and OS
+from source (though that's not necessary as often as it used to be).  Other
+skills:
+
+- System and security updates
+- Security auditing
+- Installing and configuring ports
+- Networks (including wireless) and firewalls
+- Installing and administering services (web, email, etc.)
+- Backup and restore
+- Scripting admin tasks
+- Data mining of log files
+- Kernel tuning (sysctl)
+- RAID (using arrays of hard drives for redundancy)
+
+I am also the maintainer for the games/xlogical port (a port of the
+classic 8-bit game), and I'm looking for other opportunties to contribute to
+ports.
+
+If you need a regular FreeBSD sysadmin or help with any emergency
+problem, please contact me at aaron.baugher@gmail.com.
+
+*** DONE Reaching for the Unix Toolchain                          :unix:DONE:
+    CLOSED: [2015-10-13 Tue 16:47]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: reaching-unix-toolchain
+    :END:
+The first time I used the Unix shell, I was hooked.  The idea of having all these little programs, each of which did one thing, and being able to chain them together to do more complicated things, made perfect sense.  Coming from an 8-bit background, where you were always up against the limits of the machine and waiting for programs to load, keeping everything small and focused was great.
+
+I still reach for the toolchain on my own systems on a daily basis.  There are many times when I /could/ reach for a language like Perl or C and write a complete application, but so many times that isn't necessary -- I just want to do one thing, one time, and do it right now with as little work as possible.
+
+For instance: today I was going to listen to music on my MP3 player, but the plug is getting loose, so it wouldn't play right.  So I plugged it into the computer, mounted it, and figured I'd play the songs there.  But I wanted to use the playlist from the unit, and shuffle the songs like it does, and the songs are in multiple directories.
+
+Now, I'm sure that I could install a program like XMMS, and it would handle all that, but installing and learning it would take time, and it would mean running a full app to get at 1% of its features.  That's not very Unix-y.  So here's what I did.  It's an example of starting with one function and then adding tools to the chain until you're finished.
+
+First of all, after changing directory to the player's MUSIC directory, the playlist is in "music.m3u".  The format of this file has one comment line at the top, and then each song is on its own line, with blank lines between each song.  So the first thing I needed to do was just get the actual song lines.  Since all the songs have an mp3 suffix, that was easy:
+
+#+BEGIN_SRC bash
+cat music.m3u | grep mp3
+#+END_SRC
+
+Okay, that gives me the list, but they're in order.  (I know, useless use of cat, but I reckon it makes it clearer what I'm doing.)  To shuffle the list, I reach for the [[https://www.freebsd.org/cgi/man.cgi?query=random&sektion=6&manpath=FreeBSD+10.2-RELEASE][random]] utility:
+
+#+BEGIN_SRC bash
+cat music.m3u | grep mp3 | random -f - 1
+#+END_SRC
+
+
+Now I have a shuffled list of songs, so I need to loop through them and pass them to a program that will play them.  First, I usually just loop and echo the lines to make sure that works:
+
+#+BEGIN_SRC bash
+for i in `cat music.m3u | grep mp3 | random -f - 1`; do echo $i; done
+#+END_SRC
+
+The backquotes there pass the output of my chain to the *for* loop, so it can loop through them.  Uh oh, that shows a problem: by default, *for* breaks on all whitespace, and my songs have spaces in their names, so every word is being echoed on a separate line.  That won't work, so I need to tell *for* to break only on newlines.  I do that by setting the IFS environment variable:
+
+#+BEGIN_SRC bash
+IFS="
+"; for i in `cat music.m3u | grep mp3 | random -f - 1`; do echo $i; done
+#+END_SRC
+
+Great, now it's seeing one song each time through the loop and putting it in *$i*.  So now I add my MP3 playing program:
+
+#+BEGIN_SRC bash
+IFS="
+"; for i in `cat music.m3u | grep mp3 | random -f - 1`; do mpg321 "$i"; done
+#+END_SRC
+
+I put quotes around $i so that *mpg321* will see the filename as one argument as well.  But now I've discovered one more problem that I didn't notice before: the filenames in the playlist use backslashes between directory and filenames, rather than the forward slashes that my system uses.  So I need to insert a command to change those:
+
+#+BEGIN_SRC bash
+IFS="
+"; for i in `cat music.m3u | grep mp3 | random -f - 1 | sed 's/\\\\/\\//g'`; do mpg321 "$i"; done
+#+END_SRC
+
+Here's the deal with that *sed* command.  The first four backslashes end up being seen by *sed* as a single literal backslash to be replaced, because the shell evaulates each pair as a single escaped backslash, then *sed* does the same.  The second pair of backslashes are turned into a single literal backslash by the shell, and then *sed* uses that to escape the forward slash that follows.  The result is to replace each backslash in the line with a forward slash.
+
+Now it works, but there's one small issue: it's hard to kill out of it.  Killing the current mpg321 process allows the loop to continue and start the next one.  If I keep pressing Control-C, it just keeps killing the mpg321 processes, not the *for* loop itself.  So let's add a one-second sleep after each song, so I can Control-C twice: once to kill the song, then again to kill the loop while it's sleeping:
+
+#+BEGIN_SRC bash
+IFS="                                                                         
+"; for i in `cat music.m3u | grep mp3 | random -f - 1 | sed 's/\\\\/\\//g'` ; do mpg321 "$i"; sleep 1; done
+#+END_SRC
+
+And that's it!  It took me maybe 3 minutes to hack it together; I didn't even sit down.  Now, if I were doing this for pay, or as a program I expected to use on a regular basis, there are a lot of things I'd add, and I'd probably redo it as a single program.  I'd want a cleaner exit method.  I'd want it to handle non-MP3 files.  I'd want it to deal more gracefully with unusual filenames -- this will choke on a file that actually has a backslash in the name, for instance (which is very unlikely, but possible).  If others were using it, I might write my own randomizer, in case their system doesn't have 'random' installed, and I'd want it to ask them what audio player to use.  There would be lots of ways to nice it up.
+
+But in this case, just wanting to get the music started so I could get back to what I was doing, this was the best solution.  And that's often the case with sysadmin work: someone says, "Can you tell me what email came in at 7:45:03 last night?"  I could write a program to let the client enter a time and see a report of emails from that time -- or I could just toss together a pipeline of a few commands and answer the question.  You have to know when it makes more sense to build something more complete and lasting, but many times the best solution is the quickest one using the tools at hand.
+
+*** DONE Avoiding robots.txt in wget                              :unix:DONE:
+    CLOSED: [2015-03-23 Mon 17:06]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: wget-avoiding-robots
+    :END:
+I occasionally use the *wget* utility with the *-m* option to
+download a mirror of an entire website. This is very handy, but wget respects
+the robots.txt file, so it won't mirror a site if robots.txt disallows it.
+
+Obviously, you should respect the downloading restrictions of other sites, but
+there are times when you have a valid reason to ignore them (when it's your
+site, for instance, but you don't want to change robots.txt on a live site).
+In that case, here's what you do: First run *wget* with the *-m* option.
+It will download the robots.txt file and then quit.  Now edit the robots.txt
+file, change it to Allow instead of Disallow where necessary, and save it.
+Now change the permissions on that file to 444.  Now run your *wget -m*
+command again.
+
+On the second run, the permissions change will prevent wget from
+overwriting the robots.txt file with the version that disallows it, and it
+will go on happily mirroring the rest of the site.
+
+Here is the sequence of commands (replace *vi* with your editor of choice):
+
+#+BEGIN_SRC bash
+wget -m http://www.mysite.com/
+vi www.mysite.com/robots.txt (edit and save)
+chmod 444 www.mysite.com/robots.txt
+wget -m http://www.mysite.com/
+#+END_SRC
+
+*** DONE Using Jails with ZFS on FreeBSD - Part 1         :freebsd:unix:DONE:
+    CLOSED: [2016-01-04 Mon 17:34]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: freebsd-jails-zfs-1
+    :END:
+For FreeBSD administrators, ZFS and jails combine to make virtualization easy, fast, and secure.  A FreeBSD jail is a virtual machine which can only access the resources assigned to it when it was created, so its processes have no access to the rest of the machine.  ZFS is an advanced filesystem that makes it very easy to create and destroy filesystems whenever they are needed.  Together, they make it a matter of moments to create a new virtual system for testing, walling off network services, or other projects.
+
+This article, Part 1, will walk you through setting up a host FreeBSD system to be ready for jails.  Part 2 will cover creating a jail to run a network service.  In the terminology I'll use here, the "host" system is the main OS, which can control and look inside its jails.  The "jailed" or "guest" system can only see what resources the host has assigned to it, and cannot see outside itself.
+
+****** Create a ZFS pool (if necessary)
+
+If you already have a ZFS pool on your system and want to put your jails in it, you can skip this step.  This sets up a ZFS pool named *zf* on one or more hard drives, in which you will then create your ZFS filesystems.  Depending on how many free drives you have available, use one of these commands, substituting in the device names for your drives:
+
+#+BEGIN_SRC bash
+zpool create zf /dev/ada2                             # one drive, no redundancy
+zpool create zf mirror /dev/ada2 /dev/ada3            # two drives, mirrored
+zpool create zf raidz  /dev/ada2 /dev/ada3 /dev/ada4  # 3+ drives, striped
+#+END_SRC
+
+****** Create and mount a filesystem for your jails
+
+We will create one filesystem called zf/jail, mount it on /usr/jail, and give it the options we want all our jails to have.  Then those options will be inherited by all filesystems created beneath it:
+
+#+BEGIN_SRC bash
+zfs create zf/jail
+zfs set mountpoint=/usr/jail zf/jail
+zfs set compression=on zf/jail
+#+END_SRC
+
+You probably want to turn on compression, unless you know you're going to be storing mostly already-compressed files in the jail.  You can also turn that on and off per-jail later, so use whatever you want as the default here.
+
+If your pool has a single drive, you may also want to use what I call "poor man's RAID," by telling ZFS to store two copies of every file.  If the drive fails entirely, you will still lose everything, so it's not as good as multiple drives or a replacement for regular backups.  But if individual sectors fail or there are occasional bit errors, ZFS will be able to repair a file by making a new copy based on the other good sector, so you might be able to get by until you're ready to replace it.  To turn on two copies:
+
+#+BEGIN_SRC bash
+zfs set copies=2 zf/jail
+#+END_SRC
+
+Now create a filesystem in which to build a fresh FreeBSD install.  Give it a dotfile name, because you won't actually be using this one as a live system, so that's an easy way to keep it separate from them in scripts:
+
+#+BEGIN_SRC bash
+zfs create zf/jail/.freebsd-10x64
+#+END_SRC
+
+****** Unpack FreeBSD into the new jail
+
+Go to your favorite FreeBSD mirror site and fetch the distribution files matching your architecture and the release you want to use.  You can get your architecture with =uname -p=, and see your release with =uname -r= (dropping any -pX patchlevel from the end).  In my case, my architecture is amd64 and my release is 10.2-RELEASE, so I fetched from [[ftp://ftp5.us.freebsd.org/pub/FreeBSD/releases/amd64/10.2-RELEASE]].
+
+You don't need the *kernel*, *ports*, or *doc* archives, so grab the other four.  (You probably don't need *games* either, but it's small.)  Download them into somewhere handy.  I put them in /root.
+
+Unpack them into your new jail:
+
+#+BEGIN_SRC bash
+cd /usr/jail/.freebsd-10x64
+tar -xJvf /root/base.txz
+tar -xJvf /root/lib32.txz
+tar -xJvf /root/src.txz
+tar -xJvf /root/games.txz
+#+END_SRC
+
+****** Setup the fresh install
+
+You need to copy a few things into your new FreeBSD install and setup a few things to make it a bootable OS of its own:
+
+#+BEGIN_SRC bash
+cp /etc/resolv.conf /usr/jail/.freebsd-10x64/etc/  # so the jail can do DNS
+#+END_SRC
+
+Edit ~/root/.profile~ and add this line, if you aren't already defining and exporting ENV. The reason for this will appear later:
+
+#+BEGIN_SRC bash
+ENV=$HOME/.shrc ; export ENV
+#+END_SRC
+
+Now we'll chroot into the filesystem, so that the following commands will treat the jailed filesystem as if it is the root filesystem.  These are setup details that would normally be handled by the installer.  The last line updates the guest OS with any available updates.
+
+#+BEGIN_SRC bash
+chroot /usr/jail/.freebsd-10x64
+
+passwd               # (set the password for root in the jail)
+mkdir /usr/ports
+mkdir /usr/home
+ln -s /usr/home /home
+cd /etc/mail
+make aliases
+freebsd-update fetch install
+#+END_SRC
+
+Now edit ~/root/.shrc~ (still chrooted into the jailed filesystem) and add the following line, plus any other environment variables or aliases that you want to set when you run a shell within the jail.  This will put *JAIL:{hostname}* in your command prompt later whenever you enter a jail as root, so you won't get confused about whether you're in the host or the guest.  You don't want to do a ~rm -rf *~ at some point, thinking you're in the jail, and then realize you already exited and are wiping something out on the host.
+
+#+BEGIN_SRC bash
+PS1='JAIL:{\h} \$ '
+#+END_SRC
+
+Edit ~/etc/rc.conf~ and add a few lines to keep the jail from running things it doesn't need to:
+
+#+BEGIN_SRC bash
+sendmail_enable="NONE"
+syslogd_flags="-ss"
+rpcbind_enable="NO"
+#+END_SRC
+
+Edit ~/etc/make.conf~ and add these lines.  The important thing here is that we're going to have each jail mount ~/usr/ports~ read-only from the host system, so all your jails don't have to download and maintain their own copies of the ports tree.  But since they won't be able to write in ~/usr/ports~, they need to download distfiles, build ports, and store packages somewhere local.  If you don't want them in /var, choose somewhere else, just not under ~/usr/ports~.
+
+#+BEGIN_SRC bash
+WITH_PKGNG=yes
+WRKDIRPREFIX=/var/ports
+DISTDIR=/var/ports/distfiles
+PACKAGES=/var/ports/packages
+INDEXDIR=/usr/ports
+#+END_SRC
+
+Now run ~pkg~ once to setup the pkg directories, and ignore the error it spits out.
+
+If there's anything else you can think of that you want all your jails to have, go ahead and put it in place now.  For instance, if you want a particular user account in every jail, create it now.  When you're ready, ~exit~ to get out of chroot and back to the full host.
+
+****** Create a snapshot of this prepared FreeBSD image
+
+Now that you have this fresh install of FreeBSD configured to your satisfaction and have exited back to the host, take a ZFS snapshot of its filesystem.  You will clone this snapshot later to create individual jails.  I name it "ready" to show that it is ready for cloning:
+
+#+BEGIN_SRC bash
+zfs snapshot zf/jail/.freebsd-10x64@ready
+#+END_SRC
+
+****** Setup the host to support jails
+
+First enable jails:
+
+#+BEGIN_SRC bash
+echo jail_enable="YES" >>/etc/rc.conf
+#+END_SRC
+
+Now create ~/etc/jail.conf~ and add the following lines.
+
+#+BEGIN_SRC bash
+# file: /etc/jail.conf
+# Defaults
+exec.prestart = "/sbin/mount -t nullfs -o ro /usr/ports/ /usr/jail/$name/usr/ports";
+exec.start = "/bin/sh /etc/rc";
+exec.stop = "/bin/sh /etc/rc.shutdown";
+exec.poststop = "/sbin/umount -f /usr/jail/$name/usr/ports";
+exec.clean;
+mount.devfs;
+mount.fstab = "/etc/fstab.blank";
+host.hostname = "$name.domain.com";   # replace 'domain.com' with your own
+allow.nomount;
+path = "/usr/jail/$name";
+#+END_SRC
+
+You'll add a few lines here later when you create your first jail, but this sets up defaults for all your jails.  To explain some of these lines: the jail commands replace $name in these settings with the name of a jail.  The *exec.prestart* lines runs before the jail starts and mounts ~/usr/ports~ read-only so the jail can see it.  The *exec.poststop* line likewise unmounts it when you stop the jail.  It gives a blank fstab so the jailed OS won't complain on boot.  Set the hostname domain to whatever you like; the $name will match the jail name, which makes things easy.
+
+Now create that empty fstab:
+
+#+BEGIN_SRC bash
+touch /etc/fstab.blank
+#+END_SRC
+
+****** Make jails!
+
+Now your host system is ready to create all the jails you like!  The first time you do all this, it may take a few hours, as you get things just the way you want them.  With some experience, it can all be done in 30 minutes or so.
+
+Coming up in Part 2: creating a jail to support a single network service.
+
+(Hat-tip to [[http://savagedlight.me/2014/03/14/freebsd-jail-server-with-zfs-clone-and-jail-conf/][Savagedlight, whose article on FreeBSD jails and ZFS clones]] was a major source of the procedure I've outlined here.)
+
+** Usenet                                                            :usenet:
+*** DONE Putting My Old Usenet Posts Online
+    :PROPERTIES:
+    :EXPORT_DATE: 2018-03-17
+    :EXPORT_FILE_NAME: putting-my-old-usenet-posts-online
+    :END:
+I was hunting through my old Usenet posts recently, and thought it might be useful to put them online for searching.  Google still has the Groups archive, but it's clear that they've started scrubbing things politically, so who knows how long that will survive. These are from 2002-2008, which must be when I mostly stopped using Usenet.  I keep trying to get back into it, but unfortunately it's kind of a wasteland now.  I also lost my local copy of everything from before 2002 in the Great RAID Disaster of that year.  Maybe sometime I'll scrape those from Google Groups while I still can.
+
+I'm leaving them as plain text files, because that's how they were originally, so converting them to org/HTML would cause weirdness.
+
+- [[/text/alt.fan.elite][alt.fan.elite]]
+- [[/text/alt.support.diet.low-carb][alt.support.diet.low-carb]]
+- [[/text/comp.lang.perl.misc][comp.lang.perl.misc]]
+- [[/text/comp.lang.perl.modules][comp.lang.perl.modules]]
+- [[/text/comp.unix.bsd.freebsd.misc][comp.unix.bsd.freebsd.misc]]
+- [[/text/perl.beginners.cgi][perl.beginners.cgi]]
+- [[/text/rec.gardens.edible][rec.gardens.edible]]
+- [[/text/alt.culture.us.1980s][alt.culture.us.1980s]]
+- [[/text/comp.emulators.cbm][comp.emulators.cbm]]
+- [[/text/rec.arts.tv][rec.arts.tv]]
+- [[/text/alt.fan.eddings][alt.fan.eddings]]
+- [[/text/alt.tv.daria][alt.tv.daria]]
+- [[/text/alt.tv.futurama][alt.tv.futurama]]
+- [[/text/alt.tv.newsradio][alt.tv.newsradio]]
+- [[/text/alt.tv.star-trek.next-gen][alt.tv.star-trek.next-gen]]
+- [[/text/alt.tv.star-trek.voyager][alt.tv.star-trek.voyager]]
+- [[/text/gnu.emacs.gnus][gnu.emacs.gnus]]
+- [[/text/misc.rural][misc.rural]]
+** Podcasts                                                         :podcast:
+*** DONE Blogging and Podcasting                               :podcast:DONE:
+    CLOSED: [2017-05-18 Thu 19:03]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: blogging-and-podcasting
+    :END:
+This is my first podcast, in which I mostly talk about why I'm trying a podcast, and problems I've had with blogging.
+
+Click to listen or download: [[/podcast/podcast-20170518-1.mp3][Podcast #0: Blogging and Podcasting]]
+*** DONE Reminiscing about Computers                           :podcast:DONE:
+    CLOSED: [2017-05-24 Wed 19:06]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: reminiscing-about-computers
+    :END:
+Wherein I mention kittens and chickens, and the talk a while about old computers and a project idea for new ones.
+
+Click to listen or download: [[/podcast/podcast-20170524-1.mp3][Podcast #2: Reminiscing about Computers]]
+*** DONE Teaching                                              :podcast:DONE:
+    CLOSED: [2017-05-25 Thu 19:09]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-teaching
+    :END:
+Wherein I talk a little about how I got into teaching and tutoring, and some
+ideas of where I might go with it in the future.  This one gets kinda rambling
+and repetitive.  I think I'm going to start making at least a simple outline,
+because not every topic inspires a solid stream of ideas.  I started this one
+with a single word in mind -- "teaching" -- and it didn't go so well.
+
+Click to listen or download: [[/podcast/podcast-20170525-1.mp3][Podcast #3: Teaching (14MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-20170525-1-low.mp3][Podcast #3: Teaching (5MB low quality audio)]]
+
+*** DONE Home Dentistry                                        :podcast:DONE:
+    CLOSED: [2017-05-31 Wed 19:11]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-home-dentistry
+    :END:
+This is a short one, about 7 minutes, about finally losing my bad tooth, and garden progress.
+
+Click to listen or download: [[/podcast/podcast-4.mp3][Podcast #4: Home Dentistry (7MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-4-low.mp3][Podcast #4: Home Dentistry (2.6MB low quality audio)]]
+
+*** DONE Podcast #5: Not Even in a Bucket                      :podcast:DONE:
+    CLOSED: [2017-06-04 Sun 19:13]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-not-even-in-a-bucket
+    :END:
+For 15 minutes, I talk about gardening, trying, singing, and when did geek culture become a separate thing?
+
+Click to listen or download: [[/podcast/podcast-5.mp3][Podcast #5: Not Even in a Bucket (14MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-5-low.mp3][Podcast #5: Not Even in a Bucket (5MB low quality audio)]]
+
+[[/podcast/podcast-5.jpg]]
+
+*** DONE Podcast: Can't Stop the Signal                        :podcast:DONE:
+    CLOSED: [2017-06-12 Mon 19:16]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-cant-stop-signal
+    :END:
+Could a government in the West shut down the Internet or major portions of it?  What would happen and why?  I give my opinions.  25
+minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-06-08.mp3][Can't Stop the Signal (24MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-06-08-low.mp3][Can't Stop the Signal (8.6MB low quality audio)]]
+
+[[/podcast/podcast-2017-06-08.jpg]]
+
+*** DONE Podcast: Auctions                                     :podcast:DONE:
+    CLOSED: [2017-06-12 Mon 19:18]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-auctions
+    :END:
+The one where I ramble for 15 minutes about going to auctions.
+
+Click to listen or download: [[/podcast/podcast-2017-06-12.mp3][Auctions (11MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-06-12-low.mp3][Auctions (4.3MB low quality audio)]]
+
+[[/podcast/podcast-2017-06-12.jpg]]
+
+*** DONE Podcast: Growing Up X                                         :DONE:
+    CLOSED: [2017-06-21 Wed 00:07]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-growing-up-x
+    :END:
+Reminiscing about growing up in the middle of Generation X, farm style.  About 37 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-06-21.mp3][Growing Up X (44MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-06-21-low.mp3][Growing Up X (11MB low quality audio)]]
+
+[[/podcast/podcast-2017-06-21.jpg]]
+*** DONE Podcast: Chicken Drama                               :chickens:DONE:
+    CLOSED: [2017-06-30 Thu 00:09]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-chicken-drama
+    :END:
+Today's excitement with chickens and a coyote.  About 9 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-06-30.mp3][Chicken Drama (11MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-06-30-low.mp3][Chicken Drama (3.3MB low quality audio)]]
+
+[[/podcast/podcast-2017-06-30.jpg]]
+
+*** DONE Podcast: CNN Delenda Est                                      :DONE:
+    CLOSED: [2017-07-07 Thu 00:12]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-cnn-delenda-est
+    :END:
+I talk about CNN's recent self-immolation, and the broader issue of the dying days of the Old Media.  30 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-07-07.mp3][CNN Delenda Est (22.7MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-07-07-low.mp3][CNN Delenda Est (8.5MB low quality audio)]]
+
+[[/podcast/podcast-2017-07-07.jpg]]
+
+*** DONE Podcast: Web Hosting Musings                                  :DONE:
+    CLOSED: [2017-07-10 Mon 00:14]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-web-hosting-musings
+    :END:
+I ramble about work, and how to market web hosting and other online services to small businesses and individuals in a way that's
+more accessible than the current offerings.  23 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-07-10.mp3][Web Hosting Musings (20MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-07-10-low.mp3][Web Hosting Musings (6.6MB low quality audio)]]
+
+[[/podcast/podcast-2017-07-10.jpg]]
+
+*** DONE Podcast: DNS, Malware, Russia, Oh My                          :DONE:
+    CLOSED: [2017-07-13 Thu 00:17]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-dns-malware-russia-oh-my
+    :END:
+A bit of a tutorial on how DNS works to let computers find each other on the
+Internet, how that and some other clues told me Salon's October Surprise
+article about a Trump/Russia server connection was bogus at first glance, new
+info that's coming to light now, and what I think might really have happened
+to prompt that article.  31 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-07-13.mp3][DNS, Malware, Russia, Oh My (34MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-07-13-low.mp3][DNS, Malware, Russia, Oh My (11MB low quality audio)]]
+
+[[/podcast/podcast-2017-07-13.png]]
+*** DONE Podcast: Going to the Fair                                    :DONE:
+    CLOSED: [2017-07-24 Mon 00:18]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-going-to-fair
+    :END:
+I talk about hot weather, chickens and eggs, hot weather, and the county fair coming up this week.  22 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-07-24.mp3][Going to the Fair (21MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-07-24-low.mp3][Going to the Fair (7MB low quality audio)]]
+
+[[/podcast/podcast-2017-07-24.jpg]]
+
+*** DONE Podcast: Happening Status, It's                               :DONE:
+    CLOSED: [2017-07-28 Fri 00:20]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-happening-status-its
+    :END:
+My wrap-up of the political happenings of July 27th and leading up to that.  40 minutes.
+
+Click to listen or download: [[/podcast/podcast-2017-07-28.mp3][Happening Status, It's (36MB high quality audio)]]
+
+Click to listen or download: [[/podcast/podcast-2017-07-28-low.mp3][Happening Status, It's (13MB low quality audio)]]
+
+<iframe width="560" height="315" src='https://www.youtube.com/embed/rPcSrPQtJLQ' frameborder="0" allowfullscreen></iframe>
+
+*** DONE Podcast: What's Up with Google?                               :DONE:
+    CLOSED: [2017-08-11 Fri 00:31]
+    :PROPERTIES:
+    :EXPORT_FILE_NAME: podcast-whats-up-with-google
+    :END:
+A summary of the recent events at Google, with the firing of James Damore and
+their crack-down on dissenting opinions by both employees and content
+providers.  36:23.
+
+Click to listen or download: [[/podcast/podcast-2017-08-11.mp3][What's Up with Google? (32.6MB high quality audio)]]
+
+Click to listen or download:
+[[/podcast/podcast-2017-08-11-low.mp3][What's Up with Google? (11.2MB low quality audio)]]
+
+<iframe width="560" height="315" src='https://www.youtube.com/embed/LNBOj4i2u1g' frameborder="0"
+allowfullscreen></iframe>
+
+If the YouTube video above ever fails, you can also find it at Vidme in two parts:
+[[https://vid.me/IIzTZ][Part 1]] and [[https://vid.me/xxMLU][Part 2]].
+
+
+
+
+

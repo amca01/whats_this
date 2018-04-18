@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s all this, then?</title>
+    <link>https://numbersandshapes.net/blog/</link>
+    <description>Recent content on What&#39;s all this, then?</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 Apr 2018 00:00:00 +1000</lastBuildDate>
+    
+	<atom:link href="https://numbersandshapes.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About me</title>
+      <link>https://numbersandshapes.net/blog/pages/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://numbersandshapes.net/blog/pages/about/</guid>
+      <description>This is the newest version of my &amp;ldquo;Numbers and Shapes&amp;rdquo; blog, containing material on elementary mathematics, mathematics education, software, and anything else that takes my fancy.
+And this is me, on the observation deck of the Oriental Pearl Tower, Shanghai:</description>
+    </item>
+    
+    <item>
+      <title>Exploring JSXGraph</title>
+      <link>https://numbersandshapes.net/blog/post/exploring_jsxgraph/</link>
+      <pubDate>Sat, 14 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/blog/post/exploring_jsxgraph/</guid>
+      <description>So I downloaded the javascript and css files as described here and also, for good measure, added the script line (from that page) to the layouts/partials/head.html file of the theme. Then copied the following snippet from the JSXGraph site:
+&amp;lt;div id=&amp;quot;box&amp;quot; class=&amp;quot;jxgbox&amp;quot; style=&amp;quot;width:500px; height:500px;&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; var board = JXG.JSXGraph.initBoard(&#39;box&#39;, {boundingbox: [-10, 10, 10, -10], axis:true}); &amp;lt;/script&amp;gt;  However, to make this work the entire script needs to be inside a &amp;lt;div&amp;gt;, &amp;lt;/div&amp;gt; pair, like this:</description>
+    </item>
+    
+    <item>
+      <title>The trinomial theorem</title>
+      <link>https://numbersandshapes.net/blog/post/trinomial_theorem/</link>
+      <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/blog/post/trinomial_theorem/</guid>
+      <description>When I was teaching the binomial theorem (or, to be more accurate, the binomial expansion) to my long-suffering students, one of them asked me if there was a trinomial theorem. Well, of course there is, although in fact expanding sums of greater than two terms is generally not classed as a theorem described by the number of terms. The general result is
+\[ (x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n} {n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k} \]
+so in particular a &amp;ldquo;trinomial theorem&amp;rdquo; would be</description>
+    </item>
+    
+    <item>
+      <title>Playing with Hugo</title>
+      <link>https://numbersandshapes.net/blog/post/playing_with_hugo/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/blog/post/playing_with_hugo/</guid>
+      <description>I&amp;rsquo;ve been using wordpress as my blogging platform since I first started, about 10 years ago. (In fact the first post I can find is dated March 30, 2008.) I chose wordpress.com back then because it was (a) free, and (b) supported mathematics through a version (or subset) of LaTeX. As I have used LaTeX extensively for all my writing since the early 1990&amp;rsquo;s, it&amp;rsquo;s a standard requirement for me.</description>
+    </item>
+    
+    <item>
+      <title>Python GIS, and election results</title>
+      <link>https://numbersandshapes.net/blog/post/python_gis/</link>
+      <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
+      
+      <guid>https://numbersandshapes.net/blog/post/python_gis/</guid>
+      <description>Election mapping A few weeks ago there was a by-election in my local electorate (known as an electoral division) of Batman here in Australia. I was interested in comparing the results of this election with the previous election two years ago. In this division it&amp;rsquo;s become a two-horse race: the Greens against the Australian Labor Party. Although Batman had been a solid Labor seat for almost its entire existence - it used to be considered one of the safest Labor seats in the country - over the past decade or so the Greens have been making inroads into this Labor heartland, to the extent that is no longer considered a safe seat.</description>
+    </item>
+    
+  </channel>
+</rss>

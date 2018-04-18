@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-04-16 Mon 15:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Alasdair McAndrew" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org885c4de">1. Pages</a>
+<ul>
+<li><a href="#org07584d6">1.1. About me</a></li>
+</ul>
+</li>
+<li><a href="#orge09d0dc">2. Posts</a>
+<ul>
+<li><a href="#org9e2f9dc">2.1. Exploring jsxgraph</a></li>
+<li><a href="#orgacbc800">2.2. The trinomial theorem&#xa0;&#xa0;&#xa0;<span class="tag"><span class="mathematics">mathematics</span>&#xa0;<span class="algebra">algebra</span></span></a></li>
+<li><a href="#org6553507">2.3. Playing with Hugo&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hugo">hugo</span>&#xa0;<span class="org">org</span></span></a></li>
+<li><a href="#orgb537f1f">2.4. Python GIS, and election results&#xa0;&#xa0;&#xa0;<span class="tag"><span class="python">python</span>&#xa0;<span class="voting">voting</span></span></a>
+<ul>
+<li><a href="#orgbba6949">2.4.1. Election mapping</a></li>
+<li><a href="#org3e24b01">2.4.2. Getting the information</a></li>
+<li><a href="#orgaac8a6c">2.4.3. Putting it all together</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org885c4de" class="outline-2">
+<h2 id="org885c4de"><span class="section-number-2">1</span> Pages</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org07584d6" class="outline-3">
+<h3 id="org07584d6"><span class="section-number-3">1.1</span> About me</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This is the newest version of my "Numbers and Shapes" blog, containing material
+on elementary mathematics, mathematics education, software, and anything else
+that takes my fancy.
+</p>
+
+<p>
+And this is me, on the observation deck of the Oriental Pearl Tower, Shanghai:
+</p>
+
+<p>
+![amca](/amca01.jpg)
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge09d0dc" class="outline-2">
+<h2 id="orge09d0dc"><span class="section-number-2">2</span> Posts</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org9e2f9dc" class="outline-3">
+<h3 id="org9e2f9dc"><span class="section-number-3">2.1</span> Exploring jsxgraph</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+So I downloaded the javascript and css files as described
+[here](<a href="https://jsxgraph.uni-bayreuth.de/wp/download/index.html">https://jsxgraph.uni-bayreuth.de/wp/download/index.html</a>)
+and also, for good measure, added the script line (from that page) to the
+<code>layouts/partials/head.html</code> file of the theme.  Then copied the following 
+snippet from the JSXGraph site:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #006699;">div</span> <span style="color: #BA36A5;">id</span>=<span style="color: #008000;">"box"</span> <span style="color: #BA36A5;">class</span>=<span style="color: #008000;">"jxgbox"</span> <span style="color: #BA36A5;">style</span>=<span style="color: #008000;">"width:500px; height:500px;"</span>&gt;&lt;/<span style="color: #006699;">div</span>&gt;
+&lt;<span style="color: #006699;">script</span> <span style="color: #BA36A5;">type</span>=<span style="color: #008000;">"text/javascript"</span>&gt;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10], axis:true});
+&lt;/<span style="color: #006699;">script</span>&gt;
+</pre>
+</div>
+
+<p>
+and ran it:
+</p>
+
+<p>
+{{&lt; SafeHTML
+`&lt;div id="box" class="jxgbox" style="width:500px; height:500px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10],axis:true});
+ var p = board.create('point',[1,1]);
+&lt;/script&gt;` &gt;}}
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgacbc800" class="outline-3">
+<h3 id="orgacbc800"><span class="section-number-3">2.2</span> The trinomial theorem&#xa0;&#xa0;&#xa0;<span class="tag"><span class="mathematics">mathematics</span>&#xa0;<span class="algebra">algebra</span></span></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+When I was teaching the binomial theorem (or, to be more accurate, the binomial
+<i>expansion</i>) to my long-suffering students, one of them asked me if there was a
+<i>trinomial</i> theorem.  Well, of course there is, although in fact expanding sums
+of greater than two terms is generally not classed as a theorem described by the
+number of terms. The general result is
+</p>
+
+<p>
+\[
+(x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n}
+{n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k}
+\]
+</p>
+
+<p>
+so in particular a "trinomial theorem" would be
+</p>
+
+<p>
+\[
+(x+y+z)^n=\sum_{a+b+c=n}{n\choose a,b,c}x^ay^bz^c.
+\]
+</p>
+
+<p>
+Here we define
+</p>
+
+<p>
+\[
+{n\choose a,b,c}=\frac{n!}{a!b!c!}
+\]
+</p>
+
+<p>
+and this is known as a <i>trinomial coefficient</i>; more generally, for an arbitrary
+number of variables, it is a <i>multinomial coefficient</i>.  It is guaranteed to be
+an integer if the lower values sum to the upper value.
+</p>
+
+<p>
+So to compute \((x+y+z)^5\) we could list all integers \(a,b,c\) with \(0\le a,b,c\le 5\)
+for which \(a+b+c=5\), and put them all into the above sum.  
+</p>
+
+<p>
+But of course there's a better way, and it comes from expanding \((x+y+z)^5\) as a
+binomial \((x+(y+z))^5\) so that
+</p>
+
+\begin{array}{rcl}
+(x+(y+x))^5&=&x^5\\
+&&+5x^4(y+z)\\
+&&+10x^3(y+z)^2\\
+&&+10x^2(y+z)^3\\
+&&+5x(y+z)^4\\
+&&+(y+z)^5
+\end{array}
+
+<p>
+Now we can expand each of those binomial powers:
+</p>
+
+\begin{array}{rcl}
+(x+(y+x))^5&=&x^5\\
+&&+5x^4(y+z)\\
+&&+10x^3(y^2+2yz+z^2)\\
+&&+10x^2(y^3+3y^2z+3yz^2+z^3)\\
+&&+5x(y^4+4y^3z+6y^2z^2+4yz^3+z^4)\\
+&&+(y^5+5y^4z+10y^3z^2+10y^2z^3+5yz^4+z^5)
+\end{array}
+
+<p>
+Expanding this produces
+</p>
+
+\begin{split}
+x^5&+5x^4y+5x^4z+10x^3y^2+20x^3yz+10x^3z^2+10x^2y^3+30x^2y^2z+30x^2yz^3\\
+&+10x^2z^3+5zy^4+20xy^3z+30xy^2z^2+20xyz^3+5xz^4+y^5+5y^4z+10y^3z^2\\
+&+10y^2z^3+5yz^4+z^5
+\end{split}
+
+<p>
+which is an equation of rare beauty.
+</p>
+
+<p>
+But there's a nice way of setting this up, which involves writing down Pascal's
+triangle to the fifth row, and putting a fifth row, as a column, on the side.
+Then multiply across:
+</p>
+
+\begin{array}{lcccccccccc}
+1&&&&&&1&&&&&\\
+5&&&&&1&&1&&&&\\
+10\quad\times&&&&1&&2&&1&&&\\
+10&&&1&&3&&3&&1&&\\
+5&&1&&4&&6&&4&&1&\\
+1&1&&5&&10&&10&&5&&1
+\end{array}
+
+<p>
+to produce the final array of coefficients (with index numbers at the left):
+</p>
+
+\begin{array}{l*{10}{c}}
+0\qquad{}&&&&&&1&&&&&\\
+1&&&&&5&&5&&&&\\
+2&&&&10&&20&&10&&&\\
+3&&&10&&30&&30&&10&&\\
+4&&5&&20&&30&&20&&5&\\
+5&1&&5&&10&&10&&5&&1
+\end{array}
+
+<p>
+Row \(i\) of this array corresponds to \(x^{5-i}\) and all combinations of powers
+\(y^bz^c\) for \(0\le b,c\le i\).  Thus for example the fourth row down,
+corresponding to \( i=3 \), may be considered as the coefficients of the terms
+</p>
+
+<p>
+\[
+x^2y^3,\quad x^2y^2z,\quad x^2yz^2,\quad xz^3.
+\]
+</p>
+
+<p>
+Note that the triangle of coefficients is symmetrical along all three centre
+lines, as well as rotationally symmetric by 120°.  
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6553507" class="outline-3">
+<h3 id="org6553507"><span class="section-number-3">2.3</span> Playing with Hugo&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hugo">hugo</span>&#xa0;<span class="org">org</span></span></h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+I've been using wordpress as my blogging platform since I first started, about
+10 years ago.  (In fact the first post I can find is dated March 30, 2008.)  I
+chose [wordpress.com](<a href="http://wordpress.com">http://wordpress.com</a>) back then because it was (a) free,
+and (b) supported mathematics through a version (or subset) of
+[LaTeX](<a href="https://www.latex-project.org">https://www.latex-project.org</a>).  As I have used LaTeX extensively for
+all my writing since the early 1990's, it's a standard requirement for me.
+</p>
+
+<p>
+Some time later I decided to start hosting my own server (well, a VPS), on which
+I could use [wordpress.org](<a href="https://wordpress.org">https://wordpress.org</a>), which is the self-hosted
+version of wordpress.  The advantages of a self hosted blog are many, but I
+particularly like the greater freedom, the ability to include a far greater
+variety of plugins, and the larger choice of themes.  And one of the plugins I
+liked particularly was [WP
+QuickLaTeX](<a href="https://wordpress.org/plugins/wp-quicklatex/">https://wordpress.org/plugins/wp-quicklatex/</a>) which provided a LaTeX
+engine far superior to the in-built one of wordpress.com.  Math bloggin heaven!
+</p>
+
+<p>
+However, hosting my own wordpress site was not without difficulty.  First I had
+to install it and get it up and running (even this was non-trivial), and then I
+had to manage all the users and passwords: myself as a standard user, wp-admin
+for accessing the Wordpress site itself, a few others.  I have quite a long list
+containing all the commands I used, and all the users and passwords I created.
+</p>
+
+<p>
+This served me well, but it was also slow to use.  My VPS is perfectly
+satisfactory, but it is not fast (I'm too cheap to pay for much more than a
+low-powered one), and the edit-save-preview cycle of online blogging with my
+wordpress installation was getting tiresome.  
+</p>
+
+<p>
+Plus the issue of security.  I've been hacked once, and I've since managed to
+secure my site with a free certificate from [Let's
+Encrypt](<a href="https://letsencrypt.org">https://letsencrypt.org</a>).  In fact, in many ways Let's Encrypt is one
+of the best things to have happened for security.  An open Certificate Authority
+is manna from heaven, as far as I'm concerned.
+</p>
+
+<p>
+Wordpress is of course more than just blogging software.  It now grandly styles
+itself as Site Building software and Content Management System, and the site
+claims that "30% of the web uses Wordpress".  It is in fact hugely powerful and
+deservedly popular, and can be used for pretty much whatever sort of site you
+want to build.   Add to that a seemingly infinite set of plugins, and you have
+an entire ecosystem of web-building.
+</p>
+
+<p>
+However, all of that popularity and power comes at a cost: it is big, confusing,
+takes work to maintain, keep secure, and keep up-to-date, and is a target for
+hackers.  Also for me, it has become colossal overkill.  I don't need all those
+bells and whistles; all I want to do is host my blog and share my posts with the
+world (the \(1.5\times 10^{-7}\%\) of the world who reads it).
+</p>
+
+<p>
+The kicker for me was checking out a [mathematics education
+blog](<a href="http://rtalbert.org">http://rtalbert.org</a>) by an author I admire greatly, to discover it was
+built with the static blog engine [jekyll](<a href="https://jekyllrb.com">https://jekyllrb.com</a>).  So being the
+inventive bloke I am, I thought I'd do the same.
+</p>
+
+<p>
+But a bit of hunting led me to [Hugo](<a href="https://gohugo.io">https://gohugo.io</a>), which apparently is
+very similar to jekyll, but much faster, and written in [Go](<a href="https://golang.org">https://golang.org</a>)
+instead of [Ruby](<a href="https://www.ruby-lang.org/en/">https://www.ruby-lang.org/en/</a>).  Since I know nothing about
+either Go or Ruby I don't know if it's the language which makes the difference,
+or something else.  But it sure looks nice, and supports
+[mathjax](<a href="https://www.mathjax.org">https://www.mathjax.org</a>) for LaTeX.
+</p>
+
+<p>
+So my current plan is to migrate from wordpress to Hugo, and see how it goes!
+</p>
+</div>
+</div>
+<div id="outline-container-orgb537f1f" class="outline-3">
+<h3 id="orgb537f1f"><span class="section-number-3">2.4</span> Python GIS, and election results&#xa0;&#xa0;&#xa0;<span class="tag"><span class="python">python</span>&#xa0;<span class="voting">voting</span></span></h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-orgbba6949" class="outline-4">
+<h4 id="orgbba6949"><span class="section-number-4">2.4.1</span> Election mapping</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+A few weeks ago there was a by-election in my local electorate (known as an
+electoral <i>division</i>) of Batman here in Australia.  I was interested in
+comparing the results of this election with the previous election two years ago.
+In this division it's become a two-horse race: the Greens against the Australian
+Labor Party.  Although Batman had been a solid Labor seat for almost its entire
+existence - it used to be considered one of the safest Labor seats in the
+country - over the past decade or so the Greens have been making inroads into
+this Labor heartland, to the extent that is no longer considered a safe seat.
+And in fact for this particular election the Greens were the popular choice to
+win.  In the end Labor won, but my interest is not so much tracing the votes,
+but trying to map them.
+</p>
+
+<p>
+Python has a vast suite of mapping tools, so much so that it may be that Python
+has become the GIS tool of choice.  And there are lots of web pages devoted to
+discussing these tools and their uses, such as [this
+one](<a href="http://matthewrocklin.com/blog/work/2017/09/21/accelerating-geopandas-1">http://matthewrocklin.com/blog/work/2017/09/21/accelerating-geopandas-1</a>).
+</p>
+
+<p>
+My interest was producing maps such as are produced by
+[pollbludger](<a href="https://www.pollbludger.net/by-elections/fed-2018-03-batman.htm">https://www.pollbludger.net/by-elections/fed-2018-03-batman.htm</a>)
+This is the image from that page:
+</p>
+
+<p>
+![pollbludger](/pollbludger<sub>batman.png</sub>)
+</p>
+
+<p>
+As you can see there are basically three elements:
+</p>
+
+<ul class="org-ul">
+<li>the underlying streetmap</li>
+<li>the border of the division</li>
+<li>the numbers showing the percentage wins of each party at the various polling
+booths.</li>
+</ul>
+
+<p>
+I wanted to do something similar, but replace the numbers with circles whose
+sizes showed the strength of the percentage win at each place.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3e24b01" class="outline-4">
+<h4 id="org3e24b01"><span class="section-number-4">2.4.2</span> Getting the information</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+Because this election was in a federal division, the management of the polls and
+of the results (including counting the votes) was managed by the Australian
+Electoral Commission, whose [pages about this by-election](
+<a href="http://www.aec.gov.au/Elections/supplementary_by_elections/2018-batman/">http://www.aec.gov.au/Elections/supplementary_by_elections/2018-batman/</a>) contain
+pretty much all publicly available information.  You can copy and paste the
+results from their pages, or download them as CSV files.
+</p>
+
+<p>
+Then I needed to find the coordinates (Longitude and Latitude) of all the
+polling places, of which there were 42 at fixed locations.  There didn't seem to
+be a downloadable file for this, so for each booth address (given on the AEC
+site), I entered it into Google Maps and copied down the coordinates as given.
+</p>
+
+<p>
+The boundaries of all the divisions can again be downloaded from the [AEC GIS
+page](<a href="http://www.aec.gov.au/Electorates/gis/index.htm">http://www.aec.gov.au/Electorates/gis/index.htm</a>).  These are given in
+various standard GIS files.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaac8a6c" class="outline-4">
+<h4 id="orgaac8a6c"><span class="section-number-4">2.4.3</span> Putting it all together</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+The tools I felt brave enough to use were:
+</p>
+
+<ul class="org-ul">
+<li>[Pandas:](<a href="https://pandas.pydata.org">https://pandas.pydata.org</a>) Python's data analysis library.  I
+really only needed to read information from CSV files that I could then use
+later.</li>
+<li>[Geopandas:](<a href="http://geopandas.org">http://geopandas.org</a>) This is a GIS library with Pandas-like
+syntax, and is designed in part to be a GIS extension to Pandas.  I would
+use it to extract and manage the boundary data of the electoral division.</li>
+<li>[Cartopy:](<a href="http://scitools.org.uk/cartopy/">http://scitools.org.uk/cartopy/</a>) which is a library of
+"cartographic tools".</li>
+</ul>
+
+<p>
+And of course the standard [matplotlib](<a href="http://matplotlib.org">http://matplotlib.org</a>) for plotting,
+[numpy](<a href="http://www.numpy.org">http://www.numpy.org</a>) for array handling.
+</p>
+
+<p>
+My guides were the [London tube stations
+example](<a href="http://scitools.org.uk/cartopy/docs/latest/gallery/tube_stations.html">http://scitools.org.uk/cartopy/docs/latest/gallery/tube_stations.html</a>)
+from Cartopy and a local (Australian) data analysis blog which discussed the
+[use of Cartopy](<a href="http://www.net-analysis.com/blog/cartopytiles.html">http://www.net-analysis.com/blog/cartopytiles.html</a>) including
+adding graphics to an map image.
+</p>
+
+<p>
+There are lots of other GIS tools for Python, some of which seem to be very good
+indeed, and all of which I downloaded:
+</p>
+
+<ul class="org-ul">
+<li>[Fiona](<a href="https://github.com/Toblerity/Fiona">https://github.com/Toblerity/Fiona</a>): which is a "nimble" API for
+handling maps</li>
+<li>[Descartes](<a href="https://bitbucket.org/sgillies/descartes/">https://bitbucket.org/sgillies/descartes/</a>): which provides a
+means by which matplotlib can be used to manage geographic objects</li>
+<li>[geoplotlib](<a href="https://github.com/andrea-cuttone/geoplotlib">https://github.com/andrea-cuttone/geoplotlib</a>): for "visualizing
+geographical data and making maps"</li>
+<li>[Folium](<a href="http://python-visualization.github.io/folium/">http://python-visualization.github.io/folium/</a>): for visualizing maps
+using the [leaflet.js](<a href="http://leafletjs.com">http://leafletjs.com</a>) library.  It may be that the
+mapping I wanted to do with Python could have been done just as well in
+Javascript alone.  And probably other languages.  I stuck with Python simply
+because I knew it best.</li>
+<li>[QGIS](<a href="https://qgis.org/en/site/">https://qgis.org/en/site/</a>): which is designed to be a complete free
+and open source GIS, and with APIs both for Python and C++</li>
+<li>[GDAL](<a href="http://www.gdal.org">http://www.gdal.org</a>): the "Geospatial Data Abstraction Library" which
+has a [Python package](<a href="https://pypi.python.org/pypi/GDAL">https://pypi.python.org/pypi/GDAL</a>) also called GDAL,
+for manipulating geospatial raster and vector data.</li>
+</ul>
+
+<p>
+I suspect that if I was professionally working in the GIS area some or all of
+these packages would be at least as - and maybe even more - suitable than the
+ones I ended up using.  But then, I was starting from a position of absolute
+zero with regards to GIS, and also I wanted to be able to make use of the tools
+I already knew, such as Pandas, matplotlib, and numpy.
+</p>
+
+<p>
+Here's the start, importing the libraries, or the bits of them I needed:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #0000FF;">import</span> matplotlib.pyplot <span style="color: #0000FF;">as</span> plt
+<span style="color: #0000FF;">import</span> numpy <span style="color: #0000FF;">as</span> np
+<span style="color: #0000FF;">import</span> cartopy.crs <span style="color: #0000FF;">as</span> ccrs
+<span style="color: #0000FF;">from</span> cartopy.io.img_tiles <span style="color: #0000FF;">import</span> GoogleTiles
+<span style="color: #0000FF;">import</span> geopandas <span style="color: #0000FF;">as</span> gpd
+<span style="color: #0000FF;">import</span> pandas <span style="color: #0000FF;">as</span> pd
+</pre>
+</div>
+
+<p>
+I then had to read in the election data, which was a CSV files from the AEC
+containing the Booth, and the final distributed percentage weighting to the ALP
+and Greens candidates, and heir percentage scores.  As well, I read in the
+boundary data:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #BA36A5;">bb</span> = pd.read_csv(<span style="color: #008000;">'Elections/batman_booths_coords.csv'</span>)  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">contains all election info plus lat, long of booths</span>
+<span style="color: #BA36A5;">longs</span> = np.array(bb[<span style="color: #008000;">'Long'</span>])
+<span style="color: #BA36A5;">lats</span> = np.array(bb[<span style="color: #008000;">'Lat'</span>])
+<span style="color: #BA36A5;">v</span> = gpd.read_file(<span style="color: #008000;">'VicMaps/VIC_ELB.MIF'</span>)  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">all electoral divisions in MapInfo form</span>
+<span style="color: #BA36A5;">bg</span> = v.loc[2].geometry                    <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">This is the Polygon representing Batman</span>
+<span style="color: #BA36A5;">b_longs</span> = bg.exterior.xy[0]               <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">These next two lines are the longitudes and latitudes</span>
+<span style="color: #BA36A5;">b_lats</span> = bg.exterior.xy[1]                <span style="color: #8D8D84;">#</span>
+</pre>
+</div>
+
+<p>
+Notice that <code>bb</code> uses Pandas to read in the CSV files which contains all the AEC
+information, as well as the latitude and longitude of each Booth, which I'd
+added myself.  Here <code>longs</code> and <code>lats</code> are the coordinates of the polling
+booths, and <code>b_longs</code> and <code>b-lats</code> are all the vertices which form the boundary
+of the division.
+</p>
+
+<p>
+Now it's all pretty straigtforward, especially with the examples mentioned above:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #BA36A5;">fig</span> = plt.figure(figsize=(16,16))
+
+<span style="color: #BA36A5;">tiler</span> = GoogleTiles()
+<span style="color: #BA36A5;">ax</span> = plt.axes(projection=tiler.crs)
+
+<span style="color: #BA36A5;">margin</span>=0.01
+ax.set_extent((bg.bounds[0]-margin, bg.bounds[2]+margin,bg.bounds[1]-margin, bg.bounds[3]+margin))
+
+ax.add_image(tiler,12)
+<span style="color: #0000FF;">for</span> i <span style="color: #0000FF;">in</span> <span style="color: #006FE0;">range</span>(44):
+    plt.plot(longs[i],lats[i],ga2[i],markersize=<span style="color: #006FE0;">abs</span>(ga[i]),alpha=0.7,transform=ccrs.Geodetic())
+
+plt.plot(b_longs,b_lats,<span style="color: #008000;">'k-'</span>,linewidth=5,transform=ccrs.Geodetic())
+plt.title(<span style="color: #008000;">'Booth results in the 2018 Batman by-election'</span>)
+plt.show()
+</pre>
+</div>
+
+<p>
+Here <code>GoogleTiles</code> provide the street map to be used as the "base" of our map.
+Open Streep Map (as OSM) is available too, but I thin in this instance, Google
+Maps is better.  Because the map is rendered as an image (with some unavoidable
+blurring), I find that Google gave a better result than OSM.
+</p>
+
+<p>
+Also, <code>ga2</code> is a little array which simply produces plotting of the style <code>ro</code>
+(red circle) or <code>go</code> (green circle).  Again, I make the program do most of the
+work.
+</p>
+
+<p>
+And here is the result, saved as an image:
+</p>
+
+<p>
+![Batman 2018](/batman2018trim.png)
+</p>
+
+<p>
+I'm quite pleased with this output.
+</p>
+
+<p>
+And a quick check of some maths, first inline 
+$ (x+2y)<sup>3</sup>=x<sup>3</sup>+6x<sup>2y</sup>+12xy<sup>2</sup>+8y<sup>3</sup> $ and also displayed:
+&lt;div&gt;
+\[
+\int^\infty_{-\infty}e^{-x^2}\,dx=\sqrt{\pi}.
+\]
+&lt;/div&gt;
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alasdair McAndrew</p>
+<p class="date">Created: 2018-04-16 Mon 15:25</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

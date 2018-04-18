@@ -1,0 +1,51 @@
+baseURL = ""
+languageCode = "en-us"
+title = "What's all this, then?"
+theme = "blackburn"
+canonifyurls = true
+paginate = 10
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  subtitle = "Mathematics, software, general nonsense"
+  brand = "All the good stuff"
+  highlightjs = "kimbie.light"
+  highlightjs_extra_languages = ["lisp","bash"]
+  # custom_css = ["css/jsxgraph.css"]
+  # custom_js = ["js/jsxgraphcore.js"]
+
+[social]
+	twitter = "amca01"
+	reddit = "amca01"
+	facebook = "alasdair.mcandrew"
+	gitlab = ""
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+	name = "Home"
+	pre = "<i class='fa fa-home fa-fw'></i>"
+	weight = 1
+	identifier = "home"
+	url = "/"
+  [[menu.main]]
+	name = "Tags"
+	pre = "<i class='fa fa-list fa-fw'></i>"
+	weight = 3
+	identifier = "tags"
+	url = "/tags/"
+  [[menu.main]]
+	name = "Github"
+	pre = "<i class='fa fa-github fa-fw'></i>"
+	weight = 5
+	identifier = "github"
+	url = "https://www.github.com/amca01"
+  [[menu.main]]
+        name = "About"
+        pre = "<i class='fa fa-user fa-fw'></i>"
+        weight = 7
+        identifier = "about"
+        url = "/pages/about/"
+

@@ -1,0 +1,522 @@
+#+STARTUP: content
+#+AUTHOR: Alasdair McAndrew
+#+HUGO_BASE_DIR: /home/amca/Nextcloud/Blogs/Hugo/whats_this
+# #+HUGO_AUTO_SET_LASTMOD: t
+
+* Pages
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_SECTION: pages
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** About me
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: about
+   :END:
+This is the newest version of my "Numbers and Shapes" blog, containing material
+on elementary mathematics, mathematics education, software, and anything else
+that takes my fancy.
+
+And this is me, on the observation deck of the Oriental Pearl Tower, Shanghai:
+
+![amca](/amca01.jpg)
+
+
+* Posts
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: post
+  :END:
+** JSXGraph test
+:PROPERTIES:
+:EXPORT_FILE_NAME: jsxgraph_test
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-04-18
+:END:
+
+<div id="box" class="jxgbox" style="width:750px; height:500px;">
+<script type="text/javascript">
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 2.5, -1.5], axis:true,keepAspectRatio:true});
+ var origin = board.create('point',[0,0],{visible:false,fixed:true});
+ var s = board.create('slider',[[1,1.25],[2.5,1.25],[0,0,Math.PI/2]]);
+ var c = board.create('circle',[origin,1.0]);
+ var a = board.create('point',[
+         () => -Math.cos(s.Value()),
+         () => Math.sin(s.Value())
+         ],{name:'A'});
+ var b = board.create('point',[
+         () => Math.cos(s.Value()/3),
+         () => Math.sin(s.Value()/3)
+         ],{name:'B'});
+ var d = board.create('point',[
+         () => 3*Math.cos(s.Value()/3)/0.5,0
+         ],{name:'C'});
+ var l1 = board.create('line',[a,d]);
+ var l2 = board.create('segment',[b,d],{strokeWidth:4,strokeColor:'#FF0000'});
+</script>
+</div>
+
+** Exploring JSXGraph
+:PROPERTIES:
+:EXPORT_FILE_NAME: exploring_jsxgraph
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-04-14
+:END:
+
+[JSXGraph](https://jsxgraph.org/wp/index.html) is a graphics package deveoped in
+Javascript, and which seems to be tailor-made for a static blog such as this.
+It consists of only two files: the javascript file itself, and an accompanying
+css file, which you can download.   Alternaively you can simply link to the
+online files at the Javascript content delivery site
+[cdnjs](https://cdnjs.com/about) managed by
+[cloudflare](https://www.cloudflare.com/).  There are cloudflare servers all
+over the world - even in my home town of Melbourne, Australia. 
+
+So I modified the =head.html= file of my theme to include a link to the
+necessary files:
+
+
+
+#+begin_src html
+#+end_src
+
+So I downloaded the javascript and css files as described
+[here](https://jsxgraph.uni-bayreuth.de/wp/download/index.html)
+and also, for good measure, added the script line (from that page) to the
+=layouts/partials/head.html= file of the theme.  Then copied the following 
+snippet from the JSXGraph site:
+
+#+begin_src html
+<div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript">
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10], axis:true});
+</script>
+#+end_src
+
+However, to make this work the entire script needs to be inside a =<div>=,
+=</div>= pair, like this:
+
+#+begin_src html
+<div id="box" class="jxgbox" style="width:500px; height:500px;">
+<script type="text/javascript">
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10], axis:true});
+</script>
+</div>
+#+end_src
+
+Just to see how well this works, here's Archimedes' /neusis/ construction of an
+angle trisection: given an angle $\theta$ in a unit semicircle, its trisection is
+obtained by laying against the circle a straight line with points spaced 1
+apart (drag point A about the circle to see this in action):
+#+begin_export html 
+<div id="box" class="jxgbox" style="width:750px; height:500px;">
+<script type="text/javascript">
+ JXG.Options.axis.ticks.insertTicks = false;
+ JXG.Options.axis.ticks.drawLabels = false;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 3, -1.5],axis:true,keepAspectRatio:true});
+ var p = board.create('point',[0,0],{visible:false,fixed:true});
+ var neg = board.create('point',[-0.67,0],{visible:false,fixed:true});
+ var c = board.create('circle',[[0,0],1.0]);
+ var a = board.create('glider',[-Math.sqrt(0.5),Math.sqrt(0.5),c],{name:'A'});
+ var l1 = board.create('segment',[a,p]);
+ var ang = board.create('angle',[a,p,neg],{radius:0.67,name:'θ',type:'sector'});
+ var theta = JXG.Math.Geometry.rad(a,p,neg);
+ var bb = board.create('point',[
+          () => Math.cos(Math.atan2(a.Y(),-a.X())/3),
+          () => Math.sin(Math.atan2(a.Y(),-a.X())/3)
+          ],{name:'B'});
+ var w = board.create('point',[() =>  2*Math.cos(Math.atan2(a.Y(),-a.X())/3),0]);
+ var l2 = board.create('line',[a,w]);
+ var l3 = board.create('segment',[p,bb]);
+ var l4 = board.create('segment',[bb,w],{strokeWidth:6,strokeColor:'#FF0000'});
+ var ang2 = board.create('angle',[bb,w,neg],{radius:0.67,name:'θ/3'});
+</script> 
+</div>
+#+end_export
+
+For what it's worth, here is the splendid javascript code to produce the above
+figure:
+
+#+begin_src html
+<div id="box" class="jxgbox" style="width:500px; height:333.33px;">
+<script type="text/javascript">
+ JXG.Options.axis.ticks.insertTicks = false;
+ JXG.Options.axis.ticks.drawLabels = false;
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 3, -1.5],axis:true});
+ var p = board.create('point',[0,0],{visible:false,fixed:true});
+ var neg = board.create('point',[-0.67,0],{visible:false,fixed:true});
+ var c = board.create('circle',[[0,0],1.0]);
+ var a = board.create('glider',[-Math.sqrt(0.5),Math.sqrt(0.5),c],{name:'A'});
+ var l1 = board.create('segment',[a,p]);
+ var ang = board.create('angle',[a,p,neg],{radius:0.67,name:'θ'});
+ var theta = JXG.Math.Geometry.rad(a,p,neg);
+ var bb = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3);},function(){return Math.sin(Math.atan2(a.Y(),-a.X())/3);}],{name:'B'});
+ var w = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3)/0.5;},0]);
+ var l2 = board.create('line',[a,w]);
+ var l3 = board.create('segment',[p,bb]);
+ var l4 = board.create('segment',[bb,w],{strokeWidth:6,strokeColor:'#FF0000'});
+ var ang2 = board.create('angle',[bb,w,neg],{radius:0.67,name:'θ/3'});
+</script> 
+</div>
+#+end_src
+
+Quite wonderful, it is.
+
+
+** The trinomial theorem                      :mathematics:algebra:
+:PROPERTIES:
+:EXPORT_FILE_NAME: trinomial_theorem
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-04-05
+:END:
+When I was teaching the binomial theorem (or, to be more accurate, the binomial
+/expansion/) to my long-suffering students, one of them asked me if there was a
+/trinomial/ theorem.  Well, of course there is, although in fact expanding sums
+of greater than two terms is generally not classed as a theorem described by the
+number of terms. The general result is
+
+\[
+(x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n}
+{n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k}
+\]
+
+so in particular a "trinomial theorem" would be
+
+\[
+(x+y+z)^n=\sum_{a+b+c=n}{n\choose a,b,c}x^ay^bz^c.
+\]
+
+Here we define
+
+\[
+{n\choose a,b,c}=\frac{n!}{a!b!c!}
+\]
+
+and this is known as a /trinomial coefficient/; more generally, for an arbitrary
+number of variables, it is a /multinomial coefficient/.  It is guaranteed to be
+an integer if the lower values sum to the upper value.
+
+So to compute $(x+y+z)^5$ we could list all integers $a,b,c$ with $0\le a,b,c\le 5$
+for which $a+b+c=5$, and put them all into the above sum.  
+
+But of course there's a better way, and it comes from expanding $(x+y+z)^5$ as a
+binomial $(x+(y+z))^5$ so that
+
+\begin{array}{rcl}
+(x+(y+x))^5&=&x^5\\
+&&+5x^4(y+z)\\
+&&+10x^3(y+z)^2\\
+&&+10x^2(y+z)^3\\
+&&+5x(y+z)^4\\
+&&+(y+z)^5
+\end{array}
+
+Now we can expand each of those binomial powers:
+
+\begin{array}{rcl}
+(x+(y+x))^5&=&x^5\\
+&&+5x^4(y+z)\\
+&&+10x^3(y^2+2yz+z^2)\\
+&&+10x^2(y^3+3y^2z+3yz^2+z^3)\\
+&&+5x(y^4+4y^3z+6y^2z^2+4yz^3+z^4)\\
+&&+(y^5+5y^4z+10y^3z^2+10y^2z^3+5yz^4+z^5)
+\end{array}
+
+Expanding this produces
+
+\begin{split}
+x^5&+5x^4y+5x^4z+10x^3y^2+20x^3yz+10x^3z^2+10x^2y^3+30x^2y^2z+30x^2yz^3\\
+&+10x^2z^3+5zy^4+20xy^3z+30xy^2z^2+20xyz^3+5xz^4+y^5+5y^4z+10y^3z^2\\
+&+10y^2z^3+5yz^4+z^5
+\end{split}
+
+which is an equation of rare beauty.
+
+But there's a nice way of setting this up, which involves writing down Pascal's
+triangle to the fifth row, and putting a fifth row, as a column, on the side.
+Then multiply across:
+
+\begin{array}{lcccccccccc}
+1&&&&&&1&&&&&\\
+5&&&&&1&&1&&&&\\
+10\quad\times&&&&1&&2&&1&&&\\
+10&&&1&&3&&3&&1&&\\
+5&&1&&4&&6&&4&&1&\\
+1&1&&5&&10&&10&&5&&1
+\end{array}
+
+to produce the final array of coefficients (with index numbers at the left):
+
+\begin{array}{l*{10}{c}}
+0\qquad{}&&&&&&1&&&&&\\
+1&&&&&5&&5&&&&\\
+2&&&&10&&20&&10&&&\\
+3&&&10&&30&&30&&10&&\\
+4&&5&&20&&30&&20&&5&\\
+5&1&&5&&10&&10&&5&&1
+\end{array}
+
+Row $i$ of this array corresponds to $x^{5-i}$ and all combinations of powers
+$y^bz^c$ for $0\le b,c\le i$.  Thus for example the fourth row down,
+corresponding to \( i=3 \), may be considered as the coefficients of the terms
+
+\[
+x^2y^3,\quad x^2y^2z,\quad x^2yz^2,\quad xz^3.
+\]
+
+Note that the triangle of coefficients is symmetrical along all three centre
+lines, as well as rotationally symmetric by 120°.  
+
+** Playing with Hugo                                     :hugo:org:
+:PROPERTIES:
+:EXPORT_FILE_NAME: playing_with_Hugo
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-04-03
+:END:
+I've been using wordpress as my blogging platform since I first started, about
+10 years ago.  (In fact the first post I can find is dated March 30, 2008.)  I
+chose [wordpress.com](http://wordpress.com) back then because it was (a) free,
+and (b) supported mathematics through a version (or subset) of
+[LaTeX](https://www.latex-project.org).  As I have used LaTeX extensively for
+all my writing since the early 1990's, it's a standard requirement for me.
+
+Some time later I decided to start hosting my own server (well, a VPS), on which
+I could use [wordpress.org](https://wordpress.org), which is the self-hosted
+version of wordpress.  The advantages of a self hosted blog are many, but I
+particularly like the greater freedom, the ability to include a far greater
+variety of plugins, and the larger choice of themes.  And one of the plugins I
+liked particularly was [WP
+QuickLaTeX](https://wordpress.org/plugins/wp-quicklatex/) which provided a LaTeX
+engine far superior to the in-built one of wordpress.com.  Math bloggin heaven!
+
+However, hosting my own wordpress site was not without difficulty.  First I had
+to install it and get it up and running (even this was non-trivial), and then I
+had to manage all the users and passwords: myself as a standard user, wp-admin
+for accessing the Wordpress site itself, a few others.  I have quite a long list
+containing all the commands I used, and all the users and passwords I created.
+
+This served me well, but it was also slow to use.  My VPS is perfectly
+satisfactory, but it is not fast (I'm too cheap to pay for much more than a
+low-powered one), and the edit-save-preview cycle of online blogging with my
+wordpress installation was getting tiresome.  
+
+Plus the issue of security.  I've been hacked once, and I've since managed to
+secure my site with a free certificate from [Let's
+Encrypt](https://letsencrypt.org).  In fact, in many ways Let's Encrypt is one
+of the best things to have happened for security.  An open Certificate Authority
+is manna from heaven, as far as I'm concerned.
+
+Wordpress is of course more than just blogging software.  It now grandly styles
+itself as Site Building software and Content Management System, and the site
+claims that "30% of the web uses Wordpress".  It is in fact hugely powerful and
+deservedly popular, and can be used for pretty much whatever sort of site you
+want to build.   Add to that a seemingly infinite set of plugins, and you have
+an entire ecosystem of web-building.
+
+However, all of that popularity and power comes at a cost: it is big, confusing,
+takes work to maintain, keep secure, and keep up-to-date, and is a target for
+hackers.  Also for me, it has become colossal overkill.  I don't need all those
+bells and whistles; all I want to do is host my blog and share my posts with the
+world (the $1.5\times 10^{-7}\%$ of the world who reads it).
+
+The kicker for me was checking out a [mathematics education
+blog](http://rtalbert.org) by an author I admire greatly, to discover it was
+built with the static blog engine [jekyll](https://jekyllrb.com).  So being the
+inventive bloke I am, I thought I'd do the same.
+
+But a bit of hunting led me to [Hugo](https://gohugo.io), which apparently is
+very similar to jekyll, but much faster, and written in [Go](https://golang.org)
+instead of [Ruby](https://www.ruby-lang.org/en/).  Since I know nothing about
+either Go or Ruby I don't know if it's the language which makes the difference,
+or something else.  But it sure looks nice, and supports
+[mathjax](https://www.mathjax.org) for LaTeX.
+
+So my current plan is to migrate from wordpress to Hugo, and see how it goes!
+** Python GIS, and election results                 :python:voting:
+:PROPERTIES:
+:EXPORT_FILE_NAME: python_GIS
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-03-31
+:END:
+*** Election mapping
+
+A few weeks ago there was a by-election in my local electorate (known as an
+electoral /division/) of Batman here in Australia.  I was interested in
+comparing the results of this election with the previous election two years ago.
+In this division it's become a two-horse race: the Greens against the Australian
+Labor Party.  Although Batman had been a solid Labor seat for almost its entire
+existence - it used to be considered one of the safest Labor seats in the
+country - over the past decade or so the Greens have been making inroads into
+this Labor heartland, to the extent that is no longer considered a safe seat.
+And in fact for this particular election the Greens were the popular choice to
+win.  In the end Labor won, but my interest is not so much tracing the votes,
+but trying to map them.
+
+Python has a vast suite of mapping tools, so much so that it may be that Python
+has become the GIS tool of choice.  And there are lots of web pages devoted to
+discussing these tools and their uses, such as [this
+one](http://matthewrocklin.com/blog/work/2017/09/21/accelerating-geopandas-1).
+
+My interest was producing maps such as are produced by
+[pollbludger](https://www.pollbludger.net/by-elections/fed-2018-03-batman.htm)
+This is the image from that page:
+
+![pollbludger](/pollbludger_batman.png)
+
+As you can see there are basically three elements:
+
+ * the underlying streetmap
+ * the border of the division
+ * the numbers showing the percentage wins of each party at the various polling
+    booths.
+
+I wanted to do something similar, but replace the numbers with circles whose
+sizes showed the strength of the percentage win at each place.
+
+*** Getting the information
+
+Because this election was in a federal division, the management of the polls and
+of the results (including counting the votes) was managed by the Australian
+Electoral Commission, whose [pages about this by-election](
+http://www.aec.gov.au/Elections/supplementary_by_elections/2018-batman/) contain
+pretty much all publicly available information.  You can copy and paste the
+results from their pages, or download them as CSV files.
+
+Then I needed to find the coordinates (Longitude and Latitude) of all the
+polling places, of which there were 42 at fixed locations.  There didn't seem to
+be a downloadable file for this, so for each booth address (given on the AEC
+site), I entered it into Google Maps and copied down the coordinates as given.
+
+The boundaries of all the divisions can again be downloaded from the [AEC GIS
+page](http://www.aec.gov.au/Electorates/gis/index.htm).  These are given in
+various standard GIS files.
+
+*** Putting it all together
+
+The tools I felt brave enough to use were:
+
+  * [Pandas:](https://pandas.pydata.org) Python's data analysis library.  I
+    really only needed to read information from CSV files that I could then use
+    later.
+  * [Geopandas:](http://geopandas.org) This is a GIS library with Pandas-like
+    syntax, and is designed in part to be a GIS extension to Pandas.  I would
+    use it to extract and manage the boundary data of the electoral division.
+  * [Cartopy:](http://scitools.org.uk/cartopy/) which is a library of
+    "cartographic tools".
+
+And of course the standard [matplotlib](http://matplotlib.org) for plotting,
+[numpy](http://www.numpy.org) for array handling.
+
+My guides were the [London tube stations
+example](http://scitools.org.uk/cartopy/docs/latest/gallery/tube_stations.html)
+from Cartopy and a local (Australian) data analysis blog which discussed the
+[use of Cartopy](http://www.net-analysis.com/blog/cartopytiles.html) including
+adding graphics to an map image.
+
+There are lots of other GIS tools for Python, some of which seem to be very good
+indeed, and all of which I downloaded:
+
+  * [Fiona](https://github.com/Toblerity/Fiona): which is a "nimble" API for
+    handling maps
+  * [Descartes](https://bitbucket.org/sgillies/descartes/): which provides a
+    means by which matplotlib can be used to manage geographic objects
+  * [geoplotlib](https://github.com/andrea-cuttone/geoplotlib): for "visualizing
+    geographical data and making maps"
+  * [Folium](http://python-visualization.github.io/folium/): for visualizing maps
+    using the [leaflet.js](http://leafletjs.com) library.  It may be that the
+    mapping I wanted to do with Python could have been done just as well in
+    Javascript alone.  And probably other languages.  I stuck with Python simply
+    because I knew it best.
+  * [QGIS](https://qgis.org/en/site/): which is designed to be a complete free
+    and open source GIS, and with APIs both for Python and C++
+  * [GDAL](http://www.gdal.org): the "Geospatial Data Abstraction Library" which
+    has a [Python package](https://pypi.python.org/pypi/GDAL) also called GDAL,
+    for manipulating geospatial raster and vector data.
+
+I suspect that if I was professionally working in the GIS area some or all of
+these packages would be at least as - and maybe even more - suitable than the
+ones I ended up using.  But then, I was starting from a position of absolute
+zero with regards to GIS, and also I wanted to be able to make use of the tools
+I already knew, such as Pandas, matplotlib, and numpy.
+
+Here's the start, importing the libraries, or the bits of them I needed:
+
+#+begin_src python
+import matplotlib.pyplot as plt
+import numpy as np
+import cartopy.crs as ccrs
+from cartopy.io.img_tiles import GoogleTiles
+import geopandas as gpd
+import pandas as pd
+#+end_src
+
+I then had to read in the election data, which was a CSV files from the AEC
+containing the Booth, and the final distributed percentage weighting to the ALP
+and Greens candidates, and heir percentage scores.  As well, I read in the
+boundary data:
+
+#+begin_src python
+bb = pd.read_csv('Elections/batman_booths_coords.csv')  # contains all election info plus lat, long of booths
+longs = np.array(bb['Long'])
+lats = np.array(bb['Lat'])
+v = gpd.read_file('VicMaps/VIC_ELB.MIF')  # all electoral divisions in MapInfo form
+bg = v.loc[2].geometry                    # This is the Polygon representing Batman
+b_longs = bg.exterior.xy[0]               # These next two lines are the longitudes and latitudes
+b_lats = bg.exterior.xy[1]                #
+#+end_src
+
+Notice that =bb= uses Pandas to read in the CSV files which contains all the AEC
+information, as well as the latitude and longitude of each Booth, which I'd
+added myself.  Here =longs= and =lats= are the coordinates of the polling
+booths, and =b_longs= and =b-lats= are all the vertices which form the boundary
+of the division.
+
+Now it's all pretty straigtforward, especially with the examples mentioned above:
+
+#+begin_src python
+fig = plt.figure(figsize=(16,16))
+
+tiler = GoogleTiles()
+ax = plt.axes(projection=tiler.crs)
+
+margin=0.01
+ax.set_extent((bg.bounds[0]-margin, bg.bounds[2]+margin,bg.bounds[1]-margin, bg.bounds[3]+margin))
+
+ax.add_image(tiler,12)
+for i in range(44):
+    plt.plot(longs[i],lats[i],ga2[i],markersize=abs(ga[i]),alpha=0.7,transform=ccrs.Geodetic())
+
+plt.plot(b_longs,b_lats,'k-',linewidth=5,transform=ccrs.Geodetic())
+plt.title('Booth results in the 2018 Batman by-election')
+plt.show()
+#+end_src 
+
+Here =GoogleTiles= provide the street map to be used as the "base" of our map.
+Open Streep Map (as OSM) is available too, but I thin in this instance, Google
+Maps is better.  Because the map is rendered as an image (with some unavoidable
+blurring), I find that Google gave a better result than OSM.
+
+Also, =ga2= is a little array which simply produces plotting of the style =ro=
+(red circle) or =go= (green circle).  Again, I make the program do most of the
+work.
+
+And here is the result, saved as an image:
+
+![Batman 2018](/batman2018trim.png)
+
+I'm quite pleased with this output.
+
+And a quick check of some maths, first inline 
+$ (x+2y)^3=x^3+6x^2y+12xy^2+8y^3 $ and also displayed:
+<div>
+$$
+\int^\infty_{-\infty}e^{-x^2}\,dx=\sqrt{\pi}.
+$$
+</div>
+
+* COMMENT Local Variables                                 :ARCHIVE:
+# Local Variables:
+# fill-column: 80
+# eval: (auto-fill-mode 1)
+# eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
+# org-hugo-footer: "\n\n[//]: # \"Exported with love from a post written in Org mode\"\n[//]: # \"- https://github.com/kaushalmodi/ox-hugo\""
+# End:
