@@ -6,6 +6,22 @@ draft = false
 mathjax = true
 +++
 
+[JSXGraph](<https://jsxgraph.org/wp/index.html>) is a graphics package deveoped in
+Javascript, and which seems to be tailor-made for a static blog such as this.
+It consists of only two files: the javascript file itself, and an accompanying
+css file, which you can download.   Alternaively you can simply link to the
+online files at the Javascript content delivery site
+[cdnjs](<https://cdnjs.com/about>) managed by
+[cloudflare](<https://www.cloudflare.com/>).  There are cloudflare servers all
+over the world - even in my home town of Melbourne, Australia.
+
+So I modified the `head.html` file of my theme to include a link to the
+necessary files:
+
+```html
+
+```
+
 So I downloaded the javascript and css files as described
 [here](<https://jsxgraph.uni-bayreuth.de/wp/download/index.html>)
 and also, for good measure, added the script line (from that page) to the

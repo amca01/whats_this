@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.37" />
 
-  <title>Posts &middot; What&#39;s all this, then?</title>
+  <title>Graphs of Eggs &middot; What&#39;s all this, then?</title>
 
   
   
@@ -44,8 +44,6 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="What&#39;s all this, then?" href="https://numbersandshapes.net/blog/post/index.xml" />
   
 
   
@@ -114,10 +112,6 @@
   <div class="pure-menu social">
   <ul class="pure-menu-list">
 
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://numbersandshapes.net/blog/post/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
     
 
     
@@ -225,30 +219,131 @@
 
 
 <div class="header">
-  <h1>Posts</h1>
+  <h1>Graphs of Eggs</h1>
+  <h2></h2>
 </div>
 <div class="content">
-  
-  <h2>2018</h2>
-  <ul>
-  
-    <li><time>20 Apr 2018, 00:00</time> - <a href="https://numbersandshapes.net/blog/post/egg_graphs/">Graphs of Eggs</a></li>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>20 Apr 2018, 00:00</time>
+  </div>
 
   
-    <li><time>14 Apr 2018, 00:00</time> - <a href="https://numbersandshapes.net/blog/post/exploring_jsxgraph/">Exploring JSXGraph</a></li>
 
   
-    <li><time>05 Apr 2018, 00:00</time> - <a href="https://numbersandshapes.net/blog/post/trinomial_theorem/">The trinomial theorem</a></li>
 
   
-    <li><time>03 Apr 2018, 00:00</time> - <a href="https://numbersandshapes.net/blog/post/playing_with_hugo/">Playing with Hugo</a></li>
+
+</div>
+
+  <p>I recently came across some nice material on <a href="https://www.johndcook.com/blog/">John Cook&rsquo;s
+blog</a> about equations that described eggs.</p>
+
+<p>It turns out there are vast number of equations whose graphs are egg-shaped:
+that is, basically ellipse shape, but with one end &ldquo;rounder&rdquo; than the other.</p>
+
+<p>You can see lots at Jürgen Köller&rsquo;s <a href="http://www.mathematische-basteleien.de/eggcurves.htm">Mathematische
+Basteleien</a> page.
+(Although this blog is mostly in German, there are enough English language pages
+for monoglots such as me).  And plenty of egg equations can be found in the
+<a href="http://www.2dcurves.com/">2dcurves</a> pages.</p>
+
+<p>Another excellent source of eggy equations is <a href="http://www.geocities.jp/nyjp07/index_egg_E.html">TDCC
+Laboratory</a> from Japan (the
+link here is to their English language page).  For the purposes of experimenting
+we will use equations from this TDCC, adjusted as necessary.  Many of their
+equations are given in parametric form, which means they can be easily graphed
+and explored using <a href="https://jsxgraph.org/wp/index.html">JSXGraph</a>.</p>
+
+<p>The first set of parametric equations, whose author is given to be Nobuo
+Yamamoto, is:</p>
+
+<p>\begin{align*}
+x&amp;=(a+b+b\cos\theta)\cos\theta\\<br />
+y&amp;=(a+b\cos\theta)\sin\theta
+\end{align*}</p>
+
+<p>If we divide these equations by \(a\), and use the parameter \(c\) for \(b/a\) we
+obtain slightly simpler equations:</p>
+
+<p>\begin{align*}
+x&amp;=(1+c+c\cos\theta)\cos\theta\\<br />
+y&amp;=(1+c\cos\theta)\sin\theta
+\end{align*}</p>
+
+<p>Here you can explore values of \(c\) between 0 and 1:</p>
+
+<div id="box" class="jxgbox" style="width:750px; height:375px;">
+<script type="text/javascript">
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-2, 2, 4, -1.5], axis:true,keepAspectRatio:true});
+ var c = board.create('slider',[[1,1.5],[3,1.5],[0,0,1]],{name:'c'});
+ var egg = board.create('curve',
+                       [function(t){ return (1+c.Value()+c.Value()*Math.cos(t))*Math.cos(t);},
+                        function(t){ return (1+c.Value()*Math.cos(t))*Math.sin(t);},
+                        0, 2*Math.PI],{strokeWidth:4}
+                        );
+
+</script>
+</div>
+
+<p>Another <a href="http://www.geocities.jp/nyjp07/index_egg_by_Itou_E.html">set of equations</a> is said to be due to <a href="http://web1.kcn.jp/hp28ah77/us_author.htm">Tadao
+Ito</a> (whose surname is sometimes
+transliterated as Itou):</p>
+
+<p>\begin{align*}
+x&amp;=\cos\theta\\<br />
+y&amp;=c\cos\frac{\theta}{4}\sin\theta
+\end{align*}</p>
+
+<div id="box2" class="jxgbox" style="width:500px; height:375px;">
+<script type="text/javascript">
+ // var board2 = JXG.JSXGraph.freeBoard(board2);
+ var board2 = JXG.JSXGraph.initBoard('box2', {boundingbox: [-1.5, 1.5, 2, -1.5], axis:true,keepAspectRatio:true});
+ var c2 = board2.create('slider',[[0.25,1.25],[1.75,1.25],[0,0,1.5]],{name:'c'});
+ var egg2 = board2.create('curve',
+                       [function(t){ return Math.cos(t);},
+                        function(t){ return c2.Value()*Math.cos(t/4)*Math.sin(t);},
+                        -Math.PI, Math.PI],{strokeWidth:4}
+                        );
+
+</script>
+</div>
+
+<p>Many more equations: parametric, implicit, can be found at the sites linked above.</p>
+
 
   
-    <li><time>31 Mar 2018, 00:00</time> - <a href="https://numbersandshapes.net/blog/post/python_gis/">Python GIS, and election results</a></li>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://numbersandshapes.net/blog/post/exploring_jsxgraph/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://numbersandshapes.net/blog/post/exploring_jsxgraph/">Exploring JSXGraph</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
 
   
-  </ul>
-  
+
 </div>
 
 </div>

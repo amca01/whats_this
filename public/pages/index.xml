@@ -11,13 +11,13 @@
     
     
     <item>
-      <title>About me</title>
+      <title>About this blog</title>
       <link>https://numbersandshapes.net/blog/pages/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://numbersandshapes.net/blog/pages/about/</guid>
       <description>This is the newest version of my &amp;ldquo;Numbers and Shapes&amp;rdquo; blog, containing material on elementary mathematics, mathematics education, software, and anything else that takes my fancy.
-And this is me, on the observation deck of the Oriental Pearl Tower, Shanghai:</description>
+It is created in Hugo, a static blog engine which is blindingly fast, and works by simply serving up static html files (along with any necessary javascript). There is no database, and far less to fiddle with than with wordpress. Because it is static there is less opportunity for user input (such as comments) but that&amp;rsquo;s not an issue for me, as about 99.</description>
     </item>
     
   </channel>

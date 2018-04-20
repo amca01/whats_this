@@ -239,7 +239,22 @@
 
 </div>
 
-  <p>So I downloaded the javascript and css files as described
+  <p><a href="https://jsxgraph.org/wp/index.html">JSXGraph</a> is a graphics package deveoped in
+Javascript, and which seems to be tailor-made for a static blog such as this.
+It consists of only two files: the javascript file itself, and an accompanying
+css file, which you can download.   Alternaively you can simply link to the
+online files at the Javascript content delivery site
+<a href="https://cdnjs.com/about">cdnjs</a> managed by
+<a href="https://www.cloudflare.com/">cloudflare</a>.  There are cloudflare servers all
+over the world - even in my home town of Melbourne, Australia.</p>
+
+<p>So I modified the <code>head.html</code> file of my theme to include a link to the
+necessary files:</p>
+
+<pre><code class="language-html">
+</code></pre>
+
+<p>So I downloaded the javascript and css files as described
 <a href="https://jsxgraph.uni-bayreuth.de/wp/download/index.html">here</a>
 and also, for good measure, added the script line (from that page) to the
 <code>layouts/partials/head.html</code> file of the theme.  Then copied the following
@@ -266,24 +281,23 @@ angle trisection: given an angle \(\theta\) in a unit semicircle, its trisection
 obtained by laying against the circle a straight line with points spaced 1
 apart (drag point A about the circle to see this in action):</p>
 
-<div id="box" class="jxgbox" style="width:500px; height:333.33px;">
+<div id="box" class="jxgbox" style="width:750px; height:500px;">
 <script type="text/javascript">
  JXG.Options.axis.ticks.insertTicks = false;
  JXG.Options.axis.ticks.drawLabels = false;
- var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 3, -1.5],axis:true});
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-1.5, 1.5, 3, -1.5],axis:true,keepAspectRatio:true});
  var p = board.create('point',[0,0],{visible:false,fixed:true});
  var neg = board.create('point',[-0.67,0],{visible:false,fixed:true});
  var c = board.create('circle',[[0,0],1.0]);
  var a = board.create('glider',[-Math.sqrt(0.5),Math.sqrt(0.5),c],{name:'A'});
  var l1 = board.create('segment',[a,p]);
- //var sc = board.create('transform', [0.67, 0.67], {type: 'scale'});
- //var a2 = board.create('point', [a, sc],{visible:false});
- var ang = board.create('angle',[a,p,neg],{radius:0.67,name:'θ'});
- // var theta = ang.Value();
+ var ang = board.create('angle',[a,p,neg],{radius:0.67,name:'θ',type:'sector'});
  var theta = JXG.Math.Geometry.rad(a,p,neg);
- // var b = board.create('point',trisect(a),{name:'B'});
- var bb = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3);},function(){return Math.sin(Math.atan2(a.Y(),-a.X())/3);}],{name:'B'});
- var w = board.create('point',[function(){return Math.cos(Math.atan2(a.Y(),-a.X())/3)/0.5;},0]);
+ var bb = board.create('point',[
+          () => Math.cos(Math.atan2(a.Y(),-a.X())/3),
+          () => Math.sin(Math.atan2(a.Y(),-a.X())/3)
+          ],{name:'B'});
+ var w = board.create('point',[() =>  2*Math.cos(Math.atan2(a.Y(),-a.X())/3),0]);
  var l2 = board.create('line',[a,w]);
  var l3 = board.create('segment',[p,bb]);
  var l4 = board.create('segment',[bb,w],{strokeWidth:6,strokeColor:'#FF0000'});
@@ -338,8 +352,14 @@ figure:</p>
   </div>
   <div class="pure-u-10-24">
     
+    <nav class="next">
+      <a href="https://numbersandshapes.net/blog/post/egg_graphs/">Graphs of Eggs</a>
+    </nav>
+    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://numbersandshapes.net/blog/post/egg_graphs/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
