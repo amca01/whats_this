@@ -45,6 +45,35 @@ currently a price I'm very happy to pay.
 [Email](mailto:amca@numbersandshapes.net)
 
 
+* Numbers and Shapes
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_SECTION: nshapes
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+** Numbers and Shapes
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_FILE_MENU: :menu "main"
+  :EXPORT_FILE_NAME: _index
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+My old blog, exported from Wordpress
+** Post 1
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_FILE_NAME: post_1
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+Just to see how it works
+** Post 2
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_FILE_NAME: post_2
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+and another one, for experiment.
+
 * Posts
   :PROPERTIES:
   :EXPORT_HUGO_SECTION: post
@@ -591,6 +620,8 @@ $$
 $$
 </div>
 
+
+
 * COMMENT Local Variables                                 :ARCHIVE:
 # Local Variables:
 # fill-column: 80
@@ -598,3 +629,4 @@ $$
 # eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
 # org-hugo-footer: "\n\n[//]: # \"Exported with love from a post written in Org mode\"\n[//]: # \"- https://github.com/kaushalmodi/ox-hugo\""
 # End:
+

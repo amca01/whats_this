@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mathematics on What&#39;s all this, then?</title>
-    <link>https://numbersandshapes.net/blog/tags/mathematics/</link>
+    <link>/tags/mathematics/</link>
     <description>Recent content in Mathematics on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Apr 2018 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://numbersandshapes.net/blog/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The trinomial theorem</title>
-      <link>https://numbersandshapes.net/blog/post/trinomial_theorem/</link>
+      <link>/post/trinomial_theorem/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/post/trinomial_theorem/</guid>
+      <guid>/post/trinomial_theorem/</guid>
       <description>When I was teaching the binomial theorem (or, to be more accurate, the binomial expansion) to my long-suffering students, one of them asked me if there was a trinomial theorem. Well, of course there is, although in fact expanding sums of greater than two terms is generally not classed as a theorem described by the number of terms. The general result is
 \[ (x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n} {n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k} \]
 so in particular a &amp;ldquo;trinomial theorem&amp;rdquo; would be</description>

@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on What&#39;s all this, then?</title>
-    <link>https://numbersandshapes.net/blog/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Apr 2018 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://numbersandshapes.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Algebra</title>
-      <link>https://numbersandshapes.net/blog/tags/algebra/</link>
+      <link>/tags/algebra/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/tags/algebra/</guid>
+      <guid>/tags/algebra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://numbersandshapes.net/blog/tags/hugo/</link>
+      <link>/tags/hugo/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/tags/hugo/</guid>
+      <guid>/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mathematics</title>
-      <link>https://numbersandshapes.net/blog/tags/mathematics/</link>
+      <link>/tags/mathematics/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/tags/mathematics/</guid>
+      <guid>/tags/mathematics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Org</title>
-      <link>https://numbersandshapes.net/blog/tags/org/</link>
+      <link>/tags/org/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/tags/org/</guid>
+      <guid>/tags/org/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://numbersandshapes.net/blog/tags/python/</link>
+      <link>/tags/python/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/tags/python/</guid>
+      <guid>/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Voting</title>
-      <link>https://numbersandshapes.net/blog/tags/voting/</link>
+      <link>/tags/voting/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/tags/voting/</guid>
+      <guid>/tags/voting/</guid>
       <description></description>
     </item>
     

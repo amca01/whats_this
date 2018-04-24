@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on What&#39;s all this, then?</title>
-    <link>https://numbersandshapes.net/blog/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://numbersandshapes.net/blog/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Graphs of Eggs</title>
-      <link>https://numbersandshapes.net/blog/post/egg_graphs/</link>
+      <link>/post/egg_graphs/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/post/egg_graphs/</guid>
+      <guid>/post/egg_graphs/</guid>
       <description>I recently came across some nice material on John Cook&amp;rsquo;s blog about equations that described eggs.
 It turns out there are vast number of equations whose graphs are egg-shaped: that is, basically ellipse shape, but with one end &amp;ldquo;rounder&amp;rdquo; than the other.
 You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (Although this blog is mostly in German, there are enough English language pages for monoglots such as me). And plenty of egg equations can be found in the 2dcurves pages.</description>
@@ -24,19 +24,19 @@ You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (
     
     <item>
       <title>Exploring JSXGraph</title>
-      <link>https://numbersandshapes.net/blog/post/exploring_jsxgraph/</link>
+      <link>/post/exploring_jsxgraph/</link>
       <pubDate>Sat, 14 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/post/exploring_jsxgraph/</guid>
+      <guid>/post/exploring_jsxgraph/</guid>
       <description>JSXGraph is a graphics package deveoped in Javascript, and which seems to be tailor-made for a static blog such as this. It consists of only two files: the javascript file itself, and an accompanying css file, which you can download. Alternaively you can simply link to the online files at the Javascript content delivery site cdnjs managed by cloudflare. There are cloudflare servers all over the world - even in my home town of Melbourne, Australia.</description>
     </item>
     
     <item>
       <title>The trinomial theorem</title>
-      <link>https://numbersandshapes.net/blog/post/trinomial_theorem/</link>
+      <link>/post/trinomial_theorem/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/post/trinomial_theorem/</guid>
+      <guid>/post/trinomial_theorem/</guid>
       <description>When I was teaching the binomial theorem (or, to be more accurate, the binomial expansion) to my long-suffering students, one of them asked me if there was a trinomial theorem. Well, of course there is, although in fact expanding sums of greater than two terms is generally not classed as a theorem described by the number of terms. The general result is
 \[ (x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n} {n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k} \]
 so in particular a &amp;ldquo;trinomial theorem&amp;rdquo; would be</description>
@@ -44,19 +44,19 @@ so in particular a &amp;ldquo;trinomial theorem&amp;rdquo; would be</description
     
     <item>
       <title>Playing with Hugo</title>
-      <link>https://numbersandshapes.net/blog/post/playing_with_hugo/</link>
+      <link>/post/playing_with_hugo/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/post/playing_with_hugo/</guid>
+      <guid>/post/playing_with_hugo/</guid>
       <description>I&amp;rsquo;ve been using wordpress as my blogging platform since I first started, about 10 years ago. (In fact the first post I can find is dated March 30, 2008.) I chose wordpress.com back then because it was (a) free, and (b) supported mathematics through a version (or subset) of LaTeX. As I have used LaTeX extensively for all my writing since the early 1990&amp;rsquo;s, it&amp;rsquo;s a standard requirement for me.</description>
     </item>
     
     <item>
       <title>Python GIS, and election results</title>
-      <link>https://numbersandshapes.net/blog/post/python_gis/</link>
+      <link>/post/python_gis/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://numbersandshapes.net/blog/post/python_gis/</guid>
+      <guid>/post/python_gis/</guid>
       <description>Election mapping A few weeks ago there was a by-election in my local electorate (known as an electoral division) of Batman here in Australia. I was interested in comparing the results of this election with the previous election two years ago. In this division it&amp;rsquo;s become a two-horse race: the Greens against the Australian Labor Party. Although Batman had been a solid Labor seat for almost its entire existence - it used to be considered one of the safest Labor seats in the country - over the past decade or so the Greens have been making inroads into this Labor heartland, to the extent that is no longer considered a safe seat.</description>
     </item>
     

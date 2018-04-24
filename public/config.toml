@@ -13,6 +13,8 @@ paginate = 10
   brand = "All the good stuff"
   highlightjs = "kimbie.light"
   highlightjs_extra_languages = ["lisp","bash"]
+  googleAnalytics = "YUA-117935107-1"
+
   # custom_css = ["css/jsxgraph.css"]
   # custom_js = ["js/jsxgraphcore.js"]
 
@@ -43,9 +45,15 @@ paginate = 10
 	identifier = "github"
 	url = "https://www.github.com/amca01"
   [[menu.main]]
+	name = "Numbers and Shapes"
+	pre = "<i class='fa fa-wordpress fa-fw'></i>"
+	weight = 7
+	identifier = "nshapes"
+	url = "/nshapes/"
+  [[menu.main]]
         name = "About"
         pre = "<i class='fa fa-user fa-fw'></i>"
-        weight = 7
+        weight = 9
         identifier = "about"
         url = "/pages/about/"
 
