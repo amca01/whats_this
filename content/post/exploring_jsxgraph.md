@@ -2,6 +2,7 @@
 title = "Exploring JSXGraph"
 author = ["Alasdair McAndrew"]
 date = 2018-04-14
+tags = ["jsxgraph"]
 draft = false
 mathjax = true
 +++

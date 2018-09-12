@@ -6,7 +6,7 @@
     <description>Recent content in Tags on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Apr 2018 00:00:00 +1000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +1000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Algebra</title>
       <link>/tags/algebra/</link>
-      <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +1000</pubDate>
       
       <guid>/tags/algebra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geometry</title>
+      <link>/tags/geometry/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>/tags/geometry/</guid>
       <description></description>
     </item>
     
@@ -30,9 +39,18 @@
     </item>
     
     <item>
+      <title>Jsxgraph</title>
+      <link>/tags/jsxgraph/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>/tags/jsxgraph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Mathematics</title>
       <link>/tags/mathematics/</link>
-      <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +1000</pubDate>
       
       <guid>/tags/mathematics/</guid>
       <description></description>

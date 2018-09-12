@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.37" />
+  <meta name="generator" content="Hugo 0.46" />
 
   <title>Python GIS, and election results &middot; What&#39;s all this, then?</title>
 
@@ -46,15 +46,6 @@
  
   
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/kimbie.light.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
   
 
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -366,29 +357,23 @@ zero with regards to GIS, and also I wanted to be able to make use of the tools
 I already knew, such as Pandas, matplotlib, and numpy.</p>
 
 <p>Here&rsquo;s the start, importing the libraries, or the bits of them I needed:</p>
-
-<pre><code class="language-python">import matplotlib.pyplot as plt
-import numpy as np
-import cartopy.crs as ccrs
-from cartopy.io.img_tiles import GoogleTiles
-import geopandas as gpd
-import pandas as pd
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45">matplotlib.pyplot</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45">plt</span>
+<span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45">numpy</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45">np</span>
+<span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45">cartopy.crs</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45">ccrs</span>
+<span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45">cartopy.io.img_tiles</span> <span style="color:#8b008b;font-weight:bold">import</span> GoogleTiles
+<span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45">geopandas</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45">gpd</span>
+<span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45">pandas</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45">pd</span></code></pre></div>
 <p>I then had to read in the election data, which was a CSV files from the AEC
 containing the Booth, and the final distributed percentage weighting to the ALP
 and Greens candidates, and heir percentage scores.  As well, I read in the
 boundary data:</p>
-
-<pre><code class="language-python">bb = pd.read_csv('Elections/batman_booths_coords.csv')  # contains all election info plus lat, long of booths
-longs = np.array(bb['Long'])
-lats = np.array(bb['Lat'])
-v = gpd.read_file('VicMaps/VIC_ELB.MIF')  # all electoral divisions in MapInfo form
-bg = v.loc[2].geometry                    # This is the Polygon representing Batman
-b_longs = bg.exterior.xy[0]               # These next two lines are the longitudes and latitudes
-b_lats = bg.exterior.xy[1]                #
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">bb = pd.read_csv(<span style="color:#cd5555">&#39;Elections/batman_booths_coords.csv&#39;</span>)  <span style="color:#228b22"># contains all election info plus lat, long of booths</span>
+longs = np.array(bb[<span style="color:#cd5555">&#39;Long&#39;</span>])
+lats = np.array(bb[<span style="color:#cd5555">&#39;Lat&#39;</span>])
+v = gpd.read_file(<span style="color:#cd5555">&#39;VicMaps/VIC_ELB.MIF&#39;</span>)  <span style="color:#228b22"># all electoral divisions in MapInfo form</span>
+bg = v.loc[<span style="color:#b452cd">2</span>].geometry                    <span style="color:#228b22"># This is the Polygon representing Batman</span>
+b_longs = bg.exterior.xy[<span style="color:#b452cd">0</span>]               <span style="color:#228b22"># These next two lines are the longitudes and latitudes</span>
+b_lats = bg.exterior.xy[<span style="color:#b452cd">1</span>]                <span style="color:#228b22">#</span></code></pre></div>
 <p>Notice that <code>bb</code> uses Pandas to read in the CSV files which contains all the AEC
 information, as well as the latitude and longitude of each Booth, which I&rsquo;d
 added myself.  Here <code>longs</code> and <code>lats</code> are the coordinates of the polling
@@ -396,24 +381,21 @@ booths, and <code>b_longs</code> and <code>b-lats</code> are all the vertices wh
 of the division.</p>
 
 <p>Now it&rsquo;s all pretty straigtforward, especially with the examples mentioned above:</p>
-
-<pre><code class="language-python">fig = plt.figure(figsize=(16,16))
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(figsize=(<span style="color:#b452cd">16</span>,<span style="color:#b452cd">16</span>))
 
 tiler = GoogleTiles()
 ax = plt.axes(projection=tiler.crs)
 
-margin=0.01
-ax.set_extent((bg.bounds[0]-margin, bg.bounds[2]+margin,bg.bounds[1]-margin, bg.bounds[3]+margin))
+margin=<span style="color:#b452cd">0.01</span>
+ax.set_extent((bg.bounds[<span style="color:#b452cd">0</span>]-margin, bg.bounds[<span style="color:#b452cd">2</span>]+margin,bg.bounds[<span style="color:#b452cd">1</span>]-margin, bg.bounds[<span style="color:#b452cd">3</span>]+margin))
 
-ax.add_image(tiler,12)
-for i in range(44):
-    plt.plot(longs[i],lats[i],ga2[i],markersize=abs(ga[i]),alpha=0.7,transform=ccrs.Geodetic())
+ax.add_image(tiler,<span style="color:#b452cd">12</span>)
+<span style="color:#8b008b;font-weight:bold">for</span> i <span style="color:#8b008b">in</span> <span style="color:#658b00">range</span>(<span style="color:#b452cd">44</span>):
+    plt.plot(longs[i],lats[i],ga2[i],markersize=<span style="color:#658b00">abs</span>(ga[i]),alpha=<span style="color:#b452cd">0.7</span>,transform=ccrs.Geodetic())
 
-plt.plot(b_longs,b_lats,'k-',linewidth=5,transform=ccrs.Geodetic())
-plt.title('Booth results in the 2018 Batman by-election')
-plt.show()
-</code></pre>
-
+plt.plot(b_longs,b_lats,<span style="color:#cd5555">&#39;k-&#39;</span>,linewidth=<span style="color:#b452cd">5</span>,transform=ccrs.Geodetic())
+plt.title(<span style="color:#cd5555">&#39;Booth results in the 2018 Batman by-election&#39;</span>)
+plt.show()</code></pre></div>
 <p>Here <code>GoogleTiles</code> provide the street map to be used as the &ldquo;base&rdquo; of our map.
 Open Streep Map (as OSM) is available too, but I thin in this instance, Google
 Maps is better.  Because the map is rendered as an image (with some unavoidable

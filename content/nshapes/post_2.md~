@@ -1,13 +1,8 @@
 +++
 title = "Post 2"
 author = ["Alasdair McAndrew"]
+date = 2018-04-24
 draft = false
-weight = 2003
-noauthor = true
-nocomment = true
-nodate = true
-nopaging = true
-noread = true
 +++
 
 and another one, for experiment.

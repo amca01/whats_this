@@ -47,38 +47,739 @@ currently a price I'm very happy to pay.
 
 * Numbers and Shapes
   :PROPERTIES:
-  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
   :EXPORT_HUGO_SECTION: nshapes
-  :EXPORT_HUGO_WEIGHT: auto
   :END:
 ** Numbers and Shapes
   :PROPERTIES:
-  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
-  :EXPORT_FILE_MENU: :menu "main"
-  :EXPORT_FILE_NAME: _index
-  :EXPORT_HUGO_WEIGHT: auto
+  :EXPORT_FILE_NAME: numbers_and_shapes
+  :EXPORT_DATE: 2018-04-24
   :END:
-My old blog, exported from Wordpress
-** Post 1
+This is the holding place for my old blog, when I import it from Wordpress.  In
+the meantime, it's [here](https://numbersandshapes.net)
+
+** Presentations and the delight of js-reveal
   :PROPERTIES:
-  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
-  :EXPORT_FILE_NAME: post_1
-  :EXPORT_HUGO_WEIGHT: auto
+  :EXPORT_FILE_NAME: presentations_and_js_reveal
+  :EXPORT_DATE: 2018-09-11
   :END:
+Presentations are a modern bugbear. Anybody in academia or business, or
+any professional field really, will have sat through untold hours of
+presentations. And almost all of them are /terrible/. Wordy,
+uninteresting, too many "transition effects", low information content,
+you know as well as I do.
+
+Pretty much every speaker reads the words on their slides, as though the
+audience were illiterate. I went to a talk once which consisted of 60 --
+yes, sixty -- slides of very dense text, and the presenter read through
+each one. I think people were gnawing their own limbs off out of sheer
+boredom by the end.
+[[https://en.wikipedia.org/wiki/Empire_(1964_film)][Andy Warhol's
+"Empire"]] would have been a welcome relief.
+
+Since most of my talks are technical and full of mathematics, I have
+naturally gravitated to the LaTeX presentation tool
+[[https://en.wikipedia.org/wiki/Beamer_(LaTeX)][Beamer]]. Now Beamer is
+a lovely thing for LaTeX: as part of the LaTeX ecosystem you get all of
+LaTeX loveliness along with elegant slide layouts, transitions, etc. My
+only issue with Beamer (and this is not a new observation by any means),
+is that all Beamer presentations have a certain sameness to them. I
+suspect that this is because most Beamer users are mathematicians, who
+are rightly more interested in co[[https://orgmode.org][]]ntent than
+appearance. It is quite possible of course to make Beamer look like
+something new and different, but hardly anybody does.
+
+However, I am not a mathematician, I am a mathematics educator, and I do
+like my presentations to look good, and if possible to stand out a
+little. I also have a minor issue in that I use Linux on my laptop,
+which sometimes means my computer won't talk to an external projector
+system. Or my USB thumb drive won't be recognized by the computer I'll
+be using, and so on. One way round all this is to use an online system;
+maybe one which can be displayed in a browser, and which can be placed
+on a web server somewhere. There are of course plenty of such tools, and
+I have had a brief dalliance with [[https://prezi.com][prezi]], but for
+me prezi was not the answer: yes it was fun and provided a new paradigm
+for organizing slides, but really, when you took the whizz-bang aspect
+out, what was left? The few prezis I've seen in the wild showed that you
+can be as dull with prezi as with any other software. Also, at the time
+it didn't support mathematics.
+
+In fact I have an abiding distrust of the whole concept of
+"presentations". Most are a colossal waste of time -- people can read so
+there's no need for wordiness, and most of the graphs and charts that
+make up the rest of most slides are dreary and lacklustre. Hardly
+anybody knows how to present information graphically in a way that
+really grabs people's attention. It's lazy and insulting to your
+audience to simply copy a chart from your spreadsheet and assume they'll
+be delighted by it. Then you have the large class of people who fill
+their blank spaces with cute cartoons and clip art. This sort of thing
+annoys me probably more than it should -- when I'm in an audience I
+don't want to be entertained with cute irrelevant additions, I want to
+/learn/. This comes to the heart of presenting. A presenter is acting as
+a teacher; the audience the learners. So presenting should be about
+engaging the audience. What's in your slides comes a distant second. I
+don't want new technology with clever animations and transitions,
+bookmarks, non-linear slide shows; I want presenters to be themselves
+interesting. (As an aside, some of the very worst presentations have
+been at education conferences.)
+
+For a superb example of attention-grabbing graphics, check out the
+[[https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen][TED
+talk]] by the late [[https://en.wikipedia.org/wiki/Hans_Rosling][Hans
+Rosling]]. Or you can admire the work of
+[[https://informationisbeautiful.net][David McCandless]].
+
+I seem to have digressed, from talking about presentation software to
+banging on about the awfulness of presentations generally. So, back to
+the topic.
+
+For a recent conference I determined to do just that: use an online
+presentation tool, and I chose [[https://revealjs.com/#/][reveal.js]]. I
+reckon reveal.js is presentations done right: elegant, customizable,
+making the best use of html for content and css for design; and with
+nicely chosen defaults so that even if you just put a few words on your
+slides the result will still look good. Even better, you can take your
+final slides and put them up on [[https://pages.github.com][github
+pages]] so that you can access them from anywhere in the world with a
+web browser. And if you're going somewhere which is not networked, you
+can always take your slides on some sort of portable media. And it has
+access to almost all of LaTeX via [[https://www.mathjax.org][MathJax]].
+
+One minor problem with reveal.js is that the slides are built up with
+raw html code, and so can be somewhat verbose and hard to read (at least
+for me). However, there is a companion software for emacs org mode
+called [[https://github.com/yjwen/org-reveal][org-reveal]], which
+enables you to structure your reveal.js presentation as an org file.
+This is presentation heaven. The org file gives you structure, and
+reveal.js gives you a lovely presentation.
+
+To make it available, you upload all your presentations to github.pages,
+and you can present from anywhere in the world with an internet
+connection! You can see an example of one of my short presentations at
+
+[[https://amca01.github.io/ATCM_talks/lindenmayer.html]]
+
+Of course the presentation (the software and what you do with it), is in
+fact the least part of your talk. By far the most important part is the
+presenter. The best software in the world won't overcome a boring
+speaker who can't engage an audience.
+
+I like my presentations to be simple and effect-free; I don't want the
+audience to be distracted from my leaping and capering about.
 Just to see how it works
-** Post 2
+** The Vigenere cipher in haskell
   :PROPERTIES:
-  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
-  :EXPORT_FILE_NAME: post_2
-  :EXPORT_HUGO_WEIGHT: auto
+  :EXPORT_FILE_NAME: vigenere_cipher_haskell
+  :EXPORT_DATE: 2018-09-11
   :END:
-and another one, for experiment.
+Programming the Vigenère cipher is my go-to problem when learning a new
+language. It's only ever a few lines of code, but it's a pleasant way of
+getting to grips with some of the basics of syntax. For the past few
+weeks I've been wrestling with [[https://www.haskell.org][Haskell]], and
+I've now got to the stage where a Vigenère program is in fact pretty
+easy.
+
+As you know, the Vigenère cipher works using a plaintext and a keyword,
+which is repeated as often as need be:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+    K E Y K E Y K E Y K E Y K E Y K E Y
+#+END_EXAMPLE
+
+The corresponding letters are added modulo 26 (using the values A=0,
+B=1, C=2, and on up to Z=25), then converted back to letters again. So
+for the example above, we have these corresponding values:
+
+#+BEGIN_EXAMPLE
+    19   7   8  18   8  18  19   7   4  15  11   0   8  13  19   4  23  19
+    10   4  24  10   4  24  10   4  24  10   4  24  10   4  24  10   4  24
+#+END_EXAMPLE
+
+Adding modulo 26 and converting back to letters:
+
+#+BEGIN_EXAMPLE
+    3  11   6   2  12  16   3  11   2  25  15  24  18  17  17
+    D   L   G   C   M   Q   D   L   C   Z   P   Y   S   R   R
+#+END_EXAMPLE
+
+gives us the ciphertext.
+
+The Vigenère cipher is historically important as it is one of the first
+cryptosystems where a single letter may be encrypted to different
+characters in the ciphertext. For example, the two "S"s are encrypted to
+"C" and "Q"; the first and last "T"s are encrypted to "D" and "R". For
+this reason the cipher was considered unbreakable - as indeed it was for
+a long time - and was known to the French as /le chiffre
+indéchiffrable/ - the unbreakable cipher. It was broken in 1863. See the
+[[https://en.wikipedia.org/wiki/Vigenère_cipher][Wikipedia page]] for
+more history.
+
+Suppose the length of the keyword is . Then the -th character of the
+plaintext will correspond to the character of the keyword (assuming a
+zero-based indexing). Thus the encryption can be defined as
+
+\[
+c_i = p_i+k_{i\pmod{n}}\pmod{26}
+\]
+
+However, encryption can also be done without knowing the length of the
+keyword, but by shifting the keyword each time - first letter to the
+end - and simply taking the left-most letter. Like this:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+    K E Y
+#+END_EXAMPLE
+
+so "T"+"K" (modulo 26) is the first encryption. Then we shift the
+keyword:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+      E Y K
+#+END_EXAMPLE
+
+and "H"+"E" (modulo 26) is the second encrypted letter. Shift again:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+        Y K E
+#+END_EXAMPLE
+
+for "I"+"Y"; shift again:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+          K E Y
+#+END_EXAMPLE
+
+for "S"+"K". And so on.
+
+This is almost trivial in Haskell. We need two extra functions from the
+module =Data.Char=: =chr= which gives the character corresponding to the
+ascii value, and =ord= which gives the ascii value of a character:
+
+#+BEGIN_SRC haskell
+    λ> ord 'G'
+    71
+    λ> chr 88
+    'X'
+#+END_SRC
+
+So here's what might go into a little file called =vigenere.hs=:
+
+#+BEGIN_SRC haskell
+    import Data.Char (ord,chr)
+
+    vige :: [Char] -> [Char] -> [Char]
+    vige [] k = []
+    vige p [] = []
+    vige (p:ps) (k:ks) = (encode p k):(vige ps (ks++[k]))
+      where
+        encode a b = chr $ 65 + mod (ord a + ord b) 26
+
+    vigd :: [Char] -> [Char] -> [Char]
+    vigd [] k = []
+    vigd p [] = []
+    vigd (p:ps) (k:ks) = (decode p k):(vigd ps (ks++[k]))
+      where
+        decode a b = chr $ 65 + mod (ord a - ord b) 26
+#+END_SRC
+
+And a couple of tests: the example from above, and the one on the
+Wikipedia page:
+
+#+BEGIN_SRC haskell
+    λ> vige "THISISTHEPLAINTEXT" "KEY"
+    "DLGCMQDLCZPYSRROBR"
+    λ> vige "ATTACKATDAWN" "LEMON"
+    "LXFOPVEFRNHR"
+#+END_SRC
+
 
 * Posts
   :PROPERTIES:
   :EXPORT_HUGO_SECTION: post
   :END:
-** Graphs of Eggs
+** Householder's methods                     :mathematics:algebra:
+:PROPERTIES:
+:EXPORT_FILE_NAME: Householders_methods
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-09-09
+:END:
+These are a class of root-finding methods; that is, for the numerical solution
+of a single nonlinear equation,
+developed by [Alston Scott
+Householder](https://en.wikipedia.org/wiki/Alston_Scott_Householder)
+in 1970. They may be considered a generalisation of the well known [Newton-Raphson
+method](https://en.wikipedia.org/wiki/Newton's_method) (also known more simply
+as /Newton's method/) defined by
+
+\[
+x\leftarrow x-\frac{f(x)}{f'(x)}.
+\]
+
+where the equation to be solved is $f(x)=0$.
+
+From a starting value $x_0$ a sequence of iterates can be generated by
+
+\[
+x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}.
+\]
+
+As is well known, Newton's method exhibits /quadratic convergence/; that is, if
+the sequence of iterates converges to a root value $r$, then the
+limit
+
+\[
+\lim_{n\to\infty}\frac{x_{n+1}-r}{(x_n-r)^2}
+\]
+
+is finite.  This means, in effect, that the number of correct decimal places
+doubles at each step.  Householder's method for a rate of convergence $d+1$ is
+defined by
+
+\[
+x\leftarrow x-d\frac{(1/f)^{(d-1)}(x)}{(1/f)^{(d)}(x)}.
+\]
+
+We show how this definition can be rewritten in terms of ratios of derivatives,
+by using Python and its symbolic toolbox [SymPy](https://www.sympy.org/en/index.html).
+
+We start by defining some variables and functions.
+
+#+begin_src python
+from sympy import *
+x = Symbol('x')
+f = Function('f')(x)
+#+end_src
+
+Now we can define the first Householder formula, with $d=1$:
+
+#+begin_src python
+d = 1
+H1 = x + d*diff(1/f,x,d-1)/diff(1/f,x,d)
+H1
+#+end_src
+
+\[
+x-\frac{f(x)}{\frac{d}{dx}f(x)}
+\]
+
+which is Newton's formula.  Now for $d=2$:
+
+#+begin_src python
+d = 2
+H2 = x + d*diff(1/f,x,d-1)/diff(1/f,x,d)
+H2
+#+end_src
+
+\[
+x - \frac{2 \frac{d}{d x} f{\left (x \right )}}{- \frac{d^{2}}{d x^{2}}  f{\left (x \right )} + \frac{2 \left(\frac{d}{d x} f{\left (x \right )}\right)^{2}}{f{\left (x \right )}}}
+\]
+
+This is a mighty messy formula, but it can be greatly simplified by using ratios
+of derivatives defined by
+
+\[
+r_k=\frac{f^{(d-1}(x)}{f^{(d)}(x)}
+\]
+This means that
+\[
+r_1=\frac{f}{f'},\quad r_2=\frac{f'}{f^{\prime\prime}}
+\]
+To make the subsitution into the current expression above, we can use the
+substitutions
+\[
+f^{\prime\prime}=f'/r_2,\quad f'=f/r_1
+\]
+to be done sequentially (first defining the new symbols)
+#+begin_src python
+r_1,r_2,r_3 = symbols('r_1,r_2,r_3')
+H2r = H2s.subs([(Derivative(f,x,2), Derivative(f,x)/r_2), (Derivative(f,x), f/r_1)]).simplify()
+H2r
+#+end_src
+\[
+-\frac{2r_1r_1}{r_1-2r_2}
+\]
+Dividing the top and bottom by $2r_2$ produces the formulation
+\[
+\frac{r_1}{1-\displaystyle{\frac{r_1}{2r_2}}}
+\]
+and so Householder's method for $d=2$ is defined by the recurrence
+\[
+x\leftarrow x-\frac{r_1}{1-\displaystyle{\frac{r_1}{2r_2}}}.
+\]
+This is known as [Halley's
+method](https://en.wikipedia.org/wiki/Halley's_method), after [Edmond
+Halley](https://en.wikipedia.org/wiki/Edmond_Halley), also known for his comet.
+This method has been called the most often rediscovered iteration formula in the
+literature.
+
+It would exhibit /cubic convergence/, which means that the number of correct
+figures roughly triples at each step.
+
+Apply the same sequence of steps for $d=3$, and including the subsitution
+\[
+f^{\prime\prime\prime} = f^{\prime\prime}/r_3
+\]
+produces the fourth order formula
+\[
+x\leftarrow x-\frac{3 r_{1} r_{3} \left(2r_{2} - r_{1}\right)}{r_{1}^{2} - 6 r_{1} r_{3} + 6 r_{2} r_{3}}
+\]
+
+*** A test
+
+We'll use the equation
+\[
+x^5+x-1=0
+\]
+which has a root close to $0.7$.  First Newton's method, which is the
+Householder method of order $d=1$, and we start by defining the symbol $x$ and
+the function $f$:
+
+#+begin_src python
+x = Symbol('x')
+f = x**5+x-1
+#+end_src
+
+Next define the iteration of Newton's method, which can be turned into a function with the handy tool
+=lambdify=:
+
+#+begin_src python
+nr = lambdify(x, x - f/diff(f,x))
+#+end_src
+
+Now, a few iterations, and print them as strings:
+
+#+begin_src python
+y = 0.7
+ys = [y]
+for i in range(10):
+    y = N(nr(y),100)
+    ys += [y]
+
+for i in ys:
+    print(str(i))
+
+0.7
+0.7599545557827765973613054484303575009107589721679687500000000000000000000000000000000000000000000000
+0.7549197891599746887794253559985793967456078439525201893202319456623650882121929457935763902468565963
+0.7548776691557956141971506438033504033307707534709697222674827264390889507161368160254597915269779252
+0.7548776662466927739251146002523856449587324643131536407777773148939177229546284200355119465808326870
+0.7548776662466927600495088963585290075677963335246916447723036615900830138144428153523526591809355834
+0.7548776662466927600495088963585286918946066177727931439892839706462440390043279509776806970677946058
+0.7548776662466927600495088963585286918946066177727931439892839706460806551280810907382270928422503037
+0.7548776662466927600495088963585286918946066177727931439892839706460806551280810907382270928422503037
+0.7548776662466927600495088963585286918946066177727931439892839706460806551280810907382270928422503037
+0.7548776662466927600495088963585286918946066177727931439892839706460806551280810907382270928422503037
+#+end_src
+We can easily compute the number of correct decimal places each time by simply
+finding the first place in each string where it differs from the previous one:
+
+#+begin_src python
+for i in range(1,7):
+    d = [ys[i][j] == ys[i+1][j] for j in range(102)]
+    print(d.index(False)-2)
+#+end_src
+
+\begin{array}{l}
+2\cr 
+3\cr 
+8\cr 
+16\cr 
+32\cr 
+66
+\end{array}
+
+and we see a remarkable closeness with doubling of the number of correct values
+each iteration.
+
+Now, the fourth order method, with $d=3$:
+
+#+begin_src python
+r1 = lambdify(x,g(x)/diff(g(x),x))
+r2 = lambdify(x,diff(g(x),x)/diff(g(x),x,2))
+r3 = lambdify(x,diff(g(x),x,2)/diff(g(x),x,3))
+h3 = lambdify(x,x-3*r1(x)*r3(x)*(2*r2(x)-r1(x))/(r1(x)**2-6*r1(x)*r3(x)+6*r2(x)*r3(x)))
+#+end_src
+
+Now we basically copy down the above commands, except that we'll use 1500 decimal
+places instead of 100:
+
+#+begin_src python
+y = 0.7
+ys = [str(x)]
+for i in range(10):
+    y = N(h3(x),1500)
+    ys += [str(y)]
+
+for i in range(1,6):
+    d = [xs[i][j] == xs[i+1][j] for j in range(1502)]
+    print(d.index(False)-2)
+#+end_src
+
+\begin{array}{l}
+4\\
+19\\
+76\\
+308\\
+1233
+\end{array}
+
+and we that the number of correct decimal places at each step is indeed
+increased by a factor very close to 4.
+
+** The Joukowsky Transform :noexport:
+:PROPERTIES:
+:EXPORT_FILE_NAME: joukowsky-transform
+:EXPORT_DATE: 2018-08-24
+:END:
+The [Joukowksy Transform](https://en.wikipedia.org/wiki/Joukowsky_transform) is
+an elegant and simple way to create an airfoil shape.  
+
+Let $C$ be a circle in the complex plane that passes through the point $z=1$ and
+encompasses the point $z=-1$.  The transform is defined as
+
+\[
+\zeta=z+\frac{1}{z}.
+\]
+
+We can explore the transform by looking at the circles centred at $(-r,0)$ with
+$r<0$ and with radius $1+r$:
+
+\[
+|z-r|=1+r
+\]
+
+or in cartesian coordinates with parameter $t$:
+
+\begin{align*}
+x &= -r+(1+r)\cos(t)\\
+y &= (1+r)\sin(t)
+\end{align*}
+so that
+\[
+(x,y)\rightarrow \left(x+\frac{x}{x^2+y^2},y-\frac{y}{x^2+y^2}\right).
+\]
+
+
+
+#+begin_export html
+<div id="box" class="jxgbox" style="width:750px; height:375px;">
+<script type="text/javascript">
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-2, 2, 4, -1.5], axis:true,keepAspectRatio:true});
+ var c = board.create('slider',[[1,1.5],[3,1.5],[0,0,1]],{name:'c'});
+ var egg = board.create('curve',
+                       [function(t){ return (1+c.Value()+c.Value()*Math.cos(t))*Math.cos(t);},
+                        function(t){ return (1+c.Value()*Math.cos(t))*Math.sin(t);},
+                        0, 2*Math.PI],{strokeWidth:4}
+                        );
+
+</script>
+</div>
+#+end_export
+
+** Double Damask
+:PROPERTIES:
+:EXPORT_FILE_NAME: double-damask
+:EXPORT_DATE: 2018-04-27
+:END:
+This was a comedy sketch initially performed in the revue ["Clowns in
+Clover"](http://www.guidetomusicaltheatre.com/shows_c/clownsclover.htm) which
+had its first performance at the Adelphi Theatre in London on December 1, 1927.
+This particular sketch was written by [Dion
+Titheradge](http://en.wikipedia.org/wiki/Dion_Titheradge) and starred the
+inimitable [Cicely
+Courtneidge](https://en.wikipedia.org/wiki/Cicely_Courtneidge) as the annoyed
+customer Mrs Spooner.  It has been recorded and is available on many different
+collections; you can also hear it on
+[youtube](https://www.youtube.com/watch?v=0P8XSUGSR-c).
+
+I have loved this sketch since I first heard it as a teenager on a three record
+collection called something like "Masters of Comedy", being a collection of
+classic sketches.  Double Damask has also been performed by Beatrice Lillie, and
+you can search for this also on youtube.  For example,
+[here](https://www.youtube.com/watch?v=GiRyqDfNxqU).  I hope admirers of the
+excellent Ms Lillie will not be upset by my saying I far prefer Cicely
+Courtneidge, whose superb diction and impeccable comic timing are beyond
+reproach.
+
+No doubt the original script is available somewhere, but in the annoying way of
+the internet, I couldn't find it.  So here is my transcription of the
+Courtneidge version of "Double Damask".
+
+---
+
+*Double Damask*
+
+written by
+
+Dion Titheradge
+
+/Characters:/\
+A customer, Mrs Spooner\
+A shop assistant (unnamed)\
+A manager, Mr Peters
+
+/Scene:/ The linen department of a large store.
+
+MRS SPOONER: I wonder if you could tell me if my order has gone off yet?
+
+ASSISTANT: Not knowing your order, madam, I really couldn't say.
+
+MRS SPOONER: But I was in here an hour ago and gave it to you.
+
+ASSISTANT: What name, madam?
+
+MRS SPOONER: Spooner, Mrs Spooner,
+
+ASSISTANT: Have you an address?
+
+MRS SPOONER: Do I look as if I live in the open air? I gave a large order for
+sheets and tablecloths, to be sent to Bacon Villa, Egham.  (pronounced "Eg'm")
+
+ASSISTANT: Eg'm?
+
+MRS SPOONER: I hope I speak plainly: Egg Ham!
+
+ASSISTANT: Oh yes, yes I remember perfectly now, Madam.  Let me see now... no,
+your order won't go through until tomorrow morning.  Is there anything further?
+
+MRS SPOONER: Yes, (very quickly) I want two dozen double damask dinner napkins.
+
+ASSISTANT: I beg your pardon?
+
+MRS SPOONER (as quicky as before): I said two dozen double damask dinner napkins.
+
+ASSISTANT: I'm sorry madam, I don't quite catch -
+
+MRS SPOONER: Dinner napkins, man! Dinner napkins!
+
+ASSISTANT: Of course madam.  Plain?
+
+MRS SPOONER: Not plain, double damask.
+
+ASSISTANT: Yes... would you mind repeating your order Madam? I'm not quite sure.
+
+MRS SPOONER: I want two dozen dammle dubbuck; I want two dammle dubb... oh dear,
+stupid of me!  I want two dozen dammle dizzick danner nipkins.
+
+ASSISTANT: Danner nipkins Madam?
+
+MRS SPOONER: Yes.
+
+ASSISTANT: You mean dinner napkins.
+
+MRS SPOONER: That's what I said.
+
+ASSISTANT: No, pardon me, Madam, you said danner nipkins!
+
+MRS SPOONER: Don't be ridiculous!  I said dinner napkins, and I meant danner
+nipkins.  Nipper dank...you know you're getting me muddled now.
+
+ASSISTANT: I'm sorry Madam.  You want danner nipkins, exactly.  How many?
+
+MRS SPOONER: Two duzzle.
+
+ASSISTANT: Madam?
+
+MRS SPOONER: Oh, gracious, young man - can't you get it right?  I want two dubbin duzzle
+damask dinner napkins.
+
+ASSISTANT: Oh no, Madam, not two dubbin - you mean two dozen!
+
+MRS SPOONER: I said two dozen!  Only they must be dammle duzzick!
+
+ASSISTANT: No, we haven't any of that in stock, Madam.
+
+MRS SPOONER (in a tone of complete exasperation): Oh dear, of all the fools!
+Can't I find anybody, just anybody with a modicum of intelligence in this store?
+
+ASSISTANT: Well, here is our Mr Peters, Madam. Now perhaps if you ask him he might-
+
+MR PETERS (In an authoritative "we can fix anything" kind of voice): Can I be of
+any assistance to you, Madam?
+
+MRS SPOONER: I'm sorry to say that your assistant doesn't appear to speak
+English.  I'm giving an order, but it might just as well be in Esperanto for all
+he understands.
+
+MR PETERS: Allow me to help you Madam.  You require?
+
+MRS SPOONER: I require (as quickly as before) two dozen double damask dinner napkins.
+
+MR PETERS: I beg pardon, Madam?
+
+MRS SPOONER: Oh heavens - can't you understand?
+
+MR PETERS: Would you mind repeating your order, Madam.
+
+MRS SPOONER: I want two dazzen -
+
+MR PETERS: Two dozen!
+
+MRS SPOONER: I said two dozen!
+
+MR PETERS: Oh no no Madam - no, you said two dazzen.  But I understand perfectly
+what you mean.  You mean two dozen; in other words - a double dozen.
+
+MRS SPOONER: That's it! A duzzle dubbin double damask dinner napkins.
+
+MR PETERS: Oh no, pardon me, Madam, pardon me: you mean a double dozen double dummick
+dinner napkins.
+
+ASSISTANT: Double damask, sir.
+
+MR PETERS: I said double damask!  It's... dapper ninkins you require, sir.
+
+MRS SPOONER: Please get it right, I want dinner napkins, dinner napkins.
+
+MR PETERS: I beg pardon, Madam. So stupid of me...one gets so confused...  (Laughs)
+
+MRS SPOONER: It is not a laughing matter.
+
+MR PETERS: Of course.  Dipper nankins, madam.
+
+ASSISTANT: Dapper ninkins, sir.
+
+MRS SPOONER: Danner nipkins.
+
+MR PETERS: I understand exactly what Madam wants.  It is two d-d-d-d-..two d- Would you
+mind repeating your order please, Madam?
+
+MRS SPOONER: Ohhh, dear.. I want two duzzle dizzen damask dinner dumplings!
+
+MR PETERS: Allow me, Madam, allow me.  The lady requires (quickly) two dubbin
+double damask dunner napkins.
+
+ASSISTANT: Dunner napkins sir?
+
+MR PETERS: Certainly!  Two dizzen.
+
+MRS SPOONER: Not two dizzen - I want two dowzen!
+
+MR PETERS: Quite so, Madam, quite so.  If I may say so we're getting a little
+bit confused, splitting it up, as it were.  Now, the full order, the full order,
+is two dazzen dibble dummisk n'dipper dumkins.
+
+ASSISTANT: Excuse me, sir, you mean two dummen dammle dimmick dizzy napkins.
+
+(The next four four lines are spoken almost on top of each other)
+
+MRS SPOONER: I do not want dizzy napkins, I want two dizzle dammen damask -
+
+MR PETERS: No - two dizzle dammle dizzick!
+
+ASSISTANT: Two duzzle dummuck dummy!
+
+MRS SPOONER: Two damn dizzy diddle dimmer dipkins!
+
+MR PETERS (Shocked): Madam, Madam!  Please, please - your language!
+
+MRS SPOONER: Oh, blast.  Give me twenty four serviettes.
+
+** Graphs of Eggs                               :geometry:jsxgraph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: egg_graphs
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
@@ -163,7 +864,7 @@ y&=c\cos\frac{\theta}{4}\sin\theta
 
 Many more equations: parametric, implicit, can be found at the sites linked above.
 
-** Exploring JSXGraph
+** Exploring JSXGraph                                    :jsxgraph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: exploring_jsxgraph
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true

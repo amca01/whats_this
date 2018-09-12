@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.46" />
+
+  <title>Presentations and the delight of js-reveal &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans+Condensed:bold" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+ 
+  
+
+  
+
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">All the good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.github.com/amca01"><i class='fa fa-github fa-fw'></i>Github</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/nshapes/"><i class='fa fa-wordpress fa-fw'></i>Numbers and Shapes</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Presentations and the delight of js-reveal</h1>
+  <h2></h2>
+</div>
+<div class="content">
+  <p>Presentations are a modern bugbear. Anybody in academia or business, or
+any professional field really, will have sat through untold hours of
+presentations. And almost all of them are <em>terrible</em>. Wordy,
+uninteresting, too many &ldquo;transition effects&rdquo;, low information content,
+you know as well as I do.</p>
+
+<p>Pretty much every speaker reads the words on their slides, as though the
+audience were illiterate. I went to a talk once which consisted of 60 &ndash;
+yes, sixty &ndash; slides of very dense text, and the presenter read through
+each one. I think people were gnawing their own limbs off out of sheer
+boredom by the end.
+<a href="https://en.wikipedia.org/wiki/Empire_(1964_film)">Andy Warhol&rsquo;s
+&ldquo;Empire&rdquo;</a> would have been a welcome relief.</p>
+
+<p>Since most of my talks are technical and full of mathematics, I have
+naturally gravitated to the LaTeX presentation tool
+<a href="https://en.wikipedia.org/wiki/Beamer_(LaTeX)">Beamer</a>. Now Beamer is
+a lovely thing for LaTeX: as part of the LaTeX ecosystem you get all of
+LaTeX loveliness along with elegant slide layouts, transitions, etc. My
+only issue with Beamer (and this is not a new observation by any means),
+is that all Beamer presentations have a certain sameness to them. I
+suspect that this is because most Beamer users are mathematicians, who
+are rightly more interested in co[[<a href="https://orgmode.org">https://orgmode.org</a>][]]ntent than
+appearance. It is quite possible of course to make Beamer look like
+something new and different, but hardly anybody does.</p>
+
+<p>However, I am not a mathematician, I am a mathematics educator, and I do
+like my presentations to look good, and if possible to stand out a
+little. I also have a minor issue in that I use Linux on my laptop,
+which sometimes means my computer won&rsquo;t talk to an external projector
+system. Or my USB thumb drive won&rsquo;t be recognized by the computer I&rsquo;ll
+be using, and so on. One way round all this is to use an online system;
+maybe one which can be displayed in a browser, and which can be placed
+on a web server somewhere. There are of course plenty of such tools, and
+I have had a brief dalliance with <a href="https://prezi.com">prezi</a>, but for
+me prezi was not the answer: yes it was fun and provided a new paradigm
+for organizing slides, but really, when you took the whizz-bang aspect
+out, what was left? The few prezis I&rsquo;ve seen in the wild showed that you
+can be as dull with prezi as with any other software. Also, at the time
+it didn&rsquo;t support mathematics.</p>
+
+<p>In fact I have an abiding distrust of the whole concept of
+&ldquo;presentations&rdquo;. Most are a colossal waste of time &ndash; people can read so
+there&rsquo;s no need for wordiness, and most of the graphs and charts that
+make up the rest of most slides are dreary and lacklustre. Hardly
+anybody knows how to present information graphically in a way that
+really grabs people&rsquo;s attention. It&rsquo;s lazy and insulting to your
+audience to simply copy a chart from your spreadsheet and assume they&rsquo;ll
+be delighted by it. Then you have the large class of people who fill
+their blank spaces with cute cartoons and clip art. This sort of thing
+annoys me probably more than it should &ndash; when I&rsquo;m in an audience I
+don&rsquo;t want to be entertained with cute irrelevant additions, I want to
+<em>learn</em>. This comes to the heart of presenting. A presenter is acting as
+a teacher; the audience the learners. So presenting should be about
+engaging the audience. What&rsquo;s in your slides comes a distant second. I
+don&rsquo;t want new technology with clever animations and transitions,
+bookmarks, non-linear slide shows; I want presenters to be themselves
+interesting. (As an aside, some of the very worst presentations have
+been at education conferences.)</p>
+
+<p>For a superb example of attention-grabbing graphics, check out the
+<a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">TED
+talk</a> by the late <a href="https://en.wikipedia.org/wiki/Hans_Rosling">Hans
+Rosling</a>. Or you can admire the work of
+<a href="https://informationisbeautiful.net">David McCandless</a>.</p>
+
+<p>I seem to have digressed, from talking about presentation software to
+banging on about the awfulness of presentations generally. So, back to
+the topic.</p>
+
+<p>For a recent conference I determined to do just that: use an online
+presentation tool, and I chose <a href="https://revealjs.com/#/">reveal.js</a>. I
+reckon reveal.js is presentations done right: elegant, customizable,
+making the best use of html for content and css for design; and with
+nicely chosen defaults so that even if you just put a few words on your
+slides the result will still look good. Even better, you can take your
+final slides and put them up on <a href="https://pages.github.com">github
+pages</a> so that you can access them from anywhere in the world with a
+web browser. And if you&rsquo;re going somewhere which is not networked, you
+can always take your slides on some sort of portable media. And it has
+access to almost all of LaTeX via <a href="https://www.mathjax.org">MathJax</a>.</p>
+
+<p>One minor problem with reveal.js is that the slides are built up with
+raw html code, and so can be somewhat verbose and hard to read (at least
+for me). However, there is a companion software for emacs org mode
+called <a href="https://github.com/yjwen/org-reveal">org-reveal</a>, which
+enables you to structure your reveal.js presentation as an org file.
+This is presentation heaven. The org file gives you structure, and
+reveal.js gives you a lovely presentation.</p>
+
+<p>To make it available, you upload all your presentations to github.pages,
+and you can present from anywhere in the world with an internet
+connection! You can see an example of one of my short presentations at</p>
+
+<p><a href="https://amca01.github.io/ATCM_talks/lindenmayer.html">https://amca01.github.io/ATCM_talks/lindenmayer.html</a></p>
+
+<p>Of course the presentation (the software and what you do with it), is in
+fact the least part of your talk. By far the most important part is the
+presenter. The best software in the world won&rsquo;t overcome a boring
+speaker who can&rsquo;t engage an audience.</p>
+
+<p>I like my presentations to be simple and effect-free; I don&rsquo;t want the
+audience to be distracted from my leaping and capering about.
+Just to see how it works</p>
+
+</div>
+
+</div>
+</div>
+<script src="js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'YUA-117935107-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+</body>
+</html>
+

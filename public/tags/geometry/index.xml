@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geometry on What&#39;s all this, then?</title>
+    <link>/tags/geometry/</link>
+    <description>Recent content in Geometry on What&#39;s all this, then?</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +1000</lastBuildDate>
+    
+	<atom:link href="/tags/geometry/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Graphs of Eggs</title>
+      <link>/post/egg_graphs/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>/post/egg_graphs/</guid>
+      <description>I recently came across some nice material on John Cook&amp;rsquo;s blog about equations that described eggs.
+It turns out there are vast number of equations whose graphs are egg-shaped: that is, basically ellipse shape, but with one end &amp;ldquo;rounder&amp;rdquo; than the other.
+You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (Although this blog is mostly in German, there are enough English language pages for monoglots such as me). And plenty of egg equations can be found in the 2dcurves pages.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Numbers and Shapes on What&#39;s all this, then?</title>
+    <title>Pages on What&#39;s all this, then?</title>
     <link>/nshapes/</link>
-    <description>Recent content in Numbers and Shapes on What&#39;s all this, then?</description>
+    <description>Recent content in Pages on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 11 Sep 2018 00:00:00 +1000</lastBuildDate>
     
 	<atom:link href="/nshapes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Presentations and the delight of js-reveal</title>
+      <link>/nshapes/presentations_and_js_reveal/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +1000</pubDate>
+      
+      <guid>/nshapes/presentations_and_js_reveal/</guid>
+      <description>Presentations are a modern bugbear. Anybody in academia or business, or any professional field really, will have sat through untold hours of presentations. And almost all of them are terrible. Wordy, uninteresting, too many &amp;ldquo;transition effects&amp;rdquo;, low information content, you know as well as I do.
+Pretty much every speaker reads the words on their slides, as though the audience were illiterate. I went to a talk once which consisted of 60 &amp;ndash; yes, sixty &amp;ndash; slides of very dense text, and the presenter read through each one.</description>
+    </item>
+    
+    <item>
+      <title>The Vigenere cipher in haskell</title>
+      <link>/nshapes/vigener_cipher_haskell/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +1000</pubDate>
+      
+      <guid>/nshapes/vigener_cipher_haskell/</guid>
+      <description>Programming the Vigenère cipher is my go-to problem when learning a new language. It&amp;rsquo;s only ever a few lines of code, but it&amp;rsquo;s a pleasant way of getting to grips with some of the basics of syntax. For the past few weeks I&amp;rsquo;ve been wrestling with Haskell, and I&amp;rsquo;ve now got to the stage where a Vigenère program is in fact pretty easy.
+As you know, the Vigenère cipher works using a plaintext and a keyword, which is repeated as often as need be:</description>
+    </item>
+    
+    <item>
+      <title>Numbers and Shapes</title>
+      <link>/nshapes/numbers_and_shapes/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +1000</pubDate>
+      
+      <guid>/nshapes/numbers_and_shapes/</guid>
+      <description>This is the holding place for my old blog, when I import it from Wordpress. In the meantime, it&amp;rsquo;s here</description>
+    </item>
+    
+    <item>
       <title>Post 1</title>
       <link>/nshapes/post_1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +1000</pubDate>
       
       <guid>/nshapes/post_1/</guid>
       <description>Just to see how it works</description>
@@ -22,7 +52,7 @@
     <item>
       <title>Post 2</title>
       <link>/nshapes/post_2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +1000</pubDate>
       
       <guid>/nshapes/post_2/</guid>
       <description>and another one, for experiment.</description>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.46" />
+
+  <title>The Vigenere cipher in haskell &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans+Condensed:bold" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+ 
+  
+
+  
+
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">All the good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.github.com/amca01"><i class='fa fa-github fa-fw'></i>Github</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/nshapes/"><i class='fa fa-wordpress fa-fw'></i>Numbers and Shapes</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>The Vigenere cipher in haskell</h1>
+  <h2></h2>
+</div>
+<div class="content">
+  <p>Programming the Vigenère cipher is my go-to problem when learning a new
+language. It&rsquo;s only ever a few lines of code, but it&rsquo;s a pleasant way of
+getting to grips with some of the basics of syntax. For the past few
+weeks I&rsquo;ve been wrestling with <a href="https://www.haskell.org">Haskell</a>, and
+I&rsquo;ve now got to the stage where a Vigenère program is in fact pretty
+easy.</p>
+
+<p>As you know, the Vigenère cipher works using a plaintext and a keyword,
+which is repeated as often as need be:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">T H I S I S T H E P L A I N T E X T
+K E Y K E Y K E Y K E Y K E Y K E Y</code></pre></div>
+<p>The corresponding letters are added modulo 26 (using the values A=0,
+B=1, C=2, and on up to Z=25), then converted back to letters again. So
+for the example above, we have these corresponding values:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">19   7   8  18   8  18  19   7   4  15  11   0   8  13  19   4  23  19
+10   4  24  10   4  24  10   4  24  10   4  24  10   4  24  10   4  24</code></pre></div>
+<p>Adding modulo 26 and converting back to letters:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">3  11   6   2  12  16   3  11   2  25  15  24  18  17  17
+D   L   G   C   M   Q   D   L   C   Z   P   Y   S   R   R</code></pre></div>
+<p>gives us the ciphertext.</p>
+
+<p>The Vigenère cipher is historically important as it is one of the first
+cryptosystems where a single letter may be encrypted to different
+characters in the ciphertext. For example, the two &ldquo;S&rdquo;s are encrypted to
+&ldquo;C&rdquo; and &ldquo;Q&rdquo;; the first and last &ldquo;T&rdquo;s are encrypted to &ldquo;D&rdquo; and &ldquo;R&rdquo;. For
+this reason the cipher was considered unbreakable - as indeed it was for
+a long time - and was known to the French as <em>le chiffre
+indéchiffrable</em> - the unbreakable cipher. It was broken in 1863. See the
+<a href="https://en.wikipedia.org/wiki/Vigenère_cipher">Wikipedia page</a> for
+more history.</p>
+
+<p>Suppose the length of the keyword is . Then the -th character of the
+plaintext will correspond to the character of the keyword (assuming a
+zero-based indexing). Thus the encryption can be defined as</p>
+
+<p>\[
+c_i = p_i+k_{i\pmod{n}}\pmod{26}
+\]</p>
+
+<p>However, encryption can also be done without knowing the length of the
+keyword, but by shifting the keyword each time - first letter to the
+end - and simply taking the left-most letter. Like this:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">T H I S I S T H E P L A I N T E X T
+K E Y</code></pre></div>
+<p>so &ldquo;T&rdquo;+&ldquo;K&rdquo; (modulo 26) is the first encryption. Then we shift the
+keyword:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">T H I S I S T H E P L A I N T E X T
+  E Y K</code></pre></div>
+<p>and &ldquo;H&rdquo;+&ldquo;E&rdquo; (modulo 26) is the second encrypted letter. Shift again:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">T H I S I S T H E P L A I N T E X T
+    Y K E</code></pre></div>
+<p>for &ldquo;I&rdquo;+&ldquo;Y&rdquo;; shift again:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">T H I S I S T H E P L A I N T E X T
+      K E Y</code></pre></div>
+<p>for &ldquo;S&rdquo;+&ldquo;K&rdquo;. And so on.</p>
+
+<p>This is almost trivial in Haskell. We need two extra functions from the
+module <code>Data.Char</code>: <code>chr</code> which gives the character corresponding to the
+ascii value, and <code>ord</code> which gives the ascii value of a character:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">ord</span> <span style="color:#cd5555">&#39;G&#39;</span>
+<span style="color:#b452cd">71</span>
+<span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">chr</span> <span style="color:#b452cd">88</span>
+<span style="color:#cd5555">&#39;X&#39;</span></code></pre></div>
+<p>So here&rsquo;s what might go into a little file called <code>vigenere.hs</code>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45">Data.Char</span> (<span style="color:#008b45">ord</span>,<span style="color:#008b45">chr</span>)
+
+<span style="color:#008b45">vige</span> <span style="color:#8b008b">::</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>]
+<span style="color:#008b45">vige</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#008b45">k</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vige</span> <span style="color:#008b45">p</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vige</span> (<span style="color:#008b45">p</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ps</span>) (<span style="color:#008b45">k</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ks</span>) <span style="color:#8b008b">=</span> (<span style="color:#008b45">encode</span> <span style="color:#008b45">p</span> <span style="color:#008b45">k</span>)<span style="color:#00688b;font-weight:bold">:</span>(<span style="color:#008b45">vige</span> <span style="color:#008b45">ps</span> (<span style="color:#008b45">ks</span>++[<span style="color:#008b45">k</span>]))
+  <span style="color:#8b008b;font-weight:bold">where</span>
+    <span style="color:#008b45">encode</span> <span style="color:#008b45">a</span> <span style="color:#008b45">b</span> <span style="color:#8b008b">=</span> <span style="color:#008b45">chr</span> $ <span style="color:#b452cd">65</span> + <span style="color:#008b45">mod</span> (<span style="color:#008b45">ord</span> <span style="color:#008b45">a</span> + <span style="color:#008b45">ord</span> <span style="color:#008b45">b</span>) <span style="color:#b452cd">26</span>
+
+<span style="color:#008b45">vigd</span> <span style="color:#8b008b">::</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>]
+<span style="color:#008b45">vigd</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#008b45">k</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vigd</span> <span style="color:#008b45">p</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vigd</span> (<span style="color:#008b45">p</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ps</span>) (<span style="color:#008b45">k</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ks</span>) <span style="color:#8b008b">=</span> (<span style="color:#008b45">decode</span> <span style="color:#008b45">p</span> <span style="color:#008b45">k</span>)<span style="color:#00688b;font-weight:bold">:</span>(<span style="color:#008b45">vigd</span> <span style="color:#008b45">ps</span> (<span style="color:#008b45">ks</span>++[<span style="color:#008b45">k</span>]))
+  <span style="color:#8b008b;font-weight:bold">where</span>
+    <span style="color:#008b45">decode</span> <span style="color:#008b45">a</span> <span style="color:#008b45">b</span> <span style="color:#8b008b">=</span> <span style="color:#008b45">chr</span> $ <span style="color:#b452cd">65</span> + <span style="color:#008b45">mod</span> (<span style="color:#008b45">ord</span> <span style="color:#008b45">a</span> - <span style="color:#008b45">ord</span> <span style="color:#008b45">b</span>) <span style="color:#b452cd">26</span></code></pre></div>
+<p>And a couple of tests: the example from above, and the one on the
+Wikipedia page:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">vige</span> <span style="color:#cd5555">&#34;THISISTHEPLAINTEXT&#34;</span> <span style="color:#cd5555">&#34;KEY&#34;</span>
+<span style="color:#cd5555">&#34;DLGCMQDLCZPYSRROBR&#34;</span>
+<span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">vige</span> <span style="color:#cd5555">&#34;ATTACKATDAWN&#34;</span> <span style="color:#cd5555">&#34;LEMON&#34;</span>
+<span style="color:#cd5555">&#34;LXFOPVEFRNHR&#34;</span></code></pre></div>
+</div>
+
+</div>
+</div>
+<script src="js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'YUA-117935107-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+</body>
+</html>
+

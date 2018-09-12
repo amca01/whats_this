@@ -4,6 +4,10 @@ title = "What's all this, then?"
 theme = "blackburn"
 canonifyurls = true
 paginate = 10
+pygmentsUseClassic = false
+pygmentsCodeFences = true
+pygmentsStyle = "perldoc"
+
 
 [taxonomies]
   tag = "tags"
@@ -11,12 +15,7 @@ paginate = 10
 [params]
   subtitle = "Mathematics, software, general nonsense"
   brand = "All the good stuff"
-  highlightjs = "kimbie.light"
-  highlightjs_extra_languages = ["lisp","bash"]
   googleAnalytics = "YUA-117935107-1"
-
-  # custom_css = ["css/jsxgraph.css"]
-  # custom_js = ["js/jsxgraphcore.js"]
 
 [social]
 	twitter = "amca01"

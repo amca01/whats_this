@@ -2,6 +2,7 @@
 title = "Graphs of Eggs"
 author = ["Alasdair McAndrew"]
 date = 2018-04-20
+tags = ["geometry", "jsxgraph"]
 draft = false
 mathjax = true
 +++
