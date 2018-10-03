@@ -1,7 +1,7 @@
 +++
 title = "Presentations and the delight of js-reveal"
 author = ["Alasdair McAndrew"]
-date = 2018-09-11
+date = 2018-03-11
 draft = false
 +++
 

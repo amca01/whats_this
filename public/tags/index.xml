@@ -2,84 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on What&#39;s all this, then?</title>
-    <link>/tags/</link>
+    <link>https://blog.numbersandshapes.net/tags/</link>
     <description>Recent content in Tags on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.numbersandshapes.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Algebra</title>
-      <link>/tags/algebra/</link>
+      <link>https://blog.numbersandshapes.net/tags/algebra/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +1000</pubDate>
       
-      <guid>/tags/algebra/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/algebra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Geometry</title>
-      <link>/tags/geometry/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
+      <link>https://blog.numbersandshapes.net/tags/geometry/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +1000</pubDate>
       
-      <guid>/tags/geometry/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/geometry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>/tags/hugo/</link>
+      <link>https://blog.numbersandshapes.net/tags/hugo/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>/tags/hugo/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jsxgraph</title>
-      <link>/tags/jsxgraph/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
+      <link>https://blog.numbersandshapes.net/tags/jsxgraph/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +1000</pubDate>
       
-      <guid>/tags/jsxgraph/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/jsxgraph/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mathematics</title>
-      <link>/tags/mathematics/</link>
+      <link>https://blog.numbersandshapes.net/tags/mathematics/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +1000</pubDate>
       
-      <guid>/tags/mathematics/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/mathematics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Org</title>
-      <link>/tags/org/</link>
+      <link>https://blog.numbersandshapes.net/tags/org/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>/tags/org/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/org/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>/tags/python/</link>
+      <link>https://blog.numbersandshapes.net/tags/python/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>/tags/python/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Voting</title>
-      <link>/tags/voting/</link>
+      <link>https://blog.numbersandshapes.net/tags/voting/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>/tags/voting/</guid>
+      <guid>https://blog.numbersandshapes.net/tags/voting/</guid>
       <description></description>
     </item>
     

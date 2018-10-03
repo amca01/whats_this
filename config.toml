@@ -8,21 +8,30 @@ pygmentsUseClassic = false
 pygmentsCodeFences = true
 pygmentsStyle = "perldoc"
 
-
-[taxonomies]
-  tag = "tags"
+[indexes]
+  tag = "Tags"
+  topic = "Categories"
 
 [params]
   subtitle = "Mathematics, software, general nonsense"
-  brand = "All the good stuff"
-  googleAnalytics = "YUA-117935107-1"
+  brand = "The good stuff"
+  googleAnalytics = "UA-117935107-2"
+  custom_css = ["css/jsxgraph.css"]
+  custom_js = ["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"]
+  disqus = "whats-all-this-then"
+#  toc = true
+#  readmore = true
+#  mathjax = true
+#  mathjaxPath = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" # Specify MathJax path
+#  mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # Specify MathJax config
 
 [social]
-	twitter = "amca01"
-	reddit = "amca01"
-	facebook = "alasdair.mcandrew"
-	gitlab = ""
-
+  twitter = "amca01"
+  reddit = "amca01"
+  facebook = "alasdair.mcandrew"
+  github = "amca01"
+  linkedin = "alasdair-mcandrew-108178a"
+  
 [menu]
   # Shown in the side menu.
   [[menu.main]]
@@ -32,23 +41,35 @@ pygmentsStyle = "perldoc"
 	identifier = "home"
 	url = "/"
   [[menu.main]]
+        name = "All posts"
+        pre = "<i class='fa fa-list fa-fw'></i>"
+        weight = 2
+        identifier = "post"
+        url = "/post/"
+  [[menu.main]]
 	name = "Tags"
 	pre = "<i class='fa fa-list fa-fw'></i>"
 	weight = 3
 	identifier = "tags"
 	url = "/tags/"
   [[menu.main]]
-	name = "Github"
-	pre = "<i class='fa fa-github fa-fw'></i>"
-	weight = 5
-	identifier = "github"
-	url = "https://www.github.com/amca01"
-  [[menu.main]]
-	name = "Numbers and Shapes"
-	pre = "<i class='fa fa-wordpress fa-fw'></i>"
-	weight = 7
-	identifier = "nshapes"
-	url = "/nshapes/"
+	name = "Categories"
+	pre = "<i class='fa fa-list fa-fw'></i>"
+	weight = 4
+	identifier = "categories"
+	url = "/categories/"
+#  [[menu.main]]
+#	name = "Github"
+#	pre = "<i class='fa fa-github fa-fw'></i>"
+#	weight = 5
+#	identifier = "github"
+#	url = "https://www.github.com/amca01"
+#  [[menu.main]]
+#	name = "Numbers and Shapes"
+#	pre = "<i class='fa fa-wordpress fa-fw'></i>"
+#	weight = 7
+#	identifier = "nshapes"
+#	url = "/nshapes/"
   [[menu.main]]
         name = "About"
         pre = "<i class='fa fa-user fa-fw'></i>"

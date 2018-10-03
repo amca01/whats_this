@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.46" />
+
+  <title>Wrestling with Docker &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+  
+ 
+  
+
+  
+
+  <link rel="shortcut icon" href="https://blog.numbersandshapes.net/img/favicon.ico" type="image/x-icon" />
+
+  
+    
+        <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/jsxgraph.css">
+    
+  
+  
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://blog.numbersandshapes.net/">The good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/post/"><i class='fa fa-list fa-fw'></i>All posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/categories/"><i class='fa fa-list fa-fw'></i>Categories</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/alasdair-mcandrew-108178a" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/amca01" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Wrestling with Docker</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>15 Sep 2018, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>For years I have been running a blog and other web apps on a VPS running Ubuntu
+14.04 and Apache - a standard
+<a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP</a> system.  However,
+after experimenting with some apps - temporarily installing them and testing
+them, only to discard them, the system was becoming a total mess.  Worst of all,
+various MySQL files were ballooning out in size: the <code>ibdata1</code> file in
+<code>/var/lib/mysql</code> was coming in at a whopping 37Gb (39568015360 bytes to be more accurate).</p>
+
+<p>Now, there are ways of dealing with this, but I don&rsquo;t want to have to become an
+expert in MySQL; all I wanted to do was to recover my system and make it more
+manageable.</p>
+
+<p>I decided to use <a href="www.docker.com">Docker</a>.  This is a &ldquo;container system&rdquo; where
+each app runs in its own container - a sort of mini system which contains all
+the files required to serve it up to the web.  This clearly requires a certain
+amount of repetition between containers, but that&rsquo;s the price to be paid for
+independence.  The idea is that you can start or stop any container without
+affecting any of the others.  For web apps many containers are based on <a href="https://alpinelinux.org">Alpine
+Linux</a> which is a system designed to be as tiny as
+possible, along with the <a href="https://www.nginx.com">nginx</a> web server.</p>
+
+<p>There seems to be a sizable ecosystem of tools to help manage and deploy
+docker containers.  Given my starting position of knowing nothing, I wanted to
+keep my extra tools to a minimum; I went with just two over and above docker
+itself: <a href="https://docs.docker.com/compose/">docker-compose</a>, which helps design, configure, and run docker
+containers, and <a href="https://traefik.io">traefik</a>, a reverse proxy, which handles all requests from the
+outside world to docker containers - thus managing things like ports - as well
+as interfacing with the certificate authority <a href="https://letsencrypt.org">Lets
+Encrypt</a>.</p>
+
+<p>My hope was that I should be able to get these all set up so they would work as
+happily together as they were supposed to do.  And so indeed it has turned out,
+although it took many days of fiddling, and innumerable questions to forums and
+web sites (such as reddit) to make it work.</p>
+
+<p>So here&rsquo;s my traefik configuration:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">defaultEntryPoints = [<span style="color:#cd5555">&#34;http&#34;</span>, <span style="color:#cd5555">&#34;https&#34;</span>]
+
+[web]
+address = <span style="color:#cd5555">&#34;:8080&#34;</span>
+  [web.auth.basic]
+  users = [<span style="color:#cd5555">&#34;admin:$apr1$v7kJtvT7$h0F7kxt.lAzFH4sZ8Z9ik.&#34;</span>]
+
+[entryPoints]
+  [entryPoints.http]
+  address = <span style="color:#cd5555">&#34;:80&#34;</span>
+    [entryPoints.http.redirect]
+      entryPoint = <span style="color:#cd5555">&#34;https&#34;</span>
+  [entryPoints.https]
+  address = <span style="color:#cd5555">&#34;:443&#34;</span>
+    [entryPoints.https.tls]
+
+[traefikLog]
+  filePath=<span style="color:#cd5555">&#34;./traefik.log&#34;</span>
+  format = <span style="color:#cd5555">&#34;json&#34;</span>
+
+
+<span style="color:#228b22"># Below here comes from</span>
+<span style="color:#228b22">#   www.smarthomebeginner.com/traefik-reverse-proxy-tutorial-for-docker/</span>
+<span style="color:#228b22"># with values adjusted for local use, of course</span>
+
+<span style="color:#228b22"># Let&#39;s encrypt configuration</span>
+[acme]
+email=<span style="color:#cd5555">&#34;amca01@gmail.com&#34;</span>
+storage=<span style="color:#cd5555">&#34;./acme.json&#34;</span>
+acmeLogging=<span style="color:#8b008b;font-weight:bold">true</span>
+onHostRule = <span style="color:#8b008b;font-weight:bold">true</span>
+entryPoint = <span style="color:#cd5555">&#34;https&#34;</span>
+  <span style="color:#228b22"># Use a HTTP-01 acme challenge rather than TLS-SNI-01 challenge</span>
+  [acme.httpChallenge]
+  entryPoint = <span style="color:#cd5555">&#34;http&#34;</span>
+
+[[acme.domains]]
+  main = <span style="color:#cd5555">&#34;numbersandshapes.net&#34;</span>
+  sans = [<span style="color:#cd5555">&#34;monitor.numbersandshapes.net&#34;</span>, <span style="color:#cd5555">&#34;adminer.numbersandshapes.net&#34;</span>, <span style="color:#cd5555">&#34;portainer.numbersandshapes.net&#34;</span>, <span style="color:#cd5555">&#34;kanboard.numbersandshapes.net&#34;</span>, <span style="color:#cd5555">&#34;webwork.numbersandshapes.net&#34;</span>,
+ <span style="color:#cd5555">&#34;blog.numbersandshapes.net&#34;</span>]
+
+<span style="color:#228b22"># Connection to docker host system (docker.sock)</span>
+[docker]
+endpoint = <span style="color:#cd5555">&#34;unix:///var/run/docker.sock&#34;</span>
+domain = <span style="color:#cd5555">&#34;numbersandshapes.net&#34;</span>
+watch = <span style="color:#8b008b;font-weight:bold">true</span>
+<span style="color:#228b22"># This will hide all docker containers that don&#39;t have explicitly set label to &#34;enable&#34;</span>
+exposedbydefault = <span style="color:#8b008b;font-weight:bold">false</span></code></pre></div>
+<p>and (part of) my docker-compose configuration, the file <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">version:<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;3&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>networks:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>proxy:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>external:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>internal:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>external:<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">false</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>services:<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>traefik:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>traefik:<span style="color:#b452cd">1.6</span>.<span style="color:#b452cd">0</span>-alpine<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>container_name:<span style="color:#bbb"> </span>traefik<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>restart:<span style="color:#bbb"> </span>always<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>command:<span style="color:#bbb"> </span>--web<span style="color:#bbb"> </span>--docker<span style="color:#bbb"> </span>--logLevel=DEBUG<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>volumes:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/var/run/docker.sock:/var/run/docker.sock<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>$PWD/traefik.toml:/traefik.toml<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>$PWD/acme.json:/acme.json<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>networks:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>proxy<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>ports:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;80:80&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span><span style="color:#cd5555">&#34;443:443&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>labels:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.enable=<span style="color:#8b008b;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.backend=traefik<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.frontend.rule=Host:monitor.numbersandshapes.net<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.port=<span style="color:#b452cd">8080</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.docker.network=proxy<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>blog:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>blog<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>volumes:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>/home/amca/docker/whats_this/public:/usr/share/nginx/html<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>networks:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>internal<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>proxy<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>labels:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.enable=<span style="color:#8b008b;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.backend=blog<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.docker.network=proxy<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.port=<span style="color:#b452cd">80</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>-<span style="color:#bbb"> </span>traefik.frontend.rule=Host:blog.numbersandshapes.net</code></pre></div>
+<p>The way this works, at least in respect of this blog, is that files copied into
+the directory <code>/home/amca/docker/whats_this/public</code> on my VPS will be
+automatically served by nginx.  So all I now need is a command on my local
+system (on which I do all my blog writing), which serves up these files.  I&rsquo;ve
+called it <code>docker-deploy</code>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nil" data-lang="nil">hugo -b &#34;https://blog.numbersandshapes.net/&#34; -t &#34;blackburn&#34; &amp;&amp; rsync -avz -e &#34;ssh&#34; --delete public/ amca@numbersandshapes.net:~/docker/whats_this/public</code></pre></div>
+<p>Remarkably enough, it all works!</p>
+
+<p>One issue I had at the beginning was that my original blog was served up at the
+URL <code>https://numberdsandshapes.net/blog</code> and for some reason these links were
+still appearing in my new blog.  It turned out (after a lot of anguished
+messages) that it was my mis-handling of <code>rsync</code>.  I just ended up deleting
+everything except for the blog source files, and re-created everything from scratch.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://blog.numbersandshapes.net/post/householders_methods/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://blog.numbersandshapes.net/post/householders_methods/">Householder&#39;s methods</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://blog.numbersandshapes.net/post/powers_of_irrationals/">The power of two irrational numbers being rational</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://blog.numbersandshapes.net/post/powers_of_irrationals/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'whats-all-this-then';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="https://blog.numbersandshapes.net/js/ui.js"></script>
+
+
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-117935107-2', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+
+
+</body>
+</html>
+

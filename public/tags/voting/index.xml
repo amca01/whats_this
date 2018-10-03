@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Voting on What&#39;s all this, then?</title>
-    <link>/tags/voting/</link>
+    <link>https://blog.numbersandshapes.net/tags/voting/</link>
     <description>Recent content in Voting on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 31 Mar 2018 00:00:00 +1100</lastBuildDate>
     
-	<atom:link href="/tags/voting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.numbersandshapes.net/tags/voting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python GIS, and election results</title>
-      <link>/post/python_gis/</link>
+      <link>https://blog.numbersandshapes.net/post/python_gis/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>/post/python_gis/</guid>
+      <guid>https://blog.numbersandshapes.net/post/python_gis/</guid>
       <description>Election mapping A few weeks ago there was a by-election in my local electorate (known as an electoral division) of Batman here in Australia. I was interested in comparing the results of this election with the previous election two years ago. In this division it&amp;rsquo;s become a two-horse race: the Greens against the Australian Labor Party. Although Batman had been a solid Labor seat for almost its entire existence - it used to be considered one of the safest Labor seats in the country - over the past decade or so the Greens have been making inroads into this Labor heartland, to the extent that is no longer considered a safe seat.</description>
     </item>
     

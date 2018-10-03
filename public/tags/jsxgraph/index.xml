@@ -2,21 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jsxgraph on What&#39;s all this, then?</title>
-    <link>/tags/jsxgraph/</link>
+    <link>https://blog.numbersandshapes.net/tags/jsxgraph/</link>
     <description>Recent content in Jsxgraph on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +1000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Aug 2018 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="/tags/jsxgraph/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.numbersandshapes.net/tags/jsxgraph/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>The Joukowsky Transform</title>
+      <link>https://blog.numbersandshapes.net/post/joukowsky-transform/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +1000</pubDate>
+      
+      <guid>https://blog.numbersandshapes.net/post/joukowsky-transform/</guid>
+      <description>The Joukowksy Transform is an elegant and simple way to create an airfoil shape.
+Let \(C\) be a circle in the complex plane that passes through the point \(z=1\) and encompasses the point \(z=-1\). The transform is defined as
+\[ \zeta=z+\frac{1}{z}. \]
+We can explore the transform by looking at the circles centred at \((-r,0)\) with \(r&amp;lt;0\) and with radius \(1+r\):
+\[ \|z-r\|=1+r \]
+or in cartesian coordinates with parameter \(t\):</description>
+    </item>
+    
+    <item>
       <title>Graphs of Eggs</title>
-      <link>/post/egg_graphs/</link>
+      <link>https://blog.numbersandshapes.net/post/egg_graphs/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>/post/egg_graphs/</guid>
+      <guid>https://blog.numbersandshapes.net/post/egg_graphs/</guid>
       <description>I recently came across some nice material on John Cook&amp;rsquo;s blog about equations that described eggs.
 It turns out there are vast number of equations whose graphs are egg-shaped: that is, basically ellipse shape, but with one end &amp;ldquo;rounder&amp;rdquo; than the other.
 You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (Although this blog is mostly in German, there are enough English language pages for monoglots such as me). And plenty of egg equations can be found in the 2dcurves pages.</description>
@@ -24,10 +38,10 @@ You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (
     
     <item>
       <title>Exploring JSXGraph</title>
-      <link>/post/exploring_jsxgraph/</link>
+      <link>https://blog.numbersandshapes.net/post/exploring_jsxgraph/</link>
       <pubDate>Sat, 14 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>/post/exploring_jsxgraph/</guid>
+      <guid>https://blog.numbersandshapes.net/post/exploring_jsxgraph/</guid>
       <description>JSXGraph is a graphics package deveoped in Javascript, and which seems to be tailor-made for a static blog such as this. It consists of only two files: the javascript file itself, and an accompanying css file, which you can download. Alternaively you can simply link to the online files at the Javascript content delivery site cdnjs managed by cloudflare. There are cloudflare servers all over the world - even in my home town of Melbourne, Australia.</description>
     </item>
     

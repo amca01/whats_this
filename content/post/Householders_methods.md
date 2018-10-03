@@ -88,7 +88,7 @@ This means that
 \\[
 r\_1=\frac{f}{f'},\quad r\_2=\frac{f'}{f^{\prime\prime}}
 \\]
-To make the subsitution into the current expression above, we can use the
+To make the substitution into the current expression above, we can use the
 substitutions
 \\[
 f^{\prime\prime}=f'/r\_2,\quad f'=f/r\_1
@@ -121,7 +121,7 @@ literature.
 It would exhibit _cubic convergence_, which means that the number of correct
 figures roughly triples at each step.
 
-Apply the same sequence of steps for \\(d=3\\), and including the subsitution
+Apply the same sequence of steps for \\(d=3\\), and including the substitution
 \\[
 f^{\prime\prime\prime} = f^{\prime\prime}/r\_3
 \\]
@@ -187,7 +187,7 @@ for i in range(1,7):
     print(d.index(False)-2)
 ```
 
-\begin{array}{l}
+\begin{array}{r}
 2\cr
 3\cr
 8\cr
@@ -223,7 +223,7 @@ for i in range(1,6):
     print(d.index(False)-2)
 ```
 
-\begin{array}{l}
+\begin{array}{r}
 4\\\\\\
 19\\\\\\
 76\\\\\\

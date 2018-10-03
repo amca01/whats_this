@@ -45,262 +45,203 @@ currently a price I'm very happy to pay.
 [Email](mailto:amca@numbersandshapes.net)
 
 
-* Numbers and Shapes
-  :PROPERTIES:
-  :EXPORT_HUGO_SECTION: nshapes
-  :END:
-** Numbers and Shapes
-  :PROPERTIES:
-  :EXPORT_FILE_NAME: numbers_and_shapes
-  :EXPORT_DATE: 2018-04-24
-  :END:
-This is the holding place for my old blog, when I import it from Wordpress.  In
-the meantime, it's [here](https://numbersandshapes.net)
-
-** Presentations and the delight of js-reveal
-  :PROPERTIES:
-  :EXPORT_FILE_NAME: presentations_and_js_reveal
-  :EXPORT_DATE: 2018-09-11
-  :END:
-Presentations are a modern bugbear. Anybody in academia or business, or
-any professional field really, will have sat through untold hours of
-presentations. And almost all of them are /terrible/. Wordy,
-uninteresting, too many "transition effects", low information content,
-you know as well as I do.
-
-Pretty much every speaker reads the words on their slides, as though the
-audience were illiterate. I went to a talk once which consisted of 60 --
-yes, sixty -- slides of very dense text, and the presenter read through
-each one. I think people were gnawing their own limbs off out of sheer
-boredom by the end.
-[[https://en.wikipedia.org/wiki/Empire_(1964_film)][Andy Warhol's
-"Empire"]] would have been a welcome relief.
-
-Since most of my talks are technical and full of mathematics, I have
-naturally gravitated to the LaTeX presentation tool
-[[https://en.wikipedia.org/wiki/Beamer_(LaTeX)][Beamer]]. Now Beamer is
-a lovely thing for LaTeX: as part of the LaTeX ecosystem you get all of
-LaTeX loveliness along with elegant slide layouts, transitions, etc. My
-only issue with Beamer (and this is not a new observation by any means),
-is that all Beamer presentations have a certain sameness to them. I
-suspect that this is because most Beamer users are mathematicians, who
-are rightly more interested in co[[https://orgmode.org][]]ntent than
-appearance. It is quite possible of course to make Beamer look like
-something new and different, but hardly anybody does.
-
-However, I am not a mathematician, I am a mathematics educator, and I do
-like my presentations to look good, and if possible to stand out a
-little. I also have a minor issue in that I use Linux on my laptop,
-which sometimes means my computer won't talk to an external projector
-system. Or my USB thumb drive won't be recognized by the computer I'll
-be using, and so on. One way round all this is to use an online system;
-maybe one which can be displayed in a browser, and which can be placed
-on a web server somewhere. There are of course plenty of such tools, and
-I have had a brief dalliance with [[https://prezi.com][prezi]], but for
-me prezi was not the answer: yes it was fun and provided a new paradigm
-for organizing slides, but really, when you took the whizz-bang aspect
-out, what was left? The few prezis I've seen in the wild showed that you
-can be as dull with prezi as with any other software. Also, at the time
-it didn't support mathematics.
-
-In fact I have an abiding distrust of the whole concept of
-"presentations". Most are a colossal waste of time -- people can read so
-there's no need for wordiness, and most of the graphs and charts that
-make up the rest of most slides are dreary and lacklustre. Hardly
-anybody knows how to present information graphically in a way that
-really grabs people's attention. It's lazy and insulting to your
-audience to simply copy a chart from your spreadsheet and assume they'll
-be delighted by it. Then you have the large class of people who fill
-their blank spaces with cute cartoons and clip art. This sort of thing
-annoys me probably more than it should -- when I'm in an audience I
-don't want to be entertained with cute irrelevant additions, I want to
-/learn/. This comes to the heart of presenting. A presenter is acting as
-a teacher; the audience the learners. So presenting should be about
-engaging the audience. What's in your slides comes a distant second. I
-don't want new technology with clever animations and transitions,
-bookmarks, non-linear slide shows; I want presenters to be themselves
-interesting. (As an aside, some of the very worst presentations have
-been at education conferences.)
-
-For a superb example of attention-grabbing graphics, check out the
-[[https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen][TED
-talk]] by the late [[https://en.wikipedia.org/wiki/Hans_Rosling][Hans
-Rosling]]. Or you can admire the work of
-[[https://informationisbeautiful.net][David McCandless]].
-
-I seem to have digressed, from talking about presentation software to
-banging on about the awfulness of presentations generally. So, back to
-the topic.
-
-For a recent conference I determined to do just that: use an online
-presentation tool, and I chose [[https://revealjs.com/#/][reveal.js]]. I
-reckon reveal.js is presentations done right: elegant, customizable,
-making the best use of html for content and css for design; and with
-nicely chosen defaults so that even if you just put a few words on your
-slides the result will still look good. Even better, you can take your
-final slides and put them up on [[https://pages.github.com][github
-pages]] so that you can access them from anywhere in the world with a
-web browser. And if you're going somewhere which is not networked, you
-can always take your slides on some sort of portable media. And it has
-access to almost all of LaTeX via [[https://www.mathjax.org][MathJax]].
-
-One minor problem with reveal.js is that the slides are built up with
-raw html code, and so can be somewhat verbose and hard to read (at least
-for me). However, there is a companion software for emacs org mode
-called [[https://github.com/yjwen/org-reveal][org-reveal]], which
-enables you to structure your reveal.js presentation as an org file.
-This is presentation heaven. The org file gives you structure, and
-reveal.js gives you a lovely presentation.
-
-To make it available, you upload all your presentations to github.pages,
-and you can present from anywhere in the world with an internet
-connection! You can see an example of one of my short presentations at
-
-[[https://amca01.github.io/ATCM_talks/lindenmayer.html]]
-
-Of course the presentation (the software and what you do with it), is in
-fact the least part of your talk. By far the most important part is the
-presenter. The best software in the world won't overcome a boring
-speaker who can't engage an audience.
-
-I like my presentations to be simple and effect-free; I don't want the
-audience to be distracted from my leaping and capering about.
-Just to see how it works
-** The Vigenere cipher in haskell
-  :PROPERTIES:
-  :EXPORT_FILE_NAME: vigenere_cipher_haskell
-  :EXPORT_DATE: 2018-09-11
-  :END:
-Programming the Vigenère cipher is my go-to problem when learning a new
-language. It's only ever a few lines of code, but it's a pleasant way of
-getting to grips with some of the basics of syntax. For the past few
-weeks I've been wrestling with [[https://www.haskell.org][Haskell]], and
-I've now got to the stage where a Vigenère program is in fact pretty
-easy.
-
-As you know, the Vigenère cipher works using a plaintext and a keyword,
-which is repeated as often as need be:
-
-#+BEGIN_EXAMPLE
-    T H I S I S T H E P L A I N T E X T
-    K E Y K E Y K E Y K E Y K E Y K E Y
-#+END_EXAMPLE
-
-The corresponding letters are added modulo 26 (using the values A=0,
-B=1, C=2, and on up to Z=25), then converted back to letters again. So
-for the example above, we have these corresponding values:
-
-#+BEGIN_EXAMPLE
-    19   7   8  18   8  18  19   7   4  15  11   0   8  13  19   4  23  19
-    10   4  24  10   4  24  10   4  24  10   4  24  10   4  24  10   4  24
-#+END_EXAMPLE
-
-Adding modulo 26 and converting back to letters:
-
-#+BEGIN_EXAMPLE
-    3  11   6   2  12  16   3  11   2  25  15  24  18  17  17
-    D   L   G   C   M   Q   D   L   C   Z   P   Y   S   R   R
-#+END_EXAMPLE
-
-gives us the ciphertext.
-
-The Vigenère cipher is historically important as it is one of the first
-cryptosystems where a single letter may be encrypted to different
-characters in the ciphertext. For example, the two "S"s are encrypted to
-"C" and "Q"; the first and last "T"s are encrypted to "D" and "R". For
-this reason the cipher was considered unbreakable - as indeed it was for
-a long time - and was known to the French as /le chiffre
-indéchiffrable/ - the unbreakable cipher. It was broken in 1863. See the
-[[https://en.wikipedia.org/wiki/Vigenère_cipher][Wikipedia page]] for
-more history.
-
-Suppose the length of the keyword is . Then the -th character of the
-plaintext will correspond to the character of the keyword (assuming a
-zero-based indexing). Thus the encryption can be defined as
-
-\[
-c_i = p_i+k_{i\pmod{n}}\pmod{26}
-\]
-
-However, encryption can also be done without knowing the length of the
-keyword, but by shifting the keyword each time - first letter to the
-end - and simply taking the left-most letter. Like this:
-
-#+BEGIN_EXAMPLE
-    T H I S I S T H E P L A I N T E X T
-    K E Y
-#+END_EXAMPLE
-
-so "T"+"K" (modulo 26) is the first encryption. Then we shift the
-keyword:
-
-#+BEGIN_EXAMPLE
-    T H I S I S T H E P L A I N T E X T
-      E Y K
-#+END_EXAMPLE
-
-and "H"+"E" (modulo 26) is the second encrypted letter. Shift again:
-
-#+BEGIN_EXAMPLE
-    T H I S I S T H E P L A I N T E X T
-        Y K E
-#+END_EXAMPLE
-
-for "I"+"Y"; shift again:
-
-#+BEGIN_EXAMPLE
-    T H I S I S T H E P L A I N T E X T
-          K E Y
-#+END_EXAMPLE
-
-for "S"+"K". And so on.
-
-This is almost trivial in Haskell. We need two extra functions from the
-module =Data.Char=: =chr= which gives the character corresponding to the
-ascii value, and =ord= which gives the ascii value of a character:
-
-#+BEGIN_SRC haskell
-    λ> ord 'G'
-    71
-    λ> chr 88
-    'X'
-#+END_SRC
-
-So here's what might go into a little file called =vigenere.hs=:
-
-#+BEGIN_SRC haskell
-    import Data.Char (ord,chr)
-
-    vige :: [Char] -> [Char] -> [Char]
-    vige [] k = []
-    vige p [] = []
-    vige (p:ps) (k:ks) = (encode p k):(vige ps (ks++[k]))
-      where
-        encode a b = chr $ 65 + mod (ord a + ord b) 26
-
-    vigd :: [Char] -> [Char] -> [Char]
-    vigd [] k = []
-    vigd p [] = []
-    vigd (p:ps) (k:ks) = (decode p k):(vigd ps (ks++[k]))
-      where
-        decode a b = chr $ 65 + mod (ord a - ord b) 26
-#+END_SRC
-
-And a couple of tests: the example from above, and the one on the
-Wikipedia page:
-
-#+BEGIN_SRC haskell
-    λ> vige "THISISTHEPLAINTEXT" "KEY"
-    "DLGCMQDLCZPYSRROBR"
-    λ> vige "ATTACKATDAWN" "LEMON"
-    "LXFOPVEFRNHR"
-#+END_SRC
-
-
 * Posts
   :PROPERTIES:
   :EXPORT_HUGO_SECTION: post
   :END:
+** The power of two irrational numbers being rational
+:PROPERTIES:
+:EXPORT_FILE_NAME: powers_of_irrationals
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-09-15
+:END:
+There's a celebrated elementary result which claims that:
+#+begin_quote
+There are irrational numbers $x$ and $y$ for which $x^y$ is rational.
+#+end_quote
+The standard proof goes like this.  Now, we know that $\sqrt{2}$ is irrational,
+so let's consider $r=\sqrt{2}^\sqrt{2}$.  Either $r$ is rational, or it is not.
+If it is rational, then we set $x=\sqrt{2}$, $y=\sqrt{2}$ and we are done.  If
+$r$ is /irrational/, then set $x=r$ and $y=\sqrt{2}$.  This means that 
+\[
+x^y=\left(\sqrt{2}^\sqrt{2}\right)^{\sqrt{2}}=\sqrt{2}^2=2 
+\] 
+which is rational.
+
+This is a perfectly acceptable proof, but highly non-constructive,  And for some
+people, the fact that the proof gives no information about the irrationality of
+$\sqrt{2}^\sqrt{2}$ is a fault.
+
+So here's a lovely /constructive/ proof I found on [reddit](https://www.reddit.com/r/math/comments/9i8lvl/classic/e6hnape) .  Set $x=\sqrt{2}$ and
+$y=2\log_2{3}$.  The fact that $y$ is irrational follows from the fact that if
+$y=p/q$ with $p$ and $q$ integers, then $2\log_2{3}=p/q$ so that $2^{p/2q}=3$, or
+$2^p=3^{2q}$ which contradicts the fundamental theorem of arithmetic.  Then:
+
+\begin{eqnarray*}
+x^y&=&\sqrt{2}^{2\log_2{3}}\\
+&=&2^{\log_2{3}}\\
+&=&3.
+\end{eqnarray*}
+
+
+** Wrestling with Docker
+:PROPERTIES:
+:EXPORT_FILE_NAME: wrestling_with_docker
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-09-15
+:END:
+For years I have been running a blog and other web apps on a VPS running Ubuntu
+14.04 and Apache - a standard
+[LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) system.  However,
+after experimenting with some apps - temporarily installing them and testing
+them, only to discard them, the system was becoming a total mess.  Worst of all,
+various MySQL files were ballooning out in size: the =ibdata1= file in
+=/var/lib/mysql= was coming in at a whopping 37Gb (39568015360 bytes to be more accurate).
+
+Now, there are ways of dealing with this, but I don't want to have to become an
+expert in MySQL; all I wanted to do was to recover my system and make it more
+manageable.
+
+I decided to use [Docker](www.docker.com).  This is a "container system" where
+each app runs in its own container - a sort of mini system which contains all
+the files required to serve it up to the web.  This clearly requires a certain
+amount of repetition between containers, but that's the price to be paid for
+independence.  The idea is that you can start or stop any container without
+affecting any of the others.  For web apps many containers are based on [Alpine
+Linux](https://alpinelinux.org) which is a system designed to be as tiny as
+possible, along with the [nginx](https://www.nginx.com) web server.
+
+There seems to be a sizable ecosystem of tools to help manage and deploy
+docker containers.  Given my starting position of knowing nothing, I wanted to
+keep my extra tools to a minimum; I went with just two over and above docker
+itself: [docker-compose](https://docs.docker.com/compose/), which helps design, configure, and run docker
+containers, and [traefik](https://traefik.io), a reverse proxy, which handles all requests from the
+outside world to docker containers - thus managing things like ports - as well
+as interfacing with the certificate authority [Lets
+Encrypt](https://letsencrypt.org).
+
+My hope was that I should be able to get these all set up so they would work as
+happily together as they were supposed to do.  And so indeed it has turned out,
+although it took many days of fiddling, and innumerable questions to forums and
+web sites (such as reddit) to make it work.
+
+So here's my traefik configuration:
+
+#+begin_src toml
+defaultEntryPoints = ["http", "https"]
+
+[web]
+address = ":8080"
+  [web.auth.basic]
+  users = ["admin:$apr1$v7kJtvT7$h0F7kxt.lAzFH4sZ8Z9ik."]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+      entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[traefikLog]
+  filePath="./traefik.log"
+  format = "json"
+
+
+# Below here comes from
+#   www.smarthomebeginner.com/traefik-reverse-proxy-tutorial-for-docker/
+# with values adjusted for local use, of course
+
+# Let's encrypt configuration
+[acme]
+email="amca01@gmail.com"
+storage="./acme.json"
+acmeLogging=true 
+onHostRule = true
+entryPoint = "https"
+  # Use a HTTP-01 acme challenge rather than TLS-SNI-01 challenge
+  [acme.httpChallenge]
+  entryPoint = "http"
+
+[[acme.domains]]
+  main = "numbersandshapes.net"
+  sans = ["monitor.numbersandshapes.net", "adminer.numbersandshapes.net", "portainer.numbersandshapes.net", "kanboard.numbersandshapes.net", "webwork.numbersandshapes.net",
+ "blog.numbersandshapes.net"]
+
+# Connection to docker host system (docker.sock)
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "numbersandshapes.net"
+watch = true
+# This will hide all docker containers that don't have explicitly set label to "enable"
+exposedbydefault = false
+#+end_src
+
+and (part of) my docker-compose configuration, the file =docker-compose.yml=:
+#+begin_src yml
+version: "3"
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false
+
+services:
+
+  traefik:
+    image: traefik:1.6.0-alpine
+    container_name: traefik
+    restart: always
+    command: --web --docker --logLevel=DEBUG
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/traefik.toml:/traefik.toml
+      - $PWD/acme.json:/acme.json
+    networks:
+      - proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    labels:
+      - traefik.enable=true
+      - traefik.backend=traefik
+      - traefik.frontend.rule=Host:monitor.numbersandshapes.net
+      - traefik.port=8080
+      - traefik.docker.network=proxy
+
+  blog:
+    image: blog
+    volumes:
+      - /home/amca/docker/whats_this/public:/usr/share/nginx/html
+    networks:
+      - internal
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.backend=blog
+      - traefik.docker.network=proxy      
+      - traefik.port=80
+      - traefik.frontend.rule=Host:blog.numbersandshapes.net
+#+end_src
+The way this works, at least in respect of this blog, is that files copied into
+the directory =/home/amca/docker/whats_this/public= on my VPS will be
+automatically served by nginx.  So all I now need is a command on my local
+system (on which I do all my blog writing), which serves up these files.  I've
+called it =docker-deploy=:
+
+#+begin_src
+hugo -b "https://blog.numbersandshapes.net/" -t "blackburn" && rsync -avz -e "ssh" --delete public/ amca@numbersandshapes.net:~/docker/whats_this/public
+#+end_src
+Remarkably enough, it all works!
+
+One issue I had at the beginning was that my original blog was served up at the
+URL =https://numberdsandshapes.net/blog= and for some reason these links were
+still appearing in my new blog.  It turned out (after a lot of anguished
+messages) that it was my mis-handling of =rsync=.  I just ended up deleting
+everything except for the blog source files, and re-created everything from scratch.
+
 ** Householder's methods                     :mathematics:algebra:
 :PROPERTIES:
 :EXPORT_FILE_NAME: Householders_methods
@@ -388,7 +329,7 @@ This means that
 \[
 r_1=\frac{f}{f'},\quad r_2=\frac{f'}{f^{\prime\prime}}
 \]
-To make the subsitution into the current expression above, we can use the
+To make the substitution into the current expression above, we can use the
 substitutions
 \[
 f^{\prime\prime}=f'/r_2,\quad f'=f/r_1
@@ -419,7 +360,7 @@ literature.
 It would exhibit /cubic convergence/, which means that the number of correct
 figures roughly triples at each step.
 
-Apply the same sequence of steps for $d=3$, and including the subsitution
+Apply the same sequence of steps for $d=3$, and including the substitution
 \[
 f^{\prime\prime\prime} = f^{\prime\prime}/r_3
 \]
@@ -483,7 +424,7 @@ for i in range(1,7):
     print(d.index(False)-2)
 #+end_src
 
-\begin{array}{l}
+\begin{array}{r}
 2\cr 
 3\cr 
 8\cr 
@@ -519,7 +460,7 @@ for i in range(1,6):
     print(d.index(False)-2)
 #+end_src
 
-\begin{array}{l}
+\begin{array}{r}
 4\\
 19\\
 76\\
@@ -530,7 +471,7 @@ for i in range(1,6):
 and we that the number of correct decimal places at each step is indeed
 increased by a factor very close to 4.
 
-** The Joukowsky Transform :noexport:
+** The Joukowsky Transform                   :mathematics:geometry:jsxgraph:
 :PROPERTIES:
 :EXPORT_FILE_NAME: joukowsky-transform
 :EXPORT_DATE: 2018-08-24
@@ -549,7 +490,7 @@ We can explore the transform by looking at the circles centred at $(-r,0)$ with
 $r<0$ and with radius $1+r$:
 
 \[
-|z-r|=1+r
+\|z-r\|=1+r
 \]
 
 or in cartesian coordinates with parameter $t$:
@@ -563,19 +504,35 @@ so that
 (x,y)\rightarrow \left(x+\frac{x}{x^2+y^2},y-\frac{y}{x^2+y^2}\right).
 \]
 
-
+To see this in action, move the point $P$ in this diagram about, ensuring that
+the point $(-1,0)$ always remains within the circle:
 
 #+begin_export html
-<div id="box" class="jxgbox" style="width:750px; height:375px;">
+<div id="box" class="jxgbox" style="width:750px; height:600px;">
 <script type="text/javascript">
- var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-2, 2, 4, -1.5], axis:true,keepAspectRatio:true});
- var c = board.create('slider',[[1,1.5],[3,1.5],[0,0,1]],{name:'c'});
- var egg = board.create('curve',
-                       [function(t){ return (1+c.Value()+c.Value()*Math.cos(t))*Math.cos(t);},
-                        function(t){ return (1+c.Value()*Math.cos(t))*Math.sin(t);},
-                        0, 2*Math.PI],{strokeWidth:4}
-                        );
-
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-3, 2.4, 1.6, -2], 
+                                            axis:true,
+                                            keepAspectRatio:true});
+ var p1 = board.create('point', [-1, 0], {size: 4,name: 'P'});
+ var midpt = board.create('point', [function(){ return (p1.X()+1)/2.0; }, 
+                                    function(){ return p1.Y()/2.0; }], {name:'',size: 0});
+ var c = board.create('circle',[midpt, p1]);
+ function fx(s) {
+  return midpt.X()+c.Radius()*Math.cos(s);
+ }
+ function fy(s) {
+  return midpt.Y()+c.Radius()*Math.sin(s);
+ }
+ function gx(t) {
+  return fx(t)+fx(t)/(fx(t)*fx(t)+fy(t)*fy(t));
+ }
+ function gy(t) {
+       return fy(t)-fy(t)/(fx(t)*fx(t)+fy(t)*fy(t));
+      }
+ var foil = board.create('curve',[function(phi){return gx(phi);},
+                                  function(phi){return gy(phi);}, 
+                                  0, 2*Math.PI], 
+                                  {strokeColor: 'green',strokeWidth: 4,name:''});
 </script>
 </div>
 #+end_export
@@ -1321,7 +1278,909 @@ $$
 $$
 </div>
 
+** Presentations and the delight of js-reveal
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: presentations_and_js_reveal
+  :EXPORT_DATE: 2018-03-11
+  :END:
+Presentations are a modern bugbear. Anybody in academia or business, or
+any professional field really, will have sat through untold hours of
+presentations. And almost all of them are /terrible/. Wordy,
+uninteresting, too many "transition effects", low information content,
+you know as well as I do.
 
+Pretty much every speaker reads the words on their slides, as though the
+audience were illiterate. I went to a talk once which consisted of 60 --
+yes, sixty -- slides of very dense text, and the presenter read through
+each one. I think people were gnawing their own limbs off out of sheer
+boredom by the end.
+[[https://en.wikipedia.org/wiki/Empire_(1964_film)][Andy Warhol's
+"Empire"]] would have been a welcome relief.
+
+Since most of my talks are technical and full of mathematics, I have
+naturally gravitated to the LaTeX presentation tool
+[[https://en.wikipedia.org/wiki/Beamer_(LaTeX)][Beamer]]. Now Beamer is
+a lovely thing for LaTeX: as part of the LaTeX ecosystem you get all of
+LaTeX loveliness along with elegant slide layouts, transitions, etc. My
+only issue with Beamer (and this is not a new observation by any means),
+is that all Beamer presentations have a certain sameness to them. I
+suspect that this is because most Beamer users are mathematicians, who
+are rightly more interested in co[[https://orgmode.org][]]ntent than
+appearance. It is quite possible of course to make Beamer look like
+something new and different, but hardly anybody does.
+
+However, I am not a mathematician, I am a mathematics educator, and I do
+like my presentations to look good, and if possible to stand out a
+little. I also have a minor issue in that I use Linux on my laptop,
+which sometimes means my computer won't talk to an external projector
+system. Or my USB thumb drive won't be recognized by the computer I'll
+be using, and so on. One way round all this is to use an online system;
+maybe one which can be displayed in a browser, and which can be placed
+on a web server somewhere. There are of course plenty of such tools, and
+I have had a brief dalliance with [[https://prezi.com][prezi]], but for
+me prezi was not the answer: yes it was fun and provided a new paradigm
+for organizing slides, but really, when you took the whizz-bang aspect
+out, what was left? The few prezis I've seen in the wild showed that you
+can be as dull with prezi as with any other software. Also, at the time
+it didn't support mathematics.
+
+In fact I have an abiding distrust of the whole concept of
+"presentations". Most are a colossal waste of time -- people can read so
+there's no need for wordiness, and most of the graphs and charts that
+make up the rest of most slides are dreary and lacklustre. Hardly
+anybody knows how to present information graphically in a way that
+really grabs people's attention. It's lazy and insulting to your
+audience to simply copy a chart from your spreadsheet and assume they'll
+be delighted by it. Then you have the large class of people who fill
+their blank spaces with cute cartoons and clip art. This sort of thing
+annoys me probably more than it should -- when I'm in an audience I
+don't want to be entertained with cute irrelevant additions, I want to
+/learn/. This comes to the heart of presenting. A presenter is acting as
+a teacher; the audience the learners. So presenting should be about
+engaging the audience. What's in your slides comes a distant second. I
+don't want new technology with clever animations and transitions,
+bookmarks, non-linear slide shows; I want presenters to be themselves
+interesting. (As an aside, some of the very worst presentations have
+been at education conferences.)
+
+For a superb example of attention-grabbing graphics, check out the
+[[https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen][TED
+talk]] by the late [[https://en.wikipedia.org/wiki/Hans_Rosling][Hans
+Rosling]]. Or you can admire the work of
+[[https://informationisbeautiful.net][David McCandless]].
+
+I seem to have digressed, from talking about presentation software to
+banging on about the awfulness of presentations generally. So, back to
+the topic.
+
+For a recent conference I determined to do just that: use an online
+presentation tool, and I chose [[https://revealjs.com/#/][reveal.js]]. I
+reckon reveal.js is presentations done right: elegant, customizable,
+making the best use of html for content and css for design; and with
+nicely chosen defaults so that even if you just put a few words on your
+slides the result will still look good. Even better, you can take your
+final slides and put them up on [[https://pages.github.com][github
+pages]] so that you can access them from anywhere in the world with a
+web browser. And if you're going somewhere which is not networked, you
+can always take your slides on some sort of portable media. And it has
+access to almost all of LaTeX via [[https://www.mathjax.org][MathJax]].
+
+One minor problem with reveal.js is that the slides are built up with
+raw html code, and so can be somewhat verbose and hard to read (at least
+for me). However, there is a companion software for emacs org mode
+called [[https://github.com/yjwen/org-reveal][org-reveal]], which
+enables you to structure your reveal.js presentation as an org file.
+This is presentation heaven. The org file gives you structure, and
+reveal.js gives you a lovely presentation.
+
+To make it available, you upload all your presentations to github.pages,
+and you can present from anywhere in the world with an internet
+connection! You can see an example of one of my short presentations at
+
+[[https://amca01.github.io/ATCM_talks/lindenmayer.html]]
+
+Of course the presentation (the software and what you do with it), is in
+fact the least part of your talk. By far the most important part is the
+presenter. The best software in the world won't overcome a boring
+speaker who can't engage an audience.
+
+I like my presentations to be simple and effect-free; I don't want the
+audience to be distracted from my leaping and capering about.
+Just to see how it works
+
+** The Vigenere cipher in haskell
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: vigenere_cipher_haskell
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+  :EXPORT_DATE: 2018-01-23
+  :END:
+Programming the Vigenère cipher is my go-to problem when learning a new
+language. It's only ever a few lines of code, but it's a pleasant way of
+getting to grips with some of the basics of syntax. For the past few
+weeks I've been wrestling with [[https://www.haskell.org][Haskell]], and
+I've now got to the stage where a Vigenère program is in fact pretty
+easy.
+
+As you know, the Vigenère cipher works using a plaintext and a keyword,
+which is repeated as often as need be:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+    K E Y K E Y K E Y K E Y K E Y K E Y
+#+END_EXAMPLE
+
+The corresponding letters are added modulo 26 (using the values A=0,
+B=1, C=2, and on up to Z=25), then converted back to letters again. So
+for the example above, we have these corresponding values:
+
+#+BEGIN_EXAMPLE
+    19   7   8  18   8  18  19   7   4  15  11   0   8  13  19   4  23  19
+    10   4  24  10   4  24  10   4  24  10   4  24  10   4  24  10   4  24
+#+END_EXAMPLE
+
+Adding modulo 26 and converting back to letters:
+
+#+BEGIN_EXAMPLE
+    3  11   6   2  12  16   3  11   2  25  15  24  18  17  17
+    D   L   G   C   M   Q   D   L   C   Z   P   Y   S   R   R
+#+END_EXAMPLE
+
+gives us the ciphertext.
+
+The Vigenère cipher is historically important as it is one of the first
+cryptosystems where a single letter may be encrypted to different
+characters in the ciphertext. For example, the two "S"s are encrypted to
+"C" and "Q"; the first and last "T"s are encrypted to "D" and "R". For
+this reason the cipher was considered unbreakable - as indeed it was for
+a long time - and was known to the French as /le chiffre
+indéchiffrable/ - the unbreakable cipher. It was broken in 1863. See the
+[[https://en.wikipedia.org/wiki/Vigenère_cipher][Wikipedia page]] for
+more history.
+
+Suppose the length of the keyword is . Then the -th character of the
+plaintext will correspond to the character of the keyword (assuming a
+zero-based indexing). Thus the encryption can be defined as
+
+\[
+c_i = p_i+k_{i\pmod{n}}\pmod{26}
+\]
+
+However, encryption can also be done without knowing the length of the
+keyword, but by shifting the keyword each time - first letter to the
+end - and simply taking the left-most letter. Like this:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+    K E Y
+#+END_EXAMPLE
+
+so "T"+"K" (modulo 26) is the first encryption. Then we shift the
+keyword:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+      E Y K
+#+END_EXAMPLE
+
+and "H"+"E" (modulo 26) is the second encrypted letter. Shift again:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+        Y K E
+#+END_EXAMPLE
+
+for "I"+"Y"; shift again:
+
+#+BEGIN_EXAMPLE
+    T H I S I S T H E P L A I N T E X T
+          K E Y
+#+END_EXAMPLE
+
+for "S"+"K". And so on.
+
+This is almost trivial in Haskell. We need two extra functions from the
+module =Data.Char=: =chr= which gives the character corresponding to the
+ascii value, and =ord= which gives the ascii value of a character:
+
+#+BEGIN_SRC haskell
+    λ> ord 'G'
+    71
+    λ> chr 88
+    'X'
+#+END_SRC
+
+So here's what might go into a little file called =vigenere.hs=:
+
+#+BEGIN_SRC haskell
+    import Data.Char (ord,chr)
+
+    vige :: [Char] -> [Char] -> [Char]
+    vige [] k = []
+    vige p [] = []
+    vige (p:ps) (k:ks) = (encode p k):(vige ps (ks++[k]))
+      where
+        encode a b = chr $ 65 + mod (ord a + ord b) 26
+
+    vigd :: [Char] -> [Char] -> [Char]
+    vigd [] k = []
+    vigd p [] = []
+    vigd (p:ps) (k:ks) = (decode p k):(vigd ps (ks++[k]))
+      where
+        decode a b = chr $ 65 + mod (ord a - ord b) 26
+#+END_SRC
+
+And a couple of tests: the example from above, and the one on the
+Wikipedia page:
+
+#+BEGIN_SRC haskell
+    λ> vige "THISISTHEPLAINTEXT" "KEY"
+    "DLGCMQDLCZPYSRROBR"
+    λ> vige "ATTACKATDAWN" "LEMON"
+    "LXFOPVEFRNHR"
+#+END_SRC
+
+** Analysis of a recent election
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: analysis_recent_election
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+  :EXPORT_DATE: 2017-12-07
+  :END:
+On November 18, 2017, a by-election was held in my suburb of
+[[https://en.wikipedia.org/wiki/Northcote,_Victoria][Northcote]], on
+account of the death by cancer of the sitting member. It turned into a
+two-way contest between Labor (who had held the seat since its inception
+in 1927), and the Greens, who are making big inroads into the inner
+city. The Greens candidate won, much to Labor's surprise. As I played a
+small part in this election, I had some interest in its result. And so I
+thought I'd experiment with the results and see how close the result
+was, and what other voting systems might have produced.
+
+In Australia, the voting method used for almost all lower house
+elections (state and federal), is
+[[https://en.wikipedia.org/wiki/Instant-runoff_voting][Instant Runoff
+Voting]], also known as the Alternative Vote, and known locally as the
+"preferential method". Each voter must number the candidates
+sequentially starting from 1. All boxes must be filled in (except the
+last); no numbers can be repeated or missed. In Northcote there were 12
+candidates, and so each voter had to number the boxes from 1 to 12 (or 1
+to 11); any vote without those numbers is invalid and can't be counted.
+Such votes are known as "informal". Ballots are distributed according to
+first preferences. If no candidate has obtained an absolute majority,
+then the candidate with the lowest count is eliminated, and all those
+ballots distributed according to their second preferences. This
+continues through as many redistributions as necessary until one
+candidate ends up with an absolute majority of ballots. So at any stage
+the candidate with the lowest number of ballots is eliminated, and those
+ballots redistributed to the remaining candidates on the basis of the
+highest preferences. As voting systems go it's not the worst, although
+it has many faults. However, it is too entrenched in Australian
+political life for change to be likely.
+
+Each candidate had prepared a
+[[https://en.wikipedia.org/wiki/How-to-vote_card][How to Vote card]],
+listing the order of candidates they saw as being most likely to ensure
+a good result for themselves. In fact there is no requirement for any
+voter to follow a How to Vote card, but most voters do. For this reason
+the ordering of candidates on these cards is taken very seriously, and
+one of the less savoury aspects of Australian politics is backroom
+"preference deals", where parties will wheel and deal to ensure best
+possible preference positions on other How to Vote cards.
+
+Here are the 12 candidates and their political parties, in the order as
+listed on the ballots:
+
+Attention: The internal data of table "4" is corrupted!
+
+For this election the How to Vote cards can be seen at the
+[[http://www.abc.net.au/news/elections/northcote-by-election-2017/][ABC
+news site]]. The only candidate not to provide a full ordered list was
+Joseph Toscano, who simple advised people to number his square 1, and
+the other squares in any order they liked, along with a recommendation
+for people to number Lidia Thorpe 2.
+
+As I don't have a complete list of all possible ballots with their
+orderings and numbers, I'm going to make the following assumptions:
+
+1. Every voter followed the How to Vote card of their preferred
+   candidate exactly.
+2. Joseph Toscano's preference ordering is: 3,4,2,5,6,7,8,9,1,10,11,12
+   (This gives Toscano 1; Thorpe 2; and puts the numbers 3 -- 12 in
+   order in the remaining spaces).
+
+These assumptions are necessarily crude, and don't reflect the nuances
+of the election. But as we'll see they end up providing a remarkably
+close fit with the final results.
+
+For the exploration of the voting data I'll use Python, and so here is
+all the How to Vote information as a dictionary:
+
+#+begin_src python
+  In [ ]: htv = dict()
+          htv['Hayward']=[1,10,7,6,8,5,12,11,3,2,4,9]
+          htv['Sanaghan']=[3,1,2,5,6,7,8,9,10,11,12,4]
+          htv['Thorpe']=[6,9,1,3,10,8,12,2,7,4,5,11]
+          htv['Lenk']=[7,8,3,1,5,11,12,2,9,4,6,10]
+          htv['Chipp']=[10,12,4,5,1,6,7,3,11,9,2,8]
+          htv['Cooper']=[5,12,8,6,2,1,7,3,11,9,10,4]
+          htv['Rossiter']=[6,12,9,11,2,7,1,5,8,10,3,4]
+          htv['Burns']=[10,12,5,3,2,4,6,1,11,9,8,7]
+          htv['Toscano']=[3,4,2,5,6,7,8,9,1,10,11,12]
+          htv['Edwards']=[2,10,4,3,8,9,12,6,5,1,7,11]
+          htv['Spirovska']=[2,12,3,7,4,5,6,8,10,9,1,11]
+          htv['Fontana']=[2,3,4,5,6,7,8,9,10,11,12,1]
+
+  In [ ]: cands = list(htv.keys())
+#+end_src
+
+voting took place at different voting centres (also known as "booths"),
+and the first preferences for each candidate at each booth can be found
+at the
+[[https://www.vec.vic.gov.au/Results/State2017/FPVbyVotingCentreNorthcoteDistrict.html][Victorian
+Electoral Commission]]. I copied this information into a spreadsheet and
+saved it as a CSV file. I then used the data analysis library
+[[https://pandas.pydata.org][pandas]] to read it in as a
+[[https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html][DataFrame]]:
+
+#+begin_src python
+  In [ ]: import pandas as pd
+          firstprefs = pd.read_csv('northcote_results.csv')
+          firsts = firstprefs.loc[:,'Hayward':'Fontana'].sum(axis=0)
+          firsts
+
+  Out[ ]: 
+  Hayward        354
+  Sanaghan       208
+  Thorpe       16254
+  Lenk           770
+  Chipp         1149
+  Cooper         433
+  Rossiter      1493
+  Burns        12721
+  Toscano        329
+  Edwards        154
+  Spirovska      214
+  Fontana       1857
+  dtype: int64
+#+end_src
+
+As Thorpe has more votes than any other candidate, then by the voting
+system of simple plurality (or
+[[https://en.wikipedia.org/wiki/First-past-the-post_voting][First Past
+The Post]]) she would win. This system is used in the USA, and is
+possibly the worst of all systems for more than two candidates.
+
+
+*** Checking IRV
+    :PROPERTIES:
+    :CUSTOM_ID: checking-irv
+    :END:
+
+So let's first check how IRV works, with a little program that starts
+with a dictionary and first preferences of each candidate. Recall our
+simplifying assumption that all voters vote according to the How to Vote
+cards, which means that when a candidate is eliminated, all those votes
+will go to just one other remaining candidate. In practice, of course,
+those ballots would be redistributed across a number of candidates.
+
+Here's a simple program to manage this version of IRV:
+
+#+begin_src python
+  def IRV(votes):
+      # performs an IRV simulation on a list of first preferences: at each stage
+      # deleting the candidate with the lowest current score, and distributing
+      # that candidates votes to the highest remaining candidate
+      vote_counts = votes.copy()
+      for i in range(10):
+          m = min(vote_counts.items(), key = lambda x: x[1])
+          ind = next(j for j in range(2,11) if cands[htv[m[0]].index(j)] in vote_counts)
+          c = cands[htv[m[0]].index(ind)]
+          vote_counts += m[1]
+          del(vote_counts[m[0]])
+      return(vote_counts)
+#+end_src
+
+We could make this code a little more efficient by stopping when any
+candidate has amassed over 50% pf the votes. But for simplicity we'll
+eliminate 10 of the 12 candidates, so it will be perfectly clear who has
+won. Let's try it out:
+
+#+begin_src python
+In [ ]: IRV(firsts)
+  Out[ ]: 
+  Thorpe    18648
+  Burns     17288
+  dtype: int64
+#+end_src
+
+Note that this is very close to the results listed on the VEC site:
+
+#+begin_src python
+  Thorpe:    18380
+  Burns:     14410
+  Fontana:   3298
+#+end_src
+
+At this stage it doesn't matter where Fontana's votes go (in fact they
+would go to Burns), as Thorpe already has a majority. But the result we
+obtained above with our simplifying assumptions gives very similar
+values.
+
+Now lets see what happens if we work through each booth independently:
+
+#+begin_src python
+  In [ ]: finals = {'Thorpe':0,'Burns':0}
+
+  In [ ]: for i in firstprefs.index:
+     ...:     booth = dict(firstprefs.loc[i,'Hayward':'Fontana'])
+     ...:     f = IRV(booth)
+     ...:     finals['Thorpe'] += f['Thorpe']
+     ...:     finals['Burns'] += f['Burns']
+     ...:     print(firstprefs.loc[i,'Booth'],': ',f)
+     ...:     
+  Alphington :  {'Thorpe': 524, 'Burns': 545}
+  Alphington North :  {'Thorpe': 408, 'Burns': 485}
+  Bell :  {'Thorpe': 1263, 'Burns': 893}
+  Croxton :  {'Thorpe': 950, 'Burns': 668}
+  Darebin Parklands :  {'Thorpe': 180, 'Burns': 204}
+  Fairfield :  {'Thorpe': 925, 'Burns': 742}
+  Northcote :  {'Thorpe': 1043, 'Burns': 875}
+  Northcote North :  {'Thorpe': 1044, 'Burns': 1012}
+  Northcote South :  {'Thorpe': 1392, 'Burns': 1137}
+  Preston South :  {'Thorpe': 677, 'Burns': 639}
+  Thornbury :  {'Thorpe': 1158, 'Burns': 864}
+  Thornbury East :  {'Thorpe': 1052, 'Burns': 804}
+  Thornbury South :  {'Thorpe': 1310, 'Burns': 1052}
+  Westgarth :  {'Thorpe': 969, 'Burns': 536}
+  Postal Votes :  {'Thorpe': 1509, 'Burns': 2262}
+  Early Votes :  {'Thorpe': 5282, 'Burns': 3532}
+
+  In [ ]: finals
+  Out[ ]: {'Burns': 16250, 'Thorpe': 19686}
+#+end_src
+
+Note again that the results are surprisingly close to the
+"[[https://www.vec.vic.gov.au/Results/State2017/TCPbyVotingCentreNorthcoteDistrict.html][two-party
+preferred]]" results as reported again on the VEC site. This adds weight
+to the notion that our assumptions, although crude, do in fact provide a
+reasonable way of experimenting with the election results.
+
+*** Borda counts
+    :PROPERTIES:
+    :CUSTOM_ID: borda-counts
+    :END:
+
+These are named for
+[[https://en.wikipedia.org/wiki/Jean-Charles_de_Borda][Jean Charles de
+Borda]] (1733 -- 1799) an early voting theorist. The idea is to weight
+all the preferences, so that a preference of 1 has a higher weighting
+that a preference of 2, and so on. All the weights are added, and the
+candidate with the greatest total is deemed to be the winner. With
+candidates, there are different methods of determining weighting;
+probably the most popular is a simple linear weighting, so that a
+preference of is weighted as . This gives weightings from down to zero.
+Alternatively a weighting of can be used, which gives weights of down to
+1. Both are equivalent in determining a winner. Another possible
+weighting is .
+
+Here's a program to compute Borda counts, again with our simplification:
+
+#+begin_src python
+  def borda(x): # x is 0 or 1
+      borda_count = dict()
+      for c in cands:
+          borda_count=0.0
+      for c in cands:
+          v = firsts  #  number of 1st pref votes for candidate c
+          for i in range(1,13):
+              appr = cands[htv.index(i)]  # the candidate against position i on c htv card
+              if x==0:
+                  borda_count[appr] += v/i
+              else:
+                  borda_count[appr] += v*(11-i)
+      if x==0:
+          for k, val in borda_count.items():
+              borda_count[k] = float("{:.2f}".format(val))
+      else:
+          for k, val in borda_count.items():
+              borda_count[k] = int(val)
+      return(borda_count)
+#+end_src
+
+Now we can run this, and to make our lives easier we'll sort the
+results:
+
+#+begin_src python
+  In [ ]: sorted(borda(1).items(), key = lambda x: x[1], reverse = True)
+  Out[ ]: 
+  [('Burns', 308240),
+   ('Thorpe', 279392),
+   ('Lenk', 266781),
+   ('Chipp', 179179),
+   ('Cooper', 167148),
+   ('Spirovska', 165424),
+   ('Edwards', 154750),
+   ('Hayward', 136144),
+   ('Fontana', 88988),
+   ('Toscano', 80360),
+   ('Rossiter', 75583),
+   ('Sanaghan', 38555)]
+
+  In [ ]: sorted(borda(0).items(), key = lambda x: x[1], reverse = True)
+  Out[ ]: 
+  [('Burns', 22409.53),
+   ('Thorpe', 20455.29),
+   ('Lenk', 11485.73),
+   ('Chipp', 10767.9),
+   ('Spirovska', 6611.22),
+   ('Cooper', 6592.5),
+   ('Edwards', 6569.93),
+   ('Hayward', 6186.93),
+   ('Fontana', 6006.25),
+   ('Rossiter', 5635.08),
+   ('Toscano', 4600.15),
+   ('Sanaghan', 4196.47)]
+#+end_src
+
+Note that in both cases Burns has the highest output. This is in general
+to be expected of Borda counts: that the highest value does not
+necessarily correspond to the candidate which is seen as better overall.
+For this reason Borda counts are rarely used in modern systems, although
+they can be used to give a general picture of an electorate.
+
+*** Condorcet criteria
+    :PROPERTIES:
+    :CUSTOM_ID: condorcet-criteria
+    :END:
+
+There are a vast number of voting systems which treat the vote as
+simultaneous pairwise contests. For example in a three way contest,
+between Alice, Bob, and Charlie the system considers the contest between
+Alice and Bob, between Alice and Charlie, and between Bob and Charlie.
+Each of these contests will produce a winner, and the outcome of all the
+pairwise contests is used to determine the overall winner. If there is a
+single person who is preferred, by a majority of voters, in each of
+their pairwise contests, then that person is called a /Condorcet
+winner/. This is named for the
+[[https://en.wikipedia.org/wiki/Marquis_de_Condorcet][Marquis de
+Condorcet]] (1743 -- 1794) another early voting theorist. The /Condorcet
+criterion/ is one of many criteria considered appropriate for a voting
+system; it says that if the ballots return a Condorcet winner, then that
+winner should be chosen by the system. This is one of the faults of IRV:
+that it does not necessarily return a Condorcet winner.
+
+Let's look again at the How to Vote preferences, and the numbers of
+voters of each:
+
+#+BEGIN_SRC
+  In [ ]: htvd = pd.DataFrame(list(htv.values()),index=htv.keys(),columns=htv.keys()).transpose()
+  In [ ]: htvd.loc['Firsts']=list(firsts.values)
+  In [ ]: htvd
+
+  Out[ ]: 
+             Hayward  Sanaghan  Thorpe  Lenk  Chipp  Cooper  Rossiter  Burns  Toscano  Edwards  Spirovska  Fontana
+  Hayward          1         3       6     7     10       5         6     10        3        2          2        2
+  Sanaghan        10         1       9     8     12      12        12     12        4       10         12        3
+  Thorpe           7         2       1     3      4       8         9      5        2        4          3        4
+  Lenk             6         5       3     1      5       6        11      3        5        3          7        5
+  Chipp            8         6      10     5      1       2         2      2        6        8          4        6
+  Cooper           5         7       8    11      6       1         7      4        7        9          5        7
+  Rossiter        12         8      12    12      7       7         1      6        8       12          6        8
+  Burns           11         9       2     2      3       3         5      1        9        6          8        9
+  Toscano          3        10       7     9     11      11         8     11        1        5         10       10
+  Edwards          2        11       4     4      9       9        10      9       10        1          9       11
+  Spirovska        4        12       5     6      2      10         3      8       11        7          1       12
+  Fontana          9         4      11    10      8       4         4      7       12       11         11        1
+  Firsts         354       208   16254   770   1149     433      1493  12721      329      154        214     1857
+#+END_SRC
+
+Here the how to vote information is in the columns. If we look at just
+the first two candidates, we see that Hayward is preferred to Sanaghan
+by all voters except for those who voted for Sanaghan. Thus a majority
+(in fact, nearly all) voters preferred Hayward to Sanaghan.
+
+For each pair of candidates, the number of voters preferring one to the
+other can be computed by this program:
+
+#+BEGIN_SRC python
+  def condorcet():
+      condorcet_table = pd.DataFrame(columns=cands,index=cands).fillna(0)
+      for c in cands:
+          hc = htv
+          for i in range(12):
+              for j in range(12):
+                  if hc[i] &lt; hc[j]:
+                      condorcet_table.loc[cands[i],cands[j]] += firsts
+      return(condorcet_table)
+#+END_SRC
+
+We can see the results of this program:
+
+#+BEGIN_SRC python
+  In [ ]: ct = condorcet(); ct
+  Out[ ]: 
+             Hayward  Sanaghan  Thorpe   Lenk  Chipp  Cooper  Rossiter  Burns  Toscano  Edwards  Spirovska  Fontana
+  Hayward          0     35728    4505   5042  19370   21633     20573   3116    35607     4888       3335    18283
+  Sanaghan       208         0    2065   2394  18648    3164     19926   2748     2835     2394       2394    17715
+  Thorpe       31431     33871       0  21504  20140   20935     34010  19370    33760    35428      32726    32153
+  Lenk         30894     33542   14432      0  19926   33442     34229   3886    33760    33935      32726    31945
+  Chipp        16566     17288   15796  16010      0   18895     34443   6037    18845    18404      18960    33871
+  Cooper       14303     32772   15001   2494  17041       0     34443   3395    18075    18404      15548    31608
+  Rossiter     15363     16010    1926   1707   1493    1493         0   4101    18075    18404      17041    15906
+  Burns        32820     33188   16566  32050  29899   32541     31835      0    35099    35428      32726    32024
+  Toscano        329     33101    2176   2176  17091   17861     17861    837        0     3887       2902    18075
+  Edwards      31048     33542     508   2001  17532   17532     17532    508    32049        0      20359    18075
+  Spirovska    32601     33542    3210   3210  16976   20388     18895   3210    33034    15577          0    20717
+  Fontana      17653     18221    3783   3991   2065    4328     20030   3912    17861    17861      15219        0
+#+END_SRC
+
+What we want to see, of course, if anybody has obtained a majority of
+preferences against everybody else. To do this we can find all the
+values greater than the majority, and add up their number. A value of 11
+indicates a Condorcet winner:
+
+#+BEGIN_SRC python
+  In [ ]: maj = firsts.sum()//2 + 1; maj
+  Out[ ]: 17969
+
+  In [ ]: ((ct &gt;= maj)*1).sum(axis = 1)
+  Out[ ]: 
+  Hayward       6.0
+  Sanaghan      2.0
+  Thorpe       11.0
+  Lenk          9.0
+  Chipp         6.0
+  Cooper        5.0
+  Rossiter      2.0
+  Burns        10.0
+  Toscano       2.0
+  Edwards       5.0
+  Spirovska     6.0
+  Fontana       2.0
+  dtype: float64
+#+END_SRC
+
+So in this case we do indeed have a Condorcet winner in Thorpe, and this
+election (at least with our simplifying assumptions) is also one in
+which IRV returned the Condorcet winner.
+
+*** Range and approval voting
+    :PROPERTIES:
+    :CUSTOM_ID: range-and-approval-voting
+    :END:
+
+If you go to [[http://rangevoting.org][rangevoting.org]] you'll find a
+nspirited defense of a system called /range voting/. To vote in such a
+system, each voter gives an "approval weight" for each candidate. For
+example, the voter may mark off a value between 0 and 10 against each
+candidate, indicating their level of approval. There is no requirement
+for a voter to mark candidates differently: a voter might give all
+candidates a value of 10, or of zero, or give one candidate 10 and all
+the others zero. One simplified version of range voting is approval
+voting, where the voter simply indicates as many or as few candidates as
+she or he approves of. A voter may approve of just one candidate, or all
+of them. As with range voting, the winner is the one with the maximum
+number of approvals. A system where each voter approves of just one
+candidate is the First Past the Post system, and as we have seen
+previously, this is equivalent to simply counting only the first
+preferences of our ballots.
+
+We can't possibly know how voters may have approved of the candidates,
+but we can run a simple simulation: given a number between 1 and 12,
+suppose that each voter approves of their first preferences. Given the
+preferences and numbers, we can easily tally the approvals for each
+voter:
+
+#+BEGIN_SRC python
+def approvals(n):
+      # Determines the approvals result if voters took their
+      # first n preferences as approvals
+      approvals_result = dict()
+      for c in cands:
+          approvals_result = 0
+      firsts = firstprefs.loc[:,'Hayward':'Fontana'].sum(axis=0)
+      for c in cands:
+          v = firsts  #  number of 1st pref votes for candidate c
+          for i in range(1,n+1):
+              appr = cands[htv.index(i)]  # the candidate against position i on c htv card
+              approvals_result[appr] += v
+      return(approvals_result)
+#+END_SRC
+
+Now we can see what happens with approvals for :
+
+#+BEGIN_SRC python
+  In [1 ]: for i in range(1,7):
+      ...:     si = sorted(approvals(i).items(),key = lambda x: x[1],reverse=True)
+      ...:     print([i]+[s[0] for s in si])
+      ...:     
+  [1, 'Thorpe', 'Burns', 'Fontana', 'Rossiter', 'Chipp', 'Lenk', 'Cooper', 'Hayward', 'Toscano', 'Spirovska', 'Sanaghan', 'Edwards']
+  [2, 'Burns', 'Thorpe', 'Chipp', 'Hayward', 'Fontana', 'Rossiter', 'Spirovska', 'Lenk', 'Edwards', 'Cooper', 'Toscano', 'Sanaghan']
+  [3, 'Burns', 'Lenk', 'Thorpe', 'Chipp', 'Hayward', 'Spirovska', 'Sanaghan', 'Fontana', 'Rossiter', 'Toscano', 'Edwards', 'Cooper']
+  [4, 'Burns', 'Lenk', 'Thorpe', 'Edwards', 'Chipp', 'Cooper', 'Fontana', 'Spirovska', 'Hayward', 'Sanaghan', 'Rossiter', 'Toscano']
+  [5, 'Thorpe', 'Lenk', 'Burns', 'Spirovska', 'Edwards', 'Chipp', 'Cooper', 'Fontana', 'Hayward', 'Sanaghan', 'Rossiter', 'Toscano']
+  [6, 'Lenk', 'Thorpe', 'Burns', 'Hayward', 'Spirovska', 'Chipp', 'Edwards', 'Cooper', 'Rossiter', 'Fontana', 'Sanaghan', 'Toscano']
+#+END_SRC
+
+It's remarkable, that after , the first number of approvals required for
+Thorpe again to win is .
+
+*** Other election methods
+    :PROPERTIES:
+    :CUSTOM_ID: other-election-methods
+    :END:
+
+There are of course many many other methods of selecting a winning
+candidate from ordered ballots. And each of them has advantages and
+disadvantages. Some of the disadvantages are subtle (although
+important); others have glaring inadequacies, such as first past the
+post for more than two candidates. One such
+[[https://en.wikipedia.org/wiki/Comparison_of_electoral_systems][comparison
+table]] lists voting methods against standard criteria. Note that IRV --
+the Australian preferential system -- is one of the very few methods to
+fail monotonicity. This is seen as one of the system's worst failings.
+You can see an example of this in an
+[[https://numbersandshapes.net/2010/07/mathematics-of-voting-3-electing-a-candidate-instant-runoff-voting/][old
+blog post]].
+
+Rather than write our own programs, we shall simply dump our information
+into the
+[[http://www1.cse.wustl.edu/~legrand/rbvote/calc.html][Ranked-ballot
+voting calculator]] page and see what happens. First the data needs to
+be massaged into an appropriate form:
+
+#+BEGIN_SRC python
+  In [ ]: for c in cands:
+     ...:     st = str(firsts)+":"+c
+     ...:     for i in range(2,13):
+     ...:         st += "&gt;"+cands[htv.index(i)]
+     ...:     print(st)
+     ...:     
+  354:Hayward&gt;Edwards&gt;Toscano&gt;Spirovska&gt;Cooper&gt;Lenk&gt;Thorpe&gt;Chipp&gt;Fontana&gt;Sanaghan&gt;Burns&gt;Rossiter
+  208:Sanaghan&gt;Thorpe&gt;Hayward&gt;Fontana&gt;Lenk&gt;Chipp&gt;Cooper&gt;Rossiter&gt;Burns&gt;Toscano&gt;Edwards&gt;Spirovska
+  16254:Thorpe&gt;Burns&gt;Lenk&gt;Edwards&gt;Spirovska&gt;Hayward&gt;Toscano&gt;Cooper&gt;Sanaghan&gt;Chipp&gt;Fontana&gt;Rossiter
+  770:Lenk&gt;Burns&gt;Thorpe&gt;Edwards&gt;Chipp&gt;Spirovska&gt;Hayward&gt;Sanaghan&gt;Toscano&gt;Fontana&gt;Cooper&gt;Rossiter
+  1149:Chipp&gt;Spirovska&gt;Burns&gt;Thorpe&gt;Lenk&gt;Cooper&gt;Rossiter&gt;Fontana&gt;Edwards&gt;Hayward&gt;Toscano&gt;Sanaghan
+  433:Cooper&gt;Chipp&gt;Burns&gt;Fontana&gt;Hayward&gt;Lenk&gt;Rossiter&gt;Thorpe&gt;Edwards&gt;Spirovska&gt;Toscano&gt;Sanaghan
+  1493:Rossiter&gt;Chipp&gt;Spirovska&gt;Fontana&gt;Burns&gt;Hayward&gt;Cooper&gt;Toscano&gt;Thorpe&gt;Edwards&gt;Lenk&gt;Sanaghan
+  12721:Burns&gt;Chipp&gt;Lenk&gt;Cooper&gt;Thorpe&gt;Rossiter&gt;Fontana&gt;Spirovska&gt;Edwards&gt;Hayward&gt;Toscano&gt;Sanaghan
+  329:Toscano&gt;Thorpe&gt;Hayward&gt;Sanaghan&gt;Lenk&gt;Chipp&gt;Cooper&gt;Rossiter&gt;Burns&gt;Edwards&gt;Spirovska&gt;Fontana
+  154:Edwards&gt;Hayward&gt;Lenk&gt;Thorpe&gt;Toscano&gt;Burns&gt;Spirovska&gt;Chipp&gt;Cooper&gt;Sanaghan&gt;Fontana&gt;Rossiter
+  214:Spirovska&gt;Hayward&gt;Thorpe&gt;Chipp&gt;Cooper&gt;Rossiter&gt;Lenk&gt;Burns&gt;Edwards&gt;Toscano&gt;Fontana&gt;Sanaghan
+  1857:Fontana&gt;Hayward&gt;Sanaghan&gt;Thorpe&gt;Lenk&gt;Chipp&gt;Cooper&gt;Rossiter&gt;Burns&gt;Toscano&gt;Edwards&gt;Spirovska
+  </pre>
+#+END_SRC
+
+The above can be copied and pasted into the given text box. Then the
+page returns:
+
+#+begin_export html
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 0px solid #999;
+  padding: 0.25rem;
+}
+</style>
+#+end_export
+#+attr_html: :class basic-styling
+|--------+-----------|
+| winner | method(s) |
+|--------+-----------|
+| Thorpe | Baldwin   |
+|        | Black     |
+|        | Carey     |
+|        | Coombs    |
+|        | Copeland  |
+|        | Dodgson   |
+|        | Hare      |
+|        | Nanson    |
+|        | Raynaud   |
+|        | Schulze   |
+|        | Simpson   |
+|        | Small     |
+|        | Tideman   |
+|--------+-----------|
+| Burns  | Borda     |
+|        | Bucklin   |
+|--------+-----------|
+
+You can see that Thorpe would be the winner under almost every other
+voting system. This indicates that Thorpe being returned by IRV seems
+not just an artifact of the system, but represents the genuine wishes of
+the electorate.
+
+** Programmable CAD
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: programmable-cad
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+  :EXPORT_DATE: 2017-11-24
+  :END:
+Every few years I decide to have a go at using a CAD package for the
+creation of 3D diagrams and shapes, and every time I give it up. There's
+simply too much to learn in terms of creating shapes, moving them about,
+and so on, and every system seems to have its own ways of doing things.
+My son (who is an expert in [[https://www.blender.org][Blender]])
+recommended that I experiment with
+[[https://www.tinkercad.com][Tinkercad]], and indeed this is probably a
+pretty easy way of getting started with 3D CAD. But it didn't suit me: I
+wanted to place things precisely in relation to each other, and fiddling
+with dragging and dropping with the mouse was harder and more
+inconvenient than it should have been. No doubt there are ways of
+getting exact line ups, but it isn't obvious to the raw beginner.
+
+I then discovered that there are lots of different CAD "programming
+languages"; or more properly scripting languages, where the user
+describes how the figure is to be built in the system's language. Then
+the system builds it from the script. In this sense these systems are
+descendants of the venerable
+[[https://en.wikipedia.org/wiki/VRML][VRML]], of which you can see some
+[[http://cs.lmu.edu/~ray/notes/vrmlexamples/][examples here]], and its
+modern version [[https://en.wikipedia.org/wiki/X3D][X3D]].
+
+Some of the systems that I looked at were:
+
+- [[http://www.openscad.org][OpenSCAD]], which uses its own scripting
+  language
+- [[https://openjscad.org][OpenJSCAD]], based on JavaScript
+- [[https://github.com/colah/ImplicitCAD][implicitCAD]], based on
+  Haskell,
+
+No doubt there are others. All of these systems have primitive shapes
+(spheres, cubes, cylinders etc), operations on shapes (shifting,
+stretching, rotating, extruding etc) so a vast array of different forms
+can be generated. Some systems allow for a great deal of flexibility, so
+that a cylinder with a radius of zero at one end will be a cone, or of
+different radii at each end a frustum.
+
+I ended up choosing OpenJSCAD, which is being actively developed, is
+based on a well known and robust language, and is also great fun to use.
+Here is a simple example, to construct a tetrahedron whose vertices are
+chosen from the vertices of a cube with vertices . The vertices whose
+product is 1 will be the vertices of a tetrahedron. We can make a nice
+tetrahedral shape by putting a small sphere at each vertex, and joining
+each sphere by a cylinder of the same radius:
+
+#+begin_export html
+<div class="CSG" style="width:750px; height:500px;">
+<script type="text/javascript">
+  var rad = 0.1; // radius of sphere at vertex and cylinders
+
+  var v0 = [1,1,1];
+  var v1 = [1,-1,-1];
+  var v2 = [-1,1,-1];
+  var v3 = [-1,-1,1];
+  var vertices = [v0,v1,v2,v3];
+
+  // adjacency lists:
+  var adj = [[1,2,3],[0,2,3],[0,1,3],[0,1,2]];
+
+  function main() {
+    var t = [];   
+    for(var i = 0; i &lt; 4; i++) {    // loop through the list of vertices
+      var here = vertices[i];
+      t.push(translate(here,sphere({r:rad})));
+      for(var j = 0; j &lt; 3; j++) {  // for each vertex join it to the others in its adjacency list
+        var there = vertices[adj[i][j]];
+        t.push(cylinder({start:here,end:there,r:rad}));
+      }
+    }
+    return union(t);
+  }
+  </script>
+</div>
+#+end_export 
+
+The code should be fairly self-explanatory. And here is the tetrahedron:
+
+I won't put these models in this post, as one of them is slow to render:
+but look at a
+[[https://numbersandshapes.net/openjscad/tetrahedron.html][coloured
+tetrahedron]], and an
+[[https://numbersandshapes.net/openjscad/icosahedron.html][icosahedron]].
+
+Note that CAD design of this sort is not so much for animated media so
+much as precise designs for 3D printing. But I like it for exploring 3D
+geometry.
 
 * COMMENT Local Variables                                 :ARCHIVE:
 # Local Variables:

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.46" />
+
+  <title>The Joukowsky Transform &middot; What&#39;s all this, then?</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  <script type="text/javascript" charset="UTF-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+
+  
+ 
+  
+
+  
+
+  <link rel="shortcut icon" href="https://blog.numbersandshapes.net/img/favicon.ico" type="image/x-icon" />
+
+  
+    
+        <link rel="stylesheet" href="https://blog.numbersandshapes.net/css/jsxgraph.css">
+    
+  
+  
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://blog.numbersandshapes.net/">The good stuff</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/post/"><i class='fa fa-list fa-fw'></i>All posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/categories/"><i class='fa fa-list fa-fw'></i>Categories</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://blog.numbersandshapes.net/pages/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/amca01" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://facebook.com/alasdair.mcandrew" target="_blank"><i class="fa fa-facebook-square fa-fw"></i>Facebook</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/alasdair-mcandrew-108178a" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/amca01" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/amca01" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>The Joukowsky Transform</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>24 Aug 2018, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://blog.numbersandshapes.net/tags/mathematics">mathematics</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://blog.numbersandshapes.net/tags/geometry">geometry</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://blog.numbersandshapes.net/tags/jsxgraph">jsxgraph</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <p>The <a href="https://en.wikipedia.org/wiki/Joukowsky_transform">Joukowksy Transform</a> is
+an elegant and simple way to create an airfoil shape.</p>
+
+<p>Let \(C\) be a circle in the complex plane that passes through the point \(z=1\) and
+encompasses the point \(z=-1\).  The transform is defined as</p>
+
+<p>\[
+\zeta=z+\frac{1}{z}.
+\]</p>
+
+<p>We can explore the transform by looking at the circles centred at \((-r,0)\) with
+\(r&lt;0\) and with radius \(1+r\):</p>
+
+<p>\[
+\|z-r\|=1+r
+\]</p>
+
+<p>or in cartesian coordinates with parameter \(t\):</p>
+
+<p>\begin{align*}
+x &amp;= -r+(1+r)\cos(t)\\<br />
+y &amp;= (1+r)\sin(t)
+\end{align*}</p>
+
+<p>so that
+\[
+(x,y)\rightarrow \left(x+\frac{x}{x^2+y^2},y-\frac{y}{x^2+y^2}\right).
+\]</p>
+
+<p>To see this in action, move the point \(P\) in this diagram about, ensuring that
+the point \((-1,0)\) always remains within the circle:</p>
+
+<div id="box" class="jxgbox" style="width:750px; height:600px;">
+<script type="text/javascript">
+ var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-3, 2.4, 1.6, -2],
+                                            axis:true,
+                                            keepAspectRatio:true});
+ var p1 = board.create('point', [-1, 0], {size: 4,name: 'P'});
+ var midpt = board.create('point', [function(){ return (p1.X()+1)/2.0; },
+                                    function(){ return p1.Y()/2.0; }], {name:'',size: 0});
+ var c = board.create('circle',[midpt, p1]);
+ function fx(s) {
+  return midpt.X()+c.Radius()*Math.cos(s);
+ }
+ function fy(s) {
+  return midpt.Y()+c.Radius()*Math.sin(s);
+ }
+ function gx(t) {
+  return fx(t)+fx(t)/(fx(t)*fx(t)+fy(t)*fy(t));
+ }
+ function gy(t) {
+       return fy(t)-fy(t)/(fx(t)*fx(t)+fy(t)*fy(t));
+      }
+ var foil = board.create('curve',[function(phi){return gx(phi);},
+                                  function(phi){return gy(phi);},
+                                  0, 2*Math.PI],
+                                  {strokeColor: 'green',strokeWidth: 4,name:''});
+</script>
+</div>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://blog.numbersandshapes.net/post/double-damask/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://blog.numbersandshapes.net/post/double-damask/">Double Damask</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://blog.numbersandshapes.net/post/householders_methods/">Householder&#39;s methods</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://blog.numbersandshapes.net/post/householders_methods/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'whats-all-this-then';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="https://blog.numbersandshapes.net/js/ui.js"></script>
+
+
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-117935107-2', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+
+
+</body>
+</html>
+
