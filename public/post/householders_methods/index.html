@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.46" />
+  <meta name="generator" content="Hugo 0.49.2" />
 
   <title>Householder&#39;s methods &middot; What&#39;s all this, then?</title>
 
@@ -41,7 +41,12 @@
 
   <script type="text/javascript" charset="UTF-8"
   src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraphcore.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css"> 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.3.5/jsxgraph.css">
+
+
+  <script type="text/javascript" charset="UTF-8"
+  src="https://blog.numbersandshapes.net/js/min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://blog.numbersandshapes.net/css/min_openjscad.css"> 
 
   
  
@@ -307,7 +312,7 @@ x\leftarrow x-d\frac{(1/f)^{(d-1)}(x)}{(1/f)^{(d)}(x)}.
 by using Python and its symbolic toolbox <a href="https://www.sympy.org/en/index.html">SymPy</a>.</p>
 
 <p>We start by defining some variables and functions.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45">sympy</span> <span style="color:#8b008b;font-weight:bold">import</span> *
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8b008b;font-weight:bold">from</span> <span style="color:#008b45;text-decoration:underline">sympy</span> <span style="color:#8b008b;font-weight:bold">import</span> *
 x = Symbol(<span style="color:#cd5555">&#39;x&#39;</span>)
 f = Function(<span style="color:#cd5555">&#39;f&#39;</span>)(x)</code></pre></div>
 <p>Now we can define the first Householder formula, with \(d=1\):</p>

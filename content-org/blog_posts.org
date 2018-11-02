@@ -49,6 +49,344 @@ currently a price I'm very happy to pay.
   :PROPERTIES:
   :EXPORT_HUGO_SECTION: post
   :END:
+** Linear programming in Python (2)
+:PROPERTIES:
+:EXPORT_FILE_NAME: linear_programming_in_python_2
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-10-30
+:END:
+
+Here's an example of a transportation problem, with information given as a
+table:
+
+#+begin_export html
+<style>.transport
+table
+{ width: 80%;
+  table-layout: fixed;}
+th, td
+{ text-align: center;}
+th
+{ background: #DCDCDC;}
+</style>
+
+<div class="transport">
+<table>
+<tr>
+<td colspan='2'></td>
+<td colspan='5'><b>Demands</b></td>
+</tr>
+<tr>
+<td colspan='2'></td>
+<th>300</th>
+<th>360</th>
+<th>280</th>
+<th>340</th>
+<th>220</th>
+</tr>
+<tr>
+<td></td> 
+<th>750</th> 
+<td>100</td>
+<td>150</td>
+<td>200</td>
+<td>140</td>
+<td>35</td>
+</tr> 
+<tr>
+<td><b>Supplies&nbsp;</b></td> 
+<th>400</th> 
+<td>50</td>
+<td>70</td>
+<td>80</td>
+<td>65</td>
+<td>80</td>
+</tr> 
+<tr>
+<td></t> 
+<th>350</th> 
+<td>40</td>
+<td>90</td>
+<td>100</td>
+<td>150</td>
+<td>130</td>
+</tr> 
+</table>
+</div>
+#+end_export
+
+This is an example of a /balanced, non-degenerate/ transportation problem.  It
+is /balanced/ since the sum of supplies equals the sum of demands, and it is
+/non-degenerate/ as there is no proper subset of supplies whose sum is equal to
+that of a proper subset of demands.  That is, there are no balanced
+"sub-problems".
+
+In such a problem, the array values may be considered to be the costs of
+transporting one object from a supplier to a demand.  (In the version of the
+problem I pose to my students it's cars between distributors and car-yards; in
+another version it's tubs of ice-cream between dairies and supermarkets.)  The
+idea of course is to move all objects from supplies to demands while minimizing
+the total cost.
+
+This is a standard linear optimization problem, and it can be solved by any
+method used to solve such problems, although generally specialized methods are
+used.
+
+But the intention here is to show how easily this problem can be managed using
+myMathProg (and with numpy, for the simple use of printing an array):
+
+#+begin_src python
+import pymprog as py
+import numpy as np
+py.begin('transport')
+M = range(3)  # number of rows and columns
+N = range(5)
+A = py.iprod(M,N) # Cartesian product 
+x = py.var('x', A, kind=int) # all the decision variables are integers
+costs = [[100,150,200,140,35],[50,70,80,65,80],[40,90,100,150,130]]
+supplies = [750,400,350]
+demands = [300,360,280,340,220]
+py.minimize(sum(costs[i][j]*x[i,j] for i,j in A))
+# the total sum in each row must equal the supplies
+for k in M: 
+    sum(x[k,j] for j in N)==supplies[k] 
+# the total sum in each column must equal the demands
+for k in N: 
+    sum(x[i,k] for i in M)==demands[k]
+py.solve()
+print('\nMinimum cost: ',py.vobj())
+A = np.array([[x[i,j].primal for j in N] for i in M])
+print('\n')
+print(A)
+print('\n')
+#py.sensitivity()
+py.end()
+#+end_src
+
+with solution:
+
+#+begin_src
+  GLPK Simplex Optimizer, v4.65
+  n8 rows, 15 columns, 30 non-zeros
+        0: obj =   0.000000000e+00 inf =   3.000e+03 (8)
+        7: obj =   1.789500000e+05 inf =   0.000e+00 (0)
+  *    12: obj =   1.311000000e+05 inf =   0.000e+00 (0)
+  OPTIMAL LP SOLUTION FOUND
+  GLPK Integer Optimizer, v4.65
+  8 rows, 15 columns, 30 non-zeros
+  15 integer variables, none of which are binary
+  Integer optimization begins...
+  Long-step dual simplex will be used
+  +    12: mip =     not found yet >=              -inf        (1; 0)
+  +    12: >>>>>   1.311000000e+05 >=   1.311000000e+05   0.0% (1; 0)
+  +    12: mip =   1.311000000e+05 >=     tree is empty   0.0% (0; 1)
+  INTEGER OPTIMAL SOLUTION FOUND
+  
+  Minimum cost:  131100.0
+  
+  [[  0. 190.   0. 340. 220.]
+   [  0. 120. 280.   0.   0.]
+   [300.  50.   0.   0.   0.]]
+#+end_src
+
+As you see, the definition of the problem in Python is very straightforward. 
+
+** Linear programming in Python
+:PROPERTIES:
+:EXPORT_FILE_NAME: linear_programming_in_python
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-10-28
+:END:
+
+For my elementary linear programming subject, the students (who are all
+pre-service teachers) use Excel and its Solver as the computational tool of
+choice.  We do this for several reasons: Excel is software with which they're
+likely to have had some experience, also it's used in schools; it also means we
+don't have to spend time and mental energy getting to grips with new and
+unfamiliar software.  And indeed the [mandated
+curriculum](https://www.vcaa.vic.edu.au/Documents/vce/adviceforteachers/furthermaths/sample_learning_activity_graphs_relations.docx) 
+includes computer exploration, using either [Excel
+Solver](https://www.excel-easy.com/data-analysis/solver.html), 
+or the Wolfram Alpha [Linear Programming
+widget](http://www.wolframalpha.com/widgets/gallery/view.jsp?id=1e692c6f72587b2cbd3e7be018fd8960).
+
+This is all very well, but I balk at the reliance on commercial software, no
+matter how widely used it may be.  And for my own exploration I've been looking
+for an open-source equivalent.
+
+In fact there are plenty of linear programming tools and libraries; two of the
+most popular open-source ones are:
+
+- The GNU Linear Programming Kit, [GLPK](https://www.gnu.org/software/glpk/)
+- Coin-or Linear Programming, [Clp](https://projects.coin-or.org/Clp)
+
+There's a [huge list on
+wikipedia](https://en.wikipedia.org/wiki/List_of_optimization_software) which
+includes open-source and proprietary software.
+
+For pretty much any language you care to name, somebody has taken either GLPK or
+Clp (or both) and produced a language API for it.  For Python there's
+[PuLP](https://pythonhosted.org/PuLP/); for [Julia](https://julialang.org) there's
+[JuMP](http://www.juliaopt.org); for Octave there's the `glpk` command, and so
+on.  Most of the API's include methods of calling other solvers, if you have
+them available.
+
+However not all of these are well documented, and in particular some of them
+don't allow sensitivity analysis: computing shadow prices, or ranges of the
+objective coefficients.  I discovered that JuMP doesn't yet support this -
+although to be fair sensitivity analysis does depend on the problem being
+solved, and the solver being used.
+
+Being a Python aficionado, I thought I'd check out some Python packages, of which
+a list is given at an [operations research
+page](https://wiki.python.org/moin/PythonForOperationsResearch).
+
+However, I then discovered the Python package
+[PyMathProg](http://pymprog.sourceforge.net) which for my purposes is perfect -
+it just calls GLPK, but in a nicely "pythonic" manner, and the design of the
+package suits me very well.
+
+*** A simple example
+
+Here's a tiny two-dimensional problem I gave to my students:
+
+#+begin_quote
+A furniture workshop produces chairs and tables.  Each day 30m^{2} of wood board
+is delivered to the workshop, of which chairs require 0.5m^{2} and tables 1.5m^{2}.
+(We assume, of course, that all wood is used with no wastage.)  All furniture
+needs to be laminated; there is only one machine available for 10 hours per day,
+and chairs take 15 minutes each, tables 20 minutes.  If chairs are sold for $30 and
+tables for $60, then maximize the daily profit (assuming that all are sold).
+#+end_quote
+
+Letting $x$ be the number of chairs, and $y$ be the number of tables, the problem
+is to maximize
+\[
+30x+60y
+\]
+given
+
+\begin{align*}
+0.5x+1.5y&\le 30\\
+15x+20y&\le 600\\
+x,y&\ge 0
+\end{align*}
+
+Problems don't get much simpler than this.  In pyMathProg:
+
+#+begin_src python
+import pymathprog as pm
+pm.begin('furniture')
+# pm.verbose(True)
+x, y = pm.var('x, y') # variables
+pm.maximize(30 * x + 60 * y, 'profit')
+0.5*x + 1.5*y <= 30 # wood
+15*x + 20*y <= 600 # laminate
+pm.solve()
+print('\nMax profit:',pm.vobj())
+pm.sensitivity()
+pm.end()
+#+end_src
+
+with output:
+
+#+begin_src
+    GLPK Simplex Optimizer, v4.65
+    2 rows, 2 columns, 4 non-zeros
+    *     0: obj =  -0.000000000e+00 inf =   0.000e+00 (2)
+    *     2: obj =   1.440000000e+03 inf =   0.000e+00 (0)
+    OPTIMAL LP SOLUTION FOUND
+    
+    Max profit: 1440.0
+    
+    PyMathProg 1.0 Sensitivity Report Created: 2018/10/28 Sun 21:42PM
+    ================================================================================
+    Variable            Activity   Dual.Value     Obj.Coef   Range.From   Range.Till
+    --------------------------------------------------------------------------------
+    *x                        24            0           30           20           45
+    *y                        12            0           60           40           90
+    ================================================================================
+    ================================================================================
+    Constraint       Activity Dual.Value  Lower.Bnd  Upper.Bnd RangeLower RangeUpper
+    --------------------------------------------------------------------------------
+     R1                    30         24       -inf         30         20         45
+     R2                   600        1.2       -inf        600        400        900
+    ================================================================================
+#+end_src
+
+From that output, we see that the required maximum is $1440, obtained by making
+24 chairs and 12 tables.  We also see that the shadow prices for the constraints
+are 24 and 1.2.  Furthermore, the ranges of objective coefficients which will
+not affect the results are $[20,45]$ for prices for chairs, and $[40,90]$ for
+table prices.
+
+This is the simplest API I've found so far which provides that sensitivity
+analysis.
+
+Note that if we just want a solution, we can use the =linprog= command from
+=scipy=:
+
+#+begin_src python
+from scipy.optimize import linprog
+linprog([-30,-60],A_ub=[[0.5,1.5],[15,20]],b_ub=[30,600])
+#+end_src
+
+=linprog= automatically minimizes a function, so to maximize we use a negative
+function.  The output is
+
+#+begin_src
+     fun: -1440.0
+ message: 'Optimization terminated successfully.'
+     nit: 2
+   slack: array([0., 0.])
+  status: 0
+ success: True
+       x: array([24., 12.])
+#+end_src
+
+The negative value given as =fun= above simply reflects that we are entering a
+negative function.  In respect of our problem, we simply negate that value to
+obtain the required maximum of 1440.
+
+** A test of OpenJSCAD
+:PROPERTIES:
+:EXPORT_FILE_NAME: test_of_openjscad
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-09-15
+:END:
+
+Here's an example of a coloured tetrahedron:
+
+#+begin_export html
+<script>
+<head>
+  <link rel="stylesheet" href="css/min.css" type="text/css">
+</head>
+
+<body>
+  <script src="js/openjscad/min.js"></script>
+<!-- setup display of the errors as required by OpenJSCAD.js -->
+  <div class="jscad-container">
+    <div id="header">
+      <div id="errordiv">hello</div>
+    </div>
+
+<!-- setup display of the viewer, i.e. canvas -->
+    <div oncontextmenu="return false;" 
+         id="viewerContext" 
+         style = "width:640px;height:470px;"
+         design-url="/tetrahedron.jscad"></div>
+
+<!-- setup display of the status, as required by OpenJSCAD.js -->
+<!-- set display: block to display this -->
+    <div id="tail" style="display: none;">
+      <div id="statusdiv"></div>
+    </div>
+  </div>
+</body>
+</script>
+#+end_export
+
 ** The power of two irrational numbers being rational
 :PROPERTIES:
 :EXPORT_FILE_NAME: powers_of_irrationals
@@ -82,7 +420,6 @@ x^y&=&\sqrt{2}^{2\log_2{3}}\\
 &=&2^{\log_2{3}}\\
 &=&3.
 \end{eqnarray*}
-
 
 ** Wrestling with Docker
 :PROPERTIES:
@@ -839,11 +1176,6 @@ over the world - even in my home town of Melbourne, Australia.
 
 So I modified the =head.html= file of my theme to include a link to the
 necessary files:
-
-
-
-#+begin_src html
-#+end_src
 
 So I downloaded the javascript and css files as described
 [here](https://jsxgraph.uni-bayreuth.de/wp/download/index.html)

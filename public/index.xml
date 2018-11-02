@@ -6,7 +6,7 @@
     <description>Recent content on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Sep 2018 00:00:00 +1000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +1100</lastBuildDate>
     
 	<atom:link href="https://blog.numbersandshapes.net/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,35 @@
       <guid>https://blog.numbersandshapes.net/pages/about/</guid>
       <description>This is the newest version of my &amp;ldquo;Numbers and Shapes&amp;rdquo; blog, containing material on elementary mathematics, mathematics education, software, and anything else that takes my fancy.
 It is created in Hugo, a static blog engine which is blindingly fast, and works by simply serving up static html files (along with any necessary javascript). There is no database, and far less to fiddle with than with wordpress. Because it is static there is less opportunity for user input (such as comments) but that&amp;rsquo;s not an issue for me, as about 99.</description>
+    </item>
+    
+    <item>
+      <title>Linear programming in Python (2)</title>
+      <link>https://blog.numbersandshapes.net/post/linear_programming_in_python_2/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +1100</pubDate>
+      
+      <guid>https://blog.numbersandshapes.net/post/linear_programming_in_python_2/</guid>
+      <description>Here&amp;rsquo;s an example of a transportation problem, with information given as a table:
+.transport table { width: 80%; table-layout: fixed;} th, td { text-align: center;} th { background: #DCDCDC;}     Demands    300 360 280 340 220    750 100 150 200 140 35   Supplies&amp;nbsp; 400 50 70 80 65 80    350 40 90 100 150 130    This is an example of a balanced, non-degenerate transportation problem.</description>
+    </item>
+    
+    <item>
+      <title>Linear programming in Python</title>
+      <link>https://blog.numbersandshapes.net/post/linear_programming_in_python/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +1100</pubDate>
+      
+      <guid>https://blog.numbersandshapes.net/post/linear_programming_in_python/</guid>
+      <description>For my elementary linear programming subject, the students (who are all pre-service teachers) use Excel and its Solver as the computational tool of choice. We do this for several reasons: Excel is software with which they&amp;rsquo;re likely to have had some experience, also it&amp;rsquo;s used in schools; it also means we don&amp;rsquo;t have to spend time and mental energy getting to grips with new and unfamiliar software. And indeed the mandated curriculum includes computer exploration, using either Excel Solver, or the Wolfram Alpha Linear Programming widget.</description>
+    </item>
+    
+    <item>
+      <title>A test of OpenJSCAD</title>
+      <link>https://blog.numbersandshapes.net/post/test_of_openjscad/</link>
+      <pubDate>Sat, 15 Sep 2018 00:00:00 +1000</pubDate>
+      
+      <guid>https://blog.numbersandshapes.net/post/test_of_openjscad/</guid>
+      <description>Here&amp;rsquo;s an example of a coloured tetrahedron:
+     hello        </description>
     </item>
     
     <item>
