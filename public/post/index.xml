@@ -2,50 +2,110 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on What&#39;s all this, then?</title>
-    <link>https://blog.numbersandshapes.net/post/</link>
+    <link>https://numbersandshapes.net/post/</link>
     <description>Recent content in Posts on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +1100</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2019 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://blog.numbersandshapes.net/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://numbersandshapes.net/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Educational disciplines: size against market growth</title>
+      <link>https://numbersandshapes.net/post/educational_disciplines/</link>
+      <pubDate>Sat, 15 Jun 2019 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/educational_disciplines/</guid>
+      <description>Here is an interactive version of this diagram:
+
+(click on the image to show a larger version.)</description>
+    </item>
+    
+    <item>
+      <title>Tschirnhausen transformations and the quartic</title>
+      <link>https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/</guid>
+      <description>Here we show how a Tschirnhausen transformation can be used to solve a quartic equation. The steps are:
+ Ensure the quartic is missing the cubic term, and its initial coefficient is 1. We can do this by first dividing by the initial coefficient to obtain an equation \[ x^4+b_3x^3+b_2x^2+b_1x+b_0=0 \] and then replace the variable \(x\) with \(y=x-b_3/ 4\). This will produce a monic quartic equation missing the cubic term.</description>
+    </item>
+    
+    <item>
+      <title>Tschirnhausen&#39;s solution of the cubic</title>
+      <link>https://numbersandshapes.net/post/tschirnhausens_solution_of_the_cubic/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/tschirnhausens_solution_of_the_cubic/</guid>
+      <description>Test: \[ A^{3&amp;frasl;2} \]
+A general cubic polynomial has the form \[ ax^3+bx^2+cx+d \] but a general cubic equation can have the form \[ x^3+ax^2+bx+c=0. \] We can always divide through by the coefficient of \(x^3\) (assuming it to be non-zero) to obtain a monic equation; that is, with leading coefficient of 1. We can now remove the \(x^2\) term by replacing \(x\) with \(y-a/3\): \[ \left(y-\frac{a}{3}\right)^{\negmedspace 3}+a\left(y-\frac{a}{3}\right)^{\negmedspace 2} +b\left(y-\frac{a}{3}\right)+c=0.</description>
+    </item>
+    
+    <item>
+      <title>Colonial massacres, 1794 to 1928</title>
+      <link>https://numbersandshapes.net/post/colonial_massacres/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +1100</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/colonial_massacres/</guid>
+      <description>The date January 26 is one of immense current debate in Australia. Officially it&amp;rsquo;s the date of Australia Day, which supposedly celebrates the founding of Australia. To Aboriginal peoples it is a day of deep mourning and sadness, as the date commemorates over two centuries of oppression, bloodshed, and dispossession. To them and their many supporters, January 26 is Invasion Day.
+The date commemorates the landing in 1788 of Arthur Phillip, in charge of the First Fleet and the first Governor of the colony of New South Wales.</description>
+    </item>
+    
+    <item>
+      <title>Vote counting in the Australian Senate</title>
+      <link>https://numbersandshapes.net/post/vote_counting_in_australian_senate/</link>
+      <pubDate>Tue, 22 Jan 2019 00:00:00 +1100</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/vote_counting_in_australian_senate/</guid>
+      <description>Recently we have seen senators behaving in ways that seem stupid, or contrary to accepted public opinion. And then people will start jumping up and down and complaining that such a senator only got a tiny number of first preference votes. One commentator said that one senator, with 19 first preference votes, &amp;ldquo;couldn’t muster more than 19 members of his extended family to vote for him&amp;rdquo;. This displays an ignorance of how senate counting works.</description>
+    </item>
+    
+    <item>
+      <title>Concert review: Lixsania and the Labyrinth</title>
+      <link>https://numbersandshapes.net/post/lixsania_and_labyrinth/</link>
+      <pubDate>Sat, 10 Nov 2018 00:00:00 +1100</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/lixsania_and_labyrinth/</guid>
+      <description>This evening I saw the Australia Brandenburg Orchestra with guest soloist Lixsania Fernandez, a virtuoso player of the viola da gamba, from Cuba. (Although she studied, and now lives, in Spain.) Lixsania is quite amazing: tall, statuesque, quite absurdly beautiful, and plays with a technique that encompasses the wildest of baroque extravagances as well as the most delicate and refined tenderness.
+The trouble with the viol, being a fairly soft instrument, is that it&amp;rsquo;s not well suited to a large concert hall.</description>
+    </item>
+    
+    <item>
       <title>Linear programming in Python (2)</title>
-      <link>https://blog.numbersandshapes.net/post/linear_programming_in_python_2/</link>
+      <link>https://numbersandshapes.net/post/linear_programming_in_python_2/</link>
       <pubDate>Tue, 30 Oct 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/linear_programming_in_python_2/</guid>
+      <guid>https://numbersandshapes.net/post/linear_programming_in_python_2/</guid>
       <description>Here&amp;rsquo;s an example of a transportation problem, with information given as a table:
 .transport table { width: 80%; table-layout: fixed;} th, td { text-align: center;} th { background: #DCDCDC;}     Demands    300 360 280 340 220    750 100 150 200 140 35   Supplies&amp;nbsp; 400 50 70 80 65 80    350 40 90 100 150 130    This is an example of a balanced, non-degenerate transportation problem.</description>
     </item>
     
     <item>
       <title>Linear programming in Python</title>
-      <link>https://blog.numbersandshapes.net/post/linear_programming_in_python/</link>
+      <link>https://numbersandshapes.net/post/linear_programming_in_python/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/linear_programming_in_python/</guid>
+      <guid>https://numbersandshapes.net/post/linear_programming_in_python/</guid>
       <description>For my elementary linear programming subject, the students (who are all pre-service teachers) use Excel and its Solver as the computational tool of choice. We do this for several reasons: Excel is software with which they&amp;rsquo;re likely to have had some experience, also it&amp;rsquo;s used in schools; it also means we don&amp;rsquo;t have to spend time and mental energy getting to grips with new and unfamiliar software. And indeed the mandated curriculum includes computer exploration, using either Excel Solver, or the Wolfram Alpha Linear Programming widget.</description>
     </item>
     
     <item>
       <title>A test of OpenJSCAD</title>
-      <link>https://blog.numbersandshapes.net/post/test_of_openjscad/</link>
+      <link>https://numbersandshapes.net/post/test_of_openjscad/</link>
       <pubDate>Sat, 15 Sep 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/test_of_openjscad/</guid>
+      <guid>https://numbersandshapes.net/post/test_of_openjscad/</guid>
       <description>Here&amp;rsquo;s an example of a coloured tetrahedron:
      hello        </description>
     </item>
     
     <item>
       <title>The power of two irrational numbers being rational</title>
-      <link>https://blog.numbersandshapes.net/post/powers_of_irrationals/</link>
+      <link>https://numbersandshapes.net/post/powers_of_irrationals/</link>
       <pubDate>Sat, 15 Sep 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/powers_of_irrationals/</guid>
+      <guid>https://numbersandshapes.net/post/powers_of_irrationals/</guid>
       <description>There&amp;rsquo;s a celebrated elementary result which claims that:
  There are irrational numbers \(x\) and \(y\) for which \(x^y\) is rational.
  The standard proof goes like this. Now, we know that \(\sqrt{2}\) is irrational, so let&amp;rsquo;s consider \(r=\sqrt{2}^\sqrt{2}\). Either \(r\) is rational, or it is not. If it is rational, then we set \(x=\sqrt{2}\), \(y=\sqrt{2}\) and we are done. If \(r\) is irrational, then set \(x=r\) and \(y=\sqrt{2}\). This means that \[ x^y=\left(\sqrt{2}^\sqrt{2}\right)^{\sqrt{2}}=\sqrt{2}^2=2 \] which is rational.</description>
@@ -53,19 +113,19 @@
     
     <item>
       <title>Wrestling with Docker</title>
-      <link>https://blog.numbersandshapes.net/post/wrestling_with_docker/</link>
+      <link>https://numbersandshapes.net/post/wrestling_with_docker/</link>
       <pubDate>Sat, 15 Sep 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/wrestling_with_docker/</guid>
+      <guid>https://numbersandshapes.net/post/wrestling_with_docker/</guid>
       <description>For years I have been running a blog and other web apps on a VPS running Ubuntu 14.04 and Apache - a standard LAMP system. However, after experimenting with some apps - temporarily installing them and testing them, only to discard them, the system was becoming a total mess. Worst of all, various MySQL files were ballooning out in size: the ibdata1 file in /var/lib/mysql was coming in at a whopping 37Gb (39568015360 bytes to be more accurate).</description>
     </item>
     
     <item>
       <title>Householder&#39;s methods</title>
-      <link>https://blog.numbersandshapes.net/post/householders_methods/</link>
+      <link>https://numbersandshapes.net/post/householders_methods/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/householders_methods/</guid>
+      <guid>https://numbersandshapes.net/post/householders_methods/</guid>
       <description>These are a class of root-finding methods; that is, for the numerical solution of a single nonlinear equation, developed by Alston Scott Householder in 1970. They may be considered a generalisation of the well known Newton-Raphson method (also known more simply as Newton&amp;rsquo;s method) defined by
 \[ x\leftarrow x-\frac{f(x)}{f&amp;rsquo;(x)}. \]
 where the equation to be solved is \(f(x)=0\).
@@ -74,10 +134,10 @@ From a starting value \(x_0\) a sequence of iterates can be generated by</descri
     
     <item>
       <title>The Joukowsky Transform</title>
-      <link>https://blog.numbersandshapes.net/post/joukowsky-transform/</link>
+      <link>https://numbersandshapes.net/post/joukowsky-transform/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/joukowsky-transform/</guid>
+      <guid>https://numbersandshapes.net/post/joukowsky-transform/</guid>
       <description>The Joukowksy Transform is an elegant and simple way to create an airfoil shape.
 Let \(C\) be a circle in the complex plane that passes through the point \(z=1\) and encompasses the point \(z=-1\). The transform is defined as
 \[ \zeta=z+\frac{1}{z}. \]
@@ -88,20 +148,20 @@ or in cartesian coordinates with parameter \(t\):</description>
     
     <item>
       <title>Double Damask</title>
-      <link>https://blog.numbersandshapes.net/post/double-damask/</link>
+      <link>https://numbersandshapes.net/post/double-damask/</link>
       <pubDate>Fri, 27 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/double-damask/</guid>
+      <guid>https://numbersandshapes.net/post/double-damask/</guid>
       <description>This was a comedy sketch initially performed in the revue &amp;ldquo;Clowns in Clover&amp;rdquo; which had its first performance at the Adelphi Theatre in London on December 1, 1927. This particular sketch was written by Dion Titheradge and starred the inimitable Cicely Courtneidge as the annoyed customer Mrs Spooner. It has been recorded and is available on many different collections; you can also hear it on youtube.
 I have loved this sketch since I first heard it as a teenager on a three record collection called something like &amp;ldquo;Masters of Comedy&amp;rdquo;, being a collection of classic sketches.</description>
     </item>
     
     <item>
       <title>Graphs of Eggs</title>
-      <link>https://blog.numbersandshapes.net/post/egg_graphs/</link>
+      <link>https://numbersandshapes.net/post/egg_graphs/</link>
       <pubDate>Fri, 20 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/egg_graphs/</guid>
+      <guid>https://numbersandshapes.net/post/egg_graphs/</guid>
       <description>I recently came across some nice material on John Cook&amp;rsquo;s blog about equations that described eggs.
 It turns out there are vast number of equations whose graphs are egg-shaped: that is, basically ellipse shape, but with one end &amp;ldquo;rounder&amp;rdquo; than the other.
 You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (Although this blog is mostly in German, there are enough English language pages for monoglots such as me). And plenty of egg equations can be found in the 2dcurves pages.</description>
@@ -109,19 +169,19 @@ You can see lots at Jürgen Köller&amp;rsquo;s Mathematische Basteleien page. (
     
     <item>
       <title>Exploring JSXGraph</title>
-      <link>https://blog.numbersandshapes.net/post/exploring_jsxgraph/</link>
+      <link>https://numbersandshapes.net/post/exploring_jsxgraph/</link>
       <pubDate>Sat, 14 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/exploring_jsxgraph/</guid>
+      <guid>https://numbersandshapes.net/post/exploring_jsxgraph/</guid>
       <description>JSXGraph is a graphics package deveoped in Javascript, and which seems to be tailor-made for a static blog such as this. It consists of only two files: the javascript file itself, and an accompanying css file, which you can download. Alternaively you can simply link to the online files at the Javascript content delivery site cdnjs managed by cloudflare. There are cloudflare servers all over the world - even in my home town of Melbourne, Australia.</description>
     </item>
     
     <item>
       <title>The trinomial theorem</title>
-      <link>https://blog.numbersandshapes.net/post/trinomial_theorem/</link>
+      <link>https://numbersandshapes.net/post/trinomial_theorem/</link>
       <pubDate>Thu, 05 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/trinomial_theorem/</guid>
+      <guid>https://numbersandshapes.net/post/trinomial_theorem/</guid>
       <description>When I was teaching the binomial theorem (or, to be more accurate, the binomial expansion) to my long-suffering students, one of them asked me if there was a trinomial theorem. Well, of course there is, although in fact expanding sums of greater than two terms is generally not classed as a theorem described by the number of terms. The general result is
 \[ (x_1+x_2+\cdots+x_k)^n=\sum_{a_1+a_2+\cdots+a_k=n} {n\choose a_1,a_2,\ldots,a_k}x_1^{a_1}x_2^{a_2}\cdots x_k^{a_k} \]
 so in particular a &amp;ldquo;trinomial theorem&amp;rdquo; would be</description>
@@ -129,66 +189,66 @@ so in particular a &amp;ldquo;trinomial theorem&amp;rdquo; would be</description
     
     <item>
       <title>Playing with Hugo</title>
-      <link>https://blog.numbersandshapes.net/post/playing_with_hugo/</link>
+      <link>https://numbersandshapes.net/post/playing_with_hugo/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/playing_with_hugo/</guid>
+      <guid>https://numbersandshapes.net/post/playing_with_hugo/</guid>
       <description>I&amp;rsquo;ve been using wordpress as my blogging platform since I first started, about 10 years ago. (In fact the first post I can find is dated March 30, 2008.) I chose wordpress.com back then because it was (a) free, and (b) supported mathematics through a version (or subset) of LaTeX. As I have used LaTeX extensively for all my writing since the early 1990&amp;rsquo;s, it&amp;rsquo;s a standard requirement for me.</description>
     </item>
     
     <item>
       <title>Python GIS, and election results</title>
-      <link>https://blog.numbersandshapes.net/post/python_gis/</link>
+      <link>https://numbersandshapes.net/post/python_gis/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/python_gis/</guid>
+      <guid>https://numbersandshapes.net/post/python_gis/</guid>
       <description>Election mapping A few weeks ago there was a by-election in my local electorate (known as an electoral division) of Batman here in Australia. I was interested in comparing the results of this election with the previous election two years ago. In this division it&amp;rsquo;s become a two-horse race: the Greens against the Australian Labor Party. Although Batman had been a solid Labor seat for almost its entire existence - it used to be considered one of the safest Labor seats in the country - over the past decade or so the Greens have been making inroads into this Labor heartland, to the extent that is no longer considered a safe seat.</description>
     </item>
     
     <item>
       <title>Presentations and the delight of js-reveal</title>
-      <link>https://blog.numbersandshapes.net/post/presentations_and_js_reveal/</link>
+      <link>https://numbersandshapes.net/post/presentations_and_js_reveal/</link>
       <pubDate>Sun, 11 Mar 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/presentations_and_js_reveal/</guid>
+      <guid>https://numbersandshapes.net/post/presentations_and_js_reveal/</guid>
       <description>Presentations are a modern bugbear. Anybody in academia or business, or any professional field really, will have sat through untold hours of presentations. And almost all of them are terrible. Wordy, uninteresting, too many &amp;ldquo;transition effects&amp;rdquo;, low information content, you know as well as I do.
 Pretty much every speaker reads the words on their slides, as though the audience were illiterate. I went to a talk once which consisted of 60 &amp;ndash; yes, sixty &amp;ndash; slides of very dense text, and the presenter read through each one.</description>
     </item>
     
     <item>
       <title>The Vigenere cipher in haskell</title>
-      <link>https://blog.numbersandshapes.net/post/vigenere_cipher_haskell/</link>
+      <link>https://numbersandshapes.net/post/vigenere_cipher_haskell/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/vigenere_cipher_haskell/</guid>
+      <guid>https://numbersandshapes.net/post/vigenere_cipher_haskell/</guid>
       <description>Programming the Vigenère cipher is my go-to problem when learning a new language. It&amp;rsquo;s only ever a few lines of code, but it&amp;rsquo;s a pleasant way of getting to grips with some of the basics of syntax. For the past few weeks I&amp;rsquo;ve been wrestling with Haskell, and I&amp;rsquo;ve now got to the stage where a Vigenère program is in fact pretty easy.
 As you know, the Vigenère cipher works using a plaintext and a keyword, which is repeated as often as need be:</description>
     </item>
     
     <item>
       <title>Analysis of a recent election</title>
-      <link>https://blog.numbersandshapes.net/post/abalysis_recent_election/</link>
+      <link>https://numbersandshapes.net/post/abalysis_recent_election/</link>
       <pubDate>Thu, 07 Dec 2017 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/abalysis_recent_election/</guid>
+      <guid>https://numbersandshapes.net/post/abalysis_recent_election/</guid>
       <description>On November 18, 2017, a by-election was held in my suburb of Northcote, on account of the death by cancer of the sitting member. It turned into a two-way contest between Labor (who had held the seat since its inception in 1927), and the Greens, who are making big inroads into the inner city. The Greens candidate won, much to Labor&amp;rsquo;s surprise. As I played a small part in this election, I had some interest in its result.</description>
     </item>
     
     <item>
       <title>Analysis of a recent election</title>
-      <link>https://blog.numbersandshapes.net/post/analysis_recent_election/</link>
+      <link>https://numbersandshapes.net/post/analysis_recent_election/</link>
       <pubDate>Thu, 07 Dec 2017 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/analysis_recent_election/</guid>
+      <guid>https://numbersandshapes.net/post/analysis_recent_election/</guid>
       <description>On November 18, 2017, a by-election was held in my suburb of Northcote, on account of the death by cancer of the sitting member. It turned into a two-way contest between Labor (who had held the seat since its inception in 1927), and the Greens, who are making big inroads into the inner city. The Greens candidate won, much to Labor&amp;rsquo;s surprise. As I played a small part in this election, I had some interest in its result.</description>
     </item>
     
     <item>
       <title>Programmable CAD</title>
-      <link>https://blog.numbersandshapes.net/post/programmable-cad/</link>
+      <link>https://numbersandshapes.net/post/programmable-cad/</link>
       <pubDate>Fri, 24 Nov 2017 00:00:00 +1100</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/post/programmable-cad/</guid>
+      <guid>https://numbersandshapes.net/post/programmable-cad/</guid>
       <description>Every few years I decide to have a go at using a CAD package for the creation of 3D diagrams and shapes, and every time I give it up. There&amp;rsquo;s simply too much to learn in terms of creating shapes, moving them about, and so on, and every system seems to have its own ways of doing things. My son (who is an expert in Blender) recommended that I experiment with Tinkercad, and indeed this is probably a pretty easy way of getting started with 3D CAD.</description>
     </item>
     

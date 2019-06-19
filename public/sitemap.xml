@@ -3,192 +3,236 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.numbersandshapes.net/pages/about/</loc>
+    <loc>https://numbersandshapes.net/pages/about/</loc>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/linear_programming_in_python_2/</loc>
+    <loc>https://numbersandshapes.net/pages/pictures/</loc>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/educational_disciplines/</loc>
+    <lastmod>2019-06-15T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/</loc>
+    <lastmod>2019-06-15T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/</loc>
+    <lastmod>2019-06-15T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/</loc>
+    <lastmod>2019-05-05T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/tschirnhausens_solution_of_the_cubic/</loc>
+    <lastmod>2019-05-05T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/colonial_massacres/</loc>
+    <lastmod>2019-01-28T00:00:00+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/vote_counting_in_australian_senate/</loc>
+    <lastmod>2019-01-22T00:00:00+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/lixsania_and_labyrinth/</loc>
+    <lastmod>2018-11-10T00:00:00+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/linear_programming_in_python_2/</loc>
     <lastmod>2018-10-30T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/linear_programming_in_python/</loc>
+    <loc>https://numbersandshapes.net/post/linear_programming_in_python/</loc>
     <lastmod>2018-10-28T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/test_of_openjscad/</loc>
+    <loc>https://numbersandshapes.net/post/test_of_openjscad/</loc>
     <lastmod>2018-09-15T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/powers_of_irrationals/</loc>
+    <loc>https://numbersandshapes.net/post/powers_of_irrationals/</loc>
     <lastmod>2018-09-15T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/wrestling_with_docker/</loc>
+    <loc>https://numbersandshapes.net/post/wrestling_with_docker/</loc>
     <lastmod>2018-09-15T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/householders_methods/</loc>
+    <loc>https://numbersandshapes.net/post/householders_methods/</loc>
     <lastmod>2018-09-09T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/joukowsky-transform/</loc>
+    <loc>https://numbersandshapes.net/tags/</loc>
+    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/algebra/</loc>
+    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/mathematics/</loc>
+    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/joukowsky-transform/</loc>
     <lastmod>2018-08-24T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/double-damask/</loc>
+    <loc>https://numbersandshapes.net/tags/geometry/</loc>
+    <lastmod>2018-08-24T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/jsxgraph/</loc>
+    <lastmod>2018-08-24T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/double-damask/</loc>
     <lastmod>2018-04-27T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/nshapes/numbers_and_shapes/</loc>
+    <loc>https://numbersandshapes.net/nshapes/</loc>
     <lastmod>2018-04-24T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/nshapes/post_1/</loc>
+    <loc>https://numbersandshapes.net/nshapes/numbers_and_shapes/</loc>
     <lastmod>2018-04-24T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/nshapes/post_2/</loc>
+    <loc>https://numbersandshapes.net/nshapes/post_1/</loc>
     <lastmod>2018-04-24T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/egg_graphs/</loc>
+    <loc>https://numbersandshapes.net/nshapes/post_2/</loc>
+    <lastmod>2018-04-24T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/egg_graphs/</loc>
     <lastmod>2018-04-20T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/exploring_jsxgraph/</loc>
+    <loc>https://numbersandshapes.net/post/exploring_jsxgraph/</loc>
     <lastmod>2018-04-14T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/trinomial_theorem/</loc>
+    <loc>https://numbersandshapes.net/post/trinomial_theorem/</loc>
     <lastmod>2018-04-05T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/playing_with_hugo/</loc>
+    <loc>https://numbersandshapes.net/post/playing_with_hugo/</loc>
     <lastmod>2018-04-03T00:00:00+10:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/python_gis/</loc>
+    <loc>https://numbersandshapes.net/tags/hugo/</loc>
+    <lastmod>2018-04-03T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/org/</loc>
+    <lastmod>2018-04-03T00:00:00+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/python_gis/</loc>
     <lastmod>2018-03-31T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/presentations_and_js_reveal/</loc>
+    <loc>https://numbersandshapes.net/tags/python/</loc>
+    <lastmod>2018-03-31T00:00:00+11:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/voting/</loc>
+    <lastmod>2018-03-31T00:00:00+11:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/presentations_and_js_reveal/</loc>
     <lastmod>2018-03-11T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/vigenere_cipher_haskell/</loc>
+    <loc>https://numbersandshapes.net/post/vigenere_cipher_haskell/</loc>
     <lastmod>2018-01-23T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/abalysis_recent_election/</loc>
+    <loc>https://numbersandshapes.net/post/abalysis_recent_election/</loc>
     <lastmod>2017-12-07T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/analysis_recent_election/</loc>
+    <loc>https://numbersandshapes.net/post/analysis_recent_election/</loc>
     <lastmod>2017-12-07T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/post/programmable-cad/</loc>
+    <loc>https://numbersandshapes.net/post/programmable-cad/</loc>
     <lastmod>2017-11-24T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/tags/algebra/</loc>
-    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
+    <loc>https://numbersandshapes.net/educ/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/categories/</loc>
+    <loc>https://numbersandshapes.net/massacres/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/tags/geometry/</loc>
-    <lastmod>2018-08-24T00:00:00+10:00</lastmod>
+    <loc>https://numbersandshapes.net/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.numbersandshapes.net/tags/hugo/</loc>
-    <lastmod>2018-04-03T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/tags/jsxgraph/</loc>
-    <lastmod>2018-08-24T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/tags/mathematics/</loc>
-    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/nshapes/</loc>
-    <lastmod>2018-04-24T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/tags/org/</loc>
-    <lastmod>2018-04-03T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/pages/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/post/</loc>
-    <lastmod>2018-10-30T00:00:00+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/tags/python/</loc>
-    <lastmod>2018-03-31T00:00:00+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/tags/</loc>
-    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/tags/voting/</loc>
-    <lastmod>2018-03-31T00:00:00+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.numbersandshapes.net/</loc>
-    <lastmod>2018-10-30T00:00:00+11:00</lastmod>
+    <loc>https://numbersandshapes.net/pages/</loc>
     <priority>0</priority>
   </url>
   

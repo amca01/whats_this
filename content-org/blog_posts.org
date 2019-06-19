@@ -44,11 +44,1021 @@ currently a price I'm very happy to pay.
 
 [Email](mailto:amca@numbersandshapes.net)
 
+** Pictures
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: pictures
+   :END:
+This page will contain various photos and snapshots.
+
+*New Zealand, 2018:* First, from a holiday taken by my wife and me through the South Island of New
+Zealand early in 2018:\ 
+[New Zealand 2018](/nz-gallery)
+
+*Taiwan, 2017:* From a conference in Taiwan (Taoyuan City mainly, but also in Taipei and
+including a visit to Keelung City) in December 2017:\
+[Taiwan 2017](/taiwan-gallery)
+
+*Shanghai, December 2015:* I spent several wonderful days here en route to a
+conference.  The Chinese gent in many of the pictures is my friend, colleague,
+and on this trip tour-guide and translator Dr Xiangzhao Li:\ 
+[Shanghai 2015](/shanghai_gallery)
+
+*Crossing Australia in 2007:*  My brother and I drove from Melbourne, in the
+South-East of the continent, to Broome in the North-West, through the central
+deserts and some of the remotest tracks in the world.  This is the route we took
+(in red); the dark rectangles show roughly where we stopped and camped - at some
+places for more than one night:
+
+![Crossing Australia](/australia-map-mid.jpg)
+
+It took two weeks, some 4000+ kilometres, and we'd do it again in a heartbeat:\
+[Crossing Australia, 2007](/AliDug_gallery)
 
 * Posts
   :PROPERTIES:
   :EXPORT_HUGO_SECTION: post
   :END:
+** Educational disciplines: size against market growth
+:PROPERTIES:
+:EXPORT_FILE_NAME: educational_disciplines
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-06-15
+:END:
+
+Here is an [interactive version](/educ.html) of this diagram:
+
+[![APF Figure 4](/APF_figure_4_small.png)](/APF_figure_4.png)
+
+(click on the image to show a larger version.)
+
+** Tschirnhausen transformations and the quartic
+:PROPERTIES:
+:EXPORT_FILE_NAME: tschirnhausens_transformations_quartic
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-05-05
+:END:
+
+Here we show how a Tschirnhausen transformation can be used to solve a quartic
+equation.  The steps are:
+1.  Ensure the quartic is missing the cubic term, and its initial coefficient
+   is 1.  We can do this by first dividing by the initial coefficient to obtain
+   an equation
+   \[
+   x^4+b_3x^3+b_2x^2+b_1x+b_0=0
+   \]
+   and then replace the variable $x$ with $y=x-b_3/ 4$.  This will produce a monic
+   quartic equation missing the cubic term.
+
+   We can thus take
+   \[
+   x^4+bx^2+cx+d=0
+   \]
+   as a completely general formulation of the quartic equation. 
+2.  Now apply the Tschirnhausen transformation
+   \[
+   y = x^2+rx+s
+   \]
+   using the resultant, which will produce a quartic equation in $y$.
+3.  Chose $r$ and $s$ so that the coefficients of the linear and cubic terms are
+   zero.  This will require solving a cubic equation.
+4.  Substitute those $r,s$ values into the resultant, which will produce a
+   biquadratic equation in $y$:
+   \[
+   y^4+Ay^2+B=0.
+   \]
+   This can be readily solved as it's a quadratic in $y^2$.  Finally, for each value of
+   $y$, and using the $r,s$ values, solve
+   \[
+   x^2+rx+s-y=0.
+   \]
+   This will in fact produce eight values, of which four are the solution to the
+   original quartic.  
+
+*** An example
+
+Consider the equation
+\[
+x^4-94x^2-480x-671=0
+\]
+which has solutions
+\begin{align*}
+x &= -2 \, \sqrt{5} \pm \sqrt{3} \sqrt{9 -4\, \sqrt{5}},\\
+x &=  2 \, \sqrt{5} \pm \sqrt{3} \sqrt{9 + 4 \, \sqrt{5}}
+\end{align*}
+Note that these relatively nice solutions arise from the polynomial being
+factorizable in the number field $\mathbb{Q}[\sqrt{5}]$.  We can show this using
+[Sagemath](http://www.sagemath.org): 
+
+#+begin_src python
+N.<a> = NumberField(x^2-5)
+K.<x> = N[]
+factor(x^4 - 94*x^2 - 480*x - 671)
+#+end_src
+\[ 
+(x^{2} - 4 a x - 12 a - 7) \cdot (x^{2} + 4 a x + 12 a - 7) 
+\] 
+
+We shall continue to use Sagemath to perform all the dirty work; here's how this
+solution works:
+
+#+begin_src python
+var('x,y,r,s')
+qx = x^4 - 94*x^2 - 480*x - 671
+res = qx.resultant(y-x^2-r*x-s,x).poly(y)
+#+end_src
+
+We now want to find the values of $r$ and $s$ to eliminate the linear and cubic
+terms.  The cubic term is easy:
+
+#+begin_src python
+res.coefficient(y,3)
+#+end_src
+\[
+-4s-188
+\]
+and so
+#+begin_src python
+s_sol = solve(res.coefficient(y,3),s,solution_dict=True)
+#+end_src
+and we can substitute this into the linear coefficient:
+#+begin_src python
+res.coefficient(y,1).subs(s_sol[0]).factor()
+#+end_src
+\[
+-480(r+10)(r+8)(r+6).
+\]
+In general the coefficient would not be as neatly factorizable as this, but we
+can still find the values of $r$:
+#+begin_src python
+r_sol = solve(res.coefficient(y,1).subs(s_sol[0]),r,solution_dict=True)
+#+end_src
+We can choose any value we like; here let's choose the first value and
+substitute it into the resultant from above, first creating a dictionary to
+hold the $r$ and $s$ values:
+#+begin_src python
+rs = s_sol[0].copy()
+rs.update(r_sol[0])
+rs
+#+end_src
+\[
+\lbrace s:-47,r:-8\rbrace
+\]
+#+begin_src python
+res.subs(rs)
+#+end_src
+\[
+y^4-256y^2+1024
+\]
+#+begin_src python
+y_sol = solve(res.subs(rs),y,solution_dict=True)
+#+end_src
+This will produce four values of $y$, and for each one we solve the equation
+\[
+x^2+rx+s-y=0
+\]
+for $x$:
+#+begin_src python
+for ys in ysol:
+    display(solve((x^2+r*x+s-y).subs(rs).subs(ys),x))
+#+end_src
+\begin{align*}
+x &= -\sqrt{-4 \, \sqrt{2 \, \sqrt{15} + 8} + 63} + 4,& 
+x &= \sqrt{-4 \, \sqrt{2 \, \sqrt{15} + 8} + 63} + 4\\
+x &= -\sqrt{4 \, \sqrt{2 \, \sqrt{15} + 8} + 63} + 4,&
+x& = \sqrt{4 \,\sqrt{2 \, \sqrt{15} + 8} + 63} + 4\\
+x& = -\sqrt{-4 \, \sqrt{-2 \, \sqrt{15} + 8} + 63} + 4,&
+x& = \sqrt{-4 \,\sqrt{-2 \, \sqrt{15} + 8} + 63} + 4\\
+x& = -\sqrt{4 \, \sqrt{-2 \, \sqrt{15} + 8} + 63} + 4,&
+x& = \sqrt{4 \, \sqrt{-2 \, \sqrt{15} + 8} + 63} + 4
+\end{align*}
+We can check these values to see which ones are actually correct.  But to
+experiment, we can determine the minimal polynomial of each value given:
+#+begin_src python
+for ys in ysol:
+    s1 = solve((x^2+r*x+s-y).subs(rs).subs(ys),x,solution_dict=True)
+    ql = [QQbar(z[x]).minpoly() for z in s1]
+    display(ql) 
+#+end_src
+\begin{align*}
+&x^{4} - 94 x^{2} - 480 x - 671,&& x^{4} - 32 x^{3} + 290 x^{2} - 64 x - 6431&\\
+&x^{4} - 94 x^{2} - 480 x - 671,&& x^{4} - 32 x^{3} + 290 x^{2} - 64 x - 6431&\\
+&x^{4} - 32 x^{3} + 290 x^{2} - 64 x - 6431,&& x^{4} - 94 x^{2} - 480 x - 671&\\
+&x^{4} - 94 x^{2} - 480 x - 671,&& x^{4} - 32 x^{3} + 290 x^{2} - 64 x - 6431&
+\end{align*}
+Half of these are the original equation we tried to solve.  And the others?
+#+begin_src python
+qx.subs(x=8-x).expand()
+#+end_src
+\[
+x^{4} - 32 x^{3} + 290 x^{2} - 64 x - 6431
+\]
+This is in fact what we should expect, from solving the equation
+\[
+x^2+rx+s-y=0
+\]
+If the roots are $x_1$ and $x_2$, then by Vieta's formulas $x_1+x_2=-(-r)=r$.
+
+*** Further comments
+
+The trouble with this method is that it only works nicely on some equations.  In
+general, the snarls of square, cube, and fourth roots become unwieldy
+very quickly.  For example, consider the equation
+\[
+x^4+6x^2-60x+36=0
+\]
+which according to Cardan in [Ars Magna](https://en.wikipedia.org/wiki/Ars_Magna_(Gerolamo_Cardano)) (Chapter XXXIX, Problem V) was first
+solved by Ferrari.
+
+Taking the resultant with $y-x^2-rx-s$ as a polynomial on $y$, we find that the
+coefficient of $y^3$ is $-4s+12$, and so $s=3$.  Substituting this in the
+linear coefficient, we obtain this cubic in $r$:
+\[
+5r^3-9r^2-60r+300=0.
+\]
+The simplest (real) solution is:
+\[
+r = \frac{1}{5} \, {\left(50 \, \sqrt{3767} - 3273\right)}^{\frac{1}{3}} + \frac{109}{5 \, {\left(50 \, \sqrt{3767} - 3273\right)}^{\frac{1}{3}}} + \frac{3}{5}
+\]
+Substituting these values of $r$ and $s$ into the resultant, we obtain the
+equation
+\[
+y^4+c_2y^2+c_0=0
+\]
+with
+\[
+c_2=\frac{6 \, {\left({\left(50 \, \sqrt{3767} - 3273\right)}^{\frac{2}{3}}
+{\left(50 \, \sqrt{3767} - 18969\right)} - {\left(7200 \, \sqrt{3767} -
+483193\right)} {\left(50 \, \sqrt{3767} - 3273\right)}^{\frac{1}{3}} + 100 \,
+\sqrt{3767} - 6546\right)}}{25 \, {\left(50 \, \sqrt{3767} - 3273\right)}}
+\]
+and
+\[
+  c_0=\frac{27\left(% 
+    \begin{array}{l}
+      2\,(14353657451700 \, \sqrt{3767} - 880869586608887)\,
+      (50 \, \sqrt{3767} - 3273)^{\frac{2}{3}}\\
+      \quad+109541 \, (2077754350 \, \sqrt{3767} - 127532539917) (50 \,
+      \sqrt{3767} - 3273)^{\frac{1}{3}}\quad{}\\
+      \hspace{18ex} - 5262543802068000 \, \sqrt{3767} + 322980491997672634
+    \end{array}%
+   \right)}
+  {625 \, {\left(2077754350 \, \sqrt{3767} -
+ 127532539917\right)} {\left(50 \, \sqrt{3767} - 3273\right)}^{\frac{1}{3}}}
+\]
+Impressed?
+
+Right, so we solve the equation for $y$, to obtain
+\[
+y=\pm\sqrt{-\frac{1}{2}c_2\pm\frac{1}{2}\sqrt{c_2^2-4c_0}}.
+\]
+For each of those values of $y$, we solve the equation
+\[
+x^2+rx+s-y=0
+\]
+to obtain (for example)
+\[
+x= = -\frac{1}{2} \, r \pm \frac{1}{2} \, \sqrt{r^{2} - 4 \, s + 4 \,
+\sqrt{-\frac{1}{2} \, c_{2} + \frac{1}{2} \, \sqrt{c_{2}^{2} - 4 \, c_{0}}}}
+\]
+With $r$ being the solution of a cubic equation, and $c_0$, $c_2$ being the
+appalling expressions above, you can see that this solution, while "true" in a
+logical sense, is hardly useful or enlightening.
+
+Cardan again: "So progresses arithmetic subtlety, the end of which, it is said,
+is as refined as it is useless."
+
+** Tschirnhausen's solution of the cubic
+:PROPERTIES:
+:EXPORT_FILE_NAME: tschirnhausens_solution_of_the_cubic
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-05-05
+:END:
+
+A general cubic /polynomial/ has the form
+\[
+ax^3+bx^2+cx+d
+\]
+but a general cubic /equation/ can have the form
+\[
+x^3+ax^2+bx+c=0.
+\]
+We can always divide through by the coefficient of $x^3$ (assuming it to be
+non-zero) to obtain a monic equation; that is, with leading coefficient of 1.
+We can now remove the $x^2$ term by replacing $x$ with $y-a/3$:
+\[
+\left(y-\frac{a}{3}\right)^{\negmedspace 3}+a\left(y-\frac{a}{3}\right)^{\negmedspace 2}
++b\left(y-\frac{a}{3}\right)+c=0.
+\]
+Expanding and simplifying produces
+\[
+y^3+\left(b-\frac{a^2}{3}\right)y+\frac{2}{27}a^3-\frac{1}{3}ab+c=0.
+\]
+In fact this can be simplified by writing the initial equation as
+\[
+x^3+3ax^2+bx+c=0
+\]
+and then substituting $x=y-a$ to obtain
+\[
+y^3+(b-3a^2)y+(2a^3-ab+c)=0.
+\]
+This means that in fact an equation of the form
+\[
+y^3+Ay+B=0
+\]
+is a completely general form of the cubic equation.  Such a form of a cubic
+equation, missing the quadratic term, is known as a /depressed cubic/.
+
+We could go even further by substituting 
+\[
+y=z\sqrt{A}
+\]
+to obtain
+
+\[
+A^{3/ 2}z^3+A\sqrt{A}z+B=0
+\]
+
+and dividing through by \(A^{3/ 2}\) to produce
+
+\[
+z^3+z+BA^{-3/ 2}=0.
+\]
+
+This means that 
+
+\[
+z^3+z+W=0
+\]
+
+is also a perfectly general form for the cubic equation.
+
+*** Cardan's method
+
+Although this is named for [Gerolamo
+Cardano](https://en.wikipedia.org/wiki/Gerolamo_Cardano) (1501-1576), the method
+was in fact discovered by [Niccolò
+Fontana](https://en.wikipedia.org/wiki/Niccolò_Fontana_Tartaglia) (1500-1557),
+known as Tartaglia ("the stammerer") on account of a injury obtained when a
+soldier slashed his face when he was a boy.  In the days before peer review and
+formal dissemination of ideas, any new mathematics was closely guarded:
+mathematicians would have public tests of skill, and a new solution method was
+invaluable.  After assuring Tartaglia that his new method was safe with him,
+Cardan then proceeded to publish it as his own in his magisterial /Ars Magna/
+in 1545.  A fascinating account of the mix of Cardan, Tartaglia, and several
+other egotistic mathematicians of the time, can be [read
+here](http://brain.caltech.edu/ist4/lectures/Cardano-Tartaglia_Dispute.pdf).
+
+Cardan's method solves the equation
+\[
+x^3-3ax-2b=0
+\]
+noting from above that this is a perfectly general form for the cubic, and where
+we have introduced factors of $-3$ and $-2$ to eliminate fractions later on.  We start by
+assuming that the solution will have the form
+\[
+x=p^{1/ 3}+q^{1/ 3}
+\]
+and so
+\[
+x^3=(p^{1/ 3}+q^{1/ 3})^3=p+3p^{2/ 3}q^{1/ 3}+3p^{1/ 3}q^{2/ 3}+q.
+\]
+This last can be written as
+\[
+p+q+3p^{1/ 3}q^{1/ 3}(p^{1/ 3}+q^{1/ 3}).
+\]
+We can thus write
+\[
+x^3=3p^{1/ 3}q^{1/ 3}x+p+q
+\]
+and comparing with the initial cubic equation we have
+\[
+3p^{1/ 3}q^{1/ 3}=3a,\quad p+q=2b.
+\]
+These can be written as
+\[
+pq=a^3,\quad p+q=2b
+\]
+for which the solutions are 
+\[
+p,q=b\pm\sqrt{b^2-a^3}
+\]
+and so
+\[
+x = (b+\sqrt{b^2-a^3})^{1/ 3}+(b-\sqrt{b^2-a^3})^{1/ 3}.
+\]
+This can be written in various different ways.
+
+For example,
+\[
+x^3-6x-6=0
+\]
+for which $a=2$ and $b=3$.  Here $b^2-a^3=1$ and so one solution is
+\[
+x=4^{1/ 3}+2^{1/ 3}.
+\]
+Given that a cubic must have three solutions, the other two are
+\[
+\omega p^{1/ 3}+\omega^2 q^{1/ 3},\quad \omega^2 p^{1/ 3}+\omega q^{1/ 3}
+\]
+where $\omega$ is a cube root of 1, for example
+\[
+\omega=\frac{1}{2}+i\frac{\sqrt{3}}{2}.
+\]
+
+*** And so to Tschirnhausen
+
+At the beginning we eliminated the $x^2$ terms from a cubic equation by a linear
+substitution $x=y-a/3$ or $y=x+a/3$.  Writing in the year 1680, the German
+mathematician [Ehrenfried Walther von
+Tschirnhausen](https://en.wikipedia.org/wiki/Ehrenfried_Walther_von_Tschirnhaus)
+(1651-1708) began experimenting with more general polynomial substitutions,
+believing that it would be possible to eliminate other terms at the same time.
+Such substitutions are now known as [Tschirnhausen
+transformations](https://en.wikipedia.org/wiki/Tschirnhaus_transformation) and
+of course the modern general approach places them squarely within field theory.  
+
+Tschirnhausen was only partially correct: it is indeed possible to remove /some/
+terms from a polynomial equation, and in 1858 the English mathematician [George
+Jerrard](https://en.wikipedia.org/wiki/George_Jerrard) (1804-1863) showed that it
+was possible to remove the terms of degree $n-1$, $n-2$ and $n-3$ from a
+polynomial of degree $n$.  In particular, the general quintic equation can be
+reduced to
+\[
+x^5+px+q=0
+\]
+which is known as the /Bring-Jerrard form/; also honouring Jerrard's predecessor,
+the Swedish mathematician [Erland
+Bring](https://en.wikipedia.org/wiki/Erland_Samuel_Bring) (1736-1798).  Note
+that Jerrard was quite well aware of the work of Ruffini, Abel and Galois in
+proving the general unsolvability by radicals of the quintic equation.
+
+Neither Bring nor Tschirnhausen had the advantage of this knowledge, and both
+were working towards a general solution of the quintic.
+
+Happily, Tschirnhausen's work is available in an English translation, published
+in the [ACM SIGSAM Bulletin by R. F. Green in
+2003](https://dl.acm.org/citation.cfm?id=844078). For further delight, Jerrard's
+text, with the splendidly formal English title "An Essay on the Resolution of
+Equations", is also [available
+online](https://archive.org/details/essayonresolutio00jerrrich). 
+
+After that history lesson, let's explore how to remove both the quadratic and
+linear terms from a cubic equation using Tschirnhausen's method, and also using
+[SageMath](http://www.sagemath.org) to do the heavy algebraic work.  There is in
+fact nothing particularly conceptually difficult, but the algebra is quite messy
+and fiddly.
+
+We start with a depressed cubic equation
+\[
+x^3+3ax+2b=0
+\]
+and we will use the Tschirnhausen transformation
+\[
+y=x^2+rx+s.
+\]
+
+This can be done by hand of course, using a somewhat fiddly argument, but for us
+the best approach is to compute the
+[resultant](https://en.wikipedia.org/wiki/Resultant) of the two polynomials,
+which is a polynomial expression equal to zero if the two polynomials have a
+common root.  The resultant can be computed as the determinant of the
+[Sylvester matrix](https://en.wikipedia.org/wiki/Sylvester_matrix) (named for
+its discoverer); but we can simply use SageMath:
+
+#+begin_src python
+var('a,b,c,x,y,r,s')
+cb = x^3 + 3*a*x + 2*b
+res = cb.resultant(y-x^2-r*x-s,x).poly(y)
+res
+#+end_src
+
+\[
+\displaylines{
+y^3+3(2a-s)y^{2}+3(ar^{2}+3a^{2}+2r-4as+s^{2})y\\
+{\ }\mspace4em -4b^{2}+2br^{3}-3ar^{2}s+6abr-9a^{2}s-6brs+6as^{2}-s^{3}
+}
+\]
+
+Now we find values of $r$ and $s$ for which the coefficients of $y^2$ and $y$
+will be zero:
+
+#+begin_src python
+sol = solve([res.coefficient(y,1),res.coefficient(y,2)],[r,s],solution_dict=True)
+sol
+#+end_src
+
+\[
+\left[\left\lbrace s : 2 \, a, r : -\frac{b + \sqrt{a^{3} + b^{2}}}{a}\right\rbrace,
+\left\lbrace s : 2 \, a, r : -\frac{b - \sqrt{a^{3} + b^{2}}}{a}\right\rbrace\right]
+\]
+
+We can now substitute say the second solution into the resultant from above,
+which should produce an expression of the form $y^3+A$:
+
+#+begin_src python
+cby = res.subs(sol[1]).canonicalize_radical().poly(y)
+cby
+#+end_src
+
+\[
+y^3-8 \, a^{3} - 16 \, b^{2} + 8 \, \sqrt{a^{3} + b^{2}} b - \frac{8 \, b^{4}}{a^{3}} + \frac{8 \, \sqrt{a^{3} + b^{2}} b^{3}}{a^{3}}
+\]
+We can simply take the cube root of the constant term as our solution:
+
+#+begin_src python
+sol_y = solve(cby,y,solution_dict=True)
+sol_y[2]
+#+end_src
+
+\[
+\left\lbrace y : \frac{2 \, {\left(a^{6} + 2 \, a^{3} b^{2} - \sqrt{a^{3} + b^{2}}
+a^{3} b + b^{4} - \sqrt{a^{3} + b^{2}} b^{3}\right)}^{\frac{1}{3}}}{a}\right\rbrace
+\]
+
+Now we solve the equation $y=x^2+rx+s$ using the values $r$ and $s$ from above,
+and the value of $y$ just obtained:
+
+#+begin_src python
+eq = x^2+r*x+s-y
+eqrs = eq.subs(sol[1])
+eqx = eqrs.subs(sol_y[2])
+solx =  solve(eqx,x,solution_dict=True)
+solx[0]
+#+end_src
+
+\[
+\left\lbrace x : \frac{b - \sqrt{a^{3} + b^{2}} - \sqrt{-7 \, a^{3} + 2 \, b^{2} - 2 \, \sqrt{a^{3} + b^{2}} b + 8 \, {\left(a^{6} + 2 \, a^{3} b^{2} + b^{4} - {\left(a^{3} b + b^{3}\right)} \sqrt{a^{3} + b^{2}}\right)}^{\frac{1}{3}} a}}{2 \, a}\right\rbrace
+\]
+
+A equation, of err... rare beauty, or if not beauty, then something else.  It
+certainly lacks the elegant simplicity of Cardan's solution.  On the other hand,
+the method can be applied to quartic (and quintic) equations, which Cardan's
+solution can't.
+
+Finally, let's test this formula, again on the equation $x^3-6x-6=0$, for which $a=-2$
+and $b=-3$:
+
+#+begin_src python
+xs = solx[0][x].subs({a:-2, b:-3})
+xs
+#+end_src
+
+\[
+\frac{1}{4} \, \sqrt{-16 \cdot 4^{\frac{1}{3}} + 80} + 1
+\]
+
+This can clearly be simplified to
+
+\[
+1+\sqrt{5-4^{1/ 3}}
+\]
+It certainly /looks/ different from Cardan's result, but watch this:
+
+#+begin_src python
+xt = QQbar(xs)
+xt.radical_expression()
+#+end_src
+
+\[
+\frac{1}{2}4^{2/ 3}+4^{1/ 3}
+\]
+
+which is Cardan's result, only very slightly rewritten.  And finally:
+
+#+begin_src python
+xt.minpoly()
+#+end_src
+
+\[
+x^3-6x-6
+\]
+
+** Colonial massacres, 1794 to 1928
+:PROPERTIES:
+:EXPORT_FILE_NAME: colonial_massacres
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-01-28
+:END:
+
+The date January 26 is one of immense current debate in Australia.  Officially
+it's the date of [Australia Day](https://en.wikipedia.org/wiki/Australia_Day),
+which supposedly celebrates the founding of Australia.  To Aboriginal peoples it
+is a day of deep mourning and sadness, as the date commemorates over two
+centuries of oppression, bloodshed, and dispossession.  To them and their many
+supporters, January 26 is [Invasion
+Day](https://www.creativespirits.info/aboriginalculture/history/australia-day-invasion-day).
+
+The date commemorates the landing in 1788 of [Arthur
+Phillip](https://en.wikipedia.org/wiki/Arthur_Phillip), in charge of the First
+Fleet and the first Governor of the colony of New South Wales.
+
+The trouble is that "Australia" means two things: the island continent, and the
+country.  The country didn't exist until Federation on January 1, 1901; before
+which time the land since 1788 was subdivided into independent colonies.  Many
+people believe that Australia Day would be better moved to January 1; the
+trouble with /that/ is that it's already a public holiday, and apparently you
+can't have a national day that doesn't have its own public holiday.  And [many other
+dates](https://en.wikipedia.org/wiki/Australia_Day#Suggested_alternative_dates)
+have been proposed.
+
+My own preferred date is June 3; this is the date of the High Court "Mabo"
+decision in 1992 which formally recognized native title and rejected the
+doctrine of /terra nullius/ under which the British invaded.
+
+That the continent was invaded rather than settled is well established: all
+serious historians take this view, and it can be backed up with legal arguments.
+The Aboriginal peoples, numbering maybe close to a million in 1788, had mastered
+the difficult continent and all of its many ecosystems, and had done so for
+around 80,000 years.  Aboriginal culture is the oldest continually maintained
+culture on the planet, and by an enormous margin.
+
+Arthur Phillip did in fact arrive with [formal
+instructions](https://www.foundingdocs.gov.au/resources/transcripts/nsw2_doc_1787.pdf)
+to create "amity" with the "natives" and indeed to live in "kindness" with them,
+but this soon went downhill.  Although Phillip himself seems to have been a man of
+rare understanding for his time (when speared in the shoulder, for example, he
+refused to let his soldiers retaliate), he was no match for the many convicts
+and soldiers under his rule.  When he retired back to England in 1792 the colony
+was ruled by a series of weak and ineffective governors, and in particular by
+the military, culminating in the governorship of [Lachlan
+Macquarie](https://en.wikipedia.org/wiki/Lachlan_Macquarie) who is seen as a
+mass murderer of Aboriginal peoples, although the [evidence is not
+clear-cut](https://www.abc.net.au/news/2017-09-27/fact-check-did-lachlan-macquarie-commit-mass-murder-and-genocide/8981092).
+What /is/ clear is that mass murders of Aboriginal peoples were common and
+indiscriminate, and often with appalling cruelty.  On many occasions large
+groups were poisoned with strychnine: this works by affecting the nerves which
+control muscle movement, so that the body goes into agonizing spasms resulting
+in death by asphyxiation.  Strychnine is considered by toxicologists to be one
+of the most painful acting of all poisons.  Even though Macquarie himself
+ordered retribution only after "resistance"; groups considered harmless, or
+consisting only of old men, women and children, were brutally murdered.
+
+People were routinely killed by gunfire, or by being hacked to death; there is
+at least one report of a crying baby - the only survivor of a massacre - being
+thrown onto the fire made to burn the victims.
+
+Many more died of disease: smallpox and tuberculosis were responsible for deaths
+of over 50% of Aboriginal peoples.  Their numbers today are thus tiny, and as in
+the past they are still marginalized.  
+
+Only recently has this harrowing part of Australia's past been formally researched;
+the casual nature of the massacres meant that many were not recorded, and it has
+taken a great deal of time and work to uncover their details.  This work has
+been headed by [Professor Lyndall
+Ryan](https://www.newcastle.edu.au/profile/lyndall-ryan) at the University of
+Newcastle.  The painstaking and careful work by her team has unearthed much
+detail, and their results are available at their site [Colonial Frontier Massacres
+in Central and Eastern Australia 1788-1930](https://c21ch.newcastle.edu.au/colonialmassacres/)
+
+As a January 26 exercise I decided to rework one of their maps, producing a
+single map which would show the sites of massacres by markers whose size is
+proportional to the number of people killed.  This turned out to be quite easy
+using Python and its folium library, but naturally it took me a long time to get
+it right.
+
+I started by downloading the
+[timeline](https://c21ch.newcastle.edu.au/colonialmassacres/timeline.php) from
+the Newcastle site as a csv file, and going through each massacre adding its
+location.  The project historians point out that the locations are deliberately
+vague.  Sometimes this is because the vagueness of the historical record; but
+also (from the [Introduction](https://c21ch.newcastle.edu.au/colonialmassacres/introduction.php)):
+
+#+begin_quote 
+In order to protect the sites from desecration, and respect for
+the wishes of Aboriginal communities to observe the site as a place of mourning,
+the points have been made purposefully imprecise by rounding coordinates to 3
+digits, meaning the point is precise only to around 250m.
+#+end_quote
+
+Given the database, the Python commands were:
+
+#+begin_src python
+import folium
+import pandas as pd
+
+mass = pd.read_csv('massacres.csv')
+
+a = folium.Map(location=[-27,134],width=1000, height=1000,tiles='OpenStreetMap',zoom_start=4.5)
+
+for i in range(0,len(mass)):
+   number_killed = mass.iloc[i]['Estimated Aboriginal People Killed']
+   folium.Circle(
+      location=[float(mass.iloc[i]['Lat']), float(mass.iloc[i]['Long'])],
+      tooltip=mass.iloc[i]['Location']+': '+str(number_killed),
+      radius=int(number_killed)*150,
+      color='goldenrod',
+      fill=True,
+      fill_color='gold'
+   ).add_to(a)
+
+a.save("massacres.html")
+#+end_src
+
+The result is shown below.  You can zoom in and out, and hovering over a massacre site
+will produce the location and number of people murdered.
+
+*The research is ongoing and this data is incomplete* 
+
+<iframe seamless src="/massacres.html" width="1000" height="1000"></iframe> 
+
+*The data was extracted from:* Ryan, Lyndall; Richards, Jonathan; Pascoe, William;
+Debenham, Jennifer; Anders, Robert J; Brown, Mark; Smith, Robyn; Price, Daniel;
+Newley, Jack Colonial Frontier Massacres in Eastern Australia 1788 – 1872, v2.0
+Newcastle: University of Newcastle, 2017, http://hdl.handle.net/1959.13/1340762
+(accessed 08/02/2019). This project has been funded by the Australian Research
+Council (ARC).
+
+
+Note finally that Professor Ryan and team have defined a massacre to be a killing
+of at least six people.  Thus we can assume there are many other killings of
+five or less people which are not yet properly documented, or more likely shall
+never been known.  A shameful history indeed.
+
+** Vote counting in the Australian Senate
+:PROPERTIES:
+:EXPORT_FILE_NAME: vote_counting_in_australian_senate
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-01-22
+:END:
+
+Recently we have seen senators behaving in ways that seem stupid, or contrary to
+accepted public opinion.  And then people will start jumping up and down and
+complaining that such a senator only got a tiny number of first preference votes.
+[One commentator](https://www.news.com.au/national/politics/19-people-got-this-bloke-a-200k-job/news-story/f8d8aaa83f0c2bcab53626455a3698d6) said that one senator, with 19 first preference votes, "couldn’t
+muster more than 19 members of his extended family to vote for him".  This
+displays an ignorance of how senate counting works.  In fact first preference
+votes are almost completely irrelevant; or at least, far less relevant than they
+are in the lower house.
+
+Senate counting works on a proportional system, where multiple candidates are elected
+from the same group of ballots.  This is different from the lower house (the
+House of Representatives federally) where only one person is elected.  For the
+lower house, first preference votes are indeed much more important.  As for the
+lower house, senate voting is preferential: voters number their preferred
+candidates starting with 1 for their most preferred, and so on (but see below).
+
+A full explanation is given by the Australian Electoral Commission on their
+[Senate Counting page](https://www.aec.gov.au/voting/counting/senate_count.htm);
+this blog post will run through a very simple example to demonstrate how a
+senator can be elected with a tiny number of first preference votes.
+
+*** An aside on micro parties and voting
+
+One problem in Australia is the proliferation of micro parties, many of which
+hold racist, anti-immigration, or hard-line religious views, or who in some
+other ways represent only a tiny minority of the electorate.  The problem is
+just as bad at State level; in my own state of Victoria we have the Shooters,
+Fishers and Farmers Party, the Aussie Battlers Party, and the Transport Matters
+Party (who represent taxi drivers) to name but three.  This has the affect that
+the number of candidates standing for senate election has become huge, and the
+senate ballot papers absurdly unwieldy:
+
+[[/777191-ballot-paper.jpg]]
+
+Initially the law required voters to number every box starting from 1: on a
+large paper this would mean numbering carefully from 1 up to at least 96 in one recent
+election.  To save this trouble (and most Australian voters are nothing if not
+lazy), "above the line voting" was introduced.  This gave voters the option to put
+just a single "1" in the box representing the party of choice: you will see from
+the image above that the ballot paper is divided: the columns represent all the
+parties; the boxes below the line represent all the candidates from that party,
+and the single box above just the party name.  Here is a close up of a NSW
+senate ballot:
+
+[[/nsw_senate2.png]]
+
+Almost all voters willingly took advantage of that and voted above the line.
+The trouble is then that voters have no control over where their preferences go:
+that is handled by the parties themselves.  By law, all parties must make their
+preferences available before the election, and they are published on the site of
+the relevant Electoral Commission.  But the only people who carefully check this
+site and the party's preferences are the sort of people who would carefully
+number each box below the line anyway.  Most people don't care enough to be
+bothered.
+
+This enables all the micro-parties to make "preference deals"; in effect they act
+as one large bloc, ensuring that at least some of them get a senate seat.  This
+has been handled by a so-called ["preference whisperer"](https://en.wikipedia.org/wiki/Glenn_Druery).
+
+The current system in the state of Victoria has been to encourage voting below
+the line by allowing, instead of all boxes to be numbered, at least six.  And
+there are strong calls for voting above the line to be abolished. 
+
+*** A simple example   
+
+To show how senate counting works, we suppose an electorate of 100 people, and
+three senators to be elected from five candidates.  We also suppose that every
+ballot paper has been numbered from 1 to 5 indicating each voter's preferences.  
+
+Before the counting begins we need to determine the number of votes each
+candidate must amass to be elected: this is chosen as the smallest number of
+votes for which no more candidates can be elected.  If there are $n$ formal
+votes cast, and $k$ senators to be elected, that number is clearly
+
+$$\left\lfloor\frac{n}{k+1}\right\rfloor + 1.$$
+
+This value is known as the /Droop quota/.  In our example, this quota is
+
+\[
+\left\lfloor\frac{100}{3+1}\right\rfloor +1 = 26.
+\]
+
+You can see that it is not possible for four candidates to obtain this value.
+
+Suppose that the ballots are distributed as follows, where the numbers under the
+candidates indicate the preferences cast:
+
+#+attr_css: :width 33% :padding 50px
+|       <c>       | <c> | <c> | <c> | <c> | <c> |
+| Number of votes |  A  |  B  |  C  |  D  |  E  |
+|-----------------+-----+-----+-----+-----+-----|
+|       20        |  1  |  2  |  3  |  4  |  5  |
+|       20        |  1  |  5  |  4  |  3  |  2  |
+|       40        |  2  |  1  |  5  |  4  |  3  |
+|        5        |  2  |  3  |  5  |  1  |  4  |
+|        4        |  4  |  3  |  1  |  2  |  5  |
+|        1        |  2  |  3  |  4  |  5  |  1  |
+
+Counting first preferences produces:
+
+#+attr_css: :width 33% :padding 50px
+|    <c>    |     <c>     |
+| Candidate | First Prefs |
+|-----------+-------------|
+| A         | 40          |
+| B         | 40          |
+| C         | 4           |
+| D         | 5           |
+| E         | 1           |
+
+
+The first step in the counting is to determine if any candidate has amassed
+first preference votes equal to or greater than the Droop quota.  In the example
+just given, both A and B have 40 first preferences each, so they are both
+elected.
+
+Since only 26 votes are needed for election, for each of A and B there are 14
+votes remaining which can be passed on to other candidates according to the
+voting preferences.  Which votes are passed on?  For B it doesn't matter, but
+which votes do we deem surplus for A?  The Australian choice is to pass on /all/
+votes, but at a reduced value known as the /transfer value/.  This value is
+simply the fraction of surplus votes over total votes; in our case it is
+
+$$\frac{14}{40}=0.35$$
+
+for each of A and B. 
+
+Looking at the first line of votes: the next highest preference from A to a
+non-elected candidate is C, so C gets 0.35 of those 20 votes.  From the second
+line, E gets 0.35 of those 20 votes.  From the third line, E gets 0.35 of all 40
+votes. 
+
+The votes now allocated to the remaining candidates are as follows:
+
+C: $4 + 0.35\times 20 = 11$
+
+D: 5
+
+E: $1 + 0.35\times 20 + 0.35\times 40 = 22$
+
+At this stage no candidate has amassed a quota, so the lowest ranked candidate
+in the counting is eliminated - in this case D - and all of those votes are
+passed on to the highest candidate (of those that are left, which is now only C
+and E) in those preferences, which is E.  This produces:
+
+C: 11
+
+E: $22 + 5 = 27$
+
+which means E has achieved the quota and thus is elected.
+
+This is of course a very artificial example, but it shows two things:
+
+1. How a candidate with a very small number of first preference votes can still
+   be elected: in this case E had the lowest number of first preference votes.
+2. The importance of preferences.
+
+So let's have no more complaining about the low number of first preference votes
+in a senate count.  In a lower house count, sure, the candidate with the least
+number of first preference votes is eliminated, but in a senate count such a
+candidate might amass votes (or reduced values of votes) in such a way as to
+achieve the quota.  
+
+** Concert review: Lixsania and the Labyrinth
+:PROPERTIES:
+:EXPORT_FILE_NAME: lixsania_and_labyrinth
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2018-11-10
+:END:
+
+This evening I saw the [Australia Brandenburg
+Orchestra](https://en.wikipedia.org/wiki/Australian_Brandenburg_Orchestra) with
+guest soloist [Lixsania Fernandez](https://lixsania.wordpress.com), a virtuoso
+player of the [viola da gamba](https://en.wikipedia.org/wiki/Viol), from Cuba.
+(Although she studied, and now lives, in Spain.)  Lixsania is quite amazing:
+tall, statuesque, quite absurdly beautiful, and plays with a technique that
+encompasses the wildest of baroque extravagances as well as the most delicate
+and refined tenderness.
+
+The trouble with the viol, being a fairly soft instrument, is that it's not well
+suited to a large concert hall.  This means that it's almost impossible to get
+any sort of balance between it and the other instruments.  Violins, for example,
+even if played softly, can overpower it.
+
+[Thomas Mace](https://en.wikipedia.org/wiki/Thomas_Mace), in his "Musick's
+Monument", published in 1676, complained vigorously about violins:
+
+#+attr_html: :width 600
+[[/mace_violins.png]]
+
+Mace has been described as a "conservative old git" which he certainly was, but
+I do love the idea of this last hold-out against the "High-Priz'd Noise" of the
+violin.  And I can see his point!
+
+But back to Lixsania.  The concert started with a "pastiche" of La Folia, taking
+in parts of Corelli's well known set for solo violin, Vivaldi's for two, Scarlatti
+for harpsichord, and of course Marin Marais "32 couplets de Folies" from his
+second book of viol pieces.  The Australian Brandenburgs have a nice line in
+stagecraft, and this started with a dark stage with only Lixsania lit, playing
+some wonderful arpeggiated figurations over all the strings, with a bowing of
+utter perfection.  I was sitting side on to her position here, and I could
+see with what ease she moved over the fingerboard - the mark of a true master of
+their instrument - being totally at one with it.  Little by little other
+instrumentalists crept in: a violinist here and there, Paul Dyer (leader of the
+orchestra) to the harpsichord, cellists and a bassist, until there was a sizable
+group on stage all playing madly.  I thought it was just wonderful.
+
+For this first piece Lixsania was wearing a black outfit with long and full
+skirts and sort of halter top which left her arms, sides and back bare.  This
+meant I had an excellent view of her rib-cage, which was a first for me in a
+concert.
+
+The second piece was the 12th concerto, the so called "Harmonic Labyrinth" from
+Locatelli's opus 3.  These concertos contain, in their first and last movements,
+a wild "capriccio" for solo violin.  This twelfth concerto contains capricci of
+such superhuman difficulty that even now, nearly 300 years after they were
+composed, they still stand at the peak of virtuosity.  The Orchestra's
+concertmaster, Shaun Lee-Chen, was however well up to the challenge, and powered
+his way through both capricci with the audience hardly daring to breathe.  Even
+though conventional concert behaviour does not include applause after individual
+movements, so excited was the audience that there was an outburst of clapping
+after the first movement.  And quite right too.
+
+The final piece of the first half was a Vivaldi concerto for two violins and
+cello, the cello part being taken by Lixsania on viol.  I felt this didn't come
+across so well; the viol really couldn't be heard much, and you really do need
+the strength of the cello to make much sense of the music.  However, it did give
+Lixsania some more stage-time.  
+
+After interval we were treated to a concerto for viol by [Johann Gottlieb
+Graun](https://en.wikipedia.org/wiki/Johann_Gottlieb_Graun), a court composer to
+Frederick the Great of Prussia.  Graun wrote five concertos for the instrument -
+all monumentally difficult to play - which have been recorded several times.
+However, a sixth one has recently been unearthed in manuscript - and apparently
+we were hearing it for the first time in this concert series.  The softness of
+the viol in the largeness of the hall meant that it was not always easy to hear:
+I solved that by closing my eyes, so I could focus on the sound alone.  Lixsania
+played, as you would imagine, as though she owned it, and its formidable
+technical difficulties simply melted away under the total assurance of her
+fingers.  She'd changed into a yellow outfit for this second half, and all the
+male players were wearing yellow ties.
+
+Then came a short Vivaldi sinfonia - a quite remarkable piece; very stately and
+with shifting harmonies that gave it a surprisingly modern feel.  Just when you
+think Vivaldi is mainly about pot-boilers, he gives you something like this.
+Short, but superb.
+
+Finally, the fourth movement of a concerto written in 2001 for two viols by
+"Renato Duchiffre" (the pen name of René Schiffer, cellist and violist with
+Apollo's Fire): a Tango.  Now my exposure to tangos has mainly been through that
+arch-bore Astor Piazolla.  But /this/ tango was magnificent.  The other violist
+was Anthea Cottee, of whom I'd never heard, but she's no mean player.  She and
+Lixsania made a fine pair, playing like demons, complementing each other and
+happily grinning at some of the finer passages.  One of the many likeable
+characteristics of Lixsania is that she seems to really enjoy playing, and smiles
+a lot - I hate that convention of players who adopt a poker-face.  And she has a
+great smile.
+
+In fact the whole orchestra has a wonderful enjoyment about them, led by Paul
+Dyer who displays a lovely dynamism at the harpsichord.  Not for him the
+expressionless sitting still; he will leap up if given half an opportunity and
+conduct a passage with whichever hand is free; sometimes he would play standing
+and sort of conduct with his body; between him and Lixsania there was a
+chemistry of heart and mind, both leaning towards each other, as if inspiring
+each other to reach higher musical heights.  This was one of the most delightful
+displays of communicative musicianship I've ever seen.  
+
+Naturally there had to be an encore: and it was Lixsania singing a Cuban
+lullaby, accompanying herself by plucking the viol - which was stood on a chair
+for easier access - with Anthea Cottee providing a bowed accompaniment.
+Lixsania told us (of course she speaks English fluently, with a charming Cuban
+accent) that it was a lullaby of special significance, as it was the first song
+she'd ever sang to her son.  There's no reason why instrumentalists should be
+able to sing well, but in fact Lixsania has a lovely, rich, warm, /enveloping/ sort
+of voice, and the effect was breathtakingly lovely.  Lucky son!
+
+This was a great concert.
+
 ** Linear programming in Python (2)
 :PROPERTIES:
 :EXPORT_FILE_NAME: linear_programming_in_python_2
@@ -1941,7 +2951,7 @@ all the How to Vote information as a dictionary:
           htv['Spirovska']=[2,12,3,7,4,5,6,8,10,9,1,11]
           htv['Fontana']=[2,3,4,5,6,7,8,9,10,11,12,1]
 
-  In [ ]: cands = list(htv.keys())
+	  In [ ]: cands = list(htv.keys())
 #+end_src
 
 voting took place at different voting centres (also known as "booths"),
@@ -2522,3 +3532,5 @@ geometry.
 # org-hugo-footer: "\n\n[//]: # \"Exported with love from a post written in Org mode\"\n[//]: # \"- https://github.com/kaushalmodi/ox-hugo\""
 # End:
 
+
+#  LocalWords:  quartic

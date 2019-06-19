@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Numbers and Shapes on What&#39;s all this, then?</title>
-    <link>https://blog.numbersandshapes.net/nshapes/</link>
+    <link>https://numbersandshapes.net/nshapes/</link>
     <description>Recent content in Numbers and Shapes on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Apr 2018 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://blog.numbersandshapes.net/nshapes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://numbersandshapes.net/nshapes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Numbers and Shapes</title>
-      <link>https://blog.numbersandshapes.net/nshapes/numbers_and_shapes/</link>
+      <link>https://numbersandshapes.net/nshapes/numbers_and_shapes/</link>
       <pubDate>Tue, 24 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/nshapes/numbers_and_shapes/</guid>
+      <guid>https://numbersandshapes.net/nshapes/numbers_and_shapes/</guid>
       <description>This is the holding place for my old blog, when I import it from Wordpress. In the meantime, it&amp;rsquo;s here</description>
     </item>
     
     <item>
       <title>Post 1</title>
-      <link>https://blog.numbersandshapes.net/nshapes/post_1/</link>
+      <link>https://numbersandshapes.net/nshapes/post_1/</link>
       <pubDate>Tue, 24 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/nshapes/post_1/</guid>
+      <guid>https://numbersandshapes.net/nshapes/post_1/</guid>
       <description>Just to see how it works</description>
     </item>
     
     <item>
       <title>Post 2</title>
-      <link>https://blog.numbersandshapes.net/nshapes/post_2/</link>
+      <link>https://numbersandshapes.net/nshapes/post_2/</link>
       <pubDate>Tue, 24 Apr 2018 00:00:00 +1000</pubDate>
       
-      <guid>https://blog.numbersandshapes.net/nshapes/post_2/</guid>
+      <guid>https://numbersandshapes.net/nshapes/post_2/</guid>
       <description>and another one, for experiment.</description>
     </item>
     
