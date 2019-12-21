@@ -6,12 +6,12 @@ draft = false
 +++
 
 This was a comedy sketch initially performed in the revue ["Clowns in
-Clover"](<http://www.guidetomusicaltheatre.com/shows_c/clownsclover.htm>) which
+Clover"](<http://www.guidetomusicaltheatre.com/shows%5Fc/clownsclover.htm>) which
 had its first performance at the Adelphi Theatre in London on December 1, 1927.
 This particular sketch was written by [Dion
-Titheradge](<http://en.wikipedia.org/wiki/Dion_Titheradge>) and starred the
+Titheradge](<http://en.wikipedia.org/wiki/Dion%5FTitheradge>) and starred the
 inimitable [Cicely
-Courtneidge](<https://en.wikipedia.org/wiki/Cicely_Courtneidge>) as the annoyed
+Courtneidge](<https://en.wikipedia.org/wiki/Cicely%5FCourtneidge>) as the annoyed
 customer Mrs Spooner.  It has been recorded and is available on many different
 collections; you can also hear it on
 [youtube](<https://www.youtube.com/watch?v=0P8XSUGSR-c>).

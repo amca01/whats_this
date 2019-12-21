@@ -48,7 +48,7 @@ sizes showed the strength of the percentage win at each place.
 Because this election was in a federal division, the management of the polls and
 of the results (including counting the votes) was managed by the Australian
 Electoral Commission, whose [pages about this by-election](
-<http://www.aec.gov.au/Elections/supplementary_by_elections/2018-batman/>) contain
+<http://www.aec.gov.au/Elections/supplementary%5Fby%5Felections/2018-batman/>) contain
 pretty much all publicly available information.  You can copy and paste the
 results from their pages, or download them as CSV files.
 
@@ -79,7 +79,7 @@ And of course the standard [matplotlib](<http://matplotlib.org>) for plotting,
 [numpy](<http://www.numpy.org>) for array handling.
 
 My guides were the [London tube stations
-example](<http://scitools.org.uk/cartopy/docs/latest/gallery/tube_stations.html>)
+example](<http://scitools.org.uk/cartopy/docs/latest/gallery/tube%5Fstations.html>)
 from Cartopy and a local (Australian) data analysis blog which discussed the
 [use of Cartopy](<http://www.net-analysis.com/blog/cartopytiles.html>) including
 adding graphics to an map image.
@@ -176,14 +176,6 @@ And here is the result, saved as an image:
 \![Batman 2018](/batman2018trim.png)
 
 I'm quite pleased with this output.
-
-And a quick check of some maths, first inline
-$ (x+2y)^3=x^3+6x^2y+12xy^2+8y^3 $ and also displayed:
-<div>
-\\[
-\int^\infty\_{-\infty}e^{-x^2}\,dx=\sqrt{\pi}.
-\\]
-</div>
 
 [//]: # "Exported with love from a post written in Org mode"
 [//]: # "- https://github.com/kaushalmodi/ox-hugo"

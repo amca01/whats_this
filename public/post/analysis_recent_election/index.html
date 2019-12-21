@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.58.3" />
 
   <title>Analysis of a recent election &middot; What&#39;s all this, then?</title>
 
@@ -75,6 +75,10 @@
   
     
         <link rel="stylesheet" href="https://numbersandshapes.net/css/jsxgraph.css">
+    
+  
+    
+        <link rel="stylesheet" href="https://numbersandshapes.net/css/side-menu.css">
     
   
   
@@ -287,7 +291,7 @@
   
 
 <p>On November 18, 2017, a by-election was held in my suburb of
-<a href="https://en.wikipedia.org/wiki/Northcote,_Victoria">Northcote</a>, on
+<a href="https://en.wikipedia.org/wiki/Northcote,%5FVictoria">Northcote</a>, on
 account of the death by cancer of the sitting member. It turned into a
 two-way contest between Labor (who had held the seat since its inception
 in 1927), and the Greens, who are making big inroads into the inner
@@ -298,7 +302,7 @@ was, and what other voting systems might have produced.</p>
 
 <p>In Australia, the voting method used for almost all lower house
 elections (state and federal), is
-<a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">Instant Runoff
+<a href="https://en.wikipedia.org/wiki/Instant-runoff%5Fvoting">Instant Runoff
 Voting</a>, also known as the Alternative Vote, and known locally as the
 &ldquo;preferential method&rdquo;. Each voter must number the candidates
 sequentially starting from 1. All boxes must be filled in (except the
@@ -318,7 +322,7 @@ it has many faults. However, it is too entrenched in Australian
 political life for change to be likely.</p>
 
 <p>Each candidate had prepared a
-<a href="https://en.wikipedia.org/wiki/How-to-vote_card">How to Vote card</a>,
+<a href="https://en.wikipedia.org/wiki/How-to-vote%5Fcard">How to Vote card</a>,
 listing the order of candidates they saw as being most likely to ensure
 a good result for themselves. In fact there is no requirement for any
 voter to follow a How to Vote card, but most voters do. For this reason
@@ -370,7 +374,7 @@ all the How to Vote information as a dictionary:</p>
 	htv[<span style="color:#cd5555">&#39;Spirovska&#39;</span>]=[<span style="color:#b452cd">2</span>,<span style="color:#b452cd">12</span>,<span style="color:#b452cd">3</span>,<span style="color:#b452cd">7</span>,<span style="color:#b452cd">4</span>,<span style="color:#b452cd">5</span>,<span style="color:#b452cd">6</span>,<span style="color:#b452cd">8</span>,<span style="color:#b452cd">10</span>,<span style="color:#b452cd">9</span>,<span style="color:#b452cd">1</span>,<span style="color:#b452cd">11</span>]
 	htv[<span style="color:#cd5555">&#39;Fontana&#39;</span>]=[<span style="color:#b452cd">2</span>,<span style="color:#b452cd">3</span>,<span style="color:#b452cd">4</span>,<span style="color:#b452cd">5</span>,<span style="color:#b452cd">6</span>,<span style="color:#b452cd">7</span>,<span style="color:#b452cd">8</span>,<span style="color:#b452cd">9</span>,<span style="color:#b452cd">10</span>,<span style="color:#b452cd">11</span>,<span style="color:#b452cd">12</span>,<span style="color:#b452cd">1</span>]
 
-In [ ]: cands = <span style="color:#658b00">list</span>(htv.keys())</code></pre></div>
+	In [ ]: cands = <span style="color:#658b00">list</span>(htv.keys())</code></pre></div>
 <p>voting took place at different voting centres (also known as &ldquo;booths&rdquo;),
 and the first preferences for each candidate at each booth can be found
 at the
@@ -381,7 +385,7 @@ saved it as a CSV file. I then used the data analysis library
 <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">DataFrame</a>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [ ]: <span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">pandas</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45;text-decoration:underline">pd</span>
 	firstprefs = pd.read_csv(<span style="color:#cd5555">&#39;northcote_results.csv&#39;</span>)
-	firsts = firstprefs.loc[:,<span style="color:#cd5555">&#39;Hayward&#39;</span>:<span style="color:#cd5555">&#39;Fontana&#39;</span>].<span style="color:#658b00">sum</span>(axis=<span style="color:#b452cd">0</span>)
+	firsts = firstprefs.loc[:,<span style="color:#cd5555">&#39;Hayward&#39;</span>:<span style="color:#cd5555">&#39;Fontana&#39;</span>].sum(axis=<span style="color:#b452cd">0</span>)
 	firsts
 
 Out[ ]:
@@ -400,7 +404,7 @@ Fontana       <span style="color:#b452cd">1857</span>
 dtype: int64</code></pre></div>
 <p>As Thorpe has more votes than any other candidate, then by the voting
 system of simple plurality (or
-<a href="https://en.wikipedia.org/wiki/First-past-the-post_voting">First Past
+<a href="https://en.wikipedia.org/wiki/First-past-the-post%5Fvoting">First Past
 The Post</a>) she would win. This system is used in the USA, and is
 possibly the worst of all systems for more than two candidates.</p>
 
@@ -482,7 +486,7 @@ reasonable way of experimenting with the election results.</p>
 <h2 id="borda-counts">Borda counts</h2>
 
 <p>These are named for
-<a href="https://en.wikipedia.org/wiki/Jean-Charles_de_Borda">Jean Charles de
+<a href="https://en.wikipedia.org/wiki/Jean-Charles%5Fde%5FBorda">Jean Charles de
 Borda</a> (1733 &ndash; 1799) an early voting theorist. The idea is to weight
 all the preferences, so that a preference of 1 has a higher weighting
 that a preference of 2, and so on. All the weights are added, and the
@@ -566,7 +570,7 @@ pairwise contests is used to determine the overall winner. If there is a
 single person who is preferred, by a majority of voters, in each of
 their pairwise contests, then that person is called a <em>Condorcet
 winner</em>. This is named for the
-<a href="https://en.wikipedia.org/wiki/Marquis_de_Condorcet">Marquis de
+<a href="https://en.wikipedia.org/wiki/Marquis%5Fde%5FCondorcet">Marquis de
 Condorcet</a> (1743 &ndash; 1794) another early voting theorist. The <em>Condorcet
 criterion</em> is one of many criteria considered appropriate for a voting
 system; it says that if the ballots return a Condorcet winner, then that
@@ -630,10 +634,10 @@ Fontana      <span style="color:#b452cd">17653</span>     <span style="color:#b4
 preferences against everybody else. To do this we can find all the
 values greater than the majority, and add up their number. A value of 11
 indicates a Condorcet winner:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [ ]: maj = firsts.<span style="color:#658b00">sum</span>()//<span style="color:#b452cd">2</span> + <span style="color:#b452cd">1</span>; maj
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [ ]: maj = firsts.sum()//<span style="color:#b452cd">2</span> + <span style="color:#b452cd">1</span>; maj
 Out[ ]: <span style="color:#b452cd">17969</span>
 
-In [ ]: ((ct &amp;gt;= maj)*<span style="color:#b452cd">1</span>).<span style="color:#658b00">sum</span>(axis = <span style="color:#b452cd">1</span>)
+In [ ]: ((ct &amp;gt;= maj)*<span style="color:#b452cd">1</span>).sum(axis = <span style="color:#b452cd">1</span>)
 Out[ ]:
 Hayward       <span style="color:#b452cd">6.0</span>
 Sanaghan      <span style="color:#b452cd">2.0</span>
@@ -681,7 +685,7 @@ voter:</p>
       approvals_result = <span style="color:#658b00">dict</span>()
       <span style="color:#8b008b;font-weight:bold">for</span> c <span style="color:#8b008b">in</span> cands:
 	  approvals_result = <span style="color:#b452cd">0</span>
-      firsts = firstprefs.loc[:,<span style="color:#cd5555">&#39;Hayward&#39;</span>:<span style="color:#cd5555">&#39;Fontana&#39;</span>].<span style="color:#658b00">sum</span>(axis=<span style="color:#b452cd">0</span>)
+      firsts = firstprefs.loc[:,<span style="color:#cd5555">&#39;Hayward&#39;</span>:<span style="color:#cd5555">&#39;Fontana&#39;</span>].sum(axis=<span style="color:#b452cd">0</span>)
       <span style="color:#8b008b;font-weight:bold">for</span> c <span style="color:#8b008b">in</span> cands:
 	  v = firsts  <span style="color:#228b22">#  number of 1st pref votes for candidate c</span>
 	  <span style="color:#8b008b;font-weight:bold">for</span> i <span style="color:#8b008b">in</span> <span style="color:#658b00">range</span>(<span style="color:#b452cd">1</span>,n+<span style="color:#b452cd">1</span>):
@@ -709,7 +713,7 @@ candidate from ordered ballots. And each of them has advantages and
 disadvantages. Some of the disadvantages are subtle (although
 important); others have glaring inadequacies, such as first past the
 post for more than two candidates. One such
-<a href="https://en.wikipedia.org/wiki/Comparison_of_electoral_systems">comparison
+<a href="https://en.wikipedia.org/wiki/Comparison%5Fof%5Felectoral%5Fsystems">comparison
 table</a> lists voting methods against standard criteria. Note that IRV &ndash;
 the Australian preferential system &ndash; is one of the very few methods to
 fail monotonicity. This is seen as one of the system&rsquo;s worst failings.

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.58.3" />
 
   <title>Wrestling with Docker &middot; What&#39;s all this, then?</title>
 
@@ -75,6 +75,10 @@
   
     
         <link rel="stylesheet" href="https://numbersandshapes.net/css/jsxgraph.css">
+    
+  
+    
+        <link rel="stylesheet" href="https://numbersandshapes.net/css/side-menu.css">
     
   
   
@@ -286,7 +290,7 @@
 
   <p>For years I have been running a blog and other web apps on a VPS running Ubuntu
 14.04 and Apache - a standard
-<a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP</a> system.  However,
+<a href="https://en.wikipedia.org/wiki/LAMP%5F(software%5Fbundle)">LAMP</a> system.  However,
 after experimenting with some apps - temporarily installing them and testing
 them, only to discard them, the system was becoming a total mess.  Worst of all,
 various MySQL files were ballooning out in size: the <code>ibdata1</code> file in
@@ -380,7 +384,7 @@ exposedbydefault = <span style="color:#8b008b;font-weight:bold">false</span></co
 </span><span style="color:#bbb"></span>services:<span style="color:#bbb">
 </span><span style="color:#bbb">
 </span><span style="color:#bbb">  </span>traefik:<span style="color:#bbb">
-</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>traefik:<span style="color:#b452cd">1.6</span>.<span style="color:#b452cd">0</span>-alpine<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>image:<span style="color:#bbb"> </span>traefik:<span style="color:#b452cd">1.6.0</span>-alpine<span style="color:#bbb">
 </span><span style="color:#bbb">    </span>container_name:<span style="color:#bbb"> </span>traefik<span style="color:#bbb">
 </span><span style="color:#bbb">    </span>restart:<span style="color:#bbb"> </span>always<span style="color:#bbb">
 </span><span style="color:#bbb">    </span>command:<span style="color:#bbb"> </span>--web<span style="color:#bbb"> </span>--docker<span style="color:#bbb"> </span>--logLevel=DEBUG<span style="color:#bbb">

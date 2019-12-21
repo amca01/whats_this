@@ -46,7 +46,7 @@ characters in the ciphertext. For example, the two "S"s are encrypted to
 this reason the cipher was considered unbreakable - as indeed it was for
 a long time - and was known to the French as _le chiffre
 indéchiffrable_ - the unbreakable cipher. It was broken in 1863. See the
-[Wikipedia page](https://en.wikipedia.org/wiki/Vigenère_cipher) for
+[Wikipedia page](https://en.wikipedia.org/wiki/Vigenère%5Fcipher) for
 more history.
 
 Suppose the length of the keyword is . Then the -th character of the

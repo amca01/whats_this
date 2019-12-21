@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.58.3" />
 
   <title>What&#39;s all this, then?</title>
 
@@ -63,7 +63,8 @@
   
  
   
-  <link rel="alternate" type="application/rss+xml" title="What&#39;s all this, then?" href="https://numbersandshapes.net/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="What&#39;s all this, then?"
+	href='https://numbersandshapes.net/index.xml' />
   
 
   
@@ -77,6 +78,10 @@
   
     
         <link rel="stylesheet" href="https://numbersandshapes.net/css/jsxgraph.css">
+    
+  
+    
+        <link rel="stylesheet" href="https://numbersandshapes.net/css/side-menu.css">
     
   
   
@@ -153,7 +158,7 @@
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://numbersandshapes.net/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      <a class="pure-menu-link" href='https://numbersandshapes.net/index.xml'><i class="fa fa-rss fa-fw"></i>RSS</a>
     </li>
     
 
@@ -278,13 +283,13 @@
   
     <article>
   <header>
-    <h2><a href="https://numbersandshapes.net/post/educational_disciplines/">Educational disciplines: size against market growth</a></h2>
+    <h2><a href="https://numbersandshapes.net/post/poles_of_inaccessibility/">Poles of inaccessibility</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>15 Jun 2019, 00:00</time>
+    <time>08 Dec 2019, 00:00</time>
   </div>
 
   
@@ -298,24 +303,26 @@
   </header>
 
   <p>
-  Here is an interactive version of this diagram:
-
-(click on the image to show a larger version.)
+  Just recently there was a news item about a solo explorer being the first Australian to reach the Antarctic &ldquo;Pole of inaccessibility&rdquo;. Such a Pole is usually defined as that place on a continent that is furthest from the sea. The South Pole is about 1300km from the nearest open sea, and can be reached by specially fitted aircraft, or by tractors and sleds along the 1600km &ldquo;South Pole Highway&rdquo; from McMurdo Base.
   </p>
 
+  
+  <footer>
+    <a href="https://numbersandshapes.net/post/poles_of_inaccessibility/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
   
 </article>
 
   
     <article>
   <header>
-    <h2><a href="https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/">Tschirnhausen transformations and the quartic</a></h2>
+    <h2><a href="https://numbersandshapes.net/post/an_interesting_sum/">An interesting sum</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>05 May 2019, 00:00</time>
+    <time>02 Dec 2019, 00:00</time>
   </div>
 
   
@@ -329,13 +336,114 @@
   </header>
 
   <p>
-  Here we show how a Tschirnhausen transformation can be used to solve a quartic equation. The steps are:
- Ensure the quartic is missing the cubic term, and its initial coefficient is 1. We can do this by first dividing by the initial coefficient to obtain an equation \[ x^4+b_3x^3+b_2x^2+b_1x+b_0=0 \] and then replace the variable \(x\) with \(y=x-b_3/ 4\). This will produce a monic quartic equation missing the cubic term.
+  I am not an analyst, so I find the sums of infinite series quite mysterious. For example, here are three. The first one is the value of \(\zeta(2)\), very well known, sometimes called the &ldquo;Basel Problem&rdquo; and first determined by (of course) Euler: \[ \sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}. \] Second, subtracting one from the denominator: \[ \sum_{n=2}^\infty\frac{1}{n^2-1}=\frac{3}{4} \] This sum is easily demonstrated by partial fractions: \[ \frac{1}{n^2-1}=\frac{1}{2}\left(\frac{1}{n-1}-\frac{1}{n+1}\right) \] and so the series can be expanded as: \[ \frac{1}{2}\left(\frac{1}{1}-\frac{1}{3}+\frac{1}{2}-\frac{1}{4}+\frac{1}{3}-\frac{1}{5}\cdots\right) \] This is a telescoping series in which every term in the brackets is cancelled except for \(1+1/ 2\), which produces the sum immediately.
   </p>
 
   
   <footer>
-    <a href="https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://numbersandshapes.net/post/an_interesting_sum/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://numbersandshapes.net/post/runges_phenomenon_in_geogebra/">Runge&#39;s phenomenon in Geogebra</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>15 Sep 2019, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Runge&rsquo;s phenomenon says roughly that a polynomial through equally spaced points over an interval will wobble a lot near the ends. Runge demonstrated this by fitting polynomials through equally spaced point in the interval \([-1,1]\) on the function \[ \frac{1}{1+25x^2} \] and this function is now known as &ldquo;Runge&rsquo;s function&rdquo;.
+It turns out that Geogebra can illustrate this extremely well.
+Equally spaced vertices Either open up your local version of Geogebra, or go to http://geogebra.
+  </p>
+
+  
+  <footer>
+    <a href="https://numbersandshapes.net/post/runges_phenomenon_in_geogebra/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://numbersandshapes.net/post/fitting_sir_to_data_in_python/">Fitting the SIR model of disease to data in Python</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>09 Aug 2019, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Introduction and the problem The SIR model for spread of disease was first proposed in 1927 in a collection of three articles in the Proceedings of the Royal Society by Anderson Gray McKendrick and William Ogilvy Kermack; the resulting theory is known as Kermack–McKendrick theory; now considered a subclass of a more general theory known as compartmental models in epidemiology. The three original articles were republished in 1991, in a special issue of the Bulletin of Mathematical Biology.
+  </p>
+
+  
+  <footer>
+    <a href="https://numbersandshapes.net/post/fitting_sir_to_data_in_python/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://numbersandshapes.net/post/mapping_voting_gains_between_elections/">Mapping voting gains between elections</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>21 Jul 2019, 00:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  </header>
+
+  <p>
+  So this goes back quite some time to the recent Australian Federal election on May 18. In my own electorate (known formally as a &ldquo;Division&rdquo;) of Cooper, the Greens, who until recently had been showing signs of winning the seat, were pretty well trounced by Labor.
+Some background asides First, &ldquo;Labor&rdquo; as in &ldquo;Australian Labor Party&rdquo; is spelled the American way; that is, without a &ldquo;u&rdquo;, even though &ldquo;labour&rdquo; meaning work, is so spelled in Australian English.
+  </p>
+
+  
+  <footer>
+    <a href="https://numbersandshapes.net/post/mapping_voting_gains_between_elections/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -363,8 +471,7 @@
   </header>
 
   <p>
-  Test: \[ A^{3&frasl;2} \]
-A general cubic polynomial has the form \[ ax^3+bx^2+cx+d \] but a general cubic equation can have the form \[ x^3+ax^2+bx+c=0. \] We can always divide through by the coefficient of \(x^3\) (assuming it to be non-zero) to obtain a monic equation; that is, with leading coefficient of 1. We can now remove the \(x^2\) term by replacing \(x\) with \(y-a/3\): \[ \left(y-\frac{a}{3}\right)^{\negmedspace 3}+a\left(y-\frac{a}{3}\right)^{\negmedspace 2} +b\left(y-\frac{a}{3}\right)+c=0.
+  A general cubic polynomial has the form \[ ax^3+bx^2+cx+d \] but a general cubic equation can have the form \[ x^3+ax^2+bx+c=0. \] We can always divide through by the coefficient of \(x^3\) (assuming it to be non-zero) to obtain a monic equation; that is, with leading coefficient of 1. We can now remove the \(x^2\) term by replacing \(x\) with \(y-a/3\): \[ \left(y-\frac{a}{3}\right)^{\negmedspace 3}+a\left(y-\frac{a}{3}\right)^{\negmedspace 2} +b\left(y-\frac{a}{3}\right)+c=0. \] Expanding and simplifying produces \[ y^3+\left(b-\frac{a^2}{3}\right)y+\frac{2}{27}a^3-\frac{1}{3}ab+c=0.
   </p>
 
   
@@ -505,104 +612,6 @@ The trouble with the viol, being a fairly soft instrument, is that it&rsquo;s no
   
   <footer>
     <a href="https://numbersandshapes.net/post/linear_programming_in_python_2/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://numbersandshapes.net/post/linear_programming_in_python/">Linear programming in Python</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Oct 2018, 00:00</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  For my elementary linear programming subject, the students (who are all pre-service teachers) use Excel and its Solver as the computational tool of choice. We do this for several reasons: Excel is software with which they&rsquo;re likely to have had some experience, also it&rsquo;s used in schools; it also means we don&rsquo;t have to spend time and mental energy getting to grips with new and unfamiliar software. And indeed the mandated curriculum includes computer exploration, using either Excel Solver, or the Wolfram Alpha Linear Programming widget.
-  </p>
-
-  
-  <footer>
-    <a href="https://numbersandshapes.net/post/linear_programming_in_python/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://numbersandshapes.net/post/test_of_openjscad/">A test of OpenJSCAD</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>15 Sep 2018, 00:00</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Here&rsquo;s an example of a coloured tetrahedron:
-     hello        
-  </p>
-
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://numbersandshapes.net/post/powers_of_irrationals/">The power of two irrational numbers being rational</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>15 Sep 2018, 00:00</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  There&rsquo;s a celebrated elementary result which claims that:
- There are irrational numbers \(x\) and \(y\) for which \(x^y\) is rational.
- The standard proof goes like this. Now, we know that \(\sqrt{2}\) is irrational, so let&rsquo;s consider \(r=\sqrt{2}^\sqrt{2}\). Either \(r\) is rational, or it is not. If it is rational, then we set \(x=\sqrt{2}\), \(y=\sqrt{2}\) and we are done. If \(r\) is irrational, then set \(x=r\) and \(y=\sqrt{2}\). This means that \[ x^y=\left(\sqrt{2}^\sqrt{2}\right)^{\sqrt{2}}=\sqrt{2}^2=2 \] which is rational.
-  </p>
-
-  
-  <footer>
-    <a href="https://numbersandshapes.net/post/powers_of_irrationals/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>

@@ -19,10 +19,6 @@ over the world - even in my home town of Melbourne, Australia.
 So I modified the `head.html` file of my theme to include a link to the
 necessary files:
 
-```html
-
-```
-
 So I downloaded the javascript and css files as described
 [here](<https://jsxgraph.uni-bayreuth.de/wp/download/index.html>)
 and also, for good measure, added the script line (from that page) to the

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.58.3" />
 
   <title>The Vigenere cipher in haskell &middot; What&#39;s all this, then?</title>
 
@@ -75,6 +75,10 @@
   
     
         <link rel="stylesheet" href="https://numbersandshapes.net/css/jsxgraph.css">
+    
+  
+    
+        <link rel="stylesheet" href="https://numbersandshapes.net/css/side-menu.css">
     
   
   
@@ -312,7 +316,7 @@ characters in the ciphertext. For example, the two &ldquo;S&rdquo;s are encrypte
 this reason the cipher was considered unbreakable - as indeed it was for
 a long time - and was known to the French as <em>le chiffre
 indéchiffrable</em> - the unbreakable cipher. It was broken in 1863. See the
-<a href="https://en.wikipedia.org/wiki/Vigenère_cipher">Wikipedia page</a> for
+<a href="https://en.wikipedia.org/wiki/Vigenère%5Fcipher">Wikipedia page</a> for
 more history.</p>
 
 <p>Suppose the length of the keyword is . Then the -th character of the
@@ -343,31 +347,31 @@ keyword:</p>
 <p>This is almost trivial in Haskell. We need two extra functions from the
 module <code>Data.Char</code>: <code>chr</code> which gives the character corresponding to the
 ascii value, and <code>ord</code> which gives the ascii value of a character:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">ord</span> <span style="color:#cd5555">&#39;G&#39;</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#008b45">λ</span>&gt; ord <span style="color:#cd5555">&#39;G&#39;</span>
 <span style="color:#b452cd">71</span>
-<span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">chr</span> <span style="color:#b452cd">88</span>
+<span style="color:#008b45">λ</span>&gt; chr <span style="color:#b452cd">88</span>
 <span style="color:#cd5555">&#39;X&#39;</span></code></pre></div>
 <p>So here&rsquo;s what might go into a little file called <code>vigenere.hs</code>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">Data.Char</span> (<span style="color:#008b45">ord</span>,<span style="color:#008b45">chr</span>)
 
 <span style="color:#008b45">vige</span> <span style="color:#8b008b">::</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>]
-<span style="color:#008b45">vige</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#008b45">k</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
-<span style="color:#008b45">vige</span> <span style="color:#008b45">p</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
-<span style="color:#008b45">vige</span> (<span style="color:#008b45">p</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ps</span>) (<span style="color:#008b45">k</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ks</span>) <span style="color:#8b008b">=</span> (<span style="color:#008b45">encode</span> <span style="color:#008b45">p</span> <span style="color:#008b45">k</span>)<span style="color:#00688b;font-weight:bold">:</span>(<span style="color:#008b45">vige</span> <span style="color:#008b45">ps</span> (<span style="color:#008b45">ks</span>++[<span style="color:#008b45">k</span>]))
+<span style="color:#008b45">vige</span> <span style="color:#00688b;font-weight:bold">[]</span> k <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vige</span> p <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vige</span> (p<span style="color:#00688b;font-weight:bold">:</span>ps) (k<span style="color:#00688b;font-weight:bold">:</span>ks) <span style="color:#8b008b">=</span> (encode p k)<span style="color:#00688b;font-weight:bold">:</span>(vige ps (ks++[k]))
   <span style="color:#8b008b;font-weight:bold">where</span>
-    <span style="color:#008b45">encode</span> <span style="color:#008b45">a</span> <span style="color:#008b45">b</span> <span style="color:#8b008b">=</span> <span style="color:#008b45">chr</span> $ <span style="color:#b452cd">65</span> + <span style="color:#008b45">mod</span> (<span style="color:#008b45">ord</span> <span style="color:#008b45">a</span> + <span style="color:#008b45">ord</span> <span style="color:#008b45">b</span>) <span style="color:#b452cd">26</span>
+    encode a b <span style="color:#8b008b">=</span> chr $ <span style="color:#b452cd">65</span> + mod (ord a + ord b) <span style="color:#b452cd">26</span>
 
 <span style="color:#008b45">vigd</span> <span style="color:#8b008b">::</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>] <span style="color:#8b008b">-&gt;</span> [<span style="color:#00688b;font-weight:bold">Char</span>]
-<span style="color:#008b45">vigd</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#008b45">k</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
-<span style="color:#008b45">vigd</span> <span style="color:#008b45">p</span> <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
-<span style="color:#008b45">vigd</span> (<span style="color:#008b45">p</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ps</span>) (<span style="color:#008b45">k</span><span style="color:#00688b;font-weight:bold">:</span><span style="color:#008b45">ks</span>) <span style="color:#8b008b">=</span> (<span style="color:#008b45">decode</span> <span style="color:#008b45">p</span> <span style="color:#008b45">k</span>)<span style="color:#00688b;font-weight:bold">:</span>(<span style="color:#008b45">vigd</span> <span style="color:#008b45">ps</span> (<span style="color:#008b45">ks</span>++[<span style="color:#008b45">k</span>]))
+<span style="color:#008b45">vigd</span> <span style="color:#00688b;font-weight:bold">[]</span> k <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vigd</span> p <span style="color:#00688b;font-weight:bold">[]</span> <span style="color:#8b008b">=</span> <span style="color:#00688b;font-weight:bold">[]</span>
+<span style="color:#008b45">vigd</span> (p<span style="color:#00688b;font-weight:bold">:</span>ps) (k<span style="color:#00688b;font-weight:bold">:</span>ks) <span style="color:#8b008b">=</span> (decode p k)<span style="color:#00688b;font-weight:bold">:</span>(vigd ps (ks++[k]))
   <span style="color:#8b008b;font-weight:bold">where</span>
-    <span style="color:#008b45">decode</span> <span style="color:#008b45">a</span> <span style="color:#008b45">b</span> <span style="color:#8b008b">=</span> <span style="color:#008b45">chr</span> $ <span style="color:#b452cd">65</span> + <span style="color:#008b45">mod</span> (<span style="color:#008b45">ord</span> <span style="color:#008b45">a</span> - <span style="color:#008b45">ord</span> <span style="color:#008b45">b</span>) <span style="color:#b452cd">26</span></code></pre></div>
+    decode a b <span style="color:#8b008b">=</span> chr $ <span style="color:#b452cd">65</span> + mod (ord a - ord b) <span style="color:#b452cd">26</span></code></pre></div>
 <p>And a couple of tests: the example from above, and the one on the
 Wikipedia page:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">vige</span> <span style="color:#cd5555">&#34;THISISTHEPLAINTEXT&#34;</span> <span style="color:#cd5555">&#34;KEY&#34;</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#008b45">λ</span>&gt; vige <span style="color:#cd5555">&#34;THISISTHEPLAINTEXT&#34;</span> <span style="color:#cd5555">&#34;KEY&#34;</span>
 <span style="color:#cd5555">&#34;DLGCMQDLCZPYSRROBR&#34;</span>
-<span style="color:#008b45">λ</span>&gt; <span style="color:#008b45">vige</span> <span style="color:#cd5555">&#34;ATTACKATDAWN&#34;</span> <span style="color:#cd5555">&#34;LEMON&#34;</span>
+<span style="color:#008b45">λ</span>&gt; vige <span style="color:#cd5555">&#34;ATTACKATDAWN&#34;</span> <span style="color:#cd5555">&#34;LEMON&#34;</span>
 <span style="color:#cd5555">&#34;LXFOPVEFRNHR&#34;</span></code></pre></div>
 
   

@@ -6,7 +6,7 @@
     <description>Recent content on What&#39;s all this, then?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jun 2019 00:00:00 +1000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2019 00:00:00 +1100</lastBuildDate>
     
 	<atom:link href="https://numbersandshapes.net/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,32 +28,59 @@ It is created in Hugo, a static blog engine which is blindingly fast, and works 
       
       <guid>https://numbersandshapes.net/pages/pictures/</guid>
       <description>This page will contain various photos and snapshots.
-First, from a holiday taken by my wife and me through the South Island of New Zealand early in 2018:
+New Zealand, 2018: First, from a holiday taken by my wife and me through the South Island of New Zealand early in 2018:
 New Zealand 2018
-From a conference in Taiwan (Taoyuan City mainly, but also in Taipei and including a visit to Keelung City) in December 2017:
+Taiwan, 2017: From a conference in Taiwan (Taoyuan City mainly, but also in Taipei and including a visit to Keelung City) in December 2017:
 Taiwan 2017
-Visiting Shanghai in December 2015. The Chinese gent in many of the pictures is my friend, colleague, and on this trip tour-guide and translator Dr Xiangzhao Li:</description>
+Shanghai, December 2015: I spent several wonderful days here en route to a conference.</description>
     </item>
     
     <item>
-      <title>Educational disciplines: size against market growth</title>
-      <link>https://numbersandshapes.net/post/educational_disciplines/</link>
-      <pubDate>Sat, 15 Jun 2019 00:00:00 +1000</pubDate>
+      <title>Poles of inaccessibility</title>
+      <link>https://numbersandshapes.net/post/poles_of_inaccessibility/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +1100</pubDate>
       
-      <guid>https://numbersandshapes.net/post/educational_disciplines/</guid>
-      <description>Here is an interactive version of this diagram:
-
-(click on the image to show a larger version.)</description>
+      <guid>https://numbersandshapes.net/post/poles_of_inaccessibility/</guid>
+      <description>Just recently there was a news item about a solo explorer being the first Australian to reach the Antarctic &amp;ldquo;Pole of inaccessibility&amp;rdquo;. Such a Pole is usually defined as that place on a continent that is furthest from the sea. The South Pole is about 1300km from the nearest open sea, and can be reached by specially fitted aircraft, or by tractors and sleds along the 1600km &amp;ldquo;South Pole Highway&amp;rdquo; from McMurdo Base.</description>
     </item>
     
     <item>
-      <title>Tschirnhausen transformations and the quartic</title>
-      <link>https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +1000</pubDate>
+      <title>An interesting sum</title>
+      <link>https://numbersandshapes.net/post/an_interesting_sum/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +1100</pubDate>
       
-      <guid>https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/</guid>
-      <description>Here we show how a Tschirnhausen transformation can be used to solve a quartic equation. The steps are:
- Ensure the quartic is missing the cubic term, and its initial coefficient is 1. We can do this by first dividing by the initial coefficient to obtain an equation \[ x^4+b_3x^3+b_2x^2+b_1x+b_0=0 \] and then replace the variable \(x\) with \(y=x-b_3/ 4\). This will produce a monic quartic equation missing the cubic term.</description>
+      <guid>https://numbersandshapes.net/post/an_interesting_sum/</guid>
+      <description>I am not an analyst, so I find the sums of infinite series quite mysterious. For example, here are three. The first one is the value of \(\zeta(2)\), very well known, sometimes called the &amp;ldquo;Basel Problem&amp;rdquo; and first determined by (of course) Euler: \[ \sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}. \] Second, subtracting one from the denominator: \[ \sum_{n=2}^\infty\frac{1}{n^2-1}=\frac{3}{4} \] This sum is easily demonstrated by partial fractions: \[ \frac{1}{n^2-1}=\frac{1}{2}\left(\frac{1}{n-1}-\frac{1}{n+1}\right) \] and so the series can be expanded as: \[ \frac{1}{2}\left(\frac{1}{1}-\frac{1}{3}+\frac{1}{2}-\frac{1}{4}+\frac{1}{3}-\frac{1}{5}\cdots\right) \] This is a telescoping series in which every term in the brackets is cancelled except for \(1+1/ 2\), which produces the sum immediately.</description>
+    </item>
+    
+    <item>
+      <title>Runge&#39;s phenomenon in Geogebra</title>
+      <link>https://numbersandshapes.net/post/runges_phenomenon_in_geogebra/</link>
+      <pubDate>Sun, 15 Sep 2019 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/runges_phenomenon_in_geogebra/</guid>
+      <description>Runge&amp;rsquo;s phenomenon says roughly that a polynomial through equally spaced points over an interval will wobble a lot near the ends. Runge demonstrated this by fitting polynomials through equally spaced point in the interval \([-1,1]\) on the function \[ \frac{1}{1+25x^2} \] and this function is now known as &amp;ldquo;Runge&amp;rsquo;s function&amp;rdquo;.
+It turns out that Geogebra can illustrate this extremely well.
+Equally spaced vertices Either open up your local version of Geogebra, or go to http://geogebra.</description>
+    </item>
+    
+    <item>
+      <title>Fitting the SIR model of disease to data in Python</title>
+      <link>https://numbersandshapes.net/post/fitting_sir_to_data_in_python/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/fitting_sir_to_data_in_python/</guid>
+      <description>Introduction and the problem The SIR model for spread of disease was first proposed in 1927 in a collection of three articles in the Proceedings of the Royal Society by Anderson Gray McKendrick and William Ogilvy Kermack; the resulting theory is known as Kermack–McKendrick theory; now considered a subclass of a more general theory known as compartmental models in epidemiology. The three original articles were republished in 1991, in a special issue of the Bulletin of Mathematical Biology.</description>
+    </item>
+    
+    <item>
+      <title>Mapping voting gains between elections</title>
+      <link>https://numbersandshapes.net/post/mapping_voting_gains_between_elections/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +1000</pubDate>
+      
+      <guid>https://numbersandshapes.net/post/mapping_voting_gains_between_elections/</guid>
+      <description>So this goes back quite some time to the recent Australian Federal election on May 18. In my own electorate (known formally as a &amp;ldquo;Division&amp;rdquo;) of Cooper, the Greens, who until recently had been showing signs of winning the seat, were pretty well trounced by Labor.
+Some background asides First, &amp;ldquo;Labor&amp;rdquo; as in &amp;ldquo;Australian Labor Party&amp;rdquo; is spelled the American way; that is, without a &amp;ldquo;u&amp;rdquo;, even though &amp;ldquo;labour&amp;rdquo; meaning work, is so spelled in Australian English.</description>
     </item>
     
     <item>
@@ -62,8 +89,7 @@ Visiting Shanghai in December 2015. The Chinese gent in many of the pictures is 
       <pubDate>Sun, 05 May 2019 00:00:00 +1000</pubDate>
       
       <guid>https://numbersandshapes.net/post/tschirnhausens_solution_of_the_cubic/</guid>
-      <description>Test: \[ A^{3&amp;frasl;2} \]
-A general cubic polynomial has the form \[ ax^3+bx^2+cx+d \] but a general cubic equation can have the form \[ x^3+ax^2+bx+c=0. \] We can always divide through by the coefficient of \(x^3\) (assuming it to be non-zero) to obtain a monic equation; that is, with leading coefficient of 1. We can now remove the \(x^2\) term by replacing \(x\) with \(y-a/3\): \[ \left(y-\frac{a}{3}\right)^{\negmedspace 3}+a\left(y-\frac{a}{3}\right)^{\negmedspace 2} +b\left(y-\frac{a}{3}\right)+c=0.</description>
+      <description>A general cubic polynomial has the form \[ ax^3+bx^2+cx+d \] but a general cubic equation can have the form \[ x^3+ax^2+bx+c=0. \] We can always divide through by the coefficient of \(x^3\) (assuming it to be non-zero) to obtain a monic equation; that is, with leading coefficient of 1. We can now remove the \(x^2\) term by replacing \(x\) with \(y-a/3\): \[ \left(y-\frac{a}{3}\right)^{\negmedspace 3}+a\left(y-\frac{a}{3}\right)^{\negmedspace 2} +b\left(y-\frac{a}{3}\right)+c=0. \] Expanding and simplifying produces \[ y^3+\left(b-\frac{a^2}{3}\right)y+\frac{2}{27}a^3-\frac{1}{3}ab+c=0.</description>
     </item>
     
     <item>
@@ -301,24 +327,6 @@ As you know, the Vigenère cipher works using a plaintext and a keyword, which i
       
       <guid>https://numbersandshapes.net/post/programmable-cad/</guid>
       <description>Every few years I decide to have a go at using a CAD package for the creation of 3D diagrams and shapes, and every time I give it up. There&amp;rsquo;s simply too much to learn in terms of creating shapes, moving them about, and so on, and every system seems to have its own ways of doing things. My son (who is an expert in Blender) recommended that I experiment with Tinkercad, and indeed this is probably a pretty easy way of getting started with 3D CAD.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://numbersandshapes.net/educ/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://numbersandshapes.net/educ/</guid>
-      <description>Bokeh Plot   Bokeh.set_log_level(&#34;info&#34;);     {&#34;e64499d4-6156-436b-9927-971d81894334&#34;:{&#34;roots&#34;:{&#34;references&#34;:[{&#34;attributes&#34;:{&#34;overlay&#34;:{&#34;id&#34;:&#34;1108&#34;,&#34;type&#34;:&#34;BoxAnnotation&#34;}},&#34;id&#34;:&#34;1026&#34;,&#34;type&#34;:&#34;BoxZoomTool&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;Low&#34;,&#34;text_font_style&#34;:&#34;bold&#34;,&#34;x&#34;:1.01,&#34;y&#34;:0.395},&#34;id&#34;:&#34;1073&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;1027&#34;,&#34;type&#34;:&#34;SaveTool&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;(CAGR 2-5%)&#34;,&#34;x&#34;:1.01,&#34;y&#34;:0.605},&#34;id&#34;:&#34;1076&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;1028&#34;,&#34;type&#34;:&#34;ResetTool&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;High&#34;,&#34;text_font_style&#34;:&#34;bold&#34;,&#34;x&#34;:1.01,&#34;y&#34;:0.895},&#34;id&#34;:&#34;1077&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{},&#34;id&#34;:&#34;1029&#34;,&#34;type&#34;:&#34;HelpTool&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;(CAGR&amp;gt;5%)&#34;,&#34;x&#34;:1.01,&#34;y&#34;:0.855},&#34;id&#34;:&#34;1078&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{&#34;active_drag&#34;:&#34;auto&#34;,&#34;active_inspect&#34;:&#34;auto&#34;,&#34;active_multi&#34;:null,&#34;active_scroll&#34;:&#34;auto&#34;,&#34;active_tap&#34;:&#34;auto&#34;,&#34;tools&#34;:[{&#34;id&#34;:&#34;1024&#34;,&#34;type&#34;:&#34;PanTool&#34;},{&#34;id&#34;:&#34;1025&#34;,&#34;type&#34;:&#34;WheelZoomTool&#34;},{&#34;id&#34;:&#34;1026&#34;,&#34;type&#34;:&#34;BoxZoomTool&#34;},{&#34;id&#34;:&#34;1027&#34;,&#34;type&#34;:&#34;SaveTool&#34;},{&#34;id&#34;:&#34;1028&#34;,&#34;type&#34;:&#34;ResetTool&#34;},{&#34;id&#34;:&#34;1029&#34;,&#34;type&#34;:&#34;HelpTool&#34;},{&#34;id&#34;:&#34;1059&#34;,&#34;type&#34;:&#34;HoverTool&#34;}]},&#34;id&#34;:&#34;1030&#34;,&#34;type&#34;:&#34;Toolbar&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;GROWTH RATE&#34;,&#34;text_font_style&#34;:&#34;bold&#34;,&#34;x&#34;:1.01,&#34;y&#34;:1.02},&#34;id&#34;:&#34;1079&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{&#34;fill_alpha&#34;:0.1,&#34;fill_color&#34;:&#34;#1f77b4&#34;,&#34;line_alpha&#34;:0.1,&#34;line_color&#34;:&#34;#1f77b4&#34;,&#34;x&#34;:{&#34;field&#34;:&#34;x&#34;},&#34;y&#34;:{&#34;field&#34;:&#34;y&#34;}},&#34;id&#34;:&#34;1041&#34;,&#34;type&#34;:&#34;Patch&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;&#34;,&#34;x&#34;:1.01,&#34;y&#34;:0.98},&#34;id&#34;:&#34;1080&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{&#34;data_source&#34;:{&#34;id&#34;:&#34;1039&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;},&#34;glyph&#34;:{&#34;id&#34;:&#34;1040&#34;,&#34;type&#34;:&#34;Patch&#34;},&#34;hover_glyph&#34;:null,&#34;muted_glyph&#34;:null,&#34;nonselection_glyph&#34;:{&#34;id&#34;:&#34;1041&#34;,&#34;type&#34;:&#34;Patch&#34;},&#34;selection_glyph&#34;:null,&#34;view&#34;:{&#34;id&#34;:&#34;1043&#34;,&#34;type&#34;:&#34;CDSView&#34;}},&#34;id&#34;:&#34;1042&#34;,&#34;type&#34;:&#34;GlyphRenderer&#34;},{&#34;attributes&#34;:{&#34;ticks&#34;:[0,0.25,0.5,0.75,1]},&#34;id&#34;:&#34;1086&#34;,&#34;type&#34;:&#34;FixedTicker&#34;},{&#34;attributes&#34;:{&#34;source&#34;:{&#34;id&#34;:&#34;1039&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;}},&#34;id&#34;:&#34;1043&#34;,&#34;type&#34;:&#34;CDSView&#34;},{&#34;attributes&#34;:{&#34;ticks&#34;:[]},&#34;id&#34;:&#34;1081&#34;,&#34;type&#34;:&#34;FixedTicker&#34;},{&#34;attributes&#34;:{&#34;callback&#34;:null,&#34;data&#34;:{&#34;x&#34;:[0.125,0.375,0.625,0.875,0.125,0.375,0.625,0.875,0.125,0.375,0.625,0.875,0.125,0.375,0.625,0.875],&#34;y&#34;:[0.125,0.125,0.125,0.125,0.375,0.375,0.375,0.375,0.625,0.625,0.625,0.625,0.875,0.875,0.875,0.875]},&#34;selected&#34;:{&#34;id&#34;:&#34;1105&#34;,&#34;type&#34;:&#34;Selection&#34;},&#34;selection_policy&#34;:{&#34;id&#34;:&#34;1104&#34;,&#34;type&#34;:&#34;UnionRenderers&#34;}},&#34;id&#34;:&#34;1049&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;},{&#34;attributes&#34;:{&#34;ticks&#34;:[]},&#34;id&#34;:&#34;1083&#34;,&#34;type&#34;:&#34;FixedTicker&#34;},{&#34;attributes&#34;:{&#34;text&#34;:&#34;Medium&#34;,&#34;text_font_style&#34;:&#34;bold&#34;,&#34;x&#34;:1.01,&#34;y&#34;:0.645},&#34;id&#34;:&#34;1075&#34;,&#34;type&#34;:&#34;Label&#34;},{&#34;attributes&#34;:{&#34;ticks&#34;:[0,0.25,0.5,0.75,1]},&#34;id&#34;:&#34;1085&#34;,&#34;type&#34;:&#34;FixedTicker&#34;},{&#34;attributes&#34;:{&#34;fill_alpha&#34;:{&#34;field&#34;:&#34;alpha&#34;},&#34;fill_color&#34;:{&#34;field&#34;:&#34;Colour&#34;},&#34;height&#34;:{&#34;units&#34;:&#34;screen&#34;,&#34;value&#34;:25},&#34;line_color&#34;:{&#34;field&#34;:&#34;Colour&#34;},&#34;line_width&#34;:{&#34;value&#34;:4},&#34;width&#34;:{&#34;units&#34;:&#34;screen&#34;,&#34;value&#34;:50},&#34;x&#34;:{&#34;field&#34;:&#34;X&#34;},&#34;y&#34;:{&#34;field&#34;:&#34;Y&#34;}},&#34;id&#34;:&#34;1046&#34;,&#34;type&#34;:&#34;Rect&#34;},{&#34;attributes&#34;:{&#34;data_source&#34;:{&#34;id&#34;:&#34;1087&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;},&#34;glyph&#34;:{&#34;id&#34;:&#34;1088&#34;,&#34;type&#34;:&#34;Line&#34;},&#34;hover_glyph&#34;:null,&#34;muted_glyph&#34;:null,&#34;nonselection_glyph&#34;:{&#34;id&#34;:&#34;1089&#34;,&#34;type&#34;:&#34;Line&#34;},&#34;selection_glyph&#34;:null,&#34;view&#34;:{&#34;id&#34;:&#34;1091&#34;,&#34;type&#34;:&#34;CDSView&#34;}},&#34;id&#34;:&#34;1090&#34;,&#34;type&#34;:&#34;GlyphRenderer&#34;},{&#34;attributes&#34;:{&#34;fill_alpha&#34;:{&#34;value&#34;:0.1},&#34;fill_color&#34;:{&#34;value&#34;:&#34;#1f77b4&#34;},&#34;height&#34;:{&#34;units&#34;:&#34;screen&#34;,&#34;value&#34;:25},&#34;line_alpha&#34;:{&#34;value&#34;:0.1},&#34;line_color&#34;:{&#34;value&#34;:&#34;#1f77b4&#34;},&#34;line_width&#34;:{&#34;value&#34;:4},&#34;width&#34;:{&#34;units&#34;:&#34;screen&#34;,&#34;value&#34;:50},&#34;x&#34;:{&#34;field&#34;:&#34;X&#34;},&#34;y&#34;:{&#34;field&#34;:&#34;Y&#34;}},&#34;id&#34;:&#34;1047&#34;,&#34;type&#34;:&#34;Rect&#34;},{&#34;attributes&#34;:{&#34;data_source&#34;:{&#34;id&#34;:&#34;1001&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;},&#34;glyph&#34;:{&#34;id&#34;:&#34;1046&#34;,&#34;type&#34;:&#34;Rect&#34;},&#34;hover_glyph&#34;:null,&#34;muted_glyph&#34;:null,&#34;nonselection_glyph&#34;:{&#34;id&#34;:&#34;1047&#34;,&#34;type&#34;:&#34;Rect&#34;},&#34;selection_glyph&#34;:null,&#34;view&#34;:{&#34;id&#34;:&#34;1044&#34;,&#34;type&#34;:&#34;CDSView&#34;}},&#34;id&#34;:&#34;1048&#34;,&#34;type&#34;:&#34;GlyphRenderer&#34;},{&#34;attributes&#34;:{&#34;source&#34;:{&#34;id&#34;:&#34;1087&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;}},&#34;id&#34;:&#34;1091&#34;,&#34;type&#34;:&#34;CDSView&#34;},{&#34;attributes&#34;:{&#34;height&#34;:500,&#34;style&#34;:{&#34;font-size&#34;:&#34;131%&#34;},&#34;text&#34;:&#34;&amp;lt;font-size=\&#34;5\&#34;&amp;gt;This chart shows the market sizes (measured by enrolments) and growth rates \n(measured by changes in enrolments) of a number of education disciplines. This chart is interactive,\nwhich means you can decide what to display, and also by mousing over the rectangle containing the abreviation \nyou can see the full name of the discipline.&amp;lt;/font-size&amp;gt;&#34;,&#34;width&#34;:400},&#34;id&#34;:&#34;1093&#34;,&#34;type&#34;:&#34;Div&#34;},{&#34;attributes&#34;:{&#34;filters&#34;:[{&#34;id&#34;:&#34;1037&#34;,&#34;type&#34;:&#34;CustomJSFilter&#34;}],&#34;source&#34;:{&#34;id&#34;:&#34;1001&#34;,&#34;type&#34;:&#34;ColumnDataSource&#34;}},&#34;id&#34;:&#34;1054&#34;,&#34;type&#34;:&#34;CDSView&#34;},{&#34;attributes&#34;:{&#34;fill_alpha&#34;:{&#34;value&#34;:0},&#34;fill_color&#34;:{&#34;value&#34;:&#34;#1f77b4&#34;},&#34;height&#34;:{&#34;units&#34;:&#34;data&#34;,&#34;value&#34;:0.25},&#34;line_alpha&#34;:{&#34;value&#34;:0},&#34;line_color&#34;:{&#34;value&#34;:&#34;#1f77b4&#34;},&#34;width&#34;:{&#34;units&#34;:&#34;data&#34;,&#34;value&#34;:0.25},&#34;x&#34;:{&#34;field&#34;:&#34;x&#34;},&#34;y&#34;:{&#34;field&#34;:&#34;y&#34;}},&#34;id&#34;:&#34;1050&#34;,&#34;type&#34;:&#34;Rect&#34;},{&#34;attributes&#34;:{&#34;height&#34;:150},&#34;id&#34;:&#34;1094&#34;,&#34;type&#34;:&#34;Spacer&#34;},{&#34;attributes&#34;:{&#34;fill_alpha&#34;:{&#34;value&#34;:0.1},&#34;fill_color&#34;:{&#34;value&#34;:&#34;#1f77b4&#34;},&#34;height&#34;:{&#34;units&#34;:&#34;data&#34;,&#34;value&#34;:0.25},&#34;line_alpha&#34;:{&#34;value&#34;:0.1},&#34;line_color&#34;:{&#34;value&#34;:&#34;#1f77b4&#34;},&#34;width&#34;:{&#34;units&#34;:&#34;data&#34;,&#34;value&#34;:0.25},&#34;x&#34;:{&#34;field&#34;:&#34;x&#34;},&#34;y&#34;:{&#34;field&#34;:&#34;y&#34;}},&#34;id&#34;:&#34;1051&#34;,&#34;type&#34;:&#34;Rect&#34;},{&#34;attributes&#34;:{&#34;callback&#34;:null,&#34;data&#34;:{&#34;Colour&#34;:[&#34;#4BB6FF&#34;,&#34;#4BB6FF&#34;,&#34;#4BB6FF&#34;,&#34;#4BB6FF&#34;,&#34;#4BB6FF&#34;,&#34;#4BB6FF&#34;,&#34;#B3203F&#34;,&#34;#B3203F&#34;,&#34;#FF8003&#34;,&#34;#FF8003&#34;,&#34;#FF8003&#34;,&#34;#FF8003&#34;,&#34;#FF8003&#34;,&#34;#3B3C98&#34;,&#34;#3B3C98&#34;,&#34;#3B3C98&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#52818E&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#FF5DE4&#34;,&#34;#54FEFF&#34;,&#34;#54FEFF&#34;,&#34;#54FEFF&#34;,&#34;#21A57A&#34;,&#34;#21A57A&#34;,&#34;#21A57A&#34;,&#34;#21A57A&#34;,&#34;#21A57A&#34;,&#34;#21A57A&#34;,&#34;#21A57A&#34;,&#34;NaN&#34;,&#34;#2CED0B&#34;,&#34;#2CED0B&#34;,&#34;#2CED0B&#34;,&#34;#2CED0B&#34;,&#34;#2CED0B&#34;,&#34;#2CED0B&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;,&#34;#AD4374&#34;],&#34;Discipline&#34;:[&#34;Agriculture&#34;,&#34;Environmental Studies&#34;,&#34;Forestry Studies&#34;,&#34;Fisheries Studies&#34;,&#34;Horticulture and Viticulture&#34;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://numbersandshapes.net/massacres/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://numbersandshapes.net/massacres/</guid>
-      <description>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;     html, body {width: 100%;height: 100%;margin: 0;padding: 0;} #map {position:absolute;top:0;bottom:0;right:0;left:0;} #map_0f029a5eb6c54057bb66bbeb68da7a84 { position: relative; width: 1000.0px; height: 1000.0px; left: 0.0%; top: 0.0%; }       var bounds = null; var map_0f029a5eb6c54057bb66bbeb68da7a84 = L.map( &#39;map_0f029a5eb6c54057bb66bbeb68da7a84&#39;, { center: [-27, 134], zoom: 4.5, maxBounds: bounds, layers: [], worldCopyJump: false, crs: L.CRS.EPSG3857, zoomControl: true, }); var tile_layer_5d759f47c26e49e49d3e9f600084169f = L.tileLayer( &#39;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, { &#34;attribution&#34;: null, &#34;</description>
     </item>
     
   </channel>

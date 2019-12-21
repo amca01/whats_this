@@ -10,9 +10,9 @@ mathjax = true
 These are a class of root-finding methods; that is, for the numerical solution
 of a single nonlinear equation,
 developed by [Alston Scott
-Householder](<https://en.wikipedia.org/wiki/Alston_Scott_Householder>)
+Householder](<https://en.wikipedia.org/wiki/Alston%5FScott%5FHouseholder>)
 in 1970. They may be considered a generalisation of the well known [Newton-Raphson
-method](<https://en.wikipedia.org/wiki/Newton's_method>) (also known more simply
+method](<https://en.wikipedia.org/wiki/Newton's%5Fmethod>) (also known more simply
 as _Newton's method_) defined by
 
 \\[
@@ -113,8 +113,8 @@ and so Householder's method for \\(d=2\\) is defined by the recurrence
 x\leftarrow x-\frac{r\_1}{1-\displaystyle{\frac{r\_1}{2r\_2}}}.
 \\]
 This is known as [Halley's
-method](<https://en.wikipedia.org/wiki/Halley's_method>), after [Edmond
-Halley](<https://en.wikipedia.org/wiki/Edmond_Halley>), also known for his comet.
+method](<https://en.wikipedia.org/wiki/Halley's%5Fmethod>), after [Edmond
+Halley](<https://en.wikipedia.org/wiki/Edmond%5FHalley>), also known for his comet.
 This method has been called the most often rediscovered iteration formula in the
 literature.
 

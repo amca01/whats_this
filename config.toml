@@ -4,7 +4,7 @@ title = "What's all this, then?"
 theme = "blackburn"
 canonifyurls = true
 paginate = 10
-pygmentsUseClassic = false
+# pygmentsUseClassic = false
 pygmentsCodeFences = true
 pygmentsStyle = "perldoc"
 timeout = 60000
@@ -17,7 +17,7 @@ timeout = 60000
   subtitle = "Mathematics, software, general nonsense"
   brand = "The good stuff"
   googleAnalytics = "UA-117935107-3"
-  custom_css = ["css/hugo-easy-gallery.css","css/jsxgraph.css"]
+  custom_css = ["css/hugo-easy-gallery.css","css/jsxgraph.css","css/side-menu.css"]
   custom_js = ["js/load-photoswipe.js","https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"]
   disqus = "whats-all-this-then"
 #  toc = true

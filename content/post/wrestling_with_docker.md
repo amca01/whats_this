@@ -8,7 +8,7 @@ mathjax = true
 
 For years I have been running a blog and other web apps on a VPS running Ubuntu
 14.04 and Apache - a standard
-[LAMP](<https://en.wikipedia.org/wiki/LAMP_(software_bundle)>) system.  However,
+[LAMP](<https://en.wikipedia.org/wiki/LAMP%5F(software%5Fbundle)>) system.  However,
 after experimenting with some apps - temporarily installing them and testing
 them, only to discard them, the system was becoming a total mess.  Worst of all,
 various MySQL files were ballooning out in size: the `ibdata1` file in

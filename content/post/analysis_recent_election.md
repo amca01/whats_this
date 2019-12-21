@@ -7,7 +7,7 @@ mathjax = true
 +++
 
 On November 18, 2017, a by-election was held in my suburb of
-[Northcote](https://en.wikipedia.org/wiki/Northcote,_Victoria), on
+[Northcote](https://en.wikipedia.org/wiki/Northcote,%5FVictoria), on
 account of the death by cancer of the sitting member. It turned into a
 two-way contest between Labor (who had held the seat since its inception
 in 1927), and the Greens, who are making big inroads into the inner
@@ -19,7 +19,7 @@ was, and what other voting systems might have produced.
 In Australia, the voting method used for almost all lower house
 elections (state and federal), is
 [Instant Runoff
-Voting](https://en.wikipedia.org/wiki/Instant-runoff_voting), also known as the Alternative Vote, and known locally as the
+Voting](https://en.wikipedia.org/wiki/Instant-runoff%5Fvoting), also known as the Alternative Vote, and known locally as the
 "preferential method". Each voter must number the candidates
 sequentially starting from 1. All boxes must be filled in (except the
 last); no numbers can be repeated or missed. In Northcote there were 12
@@ -38,7 +38,7 @@ it has many faults. However, it is too entrenched in Australian
 political life for change to be likely.
 
 Each candidate had prepared a
-[How to Vote card](https://en.wikipedia.org/wiki/How-to-vote_card),
+[How to Vote card](https://en.wikipedia.org/wiki/How-to-vote%5Fcard),
 listing the order of candidates they saw as being most likely to ensure
 a good result for themselves. In fact there is no requirement for any
 voter to follow a How to Vote card, but most voters do. For this reason
@@ -90,7 +90,7 @@ In [ ]: htv = dict()
 	htv['Spirovska']=[2,12,3,7,4,5,6,8,10,9,1,11]
 	htv['Fontana']=[2,3,4,5,6,7,8,9,10,11,12,1]
 
-In [ ]: cands = list(htv.keys())
+	In [ ]: cands = list(htv.keys())
 ```
 
 voting took place at different voting centres (also known as "booths"),
@@ -127,7 +127,7 @@ dtype: int64
 As Thorpe has more votes than any other candidate, then by the voting
 system of simple plurality (or
 [First Past
-The Post](https://en.wikipedia.org/wiki/First-past-the-post_voting)) she would win. This system is used in the USA, and is
+The Post](https://en.wikipedia.org/wiki/First-past-the-post%5Fvoting)) she would win. This system is used in the USA, and is
 possibly the worst of all systems for more than two candidates.
 
 
@@ -227,7 +227,7 @@ reasonable way of experimenting with the election results.
 
 These are named for
 [Jean Charles de
-Borda](https://en.wikipedia.org/wiki/Jean-Charles_de_Borda) (1733 -- 1799) an early voting theorist. The idea is to weight
+Borda](https://en.wikipedia.org/wiki/Jean-Charles%5Fde%5FBorda) (1733 -- 1799) an early voting theorist. The idea is to weight
 all the preferences, so that a preference of 1 has a higher weighting
 that a preference of 2, and so on. All the weights are added, and the
 candidate with the greatest total is deemed to be the winner. With
@@ -318,7 +318,7 @@ single person who is preferred, by a majority of voters, in each of
 their pairwise contests, then that person is called a _Condorcet
 winner_. This is named for the
 [Marquis de
-Condorcet](https://en.wikipedia.org/wiki/Marquis_de_Condorcet) (1743 -- 1794) another early voting theorist. The _Condorcet
+Condorcet](https://en.wikipedia.org/wiki/Marquis%5Fde%5FCondorcet) (1743 -- 1794) another early voting theorist. The _Condorcet
 criterion_ is one of many criteria considered appropriate for a voting
 system; it says that if the ballots return a Condorcet winner, then that
 winner should be chosen by the system. This is one of the faults of IRV:
@@ -487,7 +487,7 @@ disadvantages. Some of the disadvantages are subtle (although
 important); others have glaring inadequacies, such as first past the
 post for more than two candidates. One such
 [comparison
-table](https://en.wikipedia.org/wiki/Comparison_of_electoral_systems) lists voting methods against standard criteria. Note that IRV --
+table](https://en.wikipedia.org/wiki/Comparison%5Fof%5Felectoral%5Fsystems) lists voting methods against standard criteria. Note that IRV --
 the Australian preferential system -- is one of the very few methods to
 fail monotonicity. This is seen as one of the system's worst failings.
 You can see an example of this in an

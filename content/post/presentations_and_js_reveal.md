@@ -17,11 +17,11 @@ yes, sixty -- slides of very dense text, and the presenter read through
 each one. I think people were gnawing their own limbs off out of sheer
 boredom by the end.
 [Andy Warhol's
-"Empire"](https://en.wikipedia.org/wiki/Empire_(1964_film)) would have been a welcome relief.
+"Empire"](https://en.wikipedia.org/wiki/Empire%5F(1964%5Ffilm)) would have been a welcome relief.
 
 Since most of my talks are technical and full of mathematics, I have
 naturally gravitated to the LaTeX presentation tool
-[Beamer](https://en.wikipedia.org/wiki/Beamer_(LaTeX)). Now Beamer is
+[Beamer](https://en.wikipedia.org/wiki/Beamer%5F(LaTeX)). Now Beamer is
 a lovely thing for LaTeX: as part of the LaTeX ecosystem you get all of
 LaTeX loveliness along with elegant slide layouts, transitions, etc. My
 only issue with Beamer (and this is not a new observation by any means),
@@ -67,8 +67,8 @@ been at education conferences.)
 
 For a superb example of attention-grabbing graphics, check out the
 [TED
-talk](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen) by the late [Hans
-Rosling](https://en.wikipedia.org/wiki/Hans_Rosling). Or you can admire the work of
+talk](https://www.ted.com/talks/hans%5Frosling%5Fshows%5Fthe%5Fbest%5Fstats%5Fyou%5Fve%5Fever%5Fseen) by the late [Hans
+Rosling](https://en.wikipedia.org/wiki/Hans%5FRosling). Or you can admire the work of
 [David McCandless](https://informationisbeautiful.net).
 
 I seem to have digressed, from talking about presentation software to
@@ -99,7 +99,7 @@ To make it available, you upload all your presentations to github.pages,
 and you can present from anywhere in the world with an internet
 connection! You can see an example of one of my short presentations at
 
-<https://amca01.github.io/ATCM_talks/lindenmayer.html>
+<https://amca01.github.io/ATCM%5Ftalks/lindenmayer.html>
 
 Of course the presentation (the software and what you do with it), is in
 fact the least part of your talk. By far the most important part is the

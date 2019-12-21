@@ -20,7 +20,7 @@ for monoglots such as me).  And plenty of egg equations can be found in the
 [2dcurves](<http://www.2dcurves.com/>) pages.
 
 Another excellent source of eggy equations is [TDCC
-Laboratory](<http://www.geocities.jp/nyjp07/index_egg_E.html>) from Japan (the
+Laboratory](<http://www.geocities.jp/nyjp07/index%5Fegg%5FE.html>) from Japan (the
 link here is to their English language page).  For the purposes of experimenting
 we will use equations from this TDCC, adjusted as necessary.  Many of their
 equations are given in parametric form, which means they can be easily graphed
@@ -57,8 +57,8 @@ Here you can explore values of \\(c\\) between 0 and 1:
 </script>
 </div>
 
-Another [set of equations](<http://www.geocities.jp/nyjp07/index_egg_by_Itou_E.html>) is said to be due to [Tadao
-Ito](<http://web1.kcn.jp/hp28ah77/us_author.htm>) (whose surname is sometimes
+Another [set of equations](<http://www.geocities.jp/nyjp07/index%5Fegg%5Fby%5FItou%5FE.html>) is said to be due to [Tadao
+Ito](<http://web1.kcn.jp/hp28ah77/us%5Fauthor.htm>) (whose surname is sometimes
 transliterated as Itou):
 
 \begin{align\*}

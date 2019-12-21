@@ -78,6 +78,956 @@ It took two weeks, some 4000+ kilometres, and we'd do it again in a heartbeat:\
   :PROPERTIES:
   :EXPORT_HUGO_SECTION: post
   :END:
+** Speeds of Julia and Python
+:PROPERTIES:
+:EXPORT_FILE_NAME: speeds_of_julia_and_python
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-12-19
+:END:
+*** Introduction
+[Python](https://en.wikipedia.org/wiki/Python_(programming_language)) is of
+course one of the world's currently most popular languages, and there are plenty
+of
+[statistics](https://www.infoworld.com/article/3401536/python-popularity-reaches-an-all-time-high.html)
+to show it.  Of all languages in current use, Python is one of the oldest
+(in the very quick time-scale of programming languages) dating from 1990 - only
+C and its variants are older.  However, it seems to keep its eternal youth by
+being re-invented, and by its constantly increasing libraries.  Indeed, one of
+Python's greatest strength is its libraries, and pretty much every Python user
+will have worked with [numpy](https://numpy.org),
+[scipy](https://www.scipy.org/scipylib/index.html),
+[matplotlib](https://matplotlib.org), [pandas](https://pandas.pydata.org), to
+name but four.  In fact, aside from some specialized applications (mainly
+involving security, speed, or memory) Python can be happily used for almost everything.
+
+[Julia](https://en.wikipedia.org/wiki/Julia_(programming_language)) on the other
+hand is newer, dating from 2012. (Only Swift is newer.) It was designed to have
+the speed of C, the power of Matlab, and the ease of use of Python.  Note the
+comparison with Matlab - Julia was designed as a language for technical
+computing, although it is very much a general purpose language.  It can even be
+used for [low-level systems programming](https://web.archive.org/web/20181105083419/http://juliacon.org/2018/talks_workshops/42/).
+
+Like Python, Julia can be extended through packages, of which there are many:
+according to Julia's [package repository](https://pkg.julialang.org/docs/) there
+are 2554 a the time of writing.  Some of the packages are big, mature, and
+robust, others are smaller or represent a niche interest.  You can go to [Julia
+Observer](https://juliaobserver.com) to get a sense of which packages are the
+most popular, largest, have the most commits on github, and so on.  Because
+Julia is still relatively new, packages are still being actively developed.
+However, some such as [Plots](https://github.com/JuliaPlots/Plots.jl),
+[JuMP](https://github.com/JuliaOpt/JuMP.jl) for optimization, [Differential
+Equations](https://github.com/JuliaDiffEq/DifferentialEquations.jl), to name but
+three, are very much ready for the Big Time. 
+
+The purpose of this post is to do a single comparison of Julia and Python for
+speed.
+
+*** Matrix permanents 
+
+Given a square matrix, its
+[determinant](https://en.wikipedia.org/wiki/Determinant) is a well-known and
+useful construct (in spite of [Sheldon Axler](http://www.axler.net/DwD.html)).
+
+The determinant of an $n\times n$ matrix $M=m_{ij}$ can be formally defined as
+
+\[ 
+\det(M)=\sum_{\sigma\in S_n}\left(\text{sgn}(\sigma)\prod_{i=1}^nm_{i,\sigma(i)}\right) 
+\] 
+
+where the sum is taken over all permutations $\sigma$ of $1,2,\ldots,n$, and
+where $\text{sgn}(\sigma)$ is the /sign/ of the permutation; which is defined in terms
+of the number of digit swaps to get to it: an even number of swaps has a sign of
+1, and an odd number a sign of $-1$.  The determinant can be effectively
+computed by Gaussian elimination of a matrix into triangular form, which takes
+in the order of $n^3$ operations; the determinant is then the product of the
+diagonal elements.
+
+The [permanent](https://en.wikipedia.org/wiki/Permanent_(mathematics)) is
+defined similarly, except for the sign:
+
+\[
+\text{perm}(M)=\sum_{\sigma\in S_n}\prod_{i=1}^nm_{i,\sigma(i)}.
+\]
+
+Remarkably enough, this simple change renders the permanent impossible to be
+computed effectively; all known algorithms have exponential orders.  Computing
+by expanding each permutation takes $O(n!n)$ operations, some better algorithms (such
+as [Ryser's algorithm](https://en.wikipedia.org/wiki/Permanent_(mathematics))
+have order $O(2^{n-1}n)$.  
+
+The permanent has some applications, although not as many as the determinant.
+An easy and immediate result is that if $M$ is a matrix consisting entirely of
+ones, except for the main diagonal of zeros (so that it is the "ones complement"
+of the identity matrix), its permanent is the number of /derangements/ of $n$
+objects; that is, the number of permutations in which there are no fixed points.
+
+First Python.  Here is a simple program, saved as =permanent.py= to compute the permanent from its
+definition:
+
+#+BEGIN_SRC python
+  import itertools as it
+  import numpy as np
+
+  def permanent(m):
+      nr,nc = np.shape(m)
+      if nr != nc:
+	  raise ValueError("Matrix must be square")
+      pm = 0
+      for p in it.permutations(range(nr)):
+	  pm += np.product([m[i,p[i]] for i in range(nr)])
+      return pm
+#+END_SRC
+
+I am not interested in optimizing speed; simply to implement the same algorithm
+in Python and Julia to see what happens.  Now lets run this in a Python REPL
+(I'm using IPython here):
+
+#+BEGIN_SRC python
+In [1]: import permanent as pt
+
+In [2]: import numpy as np
+
+In [3]: M = (1 - np.identity(4)).astype(np.intc)                      
+
+In [4]: pt.permanent(M)   
+Out[4]: 9
+#+END_SRC
+
+and this is correct.  This result was practically instantaneous, but it slows
+down appreciably, as you'd expect, for larger matrices:
+
+#+BEGIN_SRC python
+In [5]: from timeit import default_timer as timer 
+
+In [6]: M = (1 - np.identity(8)).astype(np.intc)
+
+In [7]: t = timer();print(pt.permanent(M));timer()-t
+14833
+Out[7]: 0.7398275199811906
+
+In [8]: M = (1 - np.identity(9)).astype(np.intc)
+
+In [9]: t = timer();print(pt.permanent(M));timer()-t
+133496
+Out[9]: 10.244881154998438
+
+In [10]: M = (1 - np.identity(10)).astype(np.intc)
+
+In [11]: t = timer();print(pt.permanent(M));timer()-t
+1334961
+Out[11]: 86.57762016600464
+#+END_SRC
+
+Now no doubt this could be speeded up in numerous ways, but that is not my
+point: I am simply implementing the same algorithm in each language.  At any
+rate, my elementary program becomes effectively unusable for matrices bigger
+than about $8\times 8$.
+
+Now for Julia.  Again, we start with a simple program:
+
+#+BEGIN_SRC julia
+  using Combinatorics
+
+  function permanent(m)
+      nr,nc = size(m)
+      if nr != nc
+	  error("Matrix must be square")
+      end
+      pm = 0
+      for p in permutations(1:nr)
+	  pm += prod(m[i,p[i]] for i in 1:nr)
+      end
+      return(pm)
+  end
+#+END_SRC
+
+You can see this program and the Python one above are, to all intents and
+purposes, identical.  There are no clever optimizing tricks, it is a raw
+implementation of the basic definition.
+
+First, a quick test:
+
+#+BEGIN_SRC julia
+julia> using LinearAlgebra
+
+julia> M = 1 .- Matrix(1I,4,4);
+
+julia> include("permanent.jl")
+
+julia> permanent(M)
+9
+#+END_SRC
+
+So far, so good.  Now for some time trials:
+
+#+BEGIN_SRC julia
+julia> using BenchmarkTools
+
+julia> M = 1 .- Matrix(1I,8,8);
+
+julia> @time permanent(M)
+0.020514 seconds (201.61 k allocations: 14.766 MiB)
+14833
+
+julia> M = 1 .- Matrix(1I,9,9);
+
+julia> @time permanent(M)
+  0.245049 seconds (1.81 M allocations: 143.965 MiB, 33.73% gc time)
+133496
+
+julia> M = 1 .- Matrix(1I,10,10);
+
+julia> @time permanent(M)
+  1.336724 seconds (18.14 M allocations: 1.406 GiB, 3.20% gc time)
+1334961
+#+END_SRC
+
+You'll see that Julia, thanks to its JIT compiler, is much much faster than
+Python.  The point is that I didn't have to do anything here to access that
+speed, it's just a splendid part of the language.
+
+Winner: Julia, by a country mile.
+
+*** A few words at the end
+
+The timings given above are not absolute - running on a different system or with
+different versions of Python, Julia, and their libraries, will give
+different results.  But the point is not the exact times taken, but the /comparison/ of
+time between Julia and Python.  
+
+For what it's worth, I'm running a fairly recently upgraded version of Arch Linux
+on a Lenovo Thinkpad X1 Carbon, generation 3.  I'm running Julia 1.3.0 and
+Python 3.7.4.  The machine has 8Gb of memory, of which about 2Gb were free.
+
+** Poles of inaccessibility
+:PROPERTIES:
+:EXPORT_FILE_NAME: poles_of_inaccessibility
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-12-08
+:END:
+
+Just recently there was a news item about a solo explorer being the first
+Australian to reach the Antarctic "Pole of Inaccessibility".  Such a Pole is
+usually defined as that place on a continent that is furthest from the sea.  The
+[South Pole](https://en.wikivoyage.org/wiki/South_Pole) is about 1300km from the
+nearest open sea, and can be reached by specially fitted aircraft, or by
+tractors and sleds along the 1600km "South Pole Highway" from McMurdo Base.
+However, it is only about 500km from the nearest coast line on the Ross Ice
+Shelf.  McMurdo Base is situated on the outside of the Ross Ice Shelf, so that
+it is accessible from the sea.
+
+The Southern Pole of Inaccessibility is about 870km further inland from the
+South Pole, and is very hard to reach---indeed the first people there were a
+Russian party in 1958, whose enduring legacy is a bust of Lenin at that Pole.
+Unlike at the South Pole, there is no base or habitation there; just a frigid
+wilderness.   The Southern Pole of Inaccessibility is 1300km from the nearest
+coast.
+
+A pole of inaccessibility on any landmass can be defined as the centre of the
+largest circle that can be drawn entirely within it.  You can see all of these
+for the world's continents at an [ArcGIS
+site](https://apl.maps.arcgis.com/apps/MapJournal/index.html?appid=ce19bec7a3c541d0b95c449df9bb8eb5).
+If you don't want to wait for the images to load, here is Antarctica:
+
+#+attr_html: :width 600
+[[/antarctica_poi.png]]
+
+You'll notice that this map of Antarctica is missing the ice shelves, which fill
+up most of the bays.  If the ice shelves are included, then we can draw a larger
+circle.
+
+As an image processing exercise, I decided to experiment, using the [distance
+transform](https://en.wikipedia.org/wiki/Distance_transform) to measure
+distances from the coasts, and [Julia](https://julialang.org) as the language.
+Although Julia has now been in development for a decade, it's still a "new kid
+on the block".  But some of its libraries (known as "packages") are remarkably
+mature and robust.  One such is its imaging package
+[Images](https://juliaimages.org/latest/).
+
+In fact, we need to install and use several packages as well as Images: Colors,
+FileIO, ImageView, Plots.  These can all be added with  =Pkg.add("packagename")= and brought
+into the namespace with =using packagename=.  We also need an image to use, and
+for Antarctica I chose this very nice map of the ice surface:
+
+#+attr_html: :width 600
+[[/antarctica.jpg]]
+
+taken from a [BBC
+report](https://www.bbc.com/news/science-environment-21692423).  The nice thing
+about this map is that it shows the ice shelves, so that we can experiment with
+and without them.  We start by reading the image, making it gray-scale, and
+thresholding it so as to remove the ice-shelves:
+
+#+BEGIN_SRC julia
+julia> ant = load("antarctica.jpg");
+julia> G = Gray.(ant);
+julia> B = G .> 0.8;
+julia> imshow(B)
+#+END_SRC
+ 
+which produces this:
+
+#+attr_html: :width 600
+[[/B.jpg]]
+
+which as you see has removed the ice shelves.  Now we apply the distance
+transform and find its maximum:
+
+#+BEGIN_SRC julia
+julia> D = distance_transform(feature_transform(B));
+julia> findmax(D)
+(116.48175822848829, CartesianIndex(214, 350))
+#+END_SRC
+
+This indicates that the largest distance from all edges is about 116, at pixel
+location (214,350).  To show this circle on the image it's easiest to simply
+plot the image, and then plot the circle on top of it.  We'll also plot the
+centre, as a smaller circle:
+
+#+BEGIN_SRC julia
+julia> plot(ant,aspect_ratio = 1)
+julia> x(t) = 214 + 116*cos(t)
+julia> x(t) = 350 + 116*sin(t)
+julia> xc(t) = 214 + 5*cos(t)
+julia> xc(t) = 350 + 5*sin(t)
+julia> plot!(y,x,0,2*pi,lw=3,lc="red",leg=false)
+julia> plot!(yc,xc,0,2*pi,lw=2,lc="white",leg=false)
+#+END_SRC
+
+#+attr_html: :width 600
+[[/ant_poi.png]]
+
+This shows the Pole of Inaccessibility in terms of the actual Antarctic
+continent.  However, in practical terms the ice shelves, even though not
+actually part of the landmass, need to be traversed just the same.  To include
+the ice shelves, we just threshold at a higher value:
+
+#+BEGIN_SRC julia
+julia> B1 = opening(G .> 0.95);
+julia> D1 = distance_transform(feature_transform(B1));
+julia> findmax(D1)
+(160.22796260328596, CartesianIndex(225, 351))
+#+END_SRC
+
+The use of =opening= in the first line is to fill in any holes in the image: the
+distance transform is very sensitive to holes.  Then we plot the continent again
+with the two circles as above, but using this new centre and radius.  This
+produces:
+
+#+attr_html: :width 600
+[[/ant2_poi.png]]
+
+The position of the Pole of Inaccessibility has not in fact changed all that
+much from the first one.
+
+** An interesting sum
+:PROPERTIES:
+:EXPORT_FILE_NAME: an_interesting_sum
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-12-02
+:END:
+
+I am not an analyst, so I find the sums of infinite series quite mysterious.
+For example, here are three.  The first one is the value of $\zeta(2)$, very
+well known, sometimes called the "Basel Problem" and first determined by (of
+course) Euler:
+\[
+\sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}.
+\]
+Second, subtracting one from the denominator:
+\[
+\sum_{n=2}^\infty\frac{1}{n^2-1}=\frac{3}{4}
+\]
+This sum is easily demonstrated by partial fractions:
+\[
+\frac{1}{n^2-1}=\frac{1}{2}\left(\frac{1}{n-1}-\frac{1}{n+1}\right)
+\]
+and so the series can be expanded as:
+\[
+\frac{1}{2}\left(\frac{1}{1}-\frac{1}{3}+\frac{1}{2}-\frac{1}{4}+\frac{1}{3}-\frac{1}{5}\cdots\right)
+\]
+This is a /telescoping series/ in which every term in the brackets is cancelled
+except for $1+1/ 2$, which produces the sum immediately.
+
+Finally, add one to the denominator:
+\[
+\sum_{n=2}^\infty\frac{1}{n^2+1}=\frac{1}{2}(\pi\coth(\pi)-1).
+\]
+And /this/ sum is obtained from one of the [series
+representations](http://functions.wolfram.com/ElementaryFunctions/Coth/06/05/)
+for $\coth(z)$: 
+
+\[
+\coth(z)=\frac{1}{z}+2z\sum_{n=1}^\infty\frac{1}{\pi^2n^2+z^2}
+\]
+
+(for all $z$ except for when $\pi^2n^2+z^2=0$).
+
+I was looking around for infinite series to give my numerical methods students to test
+their powers of approximation, and I came across [this beauty](https://www.wolframalpha.com/input/?i=sum+1%2F(n^2%2Bn-1)%2C+n%3D1+to+infinity):
+\[
+\sum_{n=2}^\infty\frac{1}{n^2+n-1}=1+\frac{\pi}{\sqrt{5}}\tan\left(\frac{\sqrt{5}\pi}{2}\right).
+\]
+This led me on a mathematical treasure hunt through books and all over the
+internet, until I had worked it out.  
+
+My starting place, after googling "sum quadratic reciprocal" was a [very nice and
+detailed post on
+stackexchange](https://math.stackexchange.com/questions/1322086/series-of-reciprocals-of-a-quadratic-polynomial). This
+post then referred to a [previous
+one](https://math.stackexchange.com/questions/1294790/the-value-of-sum-n-inftyn-infty-frac1n2-z2-on-mathbbc-setmi/1294829#1294829)
+started with the infinite product expression for $\sin(x)$ and turned it (by
+taking logarithms and differentiating) into a series for $\cot(x)$.
+
+However, I want an expression for $\tan(x)$, which means starting with the
+infinite product form for $\sec(x)$, which is:
+
+\[
+\sec(x)=\prod_{n=1}^\infty\frac{\pi^2(2n-1)^2}{\pi^2(2n-1)^2-4x^2}.
+\]
+Making a substitution simplifies the expression in the product:
+\[
+\sec\left(\frac{\pi
+x}{2}\right)=\prod_{n=1}^\infty\frac{(2n-1)^2}{(2n-1)^2-x^2}.
+\]
+Now take logs of both sides:
+
+\[
+\log\left(\sec\left(\frac{\pi x}{2}\right)\right)=
+\sum_{n=1}^\infty\log\left(\frac{(2n-1)^2}{(2n-1)^2-x^2}\right)
+\]
+
+and differentiate:
+\[
+\frac{\pi}{2}\tan\left(\frac{\pi x}{2}\right)=
+\sum_{n=1}^\infty\frac{2x}{(2n-1)^2-x^2}.
+\]
+Now we have to somehow equate this new sum on the right with our original sum.
+So let's go back to it.
+
+First of all, a bit of completing the square produces
+\[
+\frac{1}{n^2+n-1}=\frac{1}{\left(n+\frac{1}{2}\right)^2-\frac{5}{4}}=\frac{4}{(2n+1)^2-5}.
+\]
+This means that
+\[
+\sum_{n=1}^\infty\frac{1}{n^2+n-1}=\sum_{n=2}^\infty\frac{4}{(2n-1)^2-5}=
+\frac{2}{\sqrt{5}}\sum_{n=2}^\infty\frac{2\sqrt{5}}{(2n-1)^2-5}.
+\]
+We have changed the index from $n=1$ to $n=2$ which allows the rewriting of
+$2n+1$ as $2n-1$.  This means we are missing a first term.  Comparing the final sum with that for $\tan(x)$ above, we have
+\[
+\sum_{n=1}^\infty\frac{1}{n^2+n-1}=\frac{2}{\sqrt{5}}\left(\frac{\pi}{2}\tan\left(\frac{\pi
+\sqrt{5}}{2}\right)-\frac{-\sqrt{5}}{2}\right)
+\]
+where the last term is the missing first term: the summand for $n=1$.  Simplifying the right hand side
+produces
+\[
+\sum_{n=1}^\infty\frac{1}{n^2+n-1}=1+\frac{\pi}{\sqrt{5}}\tan\left(\frac{\sqrt{5}\pi}{2}\right).
+\]
+Note that the above series for $\tan(x)$ can be obtained directly, using a
+general technique discussed (for example) in that [fine old text](https://en.wikipedia.org/wiki/A_Course_of_Modern_Analysis): "A Course in
+Modern Analysis", by E. T. Whittaker and G. N. Watson.  If $f(x)$ has only
+simple poles $a_n$ with residues $b_n$, then
+\[
+f(x) = f(0)+\sum_{n=1}^\infty\left(\frac{1}{x-a_n}+\frac{1}{a_n}\right).
+\]
+Expressing a function as a series of such reciprocals is known as
+[Mittag-Leffler's
+theorem](https://en.wikipedia.org/wiki/Mittag-Leffler's_theorem) and in fact
+the series for $\tan(x)$ is given there as one of the examples.
+
+** Runge's phenomenon in Geogebra
+:PROPERTIES:
+:EXPORT_FILE_NAME: runges_phenomenon_in_geogebra
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-09-15
+:END:
+
+/Runge's phenomenon/ says roughly that a polynomial through equally spaced points
+over an interval will wobble a lot near the ends.  Runge demonstrated this by
+fitting polynomials through equally spaced point in the interval $[-1,1]$ on the
+function
+\[
+\frac{1}{1+25x^2}
+\]
+and this function is now known as "Runge's function".
+
+It turns out that Geogebra can illustrate this extremely well.
+
+*** Equally spaced vertices
+
+Either open up your local version of Geogebra, or go to
+http://geogebra.org/graphing.  In the boxes on the left, enter the following
+expressions in turn:
+
+1. Start by entering Runge's function
+   \[
+   f(x)=\frac{1}{1+25x^2}
+   \]
+   You should now either zoom in, or use the graph settings tool to display $x$
+   between $-1.5$ and $1.5$.
+1. Create a list of $x$ values:
+   \[
+   x1 = \frac{\\{-5..5\\}}{5}
+   \] 
+1. Use those values to create a set of points on the curve:
+   \[
+   p1 = (x1,f(x1))
+   \]
+1. Now create an interpolating polynomial through them:
+   \[
+   \mathsf{Polynomial}[p1(1)]
+   \]
+
+The resulting graph looks like this:
+
+#+attr_html: :width 600
+[[/runge1.png]]
+
+# ![Equally spaced x-values](/runge1.png)
+
+*** Chebyshev vertices
+
+For the purpose of this post, we'll take the Chebyshev vertices to be those
+points in the graph whose $x$ coordinates are given by
+
+\[
+x_k = \cos\left(\frac{k\pi}{10}\right)
+\] 
+for $k = 0,1,2,\ldots 10$.  These values are more clustered at the ends of the
+interval.
+
+In Geogebra:
+
+1. As before, enter the $x$ values first:
+   \[
+   x2 = \cos(\frac{\\{0..10\\}\cdot\pi}{10})
+   \]
+1. Then turn them into a sequence of points on the curve 
+   \[
+   p2 = (x2,f(x2))
+   \]
+1. Finally create the polynomial through them: $\mathsf{Polynomial}(p2(1))$.
+
+And /this/ graph looks like this:
+
+#+attr_html: :width 600
+[[/runge2.png]]
+
+You'll notice how better the second polynomial hugs the curve.  The issue is
+even more pronounced with 21 points, either separated by $0.1$, or with
+$x$ values given by the cosine function again.  All we need do is to change the
+definitions of the $x$ value sequences $x1$ and $x2$ to:
+
+\[
+\eqalign{
+x1 &= \frac{\\{-10..10\\}}{10}\\
+x2 &= \cos(\frac{\\{0..20\\}\pi}{20})
+}
+\]
+
+In fact, you can create a slider $1\le N \le 20$, say, and then define
+
+\[
+\eqalign{
+x1 &= \frac{\\{-N..N\\}}{N}\\
+x2 &= \cos(\frac{\\{0..2N\\}\pi}{2N})
+}
+\]
+
+and then see how as $N$ increases, the "Chebyshev" interpolant fits the curve
+better than the equally spaced interpolant.  For $N=20$, the turning points of
+the equally spaced polynomial have $y$ values as high as $59.78$.
+
+*** Integration
+
+Using equally spaced values to create an interpolating polynomial and then
+integrating that polynomial is [Newton-Cotes
+integration](https://en.wikipedia.org/wiki/Newton-Cotes_formulas).
+Runge's phenomenon shows why it is better to partition the interval into small
+sub-intervals and apply a low-order rule to each one.  For example, with 20
+points on the curve, we would be better applying Simpson's rule to each pair of
+two sub-intervals, and adding the result.  Using a 21-point polynomial is
+equivalent to a Newton-Cotes rule of order 20, which is far too inaccurate to
+use.
+
+With our curve $f(x)$, and our equal-spaced polynomial $g(x)$, the integrals are
+
+\[
+\eqalign{
+\int^1_{-1}\frac{1}{1+25x^2}\,dx&=\frac{2}{5}\arctan(5)\approx
+0.5493603067780064\\
+\int^1_{-1}g(x)\,dx&\approx -5.369910417304622
+}
+\]
+
+However, using the polynomial through the Chebyshev nodes:
+
+\[
+\int^1_{-1}h(x)\approx 0.5498082303389538.
+\]
+
+The absolute errors between the integral values and the exact values are thus
+(approximately) $5.92$ and $0.00045$ respectively.
+
+Integrating an interpolating polynomial through Chebyshev nodes is one way of
+implementing [Clenshaw-Curtis quadrature](https://en.wikipedia.org/wiki/Clenshaw-Curtis_quadrature).
+
+Note that using Simpson's rule on our 21 points produces a value of
+0.5485816035037206, which has absolute error of about $0.0012$.
+
+** Fitting the SIR model of disease to data in Python
+:PROPERTIES:
+:EXPORT_FILE_NAME: fitting_sir_to_data_in_python
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-08-09
+:END:
+
+*** Introduction and the problem
+
+The SIR model for spread of disease was first proposed in 1927 in a collection
+of three articles in the Proceedings of the Royal Society by [Anderson Gray
+McKendrick](https://en.wikipedia.org/wiki/Anderson_Gray_McKendrick) and [William
+Ogilvy Kermack](https://en.wikipedia.org/wiki/William_Ogilvy_Kermack); the
+resulting theory is known as [Kermack–McKendrick
+theory](https://en.wikipedia.org/wiki/Kermack%E2%80%93McKendrick_theory); now
+considered a subclass of a more general theory known as [compartmental
+models](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology) in
+epidemiology.  The three original articles were republished in 1991, in a special issue
+of the [Bulletin of Mathematical 
+Biology](https://link.springer.com/journal/11538/53/1/page/1).
+
+The SIR model is so named because it assumes a static population, so no births
+or deaths, divided into three mutually exclusive classes: those /susceptible/ to
+the disease; those /infected/ with the disease, and those /recovered with
+immunity/ from the disease.  This model is clearly not applicable to all
+possible epidemics: there may be births and deaths, people may be re-infected, and so
+on.  More complex models take these and other factors into account.
+
+The SIR model consists of three non-linear ordinary differential equations,
+parameterized by two growth factors $\beta$ and $\gamma$:
+
+\begin{eqnarray*}
+\frac{dS}{dt}&=&-\frac{\beta IS}{N}\\
+\frac{dI}{dt}&=&\frac{\beta IS}{N}-\gamma I\\
+\frac{dR}{dt}&=&\gamma I
+\end{eqnarray*}
+
+Here $N$ is the population, and since each of $S$, $I$ and $R$ represent the
+number of people in mutually exclusive sets,  we
+should have $S+I+R=N$.  Note that the right hand sides of the equations sum to
+zero, hence
+\[
+\frac{dS}{dt}+\frac{dI}{dt}+\frac{dR}{dt}=\frac{dN}{dt}=0
+\]
+which indicates that the population is constant.
+
+The problem here is to see if values of $\beta$ and $\gamma$ can be found which
+will provide a close fit to a well-known epidemiological case study: that of
+influenza in a British boarding school.  This was described in a 1978 issue of
+the [British Medical
+Journal](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1603269/pdf/brmedj00115-0064.pdf).
+ 
+This should provide a good test of the SIR model, as it satisfies all of the
+criteria.  In this case there was a total population of 763, and an outbreak of
+14 days, with infected numbers as:
+
+#+begin_export html
+<style>
+.tab table {
+  width: 100%;
+}
+.tab th,
+}
+.tab td {
+    padding: 5px;
+    text-align: right;
+}
+</style>
+#+end_export
+#+attr_html: :class tab
+|             |   |   |   |    |    |     |     |     |     |     |     |    |    |    |    |   |   |
+|-------------+---+---+---+----+----+-----+-----+-----+-----+-----+-----+----+----+----+----+---+---|
+| Day:        | 1 | 2 | 3 |  4 |  5 |   6 |   7 |   8 |   9 |  10 |  11 | 12 | 13 | 14 | 15 |   |   |
+|-------------+---+---+---+----+----+-----+-----+-----+-----+-----+-----+----+----+----+----+---+---|
+| Infections: | 1 | 3 | 6 | 25 | 73 | 222 | 294 | 258 | 237 | 191 | 125 | 69 | 27 | 11 |  4 |   |   |
+
+Some years ago, on my old (and now taken off line) blog, I explored using
+[Julia](https://julialang.org/) for this task, which was managed easily (once I
+got the hang of Julia syntax).  However, that was five years ago, and when I
+tried to recreate it I found that Julia has changed over the last five years,
+and my original comments and code no longer worked.  So I decided to experiment
+with Python instead, in which I have more expertise, or at least, experience.
+
+*** Using Python
+
+**** Setup and some initial computation
+
+We start by importing some of the modules and functions we need, and define the data
+from the table above:
+
+#+BEGIN_SRC python
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.integrate import solve_ivp
+
+data = [1, 3, 6, 25, 73, 222, 294, 258, 237, 191, 125, 69, 27, 11, 4]
+#+END_SRC
+
+Now we enter the SIR system with some (randomly chosen) values of $\beta$ and
+$\gamma$, using syntax conformable with the solver =solve_ivp=:
+
+#+BEGIN_SRC python
+beta,gamma = [0.01,0.1]
+
+def SIR(t,y):
+    S = y[0]
+    I = y[1]
+    R = y[2]
+    return([-beta*S*I, beta*S*I-gamma*I, gamma*I])
+#+END_SRC
+
+We can now solve this system using =solve\_ivp= and plot the results:
+
+#+BEGIN_SRC python
+sol = solve_ivp(SIR,[0,14],[762,1,0],t_eval=np.arange(0,14.2,0.2))
+
+fig = plt.figure(figsize=(12,4))
+plt.plot(sol.t,sol.y[0])
+plt.plot(sol.t,sol.y[1])
+plt.plot(sol.t,sol.y[2])
+plt.plot(np.arange(0,15),data,"k*:")
+plt.grid("True")
+plt.legend(["Susceptible","Infected","Removed","Original Data"])
+#+END_SRC
+
+Note that we have used the =t_eval= argument in our call to =solve_ivp= which
+allows us to exactly specify the points at which the solution will be given.
+This will allow us to align points in the computed values of $I$ with the
+original data.
+
+The output is this plot:
+
+![First SIR plot](/first_sir_plot.png)
+
+There is a nicer plot, with more attention paid to setup and colours,
+[here](https://scipython.com/book/chapter-8-scipy/additional-examples/the-sir-epidemic-model/). 
+This use of scipy to solve the SIR equations uses the =odeint= tool.  This
+works perfectly well, but I believe it is being deprecated in favour of
+=solve_ivp=.
+
+**** Fitting the data
+
+To find values $\beta$ and $\gamma$ with a better fit to the data, we start by
+defining a function which gives the sum of squared differences between the data
+points, and the corresponding values of $I$.  The problem will then be minimize
+that function.
+
+#+BEGIN_SRC python
+def sumsq(p):
+    beta, gamma = p
+    def SIR(t,y):
+        S = y[0]
+        I = y[1]
+        R = y[2]
+        return([-beta*S*I, beta*S*I-gamma*I, gamma*I])
+    sol = solve_ivp(SIR,[0,14],[762,1,0],t_eval=np.arange(0,14.2,0.2))
+    return(sum((sol.y[1][::5]-data)**2))
+#+END_SRC
+
+As you see, we have just wrapped the SIR definition and its solution inside a
+calling function whose variables are the parameters of the SIR equations.
+
+To minimize this function we need to import another python function first:
+
+#+BEGIN_SRC python
+from scipy.optimize import minimize
+
+msol = minimize(sumsq,[0.001,1],method='Nelder-Mead')
+msol.x
+#+END_SRC
+
+with output:
+
+#+BEGIN_SRC python
+array([0.00218035, 0.44553886])
+#+END_SRC
+
+To see if this does provide a better fit, we can simply run the solver with
+these values, and plot them, as we did at the beginning:
+
+#+BEGIN_SRC python
+beta,gamma = msol.x
+def SIR(t,y):
+    S = y[0]
+    I = y[1]
+    R = y[2]
+    return([-beta*S*I, beta*S*I-gamma*I, gamma*I])
+#+END_SRC
+
+#+BEGIN_SRC python
+sol = solve_ivp(SIR,[0,14],[762,1,0],t_eval=np.arange(0,14.2,0.2))
+#+END_SRC
+
+#+BEGIN_SRC python
+fig = plt.figure(figsize=(10,4))
+plt.plot(sol.t,sol.y[0],"b-")
+plt.plot(sol.t,sol.y[1],"r-")
+plt.plot(sol.t,sol.y[2],"g-")
+plt.plot(np.arange(0,15),data,"k*:")
+plt.legend(["Susceptible","Infected","Removed","Original Data"])
+#+END_SRC
+
+with output:
+
+![Second SIR plot](/second_sir_plot.png)
+
+and as you see, a remarkably close fit!
+
+** Mapping voting gains between elections
+:PROPERTIES:
+:EXPORT_FILE_NAME: mapping_voting_gains_between_elections
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:EXPORT_DATE: 2019-07-21
+:END:
+
+So this goes back quite some time to the recent Australian Federal election on
+May 18.  In my own electorate (known formally as a "Division") of Cooper, the
+Greens, who until recently had been showing signs of winning the seat, were
+pretty well trounced by Labor.
+
+**** Some background asides
+
+First, "Labor" as in "Australian Labor Party" is spelled the
+American way; that is, without a "u", even though "labour" meaning work, is so
+spelled in Australian English.  This is because much of Australia's pre-federal
+political history has a large American influence; indeed one of the loudest
+political voices in the 19th century was [King
+O'Malley](https://en.wikipedia.org/wiki/King_O%27Malley) who was born in 1858 in
+Kansas, and didn't come to Australia until he was about 30. He was responsible,
+amongst other things, for selecting the site for Canberra (the nation's capital)
+and in selecting Walter Burley Griffin as its architect.  As well, the
+Australian Constitution shows a large American influence; the constitutions of
+both countries bear a remarkably close resemblance, and Australia's parliament
+is modelled on that of the United States Congress.
+
+Second, my electorate was formerly known as "Batman" after [John
+Batman](https://en.wikipedia.org/wiki/John_Batman), the supposed founder of
+Melbourne.  However, Batman was known in his lifetime as a contemptible figure,
+and the historical record well bears out the description of him as "the vilest
+man I have ever known".  He was responsible for the slaughter of indigenous
+peoples, and his so called "treaty" with the people of the Kulin Nation in
+exchange for land on what would would become Melbourne is considered invalid.
+In respect for the local peoples ("who have never ceded sovereignty"), the
+electorate was renamed last year in honour of 
+[William Cooper](https://en.wikipedia.org/wiki/William_Cooper_(Aboriginal_Australian)), a
+Yorta Yorta elder, a tireless activist for Aboriginal rights, and the only
+individual in the world to lodge a formal protest to a German embassy on the
+occasion of Kristallnacht.
+
+**** Back to mapping
+
+All I wanted to do was to map the size of Labor's gains (over the Greens)
+between the last election in 2016 and this one, at
+each polling booth in the electorate.  For this I used the following Python
+packages: [matplotlib](https://matplotlib.org/),
+[pandas](https://pandas.pydata.org/), [geopandas](http://geopandas.org/),
+[numpy](https://numpy.org/),
+[cartopy](https://scitools.org.uk/cartopy/docs/latest/). The nice thing about
+Python, for me at least, is the ease of prototyping, and the availability of
+packages for just about everything.  Indeed, for an amateur programmer like
+myself, one of the biggest difficulties is finding the right package for the
+job.  There's a score or more for GIS alone.
+
+All information about the election can be downloaded from the [Australian
+Electorial Commission
+tallyroom](https://tallyroom.aec.gov.au/HouseDefault-24310.htm).  And the GIS
+information can be obtained also from the
+[AES](https://www.aec.gov.au/Electorates/gis/gis_datadownload.htm).  The
+Victorian [shapefile](https://en.wikipedia.org/wiki/Shapefile) needs to be
+unzipped before using.
+
+Then the map set-up looks like this:
+
+#+begin_src python
+shp = gpd.read_file('VicMaps/E_AUGFN3_region.shp')
+cooper = shp.loc[shp['Elect_div']=='Cooper']
+bounds = cooper.geometry.bounds
+bg = bounds.values[0]  # latitude, longitude of extent of region
+pad = 0.01             # padding for display
+extent = [bg[0]-pad,bg[2]+pad,bg[1]-pad,bg[3]+pad]
+#+end_src
+
+The idea of the padding is simply to ensure that the map, once displayed,
+extends beyond the area of the electorate.  The units are degrees of latitude
+and longitude.  In Melbourne, at about 37.8 degrees south, 0.01 degrees latitude
+corresponds to about 1.11km, and 0.01 degrees longitude corresponds to about 0.88km.
+
+Now we need to determine the percentage of votes to Labor (on a two-party
+preferred computation) which again involves reading material from the AEC site.
+I downloaded it first, but it could also be read directly from the site into
+pandas.
+
+#+begin_src python
+# Get all votes by polling booths in Cooper for 2019
+b19 = pd.read_csv('Elections/TCPByCandidateByPollingPlaceVIC-2019.csv')  # b19 = booths, 2019
+v19 = b19.loc[b19.DivisionNm=='Cooper'] # v19 = Cooper Booths, 2019
+v19 = v19[['PollingPlace','PartyAb','OrdinaryVotes']]
+v19r = v19.loc[v19.PartyAb=='GRN']
+v19k = v19.loc[v19.PartyAb=='ALP']
+v19c = v19r.merge(v19k,left_on='PollingPlace',right_on='PollingPlace')  # Complete votes
+v19c['Percent_x'] = (v19c['OrdinaryVotes_x']*100/(v19c['OrdinaryVotes_x']+v19c['OrdinaryVotes_y'])).round(2)
+v19c['Percent_y'] = (v19c['OrdinaryVotes_y']*100/(v19c['OrdinaryVotes_x']+v19c['OrdinaryVotes_y'])).round(2)
+v19c = v19c.dropna()
+# note: suffix -x is GRN; suffix _y is ALP
+#+end_src
+
+The next step is to determine the positions of all polling places.  For
+simplification, I'm only interested in places used in both this most recent
+election, and the previous federal election in 2016:
+
+#+BEGIN_SRC python
+v16 = pd.read_csv('Elections/Batman2016_TCP.csv')
+v_both = v16.merge(v19c,right_on='PollingPlace',left_on='Booth')
+c19 = pd.read_csv('Elections/Cooper_PollingPlaces.csv')
+c19 = c19.drop(44).reset_index()  # Drop Special Hospital, which has index 44
+v_all=v_both.merge(c19,left_on='PollingPlace',right_on='PollingPlaceNm')
+lats = np.array(v_all['Latitude'])
+longs = np.array(v_all['Longitude'])
+booths = np.array(v_all['PollingPlaceNm'])
+diffs = np.array(v_all['Percent_y']-v_all['ALP percent']) # change in ALP percentage
+#+END_SRC
+
+Having now got the boundary of the electorate, the positions of each polling
+booth, the percentage change in votes for Labor, the map can now be created and
+displayed:
+
+#+BEGIN_SRC python
+fig = plt.figure(figsize = (16,16))
+tiler = GoogleTiles()
+ax = plt.axes(projection=tiler.crs)
+ax.set_extent(extent)
+ax.add_image(tiler, 13, interpolation='hanning')
+ax.add_geometries(cooper.geometry,crs=ccrs.PlateCarree(),facecolor='none',edgecolor='k',linewidth=2)
+for i in range(34):
+    if diffs[i]>0:
+        ax.plot(longs[i],lats[i],marker='o',markersize=diffs[i],markerfacecolor='r',transform=ccrs.Geodetic())
+    else:
+        ax.plot(longs[i],lats[i],marker='o',markersize=-diffs[i],markerfacecolor='g',transform=ccrs.Geodetic())
+plt.show()
+#+END_SRC
+
+I found by trial and error that Hanning interpolation seemed to give the best
+results.
+
+![Swings 2019](/swings.jpg)
+
+So this image shows not the size of Labor's /vote/, but the size of Labor's
+/gain/ since the previous election.  The larger gains are in the southern part of
+the electorate: the northern part has always been more Labor friendly, and so the
+gains were smaller there.
+
 ** Educational disciplines: size against market growth
 :PROPERTIES:
 :EXPORT_FILE_NAME: educational_disciplines
@@ -2611,14 +3561,6 @@ And here is the result, saved as an image:
 ![Batman 2018](/batman2018trim.png)
 
 I'm quite pleased with this output.
-
-And a quick check of some maths, first inline 
-$ (x+2y)^3=x^3+6x^2y+12xy^2+8y^3 $ and also displayed:
-<div>
-$$
-\int^\infty_{-\infty}e^{-x^2}\,dx=\sqrt{\pi}.
-$$
-</div>
 
 ** Presentations and the delight of js-reveal
   :PROPERTIES:

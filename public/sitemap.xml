@@ -11,25 +11,38 @@
   </url>
   
   <url>
-    <loc>https://numbersandshapes.net/post/educational_disciplines/</loc>
-    <lastmod>2019-06-15T00:00:00+10:00</lastmod>
+    <loc>https://numbersandshapes.net/post/poles_of_inaccessibility/</loc>
+    <lastmod>2019-12-08T00:00:00+11:00</lastmod>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/post/</loc>
-    <lastmod>2019-06-15T00:00:00+10:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-12-08T00:00:00+11:00</lastmod>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/</loc>
-    <lastmod>2019-06-15T00:00:00+10:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-12-08T00:00:00+11:00</lastmod>
   </url>
   
   <url>
-    <loc>https://numbersandshapes.net/post/tschirnhausens_transformations_quartic/</loc>
-    <lastmod>2019-05-05T00:00:00+10:00</lastmod>
+    <loc>https://numbersandshapes.net/post/an_interesting_sum/</loc>
+    <lastmod>2019-12-02T00:00:00+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/runges_phenomenon_in_geogebra/</loc>
+    <lastmod>2019-09-15T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/fitting_sir_to_data_in_python/</loc>
+    <lastmod>2019-08-09T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/mapping_voting_gains_between_elections/</loc>
+    <lastmod>2019-07-21T00:00:00+10:00</lastmod>
   </url>
   
   <url>
@@ -78,43 +91,38 @@
   </url>
   
   <url>
+    <loc>https://numbersandshapes.net/tags/algebra/</loc>
+    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://numbersandshapes.net/post/householders_methods/</loc>
+    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/mathematics/</loc>
     <lastmod>2018-09-09T00:00:00+10:00</lastmod>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/tags/</loc>
     <lastmod>2018-09-09T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://numbersandshapes.net/tags/algebra/</loc>
-    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://numbersandshapes.net/tags/mathematics/</loc>
-    <lastmod>2018-09-09T00:00:00+10:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://numbersandshapes.net/post/joukowsky-transform/</loc>
-    <lastmod>2018-08-24T00:00:00+10:00</lastmod>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/tags/geometry/</loc>
     <lastmod>2018-08-24T00:00:00+10:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/tags/jsxgraph/</loc>
     <lastmod>2018-08-24T00:00:00+10:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/joukowsky-transform/</loc>
+    <lastmod>2018-08-24T00:00:00+10:00</lastmod>
   </url>
   
   <url>
@@ -158,20 +166,23 @@
   </url>
   
   <url>
-    <loc>https://numbersandshapes.net/post/playing_with_hugo/</loc>
-    <lastmod>2018-04-03T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://numbersandshapes.net/tags/hugo/</loc>
     <lastmod>2018-04-03T00:00:00+10:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/tags/org/</loc>
     <lastmod>2018-04-03T00:00:00+10:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/post/playing_with_hugo/</loc>
+    <lastmod>2018-04-03T00:00:00+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://numbersandshapes.net/tags/python/</loc>
+    <lastmod>2018-03-31T00:00:00+11:00</lastmod>
   </url>
   
   <url>
@@ -180,15 +191,8 @@
   </url>
   
   <url>
-    <loc>https://numbersandshapes.net/tags/python/</loc>
-    <lastmod>2018-03-31T00:00:00+11:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://numbersandshapes.net/tags/voting/</loc>
     <lastmod>2018-03-31T00:00:00+11:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -217,23 +221,11 @@
   </url>
   
   <url>
-    <loc>https://numbersandshapes.net/educ/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://numbersandshapes.net/massacres/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://numbersandshapes.net/categories/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://numbersandshapes.net/pages/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

@@ -6,7 +6,7 @@ tags = ["mathematics", "geometry", "jsxgraph"]
 draft = false
 +++
 
-The [Joukowksy Transform](<https://en.wikipedia.org/wiki/Joukowsky_transform>) is
+The [Joukowksy Transform](<https://en.wikipedia.org/wiki/Joukowsky%5Ftransform>) is
 an elegant and simple way to create an airfoil shape.
 
 Let \\(C\\) be a circle in the complex plane that passes through the point \\(z=1\\) and
